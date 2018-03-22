@@ -1,0 +1,79 @@
+#!/bin/sh
+
+#
+#	Script de deployment para version uCLinux.
+#	Recibe como parametro el numero de version, que tiene el formato general:
+#	Fn.n-INTn.n-RELYYYY-MM-DD
+#	Crea un archivo ap.tar.gz en el directorio correspondiente al numero de 
+#	version.
+#	Toma la version del ejecutable de CT_HOME/bin/tariff.exe y
+#	los demas archivos de $INSTALL_PATH/template
+#
+INSTALL_PATH=versions
+EXE_PATH=$1
+TARGET_PATH=$2
+CIM_MODEL=$3
+DESCRIPTION=$4
+
+if [ "$TARGET_PATH" = "" ]; then
+echo USO: deploy ejecutable destino modelo_cim
+echo donde
+echo ejecutable: es el path adonde se encuentra el ejecutable
+echo destino: el nombre del directorio destino
+echo Ejemplo: ./deploy \"/archives/projects/Ecuador/Source/bin/tariff.exe\" \"CIM1.0-RI01\" "Cim_1" "Descripcion de la version(opcional)"
+exit 1;
+fi
+
+mkdir $INSTALL_PATH 2> /dev/null
+
+echo Creando directorio $TARGET_PATH
+mkdir $INSTALL_PATH/$TARGET_PATH 2> /dev/null
+mkdir $INSTALL_PATH/$TARGET_PATH/rw 2> /dev/null
+
+echo Copiando template de CT8016/
+cp -r rw/* $INSTALL_PATH/$TARGET_PATH/rw
+
+echo Copiando formatFiles
+cp -r formatFiles/ $INSTALL_PATH/$TARGET_PATH/rw/CT8016
+
+echo Copiando modelo de CIM xxxx
+echo "cp -r rw/CT8016/data/$CIM_MODEL/* $INSTALL_PATH/$TARGET_PATH/rw/CT8016/data"
+cp -r rw/CT8016/data/$CIM_MODEL/* $INSTALL_PATH/$TARGET_PATH/rw/CT8016/data
+
+echo Copiando version nueva del ejecutable
+cp $EXE_PATH $INSTALL_PATH/$TARGET_PATH/rw/CT8016/
+
+echo Removiendo paquete anterior
+rm $INSTALL_PATH/$TARGET_PATH/ap.tar.gz 2> /dev/null
+
+echo Eliminando archivos CVS
+find $INSTALL_PATH/$TARGET_PATH/rw/ | grep CVS$ | xargs rm -r
+
+echo Eliminando archivos fake.txt
+find $INSTALL_PATH/$TARGET_PATH/rw/ | grep fake.txt | xargs rm
+
+echo Configurando permisos a los archivos
+chmod 777 -R $INSTALL_PATH/$TARGET_PATH/rw/*
+
+echo Comprimiendo imagen ap.tar.gz
+tar -czf $INSTALL_PATH/$TARGET_PATH/ap.tar.gz -C $INSTALL_PATH/$TARGET_PATH/ rw
+
+echo Copiando archivo readme.txt
+cp informe/readme.txt $INSTALL_PATH/$TARGET_PATH/
+
+echo Generando archivo con info de version
+echo $DESCRIPTION > $INSTALL_PATH/$TARGET_PATH/description.txt
+
+echo Creando version para copiar
+OLDPATH=$PWD
+cd $INSTALL_PATH/$TARGET_PATH
+/usr/sbin/mkfs.jffs2 -d rw -b -o "/tftpboot/$TARGET_PATH.jffs2"
+rm -r rw
+cd $OLDPATH
+
+ls -lh $INSTALL_PATH/$TARGET_PATH
+ls -lh "/tftpboot/$TARGET_PATH.jffs2"
+
+echo LISTO!! Paquete generado en $TARGET_PATH
+
+

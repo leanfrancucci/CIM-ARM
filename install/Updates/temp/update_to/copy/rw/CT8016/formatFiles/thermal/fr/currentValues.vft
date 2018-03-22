@@ -1,0 +1,195 @@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+           RAPPORT ESPÈCES\n
+@DBL_HEIGHT_OFF@
+@IF|/generalInfo/detailReport=TRUE@
+                -DÉTAILLÉ-\n
+@END_IF@
+@IF|/generalInfo/detailReport=FALSE@
+                -SOMMAIRE-\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+Trans. #  : @/generalInfo/trans@\n
+Date-Heure: @/generalInfo/transTime@\n
+POS       : @/generalInfo/systemId@\n
+ID distant: @/generalInfo/systemIdPIMS@\n
+@IF|reportType=1@
+Sélect. porte: @/generalInfo/doorName:-14@\n
+@END_IF@
+@IF|reportType=2@
+Sélect. espèces: @/generalInfo/cashName:-12@\n
+@END_IF@
+Derniers Grand Z: @/generalInfo/lastZ@\n
+Date init.: @/generalInfo/lastDateZ@\n
+-----------------------------\n
+
+@IF|/cimCashs/withOutValues=TRUE@
+@BITSTREAM_FONT@
+ \n
+      ENTRE-TEMPS PAS\n
+      DE TRANSACTIONS\n
+ \n
+@END_IF@
+
+@FOR_EACH|cimCashs/cimCash@
+@BOLD_ON@
+ \n
+@name@ ***\n
+
+@IF|cimCashType=1@
+@FOR_EACH|acceptorList/acceptor@
+ \n
+@BOLD_ON@
+@acceptorName@
+@FOR_EACH|currencyList/currency@
+ \n
+@BITSTREAM_FONT@
+@BOLD_ON@
+Devise: @currencyCode@\n
+@BITSTREAM_FONT@
+-----------------------------\n
+@IF|/generalInfo/detailReport=TRUE@
+  Qty   Valeur  Total Partiel\n
+@END_IF@
+@IF|/generalInfo/detailReport=FALSE@
+  Qty    Type   Total Partiel\n
+@END_IF@
+-----------------------------\n
+@IF|/generalInfo/detailReport=TRUE@
+@FOR_EACH|extractionDetails/extractionDetail@
+@qty:6@ @amount:9@ @totalAmount:12@\n
+@END_FOR@
+-----------------------------\n
+@qty:6@ Tot @currencyCode:3@ @total:14@\n
+@END_IF@
+@IF|/generalInfo/detailReport=FALSE@
+@qty:6@   @currencyCode:3@ @total:16@\n
+@END_IF@
+@END_FOR@
+@END_FOR@
+@END_IF@
+
+@IF|cimCashType=2@
+@FOR_EACH|acceptorList/acceptor@
+ \n
+@BOLD_ON@
+@acceptorName@
+
+@IF|/generalInfo/detailReport=TRUE@
+@FOR_EACH|currencyList/currency@
+ \n
+@BITSTREAM_FONT@
+@BOLD_ON@
+Devise: @currencyCode@\n
+@BITSTREAM_FONT@
+-----------------------------\n
+  Qty     Type  Total Partiel\n
+-----------------------------\n
+@FOR_EACH|extractionDetails/extractionDetail@
+@qty:6@ @depositValueName:9@ @totalAmount:12@\n
+@END_FOR@
+-----------------------------\n
+@qty:6@ Tot @currencyCode:3@ @total:14@\n
+@END_FOR@
+@END_IF@
+
+@IF|/generalInfo/detailReport=FALSE@
+ \n
+@BITSTREAM_FONT@
+-----------------------------\n
+  Qty  Espèces  Total Partiel\n
+-----------------------------\n
+@FOR_EACH|currencyList/currency@
+@qty:6@   @currencyCode:3@ @total:16@\n
+@END_FOR@
+@END_IF@
+
+@END_FOR@
+@END_IF@
+ \n
+@BOLD_ON@
+@IF|/generalInfo/reportType=1@
+TOTAL: @name@\n
+@END_IF@
+@IF|/generalInfo/reportType=2@
+ \n
+**** TOTAL ESPÈCES *****\n
+@END_IF@
+@FOR_EACH|totalCurrency@
+@totalCurrencyCode:3@ @totalCurr:20@\n
+@END_FOR@
+ \n
+@END_FOR@
+@BITSTREAM_FONT@
+
+@IF|/generalInfo/reportType=1@
+@IF|/cimCashs/withOutValues=FALSE@
+-----------------------------\n
+ \n
+ \n
+@BOLD_ON@
+**** TOTAL ESPÈCES *****\n
+@FOR_EACH|cimCashs/totalCashCurrency@
+TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
+@END_FOR@
+@END_IF@@BITSTREAM_FONT@
+@IF|/cimCashs/withOutValues=FALSE@
+ \n
+-----------------------------\n
+     VENTILATION PAR\n
+     Clôture journée\n
+-----------------------------\n
+@FOR_EACH|breakdown/endOfDay@
+Clôture journée @number@ @date@\n
+@FOR_EACH|cashClose@
+ -Partiel @number@ - @date@\n
+@FOR_EACH|cashCloseDetails/cashCloseDetail@
+  -@cimCashName:-9@ @currencyCode:3@ @amount:12@\n
+@END_FOR@
+@END_FOR@
+@END_FOR@
+ \n
+@VERDANA_SMALL_FONT@
+Référence:\n
+  S  : Suivant\n
+  P  : Partiel\n
+  S/O:\n
+@END_IF@
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@VERDANA_SMALL_FONT@
+ \n
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Imprimé près: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-15@\n
+Heure: @/generalInfo/currentDate@\n

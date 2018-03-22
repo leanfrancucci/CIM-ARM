@@ -1,0 +1,4 @@
+dhcp: no
+address: 192.168.0.177
+netmask: 255.255.255.0
+gateway: 192.168.0.1

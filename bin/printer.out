@@ -1,0 +1,2247 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/20/16 14:53:54
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/20/16 14:53:54
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+-----------------------------
+Drop #   : 00000001
+Trans #  : 00000061
+Date-Time: 12/20/16 14:53:59
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/20/16 14:53:59
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+     SYSTEM INFO REPORT
+              -SUMMARY-
+-----------------------------
+Trans #   : 00000062
+Date-Time : 12/20/16 14:54:47
+POS       : UNKNOWN
+ID        : NOT AVAILABLE
+Remote ID : NOT AVAILABLE
+-----------------------------
+ 
+MODEL -----------------------
+Box1ED1V1M-JCM-PUB11-Bag
+
+-----------------------------
+ 
+SOFTWARE ************
+Version  : CIM1.0-RI21-RC25
+Release  : 23.03.16
+OS Ver   : 4.4.0-45-generic
+Flash use: 43.0%
+ 
+PTSD Versions
+ Console: PTSD-1.19
+ PIMS   : PTSD-1.18
+ CMP    : PTSD-1.19
+ CMP Out: PTSD-1.19
+ 
+HARDWARE ************
+Name : BOX CONTROLLER
+Version SW/HW :
+ SW01.01.00HW03.00
+Power Status  : External
+System Status : Primary
+Battery Status: Removed
+ 
+COMMERCIAL STATE *****
+Mac Addrs : 00-08-54-AA-9E-99
+Req. (GMT): 07/01/08 03:00:00
+Old State : NOT DEFINED
+Curr State: TEST STAND ALONE
+Hours Qty : 
+Expires   : 
+Has pending renewal: 
+ 
+ 
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/20/16 14:54:47
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/22/16 13:47:51
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH       100.00
+-----------------------------
+  0001 Tot USD         100.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD         100.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/22/16 13:47:51
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+-----------------------------
+Drop #   : 00000002
+Trans #  : 00000070
+Date-Time: 12/22/16 13:48:03
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH       100.00
+-----------------------------
+  0001 Tot USD         100.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD         100.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/22/16 13:48:03
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/22/16 14:18:35
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH       100.00
+-----------------------------
+  0001 Tot USD         100.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD         100.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/22/16 14:18:35
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/22/16 14:19:26
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH       500.00
+-----------------------------
+  0001 Tot USD         500.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD         500.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/22/16 14:19:26
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+-----------------------------
+Drop #   : 00000003
+Trans #  : 00000084
+Date-Time: 12/22/16 14:19:31
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH       500.00
+-----------------------------
+  0001 Tot USD         500.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD         500.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/22/16 14:19:31
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/28/16 14:26:33
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/28/16 14:26:33
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+-----------------------------
+Drop #   : 00000004
+Trans #  : 00000131
+Date-Time: 12/28/16 14:26:38
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/28/16 14:26:38
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/28/16 14:43:29
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        40.00
+-----------------------------
+  0001 Tot USD          40.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          40.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/28/16 14:43:29
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/29/16 13:18:18
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/29/16 13:18:18
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/29/16 13:19:21
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/29/16 13:19:21
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/29/16 13:21:12
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH       400.00
+-----------------------------
+  0001 Tot USD         400.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD         400.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/29/16 13:21:12
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+-----------------------------
+Drop #   : 00000005
+Trans #  : 00000152
+Date-Time: 12/29/16 13:21:16
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH       400.00
+-----------------------------
+  0001 Tot USD         400.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD         400.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/29/16 13:21:16
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/29/16 13:23:21
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/29/16 13:23:21
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/30/16 14:01:38
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/30/16 14:01:38
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+-----------------------------
+Drop #   : 00000006
+Trans #  : 00000183
+Date-Time: 12/30/16 14:01:42
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/30/16 14:01:42
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/30/16 14:05:52
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/30/16 14:05:52
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/30/16 14:08:20
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH       500.00
+-----------------------------
+  0001 Tot USD         500.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD         500.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/30/16 14:08:20
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/30/16 14:33:00
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH       500.00
+-----------------------------
+  0001 Tot USD         500.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD         500.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/30/16 14:33:00
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/30/16 14:34:21
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/30/16 14:34:21
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+-----------------------------
+Drop #   : 00000007
+Trans #  : 00000210
+Date-Time: 12/30/16 14:34:40
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/30/16 14:34:40
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/30/16 14:35:12
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/30/16 14:35:12
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/30/16 14:35:45
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/30/16 14:35:45
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/30/16 14:36:20
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/30/16 14:36:20
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/30/16 14:47:07
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/30/16 14:47:07
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 12/30/16 14:47:45
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        40.00
+-----------------------------
+  0001 Tot USD          40.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          40.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 12/30/16 14:47:45
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 01/02/17 13:05:34
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH         0.00
+-----------------------------
+  0001 Tot USD           0.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD           0.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 01/02/17 13:05:34
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 01/02/17 13:08:43
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 01/02/17 13:08:43
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+-----------------------------
+Drop #   : 00000008
+Trans #  : 00000246
+Date-Time: 01/02/17 13:08:51
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 01/02/17 13:08:51
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 01/02/17 13:22:08
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 01/02/17 13:22:08
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+-----------------------------
+Drop #   : 00000009
+Trans #  : 00000260
+Date-Time: 01/02/17 13:22:10
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 01/02/17 13:22:10
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+            MANUAL DROP
+      (Insert this receipt into envelope)
+-----------------------------
+Date-Time: 01/02/17 13:25:17
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Manual
+-----------------------------
+ENVELOPE #: 0              
+-----------------------------
+ 
+Buzon
+ 
+Currency: USD
+-----------------------------
+ Qty        Type     Subtotal
+-----------------------------
+  0001      CASH        50.00
+-----------------------------
+  0001 Tot USD          50.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL USD          50.00
+ 
+Manual drop total will be confirmed after
+counting process.
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 01/02/17 13:25:17
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+         VALIDATED DROP
+-----------------------------
+Drop #   : 00000010
+Trans #  : 00000274
+Date-Time: 01/02/17 13:31:21
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Val
+Rejected : 0
+-----------------------------
+ 
+Val 1
+ 
+Currency: ARS
+-----------------------------
+ Qty       Value     Subtotal
+-----------------------------
+  0001    100.00       100.00
+-----------------------------
+  0001 Tot ARS         100.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL ARS         100.00
+ 
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 01/02/17 13:31:21
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+         VALIDATED DROP
+-----------------------------
+Drop #   : 00000011
+Trans #  : 00000286
+Date-Time: 01/11/17 13:06:19
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Val
+Rejected : 0
+-----------------------------
+ 
+Val 1
+ 
+Currency: ARS
+-----------------------------
+ Qty       Value     Subtotal
+-----------------------------
+  0001     10.00        10.00
+  0001     50.00        50.00
+-----------------------------
+  0002 Tot ARS          60.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL ARS          60.00
+ 
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 01/11/17 13:06:19
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+         VALIDATED DROP
+-----------------------------
+Drop #   : 00000012
+Trans #  : 00000298
+Date-Time: 01/12/17 12:15:52
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Val
+Rejected : 1
+-----------------------------
+ 
+Val 1
+ 
+Currency: ARS
+-----------------------------
+ Qty       Value     Subtotal
+-----------------------------
+  0002      2.00         4.00
+  0001      5.00         5.00
+-----------------------------
+  0003 Tot ARS           9.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL ARS           9.00
+ 
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: UNKNOWN UNKNOWN
+Time: 01/12/17 12:15:52
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+         VALIDATED DROP
+-----------------------------
+Drop #   : 00000013
+Trans #  : 00000301
+Date-Time: 01/12/17 12:28:37
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Val
+Rejected : 0
+-----------------------------
+ 
+Val 1
+ 
+Currency: ARS
+-----------------------------
+ Qty       Value     Subtotal
+-----------------------------
+  0001      2.00         2.00
+  0001     10.00        10.00
+-----------------------------
+  0002 Tot ARS          12.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL ARS          12.00
+ 
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 01/12/17 12:28:37
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+         VALIDATED DROP
+-----------------------------
+Drop #   : 00000014
+Trans #  : 00000307
+Date-Time: 01/12/17 12:30:50
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Val
+Rejected : 0
+-----------------------------
+ 
+Val 1
+ 
+Currency: ARS
+-----------------------------
+ Qty       Value     Subtotal
+-----------------------------
+  0001      2.00         2.00
+  0001     10.00        10.00
+-----------------------------
+  0002 Tot ARS          12.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL ARS          12.00
+ 
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 01/12/17 12:30:50
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+         VALIDATED DROP
+-----------------------------
+Drop #   : 00000015
+Trans #  : 00000313
+Date-Time: 01/12/17 12:32:36
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Val
+Rejected : 0
+-----------------------------
+ 
+Val 1
+ 
+Currency: ARS
+-----------------------------
+ Qty       Value     Subtotal
+-----------------------------
+  0002      2.00         4.00
+-----------------------------
+  0002 Tot ARS           4.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL ARS           4.00
+ 
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 01/12/17 12:32:36
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+         VALIDATED DROP
+-----------------------------
+Drop #   : 00000016
+Trans #  : 00000321
+Date-Time: 01/12/17 12:34:38
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Val
+Rejected : 1
+-----------------------------
+ 
+Val 1
+ 
+Currency: ARS
+-----------------------------
+ Qty       Value     Subtotal
+-----------------------------
+  0001      2.00         2.00
+  0001      5.00         5.00
+-----------------------------
+  0002 Tot ARS           7.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL ARS           7.00
+ 
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 01/12/17 12:34:38
+ 
+ 
+ 
+** LOGO **
+Header 1
+Header 2
+Header 3
+Header 4
+Header 5
+Header 6
+-----------------------------
+         VALIDATED DROP
+-----------------------------
+Drop #   : 00000017
+Trans #  : 00000329
+Date-Time: 01/12/17 12:36:33
+POS      : UNKNOWN
+Remote ID: NOT AVAILABLE
+Oper #   : 00001
+Oper Name: ADMIN, ADMIN
+Cash     : Cash Val
+Rejected : 1
+-----------------------------
+ 
+Val 1
+ 
+Currency: ARS
+-----------------------------
+ Qty       Value     Subtotal
+-----------------------------
+  0002      2.00         4.00
+  0001      5.00         5.00
+-----------------------------
+  0003 Tot ARS           9.00
+-----------------------------
+ 
+ 
+******** TOTAL *********
+TOTAL ARS           9.00
+ 
+-----------------------------
+Footer 1
+Footer 2
+Footer 3
+Printed by: 1111 ADMIN, ADMIN
+Time: 01/12/17 12:36:33
+ 
+ 
+ 

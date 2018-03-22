@@ -1,0 +1,141 @@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+       RAPPORT INFO SYSTÈME\n
+@DBL_HEIGHT_OFF@
+@IF|/generalInfo/detailReport=FALSE@
+               -SOMMAIRE-\n
+@END_IF@
+@IF|/generalInfo/detailReport=TRUE@
+               -DÉTAILLÉ-\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+Trans. #  : @/generalInfo/trans@\n
+Date-Heure: @/generalInfo/transTime@\n
+POS       : @/generalInfo/systemId@\n
+ID        : @/generalInfo/telesupSystemId@\n
+ID distant: @/generalInfo/systemIdPIMS@\n
+-----------------------------\n
+ \n
+MODÈLE ----------------------\n
+@/generalInfo/cashModel@\n
+-----------------------------\n
+ \n
+@BOLD_ON@
+LOGICIELLE **********\n
+@BITSTREAM_FONT@
+Version   : @/software/version@\n
+Degagement: @/software/release@\n
+OS Version: @/software/osVersion@\n
+Utilisation FLASH: @/software/flashUse@\n
+ \n
+Versions PTSD\n
+ Console: @/software/maxPTSDVersion@\n
+ PIMS   : @/software/pimsPTSDVersion@\n
+ CMP    : @/software/cmpPTSDVersion@\n
+ CMP Out: @/software/cmpOutPTSDVersion@\n
+ \n
+@BOLD_ON@
+EQUIPEMENT **********\n
+@BITSTREAM_FONT@
+Nom : BOX CONTROLLER\n
+Version LO/EQ :\n
+@VERDANA_SMALL_FONT@
+ @/hardware/versionHW@\n
+@BITSTREAM_FONT@
+Statut alimentation: @/hardware/powerStatus:-8@\n
+Statut système: @/hardware/systemStatus:-13@\n
+Statut pile: @/hardware/batteryStatus:-16@\n
+ \n
+@BOLD_ON@
+ÉTAT COMMERCIAL ******\n
+@BITSTREAM_FONT@
+ADRESSE MAC:@/commStateChange/macAddress:17@\n
+Req. (GMT): @/commStateChange/requestDate@\n
+État précédent:\n
+  @/commStateChange/oldState@\n
+État actuel:\n
+  @/commStateChange/currentState@\n
+Qty Heure  : @/commStateChange/hoursQty@\n
+expiration : @/commStateChange/expireDate@\n
+A en attendant le\n
+renouvellement: @/commStateChange/hasPendingRenewal@\n
+ \n
+@IF|/generalInfo/detailReport=TRUE@
+@BOLD_ON@
+MODULE GSM ***********\n
+@BITSTREAM_FONT@
+Signal    : @/hardware/signal@\n
+ \n
+@BOLD_ON@
+ETHERNET (eth0) ******\n
+@BITSTREAM_FONT@
+DHCP    : @/hardware/dhcp@\n
+TI      : @/hardware/ip@\n
+Mask    : @/hardware/mask@\n
+Gateway : @/hardware/gateway@\n
+ \n
+@BOLD_ON@
+ACCEPTATEUR **********\n
+@BITSTREAM_FONT@
+@FOR_EACH|acceptorList/acceptor@
+Nom        : @name:-16@\n
+Devise     : @currency:-16@\n
+Espèces    : @cash:-16@\n
+Porte      : @door:-16@\n
+Fournisseur: @provider:-16@\n
+Version: @version1@\n
+@IF|/generalInfo/viewVersion2=TRUE@ 
+@version2:-29@\n
+@END_IF@
+@BITSTREAM_FONT@
+Taille empileur: @stakerSize@\n
+Util. empileur: @stakerUse@\n
+Statut : @status:-20@\n
+-----------------------------\n
+@END_FOR@\n
+ \n
+@BOLD_ON@
+ÉTAT PORTE ***********\n
+@BITSTREAM_FONT@
+@FOR_EACH|doorList/door@
+@name@ :\n
+Serrure: @lockerState@\n
+Capteur: @plungerState@\n
+-----------------------------\n
+@END_FOR@\n
+@END_IF@
+@VERDANA_SMALL_FONT@
+ \n
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Imprimé près: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-15@\n
+Heure: @/generalInfo/currentDate@\n

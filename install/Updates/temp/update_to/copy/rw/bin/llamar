@@ -1,0 +1,81 @@
+#!/bin/sh
+
+DIR="/rw/etc/peers/$1"
+
+if test ! -e $DIR/account.conf; then
+   echo "Uso: llamar <perfil>"
+   exit
+fi
+
+rm /rw/bin/pppd.result 2> /dev/null
+
+seconds > /rw/CT8016/telesup/lastTelesup.ftp
+
+rm /etc/ppp/ip-up
+#rm /etc/ppp/resolv.conf
+
+cp $DIR/ip-up /etc/ppp/
+
+WAITLOGIN=`cat $DIR/account.conf | grep -i waitlogin | sed 's/waitlogin: */'/`
+PHONE=`cat $DIR/account.conf | grep -i phone | sed 's/phone: */'/`
+USER=`cat $DIR/account.conf | grep -i user: | sed 's/user: */'/`
+PASSWORD=`cat $DIR/account.conf | grep -i password | sed 's/password: */'/`
+SPEED=`cat $DIR/account.conf | grep -i speed | sed 's/speed: */'/`
+DEVICE=`cat $DIR/device`;
+PPPOPTIONS=`cat $DIR/pppoptions`
+
+/rw/bin/log
+
+echo "$USER * $PASSWORD" > /etc/ppp/pap-secrets
+CS=$DIR/chat.script
+echo "ABORT BUSY" > $CS
+echo "ABORT 'NO CARRIER'" >> $CS
+echo "ABORT 'NO DIALTONE'" >> $CS
+echo "ABORT 'NO ANSWER'" >> $CS
+echo "TIMEOUT 3" >> $CS
+echo "SAY 'Iniciando script...'" >> $CS
+echo "'' AT" >> $CS
+echo "'' AT" >> $CS
+echo "'OK' AT" >> $CS
+cat $DIR/llamar.script >> $CS 2>/dev/null
+#echo "'OK' ATE0" >> $CS
+cat $DIR/chat.conf >> $CS 2>/dev/null
+echo "'OK' ATD$PHONE" >> $CS
+echo "TIMEOUT 60" >> $CS
+echo "CONNECT ''" >> $CS
+if [ "$WAITLOGIN" != no ]; then
+echo "ogin: \\d$USER" >> $CS
+echo "word: \\d$PASSWORD" >> $CS
+fi
+
+# No permito que el archivo de errores crezca mas que determinado tamanio
+# 128kb maximo de log
+MAX=128
+SIZE=`du /rw/etc/ppp/connect-errors | sed 's/'.rw.etc.ppp.connect-errors'/'/`
+
+if test $SIZE -ge $MAX; then
+echo "Eliminando /rw/etc/ppp/connect-errors"
+rm /rw/etc/ppp/connect-errors
+fi
+
+# Si tiene usuario configurado, entonces tengo que enviar el comando user
+USERCMD=""
+if test $USER; then
+USERCMD="user $USER";
+fi
+
+COMMAND="/bin/pppd $DEVICE $SPEED connect '/bin/chat -v -f $DIR/chat.script' disconnect '/bin/chat -v -f /rw/bin/disconnect.script' $PPPOPTIONS $USERCMD"
+echo "COMMAND: $COMMAND"
+
+#(sh -c "$COMMAND";echo "$?" > /rw/bin/pppd.result) &
+#sh -c "$COMMAND" &
+/rw/bin/runpppd "$COMMAND" &
+
+ispppup 90
+
+# Si se conecto correctamente, entonces configuro el servidor de DNS
+# El pppd lo configura correctamente, pero tengo que copiar el archivo a /etc directamente
+ifconfig ppp0 >/dev/null 2>/dev/null || exit
+rm /etc/resolv.conf
+cp /rw/etc/config/resolv.conf /etc
+

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+rm /rw/CT8016/data/deposit*dat
+rm /rw/CT8016/data/extraction*dat
+rm /rw/CT8016/data/temp_deposit*dat
+rm /rw/CT8016/data/zclose*dat

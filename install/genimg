@@ -1,0 +1,4 @@
+#!/bin/bash
+tar xvf ap.tar.gz >/dev/null
+mkfs.jffs2 -d rw -b -o /tftpboot/image.jffs2
+rm -r rw

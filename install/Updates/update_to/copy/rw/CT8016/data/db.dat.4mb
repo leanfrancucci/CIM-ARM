@@ -1,0 +1,49 @@
+operations,single,0,0
+access,single,0,0
+audits,multi,300,100
+transactions,single,0,0
+events,single,0,0
+events_category,single,0,0
+change_log,multi,100,10
+deposits,multi,500,20
+deposit_details,multi,-1,100
+currencies, single, 0,0
+extractions,multi,500,10
+extraction_details,multi,-1,100
+temp_deposits, single, 0, 0
+temp_deposit_details, single, 0, 0
+zclose,multi, 500, 5
+currency_map, single, 0, 0
+repair_order_item, single, 0, 0
+telesups,single,20,0,0,0,1
+connections,single,20,0,0,5232,1
+acceptors,single,20,0,0,10736,1
+accepted_dep_value,single,500,0,0,14408,1
+currency_dep_value,single,500,0,0,16432,1
+denominations,single,200,0,0,19920,1
+cim_cash,single,100,0,0,22624,1
+acceptor_by_cash,single,200,0,0,25560,1
+cash_reference,single,500,0,0,27008,1
+doors_by_user,single,2000,0,0,44984,1
+dual_access,single,50,0,0,55184,1
+profiles,single,100,0,0,55572,1
+bar_code_settings,single,4,0,0,62104,1
+regional_settings,single,4,0,0,62464,1
+commercial_state,single,4,0,0,62776,1
+general_settings,single,4,0,0,63184,1
+bill_settings,single,4,0,0,63584,1
+amount_settings,single,4,0,0,64952,1
+printing_settings,single,4,0,0,65496,1
+cim_settings,single,4,0,0,65728,1
+box,single,10,0,0,66696,1
+acceptor_by_box,single,100,0,0,67820,1
+door_by_box,single,100,0,0,68544,1
+doors,single,100,0,0,69480,1
+users,single,1500,0,0,81752,1
+audits_bck,multi,20000,0,1
+change_log_bck,multi,5000,0,2
+deposits_bck,multi,10000,0,3
+deposit_details_bck,multi,40000,0,4
+extractions_bck,multi,2000,0,5
+extraction_details_bck,multi,12000,0,6
+zclose_bck,multi,1000,0,7

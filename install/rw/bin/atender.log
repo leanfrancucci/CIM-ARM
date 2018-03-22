@@ -1,0 +1,1 @@
+COMMAND: /bin/pppd /dev/ttyS3 115200 connect '/bin/chat -v -s -f atender.script' linkname ppp0 debug modem login nodetach noipdefault crtscts -chap novj lcp-echo-failure 10 noccp passive 192.168.0.100:192.168.0.250 require-chap

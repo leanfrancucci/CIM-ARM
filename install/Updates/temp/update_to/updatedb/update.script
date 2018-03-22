@@ -1,0 +1,30 @@
+#!/bin/sh
+
+#########################################################
+#	Script general de actualizacion
+#
+#	En primer lugar realiza el update de la base de datos.
+#	En segundo lugar copia los archivos que exiten en new/
+# a la carpeta de datos.
+#
+# Debe recibir este script el directorio donde estan los
+# datos que se deben actualizar.
+#########################################################
+
+SOURCE=$1
+
+if [ "$SOURCE" = "" ]; then
+	echo "Debe especificar el directorio origen"
+	echo "Uso update.script directorio_data_origen"
+	exit;
+fi;
+
+# Actualizo los archivos correspondientes en primer lugar
+echo -n "Actualizando archivos de datos...."
+./updatedb.exe $SOURCE updated done >> result.log
+echo "done"
+
+# Copio archivos nuevos
+echo -n "Copiando archivos nuevos.........."
+cp /rw/update/updatedb/new/* $SOURCE >> result.log
+echo "done"

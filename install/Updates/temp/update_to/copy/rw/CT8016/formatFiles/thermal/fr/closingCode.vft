@@ -1,0 +1,12 @@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+         CLOSE SEAL \n
+@BITSTREAM_FONT@
+-----------------------------\n
+User: @/generalInfo/operatorName@\n
+Close Seal: @/generalInfo/ClosingCode@\n
+-----------------------------\n
+@VERDANA_SMALL_FONT@
+Printed by: @/generalInfo/currentUserId@ @/generalInfo/currentUserName@\n
+Time: @/generalInfo/currentDate@\n

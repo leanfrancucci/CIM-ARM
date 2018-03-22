@@ -1,0 +1,22 @@
+#!/bin/sh
+
+DIR="/rw/etc/peers/$1"
+
+if test ! -e $DIR/account.conf; then
+echo "Uso: atender <perfil>"
+exit
+fi
+
+WAITLOGIN=`cat $DIR/account.conf | grep -i waitlogin | sed 's/waitlogin: */'/`
+PHONE=`cat $DIR/account.conf | grep -i phone | sed 's/phone: */'/`
+USER=`cat $DIR/account.conf | grep -i user: | sed 's/user: */'/`
+PASSWORD=`cat $DIR/account.conf | grep -i password | sed 's/password: */'/`
+SPEED=`cat $DIR/account.conf | grep -i speed | sed 's/speed: */'/`
+DEVICE=`cat $DIR/device`
+PPPOPTIONS=`cat $DIR/pppoptions`
+
+/rw/bin/log
+COMMAND="/bin/pppd $DEVICE $SPEED connect '/bin/chat -v -s -f /rw/bin/atender.script' $PPPOPTIONS require-chap"
+echo "COMMAND: $COMMAND"
+
+sh -c "$COMMAND"

@@ -1,0 +1,3 @@
+SoftwareVersion=CIM1.0-RI21-RC25
+OSVersion=4.4.0-45-generic
+DateVersion=23.03.16

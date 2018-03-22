@@ -1,0 +1,86 @@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+       RAPPORT SUR UTILISAT.\n
+               ENREGISTRÉ\n
+@DBL_HEIGHT_OFF@
+@IF|/generalInfo/detailReport=FALSE@
+               -SOMMAIRE-\n
+@END_IF@
+@IF|/generalInfo/detailReport=TRUE@
+               -DÉTAILLÉ-\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+Trans. #  : @/generalInfo/trans@\n
+Date-Heure: @/generalInfo/transTime@\n
+POS       : @/generalInfo/systemId@\n
+ID distant: @/generalInfo/systemIdPIMS@\n
+Statut    : @/generalInfo/statusDescription@\n
+-----------------------------\n
+ \n
+@IF|/generalInfo/withOutValues=TRUE@
+@BITSTREAM_FONT@
+Il n'y a pas des utilisateurs\n
+ \n
+-----------------------------\n
+@END_IF@
+@FOR_EACH|userList/userInfo@
+Utilisateurs #: @userId@\n
+Utilisat. Nom : @userName:-14@\n
+Enregistrer:@enrolledDate@\n
+ID personnel: @personalId@\n
+Statut    : @status@\n
+Niveau    : @profile:-17@\n
+Cle       : @key@\n
+Derniers connexion:\n
+ @lastLogin@\n
+Compte # : \n
+@VERDANA_SMALL_FONT@
+ @account@\n
+@BITSTREAM_FONT@
+@IF|/generalInfo/detailReport=TRUE@
+Autorisations:\n
+@VERDANA_SMALL_FONT@
+@FOR_EACH|opList/opInfo@
+@operationName@\n
+@END_FOR@
+@END_IF@
+@BITSTREAM_FONT@
+ \n
+-----------------------------\n
+ \n
+@END_FOR@\n
+@VERDANA_SMALL_FONT@
+ \n
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Imprimé près: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-15@\n
+Heure: @/generalInfo/currentDate@\n

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+DIR="/rw/etc/peers/$1"
+
+if test ! -e $DIR/account.conf; then
+   echo "Uso: colgar <perfil>"
+   exit
+fi
+
+DEVICE=`cat $DIR/device`;
+SPEED=`cat $DIR/account.conf | grep -i speed | sed 's/speed: */'/`
+
+killall telesup 2>/dev/null
+kill -1 `cat /etc/ppp/ppp-ppp0.pid` 2>/dev/null
+sleep 5
+#echo tip -r -s $SPEED $DEVICE
+#echo -n +++ | tip -r -s $SPEED $DEVICE
+#sleep 3
+#echo ATH0 | tip -r -s $SPEED $DEVICE
+echo 'Modem colgado'

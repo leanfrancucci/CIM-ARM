@@ -1,0 +1,9 @@
+ABORT BUSY
+TIMEOUT 60
+"" AT
+OK ATX1
+OK ATS0=0
+OK ATD305
+CONNECT ""
+ogin: ppp
+word: fer

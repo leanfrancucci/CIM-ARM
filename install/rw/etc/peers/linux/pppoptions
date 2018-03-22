@@ -1,0 +1,1 @@
+updetach linkname ppp0 modem nocrtscts -chap noipdefault defaultroute usepeerdns debug 

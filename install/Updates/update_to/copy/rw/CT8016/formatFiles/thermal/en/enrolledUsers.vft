@@ -1,0 +1,84 @@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+       ENROLLED USER REPORT\n
+@DBL_HEIGHT_OFF@
+@IF|/generalInfo/detailReport=FALSE@
+               -SUMMARY-\n
+@END_IF@
+@IF|/generalInfo/detailReport=TRUE@
+               -DETAILED-\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+Trans #   : @/generalInfo/trans@\n
+Date-Time : @/generalInfo/transTime@\n
+POS       : @/generalInfo/systemId@\n
+Remote ID : @/generalInfo/systemIdPIMS@\n
+Status    : @/generalInfo/statusDescription@\n
+-----------------------------\n
+ \n
+@IF|/generalInfo/withOutValues=TRUE@
+@BITSTREAM_FONT@
+      THERE ARE NOT USERS\n
+ \n
+-----------------------------\n
+@END_IF@
+@FOR_EACH|userList/userInfo@
+USER #    : @userId@\n
+USER NAME : @userName:-17@\n
+Enrolled  : @enrolledDate@\n
+Personal ID: @personalId@\n
+Status    : @status@\n
+Level     : @profile:-17@\n
+Key       : @key@\n
+Last Login: @lastLogin@\n
+Account # : \n
+@VERDANA_SMALL_FONT@
+ @account@\n
+@BITSTREAM_FONT@
+@IF|/generalInfo/detailReport=TRUE@
+Permissions:\n
+@VERDANA_SMALL_FONT@
+@FOR_EACH|opList/opInfo@
+@operationName@\n
+@END_FOR@
+@END_IF@
+@BITSTREAM_FONT@
+ \n
+-----------------------------\n
+ \n
+@END_FOR@\n
+@VERDANA_SMALL_FONT@
+ \n
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Printed by: @/generalInfo/currentUserId@ @/generalInfo/currentUserName@\n
+Time: @/generalInfo/currentDate@\n

@@ -1,0 +1,13 @@
+#!/bin/sh
+PPP=`ps | grep -c [p]ppd`
+
+echo $PPP
+
+if [ $PPP = "0" ]; then
+   echo "pppd NOT running "
+   exit 0
+else
+   echo "pppd running"
+   exit 1
+fi
+

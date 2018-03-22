@@ -1,0 +1,145 @@
+#!/bin/sh
+
+PROVIDER=$1
+MANUAL=$2
+
+PROVIDER=$1
+CONFDIR=/rw/etc/peers/$PROVIDER
+BINDIR=/rw/bin
+CONF=$CONFDIR/telesup.conf
+if test ! -e $CONF; then
+	echo "Falta $CONF"
+	exit;
+fi
+
+INTENTOS=`cat $CONFDIR/account.conf | grep -i "^attempts"  | sed 's/attempts: */'/`
+TIMEINTENTOS=`cat $CONFDIR/account.conf | grep -i time_between_attempts  | sed 's/time_between_attempts: */'/`
+SERVIDOR=`cat $CONF | grep -i servidor  | sed 's/servidor: */'/`
+IDEQUIPO=`cat $CONF | grep -i idequipo | sed 's/idequipo: */'/`
+USUARIO=`cat $CONF | grep -i usuario  | sed 's/usuario: */'/`
+PASSWORD=`cat $CONF | grep -i password | sed 's/password: */'/`
+ROOT=`cat $CONF | grep -i root | sed 's/root: */'/`
+BYMODEM=`cat $CONF | grep -i bymodem  | sed 's/bymodem: */'/`
+
+if $MANUAL; then
+if checktime /rw/CT8016/telesup/lastTelesupOk.ftp /rw/etc/peers/$PROVIDER/telesup.conf; then echo ...; else exit; fi;
+else echo "Supervision manual.";
+fi
+
+seconds > /rw/CT8016/telesup/lastTelesup.ftp
+
+echo "IDEQUIPO: $IDEQUIPO"
+if [ "$IDEQUIPO" = "" ]; then
+	echo "Falta configurar datos de supervision"
+	exit;
+fi;
+
+rm /tmp/telesupervision.last 2>/dev/null
+if [ $INTENTOS -ge 1 ]; then
+	echo 'Intento 1' 
+	lcdclear
+	lcdat 1 1 '   SUPERVISANDO... '
+	lcdat 1 2 '     Intento 1     '
+	lcdat 1 3 '     Marcando      '
+	/rw/bin/telesupervisar $PROVIDER
+	if test -e /tmp/telesupervision.last; then exit; fi
+fi
+
+if [ $INTENTOS -ge 2 ]; then
+	sleep $TIMEINTENTOS
+	echo 'Intento 2' 
+	lcdclear
+	lcdat 1 1 '   SUPERVISANDO... '
+	lcdat 1 2 '     Intento 2     '
+	lcdat 1 3 '     Marcando      '
+	/rw/bin/telesupervisar $PROVIDER
+	if test -e /tmp/telesupervision.last; then exit; fi
+fi
+
+if [ $INTENTOS -ge 3 ]; then
+	sleep $TIMEINTENTOS
+	echo 'Intento 3' 
+	lcdclear
+	lcdat 1 1 '   SUPERVISANDO... '
+	lcdat 1 2 '     Intento 3     '
+	lcdat 1 3 '     Marcando      '
+	/rw/bin/telesupervisar $PROVIDER
+	if test -e /tmp/telesupervision.last; then exit; fi
+fi
+		
+if [ $INTENTOS -ge 4 ]; then
+	sleep $TIMEINTENTOS
+	echo 'Intento 4' 
+	lcdclear
+	lcdat 1 1 '   SUPERVISANDO... '
+	lcdat 1 2 '     Intento 4     '
+	lcdat 1 3 '     Marcando      '
+	/rw/bin/telesupervisar $PROVIDER
+	if test -e /tmp/telesupervision.last; then exit; fi
+fi
+
+if [ $INTENTOS -ge 5 ]; then
+	sleep $TIMEINTENTOS
+	echo 'Intento 5' 
+	lcdclear
+	lcdat 1 1 '   SUPERVISANDO... '
+	lcdat 1 2 '     Intento 5     '
+	lcdat 1 3 '     Marcando      '
+	/rw/bin/telesupervisar $PROVIDER
+	if test -e /tmp/telesupervision.last; then exit; fi
+fi
+
+if [ $INTENTOS -ge 6 ]; then
+	sleep $TIMEINTENTOS
+	echo 'Intento 6' 
+	lcdclear
+	lcdat 1 1 '   SUPERVISANDO... '
+	lcdat 1 2 '     Intento 6     '
+	lcdat 1 3 '     Marcando      '
+	/rw/bin/telesupervisar $PROVIDER
+	if test -e /tmp/telesupervision.last; then exit; fi
+fi
+
+if [ $INTENTOS -ge 7 ]; then
+	sleep $TIMEINTENTOS
+	echo 'Intento 7' 
+	lcdclear
+	lcdat 1 1 '   SUPERVISANDO... '
+	lcdat 1 2 '     Intento 7     '
+	lcdat 1 3 '     Marcando      '
+	/rw/bin/telesupervisar $PROVIDER
+	if test -e /tmp/telesupervision.last; then exit; fi
+fi
+
+if [ $INTENTOS -ge 8 ]; then
+	sleep $TIMEINTENTOS
+	echo 'Intento 8' 
+	lcdclear
+	lcdat 1 1 '   SUPERVISANDO... '
+	lcdat 1 2 '     Intento 8     '
+	lcdat 1 3 '     Marcando      '
+	/rw/bin/telesupervisar $PROVIDER
+	if test -e /tmp/telesupervision.last; then exit; fi
+fi
+
+if [ $INTENTOS -ge 9 ]; then
+	sleep $TIMEINTENTOS
+	echo 'Intento 9' 
+	lcdclear
+	lcdat 1 1 '   SUPERVISANDO... '
+	lcdat 1 2 '     Intento 9     '
+	lcdat 1 3 '     Marcando      '
+	/rw/bin/telesupervisar $PROVIDER
+	if test -e /tmp/telesupervision.last; then exit; fi
+fi
+
+if [ $INTENTOS -ge 10 ]; then
+	sleep $TIMEINTENTOS
+	echo 'Intento 10' 
+	lcdclear
+	lcdat 1 1 '   SUPERVISANDO... '
+	lcdat 1 2 '     Intento 10    '
+	lcdat 1 3 '     Marcando      '
+	/rw/bin/telesupervisar $PROVIDER
+	if test -e /tmp/telesupervision.last; then exit; fi
+fi

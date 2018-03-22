@@ -1,0 +1,77 @@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@IF|/generalInfo/isReprint=TRUE@
+-----------------------------\n
+---------- REPRINT ----------\n
+@END_IF@
+-----------------------------\n
+      PARTIAL DAY REPORT\n
+-----------------------------\n
+Partial day #: @/generalInfo/number@\n
+Trans #   : @/generalInfo/trans@\n
+POS       : @/generalInfo/systemId:-17@\n
+Remote ID : @/generalInfo/systemIdPIMS:-17@\n
+From Date : @/generalInfo/openTime@\n
+To Date   : @/generalInfo/closeTime@\n
+From Drop : @/generalInfo/fromDepositNumber@\n
+To Drop   : @/generalInfo/toDepositNumber@\n
+Oper #    : @/generalInfo/userId@\n
+Oper Name : @/generalInfo/userName:-17@\n
+Cash Name : @/generalInfo/cashName:-17@\n
+------------------------------\n
+@IF|/cimCashs/withOutValues=TRUE@
+    WITHOUT TRANSACTIONS\n
+      IN THE MEANTIME\n
+------------------------------\n
+@END_IF@
+@IF|/cimCashs/withOutValues=FALSE@
+@FOR_EACH|cimCashs/cimCash@
+@FOR_EACH|acceptorList/acceptor@
+@acceptorName@
+@FOR_EACH|currencyList/currency@
+ Currency: @currencyCode@\n
+-----------------------------\n
+ Total Qty       Total Amount\n
+-----------------------------\n
+@qty:6@ @total:22@\n
+@END_FOR@
+@END_FOR@
+-----------------------------\n
+TOTAL: @name@\n
+@FOR_EACH|totalCurrency@
+@totalCurrencyCode:3@ @totalCurr:25@\n
+@END_FOR@
+@END_FOR@
+-----------------------------\n
+@END_IF@
+@IF|/generalInfo/isReprint=TRUE@
+---------- REPRINT ----------\n
+-----------------------------\n
+@END_IF@
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Printed by: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+Time: @/generalInfo/currentDate@\n

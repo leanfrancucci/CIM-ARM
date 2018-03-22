@@ -1,0 +1,28 @@
+#!/bin/sh
+
+echo "Actualizando version...."
+
+lcdclear
+lcdat 1 1 "Actualizando version"
+lcdat 1 2 "NO APAGUE EL EQUIPO!"
+lcdat 1 3 "Aguarde unos"
+lcdat 1 4 "minutos....."
+
+DOWNLOAD_PATH=/rw/CT8016/telesup/app
+
+if test -d /rwi; then
+DOWNLOAD_PATH=/rwi/telesup/app
+fi;
+
+# Descomprimo la aplicacion directamente pisando la otra
+gunzip -c $DOWNLOAD_PATH/update_app_to.tar.gz | tar -xvf - -C /
+rm $DOWNLOAD_PATH/update_app_to.tar.gz
+
+# Descomprimo el resto de los datos
+mkdir /rw/update
+gunzip -c $DOWNLOAD_PATH/update_to.tar.gz | tar -xvf - -C /rw/update
+chmod 777 -R /rw/update/*
+#cd /rw/update (ahora se ejecuta desde la aplicacion)
+#sh update (ahora se ejecuta desde la aplicacion)
+rm $DOWNLOAD_PATH/update_to.tar.gz
+#rm -r /rw/update/ (ahora se ejecuta desde la aplicacion)

@@ -1,0 +1,71 @@
+#ifndef CIM_EXCEPT_H
+#define CIM_EXCEPT_H
+
+#define CIM_EXCEPT		390000
+
+#define CIM_GENERAL_EX							(CIM_EXCEPT)
+
+#define CIM_MAX_DEPOSIT_DETAIL_QTY_EX				(CIM_EXCEPT + 1)
+
+#define CIM_CIM_CASH_INVALID_DOOR_EX	(CIM_EXCEPT + 2)
+
+#define CIM_INVALID_INSTA_DROP_EX	  (CIM_EXCEPT + 3)
+
+/** El usuario no tiene permiso para abrir la puerta */
+#define CIM_USER_INVALID_DOOR_PERMISSION_EX (CIM_EXCEPT + 4)
+
+/** El usuario para abrir la puerta de Dual Key no puede ser el mismo */
+#define CIM_CANNOT_BE_SAME_USER_EX 				(CIM_EXCEPT + 5)
+
+/** El perfil para abrir una puerta de Dual key no puede ser el mismo */
+#define CIM_CANNOT_BE_SAME_PROFILE_EX			(CIM_EXCEPT + 6)
+
+/** No se puede cancelar el time delay */
+#define CIM_CANNOT_CANCEL_TIME_DELAY_EX		(CIM_EXCEPT + 7)
+
+#define CIM_COMMAND_TIMEOUT_EX						(CIM_EXCEPT + 8)
+
+#define CIM_UNDEFINED_RESPONSE_EX					(CIM_EXCEPT + 9)
+
+#define CIM_USR_NOT_EXISTS_EX							(CIM_EXCEPT + 10)
+
+#define CIM_USR_BAD_PASSWORD_EX						(CIM_EXCEPT + 11)
+
+#define CIM_USER_NUM_EXCEEDED_EX					(CIM_EXCEPT + 12)
+
+#define CIM_USER_EXISTS_EX								(CIM_EXCEPT + 13)
+
+#define CIM_USER_DEVID_NOT_ALLOWED_EX			(CIM_EXCEPT + 14)
+
+#define CIM_USER_COMM_NOT_IN_EMER_EX			(CIM_EXCEPT + 15)
+
+#define CIM_FLASH_NOT_REACHABLE_EX				(CIM_EXCEPT + 16)
+
+#define CIM_FLASH_BAD_PROGRAM_EX					(CIM_EXCEPT + 17)
+
+#define CIM_LP_INVALID_CONTEN_EX					(CIM_EXCEPT + 18)
+
+#define CIM_UNKNOWN_ERROR_EX							(CIM_EXCEPT + 19)
+
+#define CIM_DEVICE_NOT_FOUND_EX						(CIM_EXCEPT + 20)
+
+#define CIM_UNDEFINED_ERROR_EX						(CIM_EXCEPT + 21)
+
+#define CIM_NO_MAILBOX_IN_CASH_EX         (CIM_EXCEPT + 22)
+
+#define CANNOT_REMOVE_CASH_WITH_EXTENDED_DROP_EX (CIM_EXCEPT + 23)
+
+#define DUAL_ACCESS_FORBIDDEN_EX					(CIM_EXCEPT + 24)
+
+#define CIM_DFILE_INVALID_DF_EX						(CIM_EXCEPT + 25)
+#define CIM_DFILE_NOT_ENOUGH_EX						(CIM_EXCEPT + 26)
+#define CIM_DFILE_NOT_ALLOWED_EX					(CIM_EXCEPT + 27)
+#define CIM_DFILE_BAD_SEEK_EX							(CIM_EXCEPT + 28)
+#define CIM_DFILE_EXISTS_FD_EX						(CIM_EXCEPT + 29)
+#define CIM_DFILE_SECTOR_ERROR_EX					(CIM_EXCEPT + 30)
+#define CIM_DFILE_COMMUNICATION_ERROR_EX	(CIM_EXCEPT + 31)
+#define CIM_DFILE_NOT_EXISTS_EX						(CIM_EXCEPT + 32)
+#define CIM_CANNOT_FORMAT_USERS_EX				(CIM_EXCEPT + 33)
+#define CANNOT_OPEN_ACCEPTOR_WITHOUT_BAG_EX		(CIM_EXCEPT + 34)
+
+#endif

@@ -1,0 +1,74 @@
+#!/bin/sh
+
+PROVIDER=$1
+CONFDIR=/rw/etc/peers/default
+BINDIR=/rw/bin
+CONF=$CONFDIR/telesup.conf
+if test ! -e $CONF; then
+	echo "Falta $CONF"
+	exit;
+fi
+
+INTENTOS=`cat $CONFDIR/account.conf | grep -i "^attempts"  | sed 's/attempts: */'/`
+TIMEINTENTOS=`cat $CONFDIR/account.conf | grep -i time_between_attempts  | sed 's/time_between_attempts: */'/`
+SERVIDOR=`cat $CONF | grep -i servidor  | sed 's/servidor: */'/`
+IDEQUIPO=`cat $CONF | grep -i idequipo | sed 's/idequipo: */'/`
+USUARIO=`cat $CONF | grep -i usuario  | sed 's/usuario: */'/`
+PASSWORD=`cat $CONF | grep -i password | sed 's/password: */'/`
+ROOT=`cat $CONF | grep -i root | sed 's/root: */'/`
+BYMODEM=`cat $CONF | grep -i bymodem  | sed 's/bymodem: */'/`
+
+if test -d /rw/8016Config; then
+
+cd /rw/8016Config
+./8016Config.exe
+cd /
+rm -r /rw/8016Config
+	
+fi
+
+cd /rw/CT8016
+
+# Corro el test de Hardware si presiona alguna tecla el usuario
+./HardwareTest.exe 2
+
+while true; do
+
+cd /rw/CT8016
+./tariff.exe
+ERROR_LEVEL="$?"
+
+#Si devuelve 24 como codigo de error, tengo que supervisar
+if test $ERROR_LEVEL -eq "24"
+then
+        cd /rw/bin
+        ./log
+        ./finatender
+
+        /rw/bin/intentar default 1
+
+        /rw/CT8016/apply_telesup
+
+#Si devuelve 25 tengo que correr el test de hardware
+
+elif test $ERROR_LEVEL -eq "25"
+then
+        ./HardwareTest.exe
+
+#Si devuelve 23 tengo que reiniciar, en otro caso, termina aca
+elif test $ERROR_LEVEL -ne "23"
+then
+        exit;
+fi
+
+
+echo Exit status =  $ERROR_LEVEL
+
+#cd /rw/bin
+#./finatender
+#./cicloatender &
+
+done
+
+
+

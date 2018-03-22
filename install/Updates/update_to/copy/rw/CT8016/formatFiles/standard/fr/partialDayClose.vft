@@ -1,0 +1,104 @@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+@IF|/generalInfo/isReprint=TRUE@
+ \n
+-----------------------------\n
+--------- RÉIMPRIMER --------\n
+-----------------------------\n
+ \n
+@END_IF@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+       RAPPORT JOUR PARTIEL\n
+@DBL_HEIGHT_OFF@
+@BITSTREAM_FONT@
+-----------------------------\n
+Jour partiel #: @/generalInfo/number@\n
+Trans. #  : @/generalInfo/trans@\n
+POS       : @/generalInfo/systemId@\n
+ID distant: @/generalInfo/systemIdPIMS@\n
+Date init.: @/generalInfo/openTime@\n
+Date finale:@/generalInfo/closeTime@\n
+Dépôt Initiale : @/generalInfo/fromDepositNumber@\n
+Dépôt Finale   : @/generalInfo/toDepositNumber@\n
+Oper #   : @/generalInfo/userId@\n
+Oper Nom : @/generalInfo/userName:-18@\n
+Espèces Nom : @/generalInfo/cashName@\n
+------------------------------\n
+ \n
+@IF|/cimCashs/withOutValues=TRUE@
+@BITSTREAM_FONT@
+      ENTRE-TEMPS PAS\n
+      DE TRANSACTIONS\n
+ \n
+------------------------------\n
+@END_IF@
+@IF|/cimCashs/withOutValues=FALSE@
+@FOR_EACH|cimCashs/cimCash@
+@FOR_EACH|acceptorList/acceptor@
+ \n
+@BOLD_ON@
+@acceptorName@
+@FOR_EACH|currencyList/currency@
+ \n
+@BOLD_ON@
+Devise: @currencyCode@\n
+@BITSTREAM_FONT@
+-----------------------------\n
+ Total Qty      Total Montant\n
+-----------------------------\n
+@qty:6@ @total:22@\n
+@END_FOR@
+@END_FOR@
+ \n
+ \n
+-----------------------------\n
+@BOLD_ON@
+TOTAL: @name@\n
+@FOR_EACH|totalCurrency@
+@totalCurrencyCode:3@ @totalCurr:20@\n
+@END_FOR@
+ \n
+@END_FOR@
+@BITSTREAM_FONT@
+-----------------------------\n
+@END_IF@
+@IF|/generalInfo/isReprint=TRUE@
+ \n
+-----------------------------\n
+--------- RÉIMPRIMER --------\n
+-----------------------------\n
+ \n
+@END_IF@
+@VERDANA_SMALL_FONT@
+ \n
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Imprimé près: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-15@\n
+Heure: @/generalInfo/currentDate@\n

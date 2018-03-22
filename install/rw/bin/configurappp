@@ -1,0 +1,20 @@
+#!/bin/sh
+echo "Cambiando configuración de autentificación PPP - Iniciado"
+
+DIR="/rw/etc/ppp/chap-secrets"
+usuar=""
+echo > $DIR
+
+for i in $@
+do
+ if [ "$usuar" = "" ]; then
+    usuar=$i
+ else
+    echo \"$usuar\" \*  \"$i\" \* >> $DIR
+    usuar=""
+ fi
+
+done
+
+echo "Cambiando configuración de autentificación PPP - Finalizado"
+#sh /rw/bin/cicloatender

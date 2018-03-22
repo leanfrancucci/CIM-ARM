@@ -1,0 +1,60 @@
+#!/bin/sh
+#destruye tarea de telemantenimiento
+cd /rw/bin
+/rw/bin/finatender
+
+seconds > /rw/CT8016/telesup/lastTelesup.ftp
+
+PROVIDER=$1
+CONFDIR=/rw/etc/peers/$PROVIDER
+BINDIR=/rw/bin
+CONF=$CONFDIR/telesup.conf
+if test ! -e $CONF; then
+	echo "Falta $CONF"
+	exit;
+fi
+
+SERVIDOR=`cat $CONF | grep -i servidor  | sed 's/servidor: */'/`
+IDEQUIPO=`cat $CONF | grep -i idequipo | sed 's/idequipo: */'/`
+USUARIO=`cat $CONF | grep -i usuario  | sed 's/usuario: */'/`
+PASSWORD=`cat $CONF | grep -i password | sed 's/password: */'/`
+ROOT=`cat $CONF | grep -i root | sed 's/root: */'/`
+BYMODEM=`cat $CONF | grep -i bymodem  | sed 's/bymodem: */'/`
+
+echo "IDEQUIPO: $IDEQUIPO"
+if [ "$IDEQUIPO" = "" ]; then
+	echo "Falta configurar datos de supervision"
+	exit;
+fi;
+
+if [ "$BYMODEM" != no ]; then
+echo \[ Conectando \]
+$BINDIR/llamar $PROVIDER
+ifconfig ppp0 >/dev/null 2>/dev/null || exit
+
+lcdat 1 3 '     Conectado      '
+echo Interfaz levantada
+/rw/etc/rc2.d/S15network dropgw
+#route add default gw 172.0.0.1
+fi
+
+DOWNLOAD_PATH=$ROOT
+
+if test -d /rwi; then
+DOWNLOAD_PATH=/rwi
+fi;
+
+echo /rw/bin/telesup.exe $SERVIDOR $IDEQUIPO $USUARIO $PASSWORD $ROOT 1 $DOWNLOAD_PATH
+/rw/telesup.exe $SERVIDOR $IDEQUIPO $USUARIO $PASSWORD $ROOT 1 $DOWNLOAD_PATH
+
+if [ "$BYMODEM" != no ]; then
+$BINDIR/colgar $PROVIDER
+/rw/etc/rc2.d/S15network raisegw
+fi
+
+echo OK > /tmp/telesupervision.last
+
+#reinicia la espera de telemantenimiento
+cd /rw/bin/
+/rw/bin/finatender
+/rw/bin/cicloatender &

@@ -1,0 +1,13 @@
+02-02 10:06:18 ticks> 1486040778572 Creacion del sistema LINUX1
+Initialize main thread
+Relase Date: 01.02.17
+Version: CIM1.0-RI21-RC25
+Initializing OSServices.....[ OK ]
+Loading configuration tariff.ini..
+Initializing random seed....[ OK ]
+Initializing database.......[ OK ]
+log type! 2
+log type! 2 fileSize 0
+Error opening com port
+Error setting port
+SafeBoxHAL -> waiting for CIM version...

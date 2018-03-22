@@ -1,0 +1,70 @@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+              REPORTE DE\n
+    CONFIG DE SUPERVISION\n
+@DBL_HEIGHT_OFF@
+@BITSTREAM_FONT@
+-----------------------------\n
+Trans #   : @/generalInfo/trans@\n
+Fecha-Hora: @/generalInfo/transTime@\n
+Pto Vta   : @/generalInfo/systemId@\n
+ID        : @/generalInfo/telesupSystemId@\n
+ID Remoto : @/generalInfo/systemIdPIMS@\n
+-----------------------------\n
+
+@IF|/generalInfo/withOutValues=TRUE@
+@BITSTREAM_FONT@
+ \n
+    NO HAY SUPERVISIONES\n
+ \n
+-----------------------------\n
+@END_IF@
+
+@FOR_EACH|telesupList/telesupInfo@
+@BOLD_ON@
+Nombre: @name:-16@\n
+@BITSTREAM_FONT@
+Ult Superv: @last@\n
+Ult int.  : @lastTry@\n
+Prox. sup.: @next@\n
+Marco     : @frame@ min\n
+Reintentos: @retrys@\n
+Hora reint: @retryTime@ min\n
+B Em Desde: @eBFrom@ \n
+B Em Hasta: @eBTo@ \n
+-----------------------------\n
+@END_FOR@\n
+@VERDANA_SMALL_FONT@
+ \n
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+Fecha: @/generalInfo/currentDate@\n

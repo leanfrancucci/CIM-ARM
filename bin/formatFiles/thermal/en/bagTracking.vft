@@ -1,0 +1,78 @@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+@IF|/generalInfo/isReprint=TRUE@
+ \n
+-----------------------------\n
+---------- REPRINT ----------\n
+-----------------------------\n
+ \n
+@END_IF@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+       TRACKING REPORT \n
+@BITSTREAM_FONT@
+-----------------------------\n
+Deposit # : @/generalInfo/number@\n
+Trans #   : @/generalInfo/trans@\n
+Date-Time : @/generalInfo/dateTime@\n
+POS       : @/generalInfo/systemId@\n
+Remote ID : @/generalInfo/systemIdPIMS@\n
+Door      : @/generalInfo/doorName:-17@\n
+User 1    : @/generalInfo/operatorName@\n
+@IF|/generalInfo/viewCollectorName=TRUE@
+User 2    : @/generalInfo/collectorName@\n
+@END_IF@
+Account # : @/generalInfo/bankAccountInfo@\n
+-----------------------------\n
+@IF|/bagTrackingInfo/trackingMode=2@
+ENVELOPE TRACKING\n
+@END_IF@
+@IF|/bagTrackingInfo/trackingMode=1@
+CASS/STACKER TRACKING\n
+@END_IF@
+-----------------------------\n
+Read: @/bagTrackingInfo/read@/@/bagTrackingInfo/qty@\n
+-----------------------------\n
+@IF|/bagTrackingInfo/trackingMode=2@
+Envelope number\n
+@END_IF@
+@IF|/bagTrackingInfo/trackingMode=1@
+Cass/Stacker number\n
+@END_IF@
+-----------------------------\n
+@FOR_EACH|/bagTrackingInfo/bagTracking/bagTrack@
+@number@\n
+@END_FOR@
+-----------------------------\n
+@VERDANA_SMALL_FONT@
+ \n
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Printed by: @/generalInfo/currentUserId@ @/generalInfo/currentUserName@\n
+Time: @/generalInfo/currentDate@\n

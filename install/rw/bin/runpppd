@@ -1,0 +1,5 @@
+#!/bin/sh
+
+rm /rw/bin/pppd.result 2> /dev/null
+sh -c "$1"
+echo "$?" > /rw/bin/pppd.result

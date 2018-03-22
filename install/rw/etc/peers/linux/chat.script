@@ -1,0 +1,12 @@
+ABORT BUSY
+TIMEOUT 45
+SAY Beginning
+"" AT
+OK ATX1
+OK ATS0=0
+OK AT\\L4
+OK AT%C0
+OK ATW1
+OK ATD819
+ogin: \dPPP
+word: \dFER

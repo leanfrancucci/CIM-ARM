@@ -1,0 +1,18 @@
+@BITSTREAM_FONT@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@/repairOrderInfo/StateDsc@\n
+@BITSTREAM_FONT@
+-----------------------------\n
+@IF|/repairOrderInfo/State=OK@
+Fecha-Hora: @/repairOrderInfo/DateTime@\n
+Nro. Orden: @/repairOrderInfo/OrderNumber@\n
+Reparac: @/repairOrderInfo/Repair@\n
+Prioridad: @/repairOrderInfo/Priority@\n
+Contacto: @/repairOrderInfo/Contact@\n
+Usuario: @/repairOrderInfo/User@\n
+Soporte: @/repairOrderInfo/SupportContact@\n
+@BITSTREAM_FONT@
+-----------------------------\n
+@END_IF@
+

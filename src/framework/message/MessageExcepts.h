@@ -1,0 +1,13 @@
+#ifndef MESSAGE_EXCEPTS_H
+#define MESSAGE_EXCEPTS_H
+
+#include "system/lang/all.h"
+
+#define MESSAGE_EXCEPT	150000
+
+/* MESSAGE HANDLER */
+#define MESSAGE_LANG_NOT_DEFINED_EX				(MESSAGE_EXCEPT + 1)
+#define MESSAGE_NOT_FOUND_EX							(MESSAGE_EXCEPT + 2)
+#define MESSAGE_MAX_COUNT_EX							(MESSAGE_EXCEPT + 3)
+
+#endif

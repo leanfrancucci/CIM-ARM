@@ -1,0 +1,143 @@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+@IF|/generalInfo/isReprint=TRUE@
+ \n
+-----------------------------\n
+--------- RÉIMPRIMER --------\n
+-----------------------------\n
+ \n
+@END_IF@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@IF|/generalInfo/depositType=1@
+            DÉPÔT VALIDÉ\n
+@END_IF@
+@IF|/generalInfo/depositType=2@
+            DÉPÔT MANUEL\n
+@IF|/generalInfo/viewTrans=FALSE@
+@VERDANA_SMALL_FONT@
+      (Insérez ce reçu dans l'enveloppe)\n
+@END_IF@
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@IF|/generalInfo/isManualDropReceipt=FALSE@
+Dépôt #   : @/generalInfo/number@\n
+@IF|/generalInfo/viewTrans=TRUE@
+Trans. #  : @/generalInfo/trans@\n
+@END_IF@
+Date-Heure: @/generalInfo/closeTime@\n
+@END_IF@
+@IF|/generalInfo/isManualDropReceipt=TRUE@
+Date-Heure: @/generalInfo/currentDate@\n
+@END_IF@
+POS       : @/generalInfo/systemId@\n
+ID distant: @/generalInfo/systemIdPIMS@\n
+Oper #    : @/generalInfo/userId@\n
+Oper Nom  : @/generalInfo/userName@\n
+Espèces   : @/generalInfo/cimCashName@\n
+@IF|/generalInfo/depositType=1@
+Rejeté    : @/generalInfo/rejectedQty@\n
+@END_IF@
+@IF|/generalInfo/hasReference=TRUE@
+Référence: \n
+@FOR_EACH|/generalInfo/cashReference@
+  @referenceName@\n
+@END_FOR@
+@END_IF@
+-----------------------------\n
+@IF|/generalInfo/viewEnvelopeNumber=TRUE@
+@IF|/generalInfo/depositType=2@
+ENVELOPPE #: @/generalInfo/envelopeNumber:-15@\n
+-----------------------------\n
+@END_IF@
+@END_IF@
+@IF|/generalInfo/viewApplyTo=TRUE@
+S'APPLIQUENT À: @/generalInfo/applyTo:-13@\n
+-----------------------------\n
+@END_IF@
+@FOR_EACH|acceptorList/acceptor@
+@BOLD_ON@
+ \n
+@acceptorName@\n
+@FOR_EACH|currencyList/currency@
+ \n
+@BOLD_ON@
+Devise: @currencyCode:3@\n
+@BITSTREAM_FONT@
+@IF|/generalInfo/depositType=1@
+-----------------------------\n
+ Qty    Valeur  Total Partiel\n
+-----------------------------\n
+@END_IF@
+@IF|/generalInfo/depositType=2@
+-----------------------------\n
+ Qty     Type   Total Partiel\n
+-----------------------------\n
+@END_IF@
+@FOR_EACH|depositDetails/depositDetail@
+@IF|/generalInfo/depositType=1@
+@qty:6@ @amount:9@ @totalAmount:12@\n
+@END_IF@
+@IF|/generalInfo/depositType=2@
+@qty:6@ @depositValueName:9@ @totalAmount:12@\n
+@END_IF@
+@END_FOR@
+-----------------------------\n
+@qty:6@ Tot @currencyCode:3@ @total:14@\n
+@STANDARD_FONT@
+@END_FOR@
+@END_FOR@
+-----------------------------\n
+ \n
+ \n
+@BOLD_ON@
+******** TOTAL *********\n
+@FOR_EACH|totalCurr/totalByCurrency@
+TOTAL @totalCurrencyCode:3@ @totalCurrency:14@\n
+@END_FOR@
+ \n
+@IF|/generalInfo/depositType=2@
+@VERDANA_SMALL_FONT@
+Le total manuel de baisse sera confirmé\n
+après procédé de compte.\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@IF|/generalInfo/isReprint=TRUE@
+ \n
+-----------------------------\n
+--------- RÉIMPRIMER --------\n
+-----------------------------\n
+ \n
+@END_IF@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Imprimé près: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-15@\n
+Heure: @/generalInfo/currentDate@\n

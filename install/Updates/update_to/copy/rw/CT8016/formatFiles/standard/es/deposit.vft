@@ -1,0 +1,144 @@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+@IF|/generalInfo/isReprint=TRUE@
+ \n
+-----------------------------\n
+------- REIMPRESION ---------\n
+-----------------------------\n
+ \n
+@END_IF@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@IF|/generalInfo/depositType=1@
+       DEPOSITO VALIDADO\n
+@END_IF@
+@IF|/generalInfo/depositType=2@
+          DEPOSITO MANUAL\n
+@IF|/generalInfo/viewTrans=FALSE@
+@VERDANA_SMALL_FONT@
+        (Inserte este recibo en el sobre)\n
+@END_IF@
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@IF|/generalInfo/isManualDropReceipt=FALSE@
+Deposito# : @/generalInfo/number@\n
+@IF|/generalInfo/viewTrans=TRUE@
+Trans #   : @/generalInfo/trans@\n
+@END_IF@
+Fecha-Hora: @/generalInfo/closeTime@\n
+@END_IF@
+@IF|/generalInfo/isManualDropReceipt=TRUE@
+Fecha-Hora: @/generalInfo/currentDate@\n
+@END_IF@
+Pto Vta   : @/generalInfo/systemId@\n
+ID Remoto	: @/generalInfo/systemIdPIMS@\n
+Operador #: @/generalInfo/userId@\n
+Nombre Opr: @/generalInfo/userName@\n
+Cash      : @/generalInfo/cimCashName@\n
+@IF|/generalInfo/depositType=1@
+Rechazado : @/generalInfo/rejectedQty@\n
+@END_IF@
+@IF|/generalInfo/hasReference=TRUE@
+Reference : \n
+@FOR_EACH|/generalInfo/cashReference@
+  @referenceName@\n
+@END_FOR@
+@END_IF@
+-----------------------------\n
+@IF|/generalInfo/viewEnvelopeNumber=TRUE@
+@IF|/generalInfo/depositType=2@
+SOBRE #: @/generalInfo/envelopeNumber:-15@\n
+-----------------------------\n
+@END_IF@
+@END_IF@
+@IF|/generalInfo/viewApplyTo=TRUE@
+APLICAR A: @/generalInfo/applyTo:-15@\n
+-----------------------------\n
+@END_IF@
+@FOR_EACH|acceptorList/acceptor@
+@BOLD_ON@
+ \n
+@acceptorName@\n
+@FOR_EACH|currencyList/currency@
+ \n
+@BOLD_ON@
+Moneda: @currencyCode:3@\n
+@BITSTREAM_FONT@
+@IF|/generalInfo/depositType=1@
+-----------------------------\n
+ Cant      Valor     Subtotal\n
+-----------------------------\n
+@END_IF@
+@IF|/generalInfo/depositType=2@
+-----------------------------\n
+ Cant       Tipo     Subtotal\n
+-----------------------------\n
+@END_IF@
+@FOR_EACH|depositDetails/depositDetail@
+@IF|/generalInfo/depositType=1@
+@qty:6@ @amount:9@ @totalAmount:12@\n
+@END_IF@
+@IF|/generalInfo/depositType=2@
+@qty:6@ @depositValueName:9@ @totalAmount:12@\n
+@END_IF@
+@END_FOR@
+-----------------------------\n
+@qty:6@ Tot @currencyCode:3@ @total:14@\n
+@STANDARD_FONT@
+@END_FOR@
+@END_FOR@
+-----------------------------\n
+ \n
+ \n
+@BOLD_ON@
+******** TOTAL *********\n
+@FOR_EACH|totalCurr/totalByCurrency@
+TOTAL @totalCurrencyCode:3@ @totalCurrency:14@\n
+@END_FOR@
+ \n
+@IF|/generalInfo/depositType=2@
+@VERDANA_SMALL_FONT@
+El total del deposito manual sera\n 
+confirmado posterior al proceso\n
+de conteo.\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@IF|/generalInfo/isReprint=TRUE@
+ \n
+-----------------------------\n
+------- REIMPRESION ---------\n
+-----------------------------\n
+ \n
+@END_IF@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+Fecha: @/generalInfo/currentDate@\n

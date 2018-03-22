@@ -1,0 +1,172 @@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@IF|/generalInfo/isReprint=TRUE@
+-----------------------------\n
+---------- REPRINT ----------\n
+@END_IF@
+-----------------------------\n
+           DEPOSIT\n
+-----------------------------\n
+Deposit # : @/generalInfo/number@\n
+Trans #   : @/generalInfo/trans@\n
+Date-Time : @/generalInfo/dateTime@\n
+POS       : @/generalInfo/systemId:-17@\n
+Remote ID : @/generalInfo/systemIdPIMS:-17@\n
+Door      : @/generalInfo/doorName:-17@\n
+User 1    : @/generalInfo/operatorName:-17@\n
+@IF|/generalInfo/viewCollectorName=TRUE@
+User 2    : @/generalInfo/collectorName:-17@\n
+@END_IF@
+Account # : @/generalInfo/bankAccountInfo:-17@\n
+-----------------------------\n
+@IF|/cimCashs/withOutValues=TRUE@
+    WITHOUT TRANSACTIONS\n
+      IN THE MEANTIME\n
+@END_IF@
+@FOR_EACH|cimCashs/cimCash@
+@name@ ***\n
+@IF|cimCashType=1@
+@FOR_EACH|acceptorList/acceptor@
+ @acceptorName@
+@FOR_EACH|currencyList/currency@
+ Currency: @currencyCode@\n
+-----------------------------\n
+ Qty       Value     Subtotal\n
+-----------------------------\n
+@FOR_EACH|extractionDetails/extractionDetail@
+@qty:6@ @amount:9@ @totalAmount:12@\n
+@END_FOR@
+-----------------------------\n
+@qty:6@ Tot @currencyCode:3@ @total:14@\n
+@END_FOR@
+@END_FOR@
+@FOR_EACH|totalValReference@
+@IF|showReferenceTitle=TRUE@
+-----------------------------\n
+By References\n
+-----------------------------\n
+@END_IF@
+@IF|showCurrencyCode=TRUE@
+ Currency: @currencyCode:3@\n
+-----------------------------\n
+@END_IF@
+@IF|showReference=TRUE@
+@referenceName:-16@ @totalReference:12@\n
+@END_IF@
+@IF|showCurrencyTot=TRUE@
+-----------------------------\n
+Total @totalCurrRef:23@\n
+@END_IF@
+@END_FOR@
+@END_IF@
+@IF|cimCashType=2@
+@FOR_EACH|acceptorList/acceptor@
+ @acceptorName@
+@IF|viewManualDetail=TRUE@
+@FOR_EACH|currencyList/currency@
+ Currency: @currencyCode@\n
+-----------------------------\n
+ Qty        Type     Subtotal\n
+-----------------------------\n
+@FOR_EACH|extractionDetails/extractionDetail@
+@qty:6@ @depositValueName:9@ @totalAmount:12@\n
+@END_FOR@
+-----------------------------\n
+@qty:6@ Tot @currencyCode:3@ @total:14@\n
+@END_FOR@
+@END_IF@
+@END_FOR@
+@FOR_EACH|totalManualReference@
+@IF|showCurrencyCode=TRUE@
+ Currency: @currencyCode:3@\n
+-----------------------------\n
+@END_IF@
+@IF|showReferenceName=TRUE@
+@referenceName:-16@\n
+@END_IF@
+@IF|showReference=TRUE@
+ @depValType:-15@ @totalReference:12@\n
+@END_IF@
+@IF|showCurrencyTot=TRUE@
+-----------------------------\n
+Total @totalCurrRef:23@\n
+@END_IF@
+@END_FOR@
+@END_IF@
+TOTAL: @name@\n
+@FOR_EACH|totalCurrency@
+@totalCurrencyCode:3@ @totalCurr:20@\n
+@END_FOR@
+@IF|cimCashType=2@
+Envelope Qty: @envelopeQty@\n
+@END_IF@
+@END_FOR@
+@IF|/cimCashs/withOutValues=FALSE@
+-----------------------------\n
+******** TOTAL ********\n
+@FOR_EACH|cimCashs/totalCashCurrency@
+TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
+@END_FOR@
+-----------------------------\n
+   BREAKDOWN BY END OF DAY\n
+-----------------------------\n
+@FOR_EACH|breakdown/endOfDay@
+End Day @number@   @date@\n
+@FOR_EACH|cashClose@
+ -Partial @number@ - @date@\n
+@FOR_EACH|cashCloseDetails/cashCloseDetail@
+  -@cimCashName:-9@ @currencyCode:3@ @amount:12@\n
+@END_FOR@
+@END_FOR@
+@END_FOR@
+References:\n
+  N  : Next\n
+  P  : Partial\n
+  N/A: Not Available\n
+@END_IF@
+-----------------------------\n
+ \n
+Signature\n
+ \n
+.............................\n
+ \n
+Name\n
+ \n
+.............................\n
+ \n
+Identification\n
+ \n
+.............................\n
+ \n
+@IF|/generalInfo/isReprint=TRUE@
+-----------------------------\n
+---------- REPRINT ----------\n
+@END_IF@
+-----------------------------\n
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Printed by: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+Time: @/generalInfo/currentDate@\n

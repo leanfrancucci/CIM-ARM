@@ -1,0 +1,2 @@
+Actualizacion a version CIM1.0-XXX
+Este archivo debe obligatoriamente ir acompañado de un archivo "update_app_to.tar.gz" y "update_to.tar.gz" que es el que realmente tiene los archivos a actualizar.

@@ -1,0 +1,3763 @@
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+1 | W:  F8 01 00 00 05 FC 05 11 27 56 6B 
+255 | R:  
+1 | W:  FC 05 11 27 56 
+255 | R:  
+Error W/R Val: 1 
+08-12 07:34:22 ticks> -581254991 Creacion del sistema ARMLINUX
+Initialize main thread
+ERROR /dev/lcdnod11
+Library already opened!!
+Relase Date: 01.02.17
+Version: CIM1.0-RI21-RC25
+Initializing OSServices.....[ OK ]
+Loading configuration tariff.ini..
+Initializing random seed....[ OK ]
+Initializing database.......[ OK ]
+log type! 3
+log type! 3 fileSize 0
+Open port /dev/ttymxc2
+SafeBoxHAL -> waiting for CIM version...
+commconfig 0
+commconfig 0
+valConfig Applied
+SafeBoxHAL -> got version
+Init recordSet
+CimBackup -> initBackupFileSystem
+SafeBoxHAL -> sbAddUser, personalId = 1111
+Failure, aditData = 0x7ed175fe
+Exception 'CIM_USR_NOT_EXISTS_EX', at cim/SafeBoxHAL.m, line 281, code 390010 [internal code: 0 - ], msg: 
+Zona horaria 0
+************************************************
+ticks = -581250595 
+diferencia ticks = 0 
+************************************************
+Sincronizando la fecha/hora....[ OK ]
+Loading Users....validateUser
+CARGANDO TELESUP = 1
+CARGANDO TELESUP = 2
+Escribiendo config. GPRS en /rw/etc/peers/gprs
+connectionFileName = /rw/etc/peers/gprs/account.conf 
+deviceFile = /rw/etc/peers/gprs/device
+apnFileName = /rw/etc/peers/gprs/llamar.script
+escribiendo en archivo gprs
+phone = 1
+lastAuditId = 138, backupAuditId = 0
+[ OK ]
+Loading Language....myCurrentLanguage = 2
+[ OK ]
+Initializing printing spooler....
+------------> INTERNAL (THERMAL PRINTER) <---------------
+[ OK ]
+Configura el Round....[ OK ]
+Hubo corte de energia a las Thu Dec  8 09:16:17 2016
+
+NO hubo cambios de version de software/OS
+Loading server certificate
+name: server.crt 
+Loading server p-key
+Validation...
+Init sup. entrante...
+OK
+Starting Power Failed Manager....[ OK ]
+Esperando conexion entrante al puerto 9090
+ExtractionManager -> buscando desde primer dep
+Obteniendo MAC ADDRESS...
+MAC ADDRESS: F8-DC-7A-06-AE-34
+Obteniendo CONFIGURACION DE RED...
+DHCP: no
+IP ADDRESS: 
+NET MASK: 
+GATEWAY: 
+Carga de ZCloses
+ZCloseManager -> busqueda a partir del dep 1, hay dep? = 0
+*******************************
+Numero:     0
+Puerta:     1
+Operador:   DESCONOCIDO
+Recaudador: DESCONOCIDO
+Detalle -----------------------
+ExtractionManager -> buscando desde primer dep
+*******************************
+Numero:     0
+Puerta:     2
+Operador:   DESCONOCIDO
+Recaudador: DESCONOCIDO
+Detalle -----------------------
+ExtractionManager -> buscando desde primer dep
+*******************************
+Numero:     0
+Puerta:     3
+Operador:   DESCONOCIDO
+Recaudador: DESCONOCIDO
+Detalle -----------------------
+ExtractionManager -> buscando desde primer dep
+*******************************
+Numero:     0
+Puerta:     4
+Operador:   DESCONOCIDO
+Recaudador: DESCONOCIDO
+Detalle -----------------------
+***************************
+valConfig.baudRate = 5
+valConfig.parity = 1
+valConfig.stopBits = 0
+valConfig.wordBits = 0
+valConfig.startTimeout = 4
+valConfig.echoDisable = 0
+valConfig.protocol = 0
+***************************
+SafeBoxHAL -> setBillAcceptorStatus (0) = 1
+ID003 startStateMach first stateee 0! 
+***************************
+valConfig.baudRate = 5
+valConfig.parity = 1
+valConfig.stopBits = 0
+valConfig.wordBits = 0
+valConfig.startTimeout = 4
+valConfig.echoDisable = 0
+valConfig.protocol = 0
+***************************
+SafeBoxHAL -> setBillAcceptorStatus (1) = 1
+ID003 startStateMach first stateee 1! 
+initDoor = 3, 2
+initDoor = 5, 4
+initDoor = 13, 11
+initDoor = 14, 12
+[ OK ]
+Cargando retiros.....[ OK ]
+Cargando cierre Z.....[ OK ]
+Cargando depositos.....CimManager -> onHardwareSystemStatusChange = 0
+ExtractionWorkflow -> onDoorClose doorId 1
+Loading server certificate
+name: server.crt 
+Loading server p-key
+Validation...
+CimManager -> onLocked, doorId = 1
+ExtractionWorkflow -> onLocked doorId 1
+ExtractionWorkflow -> onDoorOpen, generateExtraction = 0
+[myDoor getLockState] = 0
+ExtractionWorkflow -> idleExit
+ExtractionWorkflow -> openDoorViolationEntry doorId = 2
+Error: cannot open buzzer driver
+ExtractionWorkflow -> doorViolationAction
+******************* ACTIVA LA ALARMA ************************
+******************* ACTIVA LA SOUND ALARM ************************
+SafeBoxHAL -> setAlarm (6) = 0
+verifyPinGeneration!!!
+verifyPinGeneration!!!
+CimManager -> onPowerStatusChange = 0
+CimManager -> onBatteryStatusChange = 1
+CimEventDispatcher -> no existe ningun dispositivo 9 mapeado
+CimEventDispatcher -> no existe ningun dispositivo 10 mapeado
+0 bytes readed
+READ: 
+Error W/R Val: 0 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+commconfig 8
+commconfig 8
+0 bytes readed
+READ: 
+valConfig Not Applied
+0 bytes readed
+READ: 
+Error W/R Val: 0 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+commconfig 8
+commconfig 8
+valConfig Applied
+JCM 0 NOTIFICA app initializing
+JCM loadInitializing 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+[ OK ]
+Iniciando hilo de actualizacion de Firmware....Ha ocurrido una excepcion en el hilo principal
+Exception 'INVALID_PATH_EX', at util/File.m, line 31, code 6200 [internal code: 0 - ], msg: /rwi/telesup/app
+Exception 'INVALID_PATH_EX', at util/File.m, line 31, code 6200 [internal code: 0 - ], msg: /rwi/telesup/app
+Mensaje no encontrado  = !Exception: 6200! INVALID_PATH_EX!
+JCM $ 2 Country 14
+JCM $ 5 Country 14
+JCM $ 10 Country 14
+JCM $ 20 Country 14
+JCM $ 50 Country 14
+JCM $ 100 Country 14
+jcmBillAcceptor->billTableLoaded
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+JCM 1 NOTIFICA app initializing
+JCM loadInitializing 
+FirmwVersion i(ARG)100-SS ID003-05V186-24 18DEC12 AB7C
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+JCM loadErrorState
+Loading server certificate
+name: server.crt 
+Loading server p-key
+Validation...
+
+*************************************
+**** PERDIDA DE COMUNICACION VAL ****
+*************************************
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+08-12 07:35:35 ticks> -581181653 Creacion del sistema ARMLINUX
+Initialize main thread
+ERROR /dev/lcdnod11
+Library already opened!!
+Relase Date: 01.02.17
+Version: CIM1.0-RI21-RC25
+Initializing OSServices.....[ OK ]
+Loading configuration tariff.ini..
+Initializing random seed....[ OK ]
+Initializing database.......[ OK ]
+log type! 3
+log type! 3 fileSize 11614
+Open port /dev/ttymxc2
+SafeBoxHAL -> waiting for CIM version...
+commconfig 0
+commconfig 0
+valConfig Applied
+SafeBoxHAL -> got version
+Init recordSet
+CimBackup -> initBackupFileSystem
+SafeBoxHAL -> sbAddUser, personalId = 1111
+Failure, aditData = 0x7ec525fe
+Exception 'CIM_USR_NOT_EXISTS_EX', at cim/SafeBoxHAL.m, line 281, code 390010 [internal code: 0 - ], msg: 
+Zona horaria 0
+************************************************
+ticks = -581177494 
+diferencia ticks = 0 
+************************************************
+Sincronizando la fecha/hora....[ OK ]
+Loading Users....validateUser
+CARGANDO TELESUP = 1
+CARGANDO TELESUP = 2
+Escribiendo config. GPRS en /rw/etc/peers/gprs
+connectionFileName = /rw/etc/peers/gprs/account.conf 
+deviceFile = /rw/etc/peers/gprs/device
+apnFileName = /rw/etc/peers/gprs/llamar.script
+escribiendo en archivo gprs
+phone = 1
+lastAuditId = 146, backupAuditId = 0
+[ OK ]
+Loading Language....myCurrentLanguage = 2
+[ OK ]
+Initializing printing spooler....
+------------> INTERNAL (THERMAL PRINTER) <---------------
+[ OK ]
+Configura el Round....[ OK ]
+Hubo corte de energia a las Thu Dec  8 07:35:09 2016
+
+NO hubo cambios de version de software/OS
+Loading server certificate
+name: server.crt 
+Loading server p-key
+Validation...
+Init sup. entrante...
+OK
+Starting Power Failed Manager....[ OK ]
+Esperando conexion entrante al puerto 9090
+ExtractionManager -> buscando desde primer dep
+Obteniendo MAC ADDRESS...
+MAC ADDRESS: F8-DC-7A-06-AE-34
+Obteniendo CONFIGURACION DE RED...
+DHCP: no
+IP ADDRESS: 
+NET MASK: 
+GATEWAY: 
+Carga de ZCloses
+ZCloseManager -> busqueda a partir del dep 1, hay dep? = 0
+*******************************
+Numero:     0
+Puerta:     1
+Operador:   DESCONOCIDO
+Recaudador: DESCONOCIDO
+Detalle -----------------------
+ExtractionManager -> buscando desde primer dep
+*******************************
+Numero:     0
+Puerta:     2
+Operador:   DESCONOCIDO
+Recaudador: DESCONOCIDO
+Detalle -----------------------
+ExtractionManager -> buscando desde primer dep
+*******************************
+Numero:     0
+Puerta:     3
+Operador:   DESCONOCIDO
+Recaudador: DESCONOCIDO
+Detalle -----------------------
+ExtractionManager -> buscando desde primer dep
+*******************************
+Numero:     0
+Puerta:     4
+Operador:   DESCONOCIDO
+Recaudador: DESCONOCIDO
+Detalle -----------------------
+***************************
+valConfig.baudRate = 5
+valConfig.parity = 1
+valConfig.stopBits = 0
+valConfig.wordBits = 0
+valConfig.startTimeout = 4
+valConfig.echoDisable = 0
+valConfig.protocol = 0
+***************************
+SafeBoxHAL -> setBillAcceptorStatus (0) = 1
+ID003 startStateMach first stateee 0! 
+***************************
+valConfig.baudRate = 5
+valConfig.parity = 1
+valConfig.stopBits = 0
+valConfig.wordBits = 0
+valConfig.startTimeout = 4
+valConfig.echoDisable = 0
+valConfig.protocol = 0
+***************************
+SafeBoxHAL -> setBillAcceptorStatus (1) = 1
+ID003 startStateMach first stateee 1! 
+initDoor = 3, 2
+initDoor = 5, 4
+initDoor = 13, 11
+initDoor = 14, 12
+[ OK ]
+Cargando retiros.....[ OK ]
+Cargando cierre Z.....[ OK ]
+Cargando depositos.....CimManager -> onHardwareSystemStatusChange = 0
+ExtractionWorkflow -> onDoorClose doorId 1
+Loading server certificate
+name: server.crt 
+Loading server p-key
+Validation...
+CimManager -> onLocked, doorId = 1
+ExtractionWorkflow -> onLocked doorId 1
+ExtractionWorkflow -> onDoorOpen, generateExtraction = 0
+[myDoor getLockState] = 0
+ExtractionWorkflow -> idleExit
+ExtractionWorkflow -> openDoorViolationEntry doorId = 2
+Error: cannot open buzzer driver
+ExtractionWorkflow -> doorViolationAction
+******************* ACTIVA LA ALARMA ************************
+******************* ACTIVA LA SOUND ALARM ************************
+SafeBoxHAL -> setAlarm (6) = 0
+verifyPinGeneration!!!
+verifyPinGeneration!!!
+CimManager -> onPowerStatusChange = 0
+CimManager -> onBatteryStatusChange = 1
+CimEventDispatcher -> no existe ningun dispositivo 9 mapeado
+CimEventDispatcher -> no existe ningun dispositivo 10 mapeado
+0 bytes readed
+READ: 
+Error W/R Val: 0 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+commconfig 8
+commconfig 8
+0 bytes readed
+READ: 
+valConfig Not Applied
+0 bytes readed
+READ: 
+Error W/R Val: 0 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+commconfig 8
+commconfig 8
+valConfig Applied
+JCM 0 NOTIFICA app initializing
+JCM loadInitializing 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+[ OK ]
+Iniciando hilo de actualizacion de Firmware....Ha ocurrido una excepcion en el hilo principal
+Exception 'INVALID_PATH_EX', at util/File.m, line 31, code 6200 [internal code: 0 - ], msg: /rwi/telesup/app
+Exception 'INVALID_PATH_EX', at util/File.m, line 31, code 6200 [internal code: 0 - ], msg: /rwi/telesup/app
+Mensaje no encontrado  = !Exception: 6200! INVALID_PATH_EX!
+JCM $ 2 Country 14
+JCM $ 5 Country 14
+JCM $ 10 Country 14
+JCM $ 20 Country 14
+JCM $ 50 Country 14
+JCM $ 100 Country 14
+jcmBillAcceptor->billTableLoaded
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+JCM 1 NOTIFICA app initializing
+JCM loadInitializing 
+FirmwVersion i(ARG)100-SS ID003-05V186-24 18DEC12 AB7C
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+JCM loadErrorState
+Loading server certificate
+name: server.crt 
+Loading server p-key
+Validation...
+
+*************************************
+**** PERDIDA DE COMUNICACION VAL ****
+*************************************
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 
+0 bytes readed
+READ: 
+Error W/R Val: 1 

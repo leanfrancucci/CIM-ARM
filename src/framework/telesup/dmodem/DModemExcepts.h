@@ -1,0 +1,10 @@
+#ifndef DMODEM_EXCEPTS_H
+#define DMODEM_EXCEPTS_H
+
+#define DMODEM_EXCEPT 		109000
+
+#define DMODEM_WRITE_EX			(DMODEM_EXCEPT + 1)
+#define DMODEM_READ_EX			(DMODEM_EXCEPT + 2)
+
+
+#endif

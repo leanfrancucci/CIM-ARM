@@ -1,0 +1,8 @@
+ABORT BUSY
+TIMEOUT 30
+SAY Beginning
+"" AT
+OK ATX1
+OK ATD
+ogin: \d
+word: \d

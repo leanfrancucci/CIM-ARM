@@ -1,0 +1,85 @@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+ \n
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+			   COMMERCIAL STATE REPORT\n
+@DBL_HEIGHT_OFF@
+@BITSTREAM_FONT@
+-----------------------------\n
+Remote ID : @/generalInfo/systemIdPIMS@\n
+Mac Addrs : @/commState/macAddress:17@\n
+Req (GMT) : @/commState/requestDate@\n
+Curr State: @/commState/currentState@\n
+@IF|/commState/viewNewState=TRUE@
+New State : @/commState/newState@\n
+@END_IF@
+@IF|/commState/viewNewState=FALSE@
+Old State : @/commState/oldState@\n
+@END_IF@
+Hours Qty.: @/commState/hoursQty@\n
+Expire    : @/commState/expireDate@\n
+ \n
+@BITSTREAM_FONT@
+*****************************\n
+@BOLD_ON@
+@DBL_HEIGHT_ON@
+         CODE\n
+@DBL_HEIGHT_OFF@
+@BOLD_OFF@
+@BITSTREAM_FONT@
+*****************************\n
+@BOLD_ON@
+@DBL_HEIGHT_ON@
+@/commState/code1@\n
+@/commState/code2@\n
+@/commState/code3@\n
+@/commState/code4@\n
+@/commState/code5@\n
+@/commState/code6@\n
+@/commState/code7@\n
+@/commState/code8@\n
+@/commState/code9@\n
+@/commState/code10@\n
+@/commState/code11@\n
+@/commState/code12@\n
+@/commState/code13@\n
+@DBL_HEIGHT_OFF@
+@BOLD_OFF@
+@BITSTREAM_FONT@
+*****************************\n
+*****************************\n
+ \n
+-----------------------------\n
+@VERDANA_SMALL_FONT@
+ \n
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Printed by: @/generalInfo/currentUserId@ @/generalInfo/currentUserName@\n
+Time: @/generalInfo/currentDate@\n

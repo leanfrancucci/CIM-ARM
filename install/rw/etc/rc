@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Now run the START scripts for this runlevel.
+for i in /rw/etc/rc$1.d/S*
+do
+	test ! -f $i  && continue
+	sh $i start
+done

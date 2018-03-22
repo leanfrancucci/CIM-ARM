@@ -1,0 +1,12 @@
+ABORT BUSY
+ABORT 'NO CARRIER'
+ABORT 'NO DIALTONE'
+ABORT 'NO ANSWER'
+TIMEOUT 3
+SAY 'Iniciando script...'
+'' AT
+'OK' AT
+'OK' 'AT+CGDCONT=1,,"internet.gprs.unifon.com.ar"'
+'OK' ATD*99#
+TIMEOUT 60
+CONNECT ''

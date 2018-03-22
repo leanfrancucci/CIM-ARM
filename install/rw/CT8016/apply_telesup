@@ -1,0 +1,54 @@
+#!/bin/sh
+
+# Script bash para actualizar el equipo
+
+DOWNLOAD_PATH=/rw/CT8016
+
+if test -d /rwi; then
+DOWNLOAD_PATH=/rwi
+mkdir $DOWNLOAD_PATH/telesup 2> /dev/null
+mkdir $DOWNLOAD_PATH/telesup/app 2> /dev/null
+mkdir $DOWNLOAD_PATH/telesup/date 2> /dev/null
+mkdir $DOWNLOAD_PATH/telesup/table 2> /dev/null
+fi;
+
+echo DOWNLOAD_PATH=$DOWNLOAD_PATH
+
+# Borro todos los archivos .tmp que pueden haber quedad por un corte durante supervision
+# y que no se terminaron de bajar correctamente.
+rm $DOWNLOAD_PATH/telesup/app/*tmp    2> /dev/null
+rm $DOWNLOAD_PATH/telesup/data/*tmp   2> /dev/null
+rm $DOWNLOAD_PATH/telesup/table/*tmp  2> /dev/null
+
+# Tabla de tarifas
+echo Copiando tablas de tarifas....
+cp $DOWNLOAD_PATH/telesup/table/* /rw/CT8016/table/ 2> /dev/null
+rm $DOWNLOAD_PATH/telesup/table/* 2> /dev/null
+
+# Configuracion del equipo
+echo Copiando configuracion del equipo....
+cp $DOWNLOAD_PATH/telesup/data/* /rw/CT8016/data/ 2> /dev/null
+rm $DOWNLOAD_PATH/telesup/data/* 2> /dev/null
+
+# Actualizacion del sistema
+echo Actualizando software....
+
+if test -e $DOWNLOAD_PATH/telesup/app/update.tar.gz; then
+lcdclear 
+lcdat 1 2 '  Descomprimiendo   '
+lcdat 1 3 ' actualizaciones... ' 
+gunzip -c $DOWNLOAD_PATH/telesup/app/update.tar.gz 2> /dev/null | tar -xvf - -C /var 2> /dev/null
+sh /var/update 2> /dev/null
+rm /var/update 2> /dev/null
+fi
+
+# Actualizando kernel
+echo Actualizando kernel....
+if test -e /var/kernel_image.pkg; then
+lcdclear 
+lcdat 1 2 '   Actualizando     '
+lcdat 1 3 '     kernel...      ' 
+/bin/cpi /var/kernel_image.pkg
+fi;
+
+rm $DOWNLOAD_PATH/telesup/app/update.tar.gz 2> /dev/null

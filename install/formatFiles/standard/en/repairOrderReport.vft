@@ -1,0 +1,13 @@
+-----------------------------\n
+@/repairOrderInfo/StateDsc@\n
+-----------------------------\n
+@IF|/repairOrderInfo/State=OK@
+Date-Time: @/repairOrderInfo/DateTime@\n
+Order Number: @/repairOrderInfo/OrderNumber@\n
+Repair: @/repairOrderInfo/Repair@\n
+Priority: @/repairOrderInfo/Priority@\n
+Contact: @/repairOrderInfo/Contact@\n
+User: @/repairOrderInfo/User@\n
+Support: @/repairOrderInfo/SupportContact@\n
+-----------------------------\n
+@END_IF@

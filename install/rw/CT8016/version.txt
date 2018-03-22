@@ -1,0 +1,2 @@
+SoftwareVersion=F0.8-RI05
+OSVersion=2.4.24-uc0.13.1.0

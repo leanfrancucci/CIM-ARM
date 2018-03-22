@@ -1,0 +1,8 @@
+#!/bin/sh
+#Lucas verifica el estado de la conexion luego de ejecutar el llamar
+PPPSTATUS=`ispppup`
+if [ "$PPPSTATUS" = "Down" ]; then
+	exit 0
+else
+	exit 1	
+fi

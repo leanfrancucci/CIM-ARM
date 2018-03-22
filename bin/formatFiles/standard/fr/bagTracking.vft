@@ -1,0 +1,78 @@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+@IF|/generalInfo/isReprint=TRUE@
+ \n
+-----------------------------\n
+--------- RÉIMPRIMER --------\n
+-----------------------------\n
+ \n
+@END_IF@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+    CHEMINEMENT DU RAPPORT\n
+@BITSTREAM_FONT@
+-----------------------------\n
+Retrait # : @/generalInfo/number@\n
+Trans. #  : @/generalInfo/trans@\n
+Date-Heure: @/generalInfo/dateTime@\n
+POS       : @/generalInfo/systemId@\n
+ID distant: @/generalInfo/systemIdPIMS@\n
+Porte     : @/generalInfo/doorName:-17@\n
+Utilisat. 1: @/generalInfo/operatorName:-16@\n
+@IF|/generalInfo/viewCollectorName=TRUE@
+Utilisat. 2: @/generalInfo/collectorName:-16@\n
+@END_IF@
+Compte #  : @/generalInfo/bankAccountInfo@\n
+-----------------------------\n
+@IF|/bagTrackingInfo/trackingMode=2@
+CHEMINEMENT DU ENVELOPPE\n
+@END_IF@
+@IF|/bagTrackingInfo/trackingMode=1@
+CHEMINEMENT DU CASS/EMPILEUR\n
+@END_IF@
+-----------------------------\n
+Lue: @/bagTrackingInfo/read@/@/bagTrackingInfo/qty@\n
+-----------------------------\n
+@IF|/bagTrackingInfo/trackingMode=2@
+Numero de Enveloppe\n
+@END_IF@
+@IF|/bagTrackingInfo/trackingMode=1@
+Numero de Cass/Empileur\n
+@END_IF@
+-----------------------------\n
+@FOR_EACH|/bagTrackingInfo/bagTracking/bagTrack@
+@number@\n
+@END_FOR@
+-----------------------------\n
+@VERDANA_SMALL_FONT@
+ \n
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Imprimé près: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-15@\n
+Heure: @/generalInfo/currentDate@\n

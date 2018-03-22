@@ -1,0 +1,8 @@
+db: acceso a base de datos SQL y ROP.
+dev: (de devices) dispositivos de entrada/salida tales como puerto COM, USB, etc.
+io: manejo de entrada salida como streams (Readers y Writers).
+lang: definiciones basicas de plataforma, endian y tipos de datos.
+os: codigo dependiente del sistema operativo y objetos que encapsulan los servicios basicos: mutex, semaforos, etc.
+util: utilidades.
+ui: user interface 
+ 

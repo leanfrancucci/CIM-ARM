@@ -1,0 +1,14 @@
+#!/bin/sh
+
+MK=make
+
+export CT_HOME=../..
+export ROOTDIR=/data/uClinux-App
+#export PLATFORM=uclinux
+
+
+#MK=colormake
+
+#echo $MK;
+
+cd ../system && $MK && cd ../framework && $MK

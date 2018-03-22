@@ -1,0 +1,20 @@
+.No anda CabinforbiddenCallTypeRequest.
+
+.Explota cuando se configuran los paramteros header y footer en GeneralBillRequest.
+
+.controlar bien el mensaje PTSD: sobre todo los enters que puedan venir despu� dl End y antes del nombre del mensaje, y controlar que puedan manejarse mensajes particionados.
+
+
+Mensajes de configuracion pendientes:
+	Modificados
+		Cabin (ok)
+		lineCabin (ok)
+	Nuevos
+		Telco (ok)			
+		Events (ok) (dudas para alexia)
+		Users (ok)
+		Profile (ok)
+		OperationProfile(ok)
+		PrintingSystem (suspendido)
+		Telesup y Connections (suspendido)
+

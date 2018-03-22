@@ -1,0 +1,159 @@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vHeader=TRUE@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+@IF|/generalInfo/isReprint=TRUE@
+ \n
+-----------------------------\n
+--------- RÉIMPRIMER --------\n
+-----------------------------\n
+ \n
+@END_IF@
+@END_IF@
+@IF|/generalInfo/vHeader=TRUE@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+         RAPPORT OPÉRATEUR\n
+@DBL_HEIGHT_OFF@
+@IF|/generalInfo/includeDetails=FALSE@
+               -SOMMAIRE-\n
+@END_IF@
+@IF|/generalInfo/includeDetails=TRUE@
+               -DÉTAILLÉ-\n
+@END_IF@
+@END_IF@
+@DBL_HEIGHT_OFF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@IF|/generalInfo/resumeReport=FALSE@
+Trans. #  : @/generalInfo/trans@\n
+Date-Heure: @/generalInfo/transTime@\n
+POS       : @/generalInfo/systemId@\n
+ID distant: @/generalInfo/systemIdPIMS@\n
+Dépôt Initiale: @/generalInfo/fromDepositNumber@\n
+Dépôt Finale  : @/generalInfo/toDepositNumber@\n
+Derniers Grand Z: @/generalInfo/lastZ@\n
+Date init.: @/generalInfo/openTime@\n
+@END_IF@
+Oper #    : @/generalInfo/userId@\n
+Oper Nom  : @/generalInfo/userName@\n
+@IF|/generalInfo/resumeReport=FALSE@
+Compte #  : \n
+@VERDANA_SMALL_FONT@
+ @/generalInfo/account@\n
+@BITSTREAM_FONT@
+@END_IF@
+
+@IF|/currencyList/withOutValues=TRUE@
+@BITSTREAM_FONT@
+------------------------------\n
+ \n
+      ENTRE-TEMPS PAS\n
+      DE TRANSACTIONS\n
+ \n
+@END_IF@
+
+@IF|/generalInfo/includeDetails=TRUE@
+@IF|/currencyList/withOutValues=FALSE@
+------------------------------\n
+            TOTAL\n
+------------------------------\n
+@END_IF@
+@END_IF@
+@BOLD_ON@
+@FOR_EACH|currencyList/currency@
+ \n
+Devise: @currencyCode:3@\n
+@COURIER_FONT@
+@IF|/currencyList/withNoInfoData=TRUE@
+Dépôt manuel:\n
+@FOR_EACH|manualDropDetails/manualDropDetail@
+  @depositValueName:-15@: @totalAmount:10@\n
+@END_FOR@
+                -------------\n
+@END_IF@
+Total Dépôt manuel: @totalManualDrop:9@\n
+Total Dépôt validé: @totalValidatedDrop:9@\n
+@BITSTREAM_FONT@
+-----------------------------\n
+@BOLD_ON@
+Comptant net: @total:10@\n
+@END_FOR@
+@BITSTREAM_FONT@
+@IF|/generalInfo/includeDetails=TRUE@\n
+@IF|/currencyList/withOutValues=FALSE@
+ \n
+------------------------------\n
+   Dépôt Détaillé Opérateur\n
+------------------------------\n
+@END_IF@
+@BOLD_ON@
+@FOR_EACH|dropDetails/currency@
+ \n
+Devise: @currencyCode@\n
+@BITSTREAM_FONT@
+Dépôt Espèces Type TotPartiel\n
+-----------------------------\n
+@COURIER_FONT@
+@FOR_EACH|detail@
+@depositNumber:-6@ @cimCashName:-8@ @depositValueName@ @totalAmount:10@\n
+@IF|viewEnv=TRUE@
+  ENV #: @env:-15@\n
+@END_IF@
+@END_FOR@
+@BITSTREAM_FONT@
+-----------------------------\n
+@BOLD_ON@
+Comptant net: @total:10@\n
+@END_FOR@
+@IF|/currencyList/withOutValues=FALSE@
+ \n
+-----------------------------\n
+@VERDANA_SMALL_FONT@
+Référence:\n
+  M: Dépôt manuel\n
+  V: Dépôt validé\n
+  CS: Espèces\n
+  CH: Chèques\n
+  CC: Par la carte de credit\n
+  TC: Tickets\n
+  BK: Signet\n
+  OT: Autre\n
+ \n
+@END_IF@
+@END_IF@
+@BITSTREAM_FONT@
+@IF|/generalInfo/vFooter=TRUE@
+-----------------------------\n
+@VERDANA_SMALL_FONT@
+ \n
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Imprimé près: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-15@\n
+Heure: @/generalInfo/currentDate@\n
+@END_IF@

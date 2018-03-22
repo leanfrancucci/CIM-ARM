@@ -1,0 +1,8450 @@
+Beginning
+OK
+
+OK
+
+CONNECTBeginningOK
+
+OK
+
+CONNECTBeginning
+OK
+
+OK
+
+OK
+
+CONNECTabort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD309^M)
+expect (CONNECT)
+^M
+^M
+RING^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (ATD309^M)
+expect (CONNECT)
+^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (ATD309^M)
+expect (CONNECT)
+^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (ATD309^M)
+expect (CONNECT)
+^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD309^M)
+expect (CONNECT)
+^M
+^M
+RING^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (ATD309^M)
+expect (CONNECT)
+^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD309^M)
+expect (CONNECT)
+^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD309^M)
+expect (CONNECT)
+^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD309^M)
+expect (CONNECT)
+^M
+^M
+RING^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD309^M)
+expect (CONNECT)
+^M
+^M
+RING^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD309^M)
+expect (CONNECT)
+^M
+^M
+RING^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD309^M)
+expect (CONNECT)
+^M
+^M
+RING^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+^M
+NO CARRIER^M
+^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD309^M)
+expect (CONNECT)
+^M
+^M
+RING^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+alarm
+Failed
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+alarm
+Failed
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+NO CARRIER^M
+^M
+RING^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+bc$ A a^M
+RING^M
+^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+^M
+NO CARRIER^M
+^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+RING^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+bc$ A b^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+bc$ A b^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+NO CARRIER^M
+^M
+RING^M
+alarm
+Failed
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+~^?}#@!}&}$} }0U^M
+NO CARRIER^M
+^M
+RING^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+NO CARRIER^M
+alarm
+Failed
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+NO CARRIER^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+NO CARRIER^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+alarm
+Failed
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (ATD4959822^M)
+expect (CONNECT)
+^M
+^M
+NO CARRIER^M
+alarm
+Failed
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (ATD4959822^M)
+expect (CONNECT)
+^M
+^M
+NO CARRIER^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+bA#bbA#bOK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD4959822^M)
+expect (CONNECT)
+^M
+^M
+NO CARRIER^M
+alarm
+Failed
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F^M)
+send (\d\d^M)
+send (\d\d^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M^MATE0^M^M
+OK
+ -- got it
+
+send (ATX4^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD4959822^M)
+expect (CONNECT)
+^M
+^M
+NO CARRIER^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATZ0^M)
+send (\d\d^M)
+send (\d\d^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M^MATE0^M^M
+OK
+ -- got it
+
+send (ATX4^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD4959822^M)
+expect (CONNECT)
+^M
+^M
+NO CARRIER^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATX4^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATF14^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD4959822^M)
+expect (CONNECT)
+^M
+^M
+NO CARRIER^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATX4^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATF5^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD4959822^M)
+expect (CONNECT)
+^M
+^M
+NO CARRIER^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATX4^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATF5^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATS10=255^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD4959822^M)
+expect (CONNECT)
+^M
+^M
+NO CARRIER^M
+alarm
+Failed
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD819^M)
+expect (CONNECT)
+^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+CARRIER 19200/19200^M
+^M
+PROTOCOL: LAP_M^M
+^M
+COMPRESSION: V42BIS^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+^M
+NO CARRIER^M
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+CARRIER 19200/19200^M
+^M
+PROTOCOL: LAP_M^M
+^M
+COMPRESSION: V42BIS^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+CARRIER 19200/19200^M
+^M
+PROTOCOL: LAP_M^M
+^M
+COMPRESSION: V42BIS^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+Z^T~AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+NO CARRIER^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+CARRIER 19200/19200^M
+^M
+PROTOCOL: LAP_M^M
+^M
+COMPRESSION: V42BIS^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+^M
+NO CARRIER^M
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+CARRIER 19200/19200^M
+^M
+PROTOCOL: LAP_M^M
+^M
+COMPRESSION: V42BIS^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+CARRIER 19200/19200^M
+^M
+PROTOCOL: LAP_M^M
+^M
+COMPRESSION: V42BIS^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+^M
+NO CARRIER^M
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+NO CARRIER^M
+^M
+RING^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+CARRIER 19200/19200^M
+^M
+PROTOCOL: LAP_M^M
+^M
+COMPRESSION: V42BIS^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+NO CARRIER^M
+^M
+RING^M
+alarm
+Failed
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+NO CARRIER^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+NO CARRIER^M
+alarm
+Failed
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+CARRIER 19200/19200^M
+^M
+PROTOCOL: LAP_M^M
+^M
+COMPRESSION: V42BIS^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1%S18=1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+CARRIER 19200/19200^M
+^M
+PROTOCOL: LAP_M^M
+^M
+COMPRESSION: NONE^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+alarm
+Failed
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1%S18=1^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATD842^M^M
+NO CARRIER^M
+at^M^M
+OK^M
+at^M^M
+OK^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+expect (OK)
+A^?T^M^M
+RING^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+NO CARRIER^M
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1%S18=1^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+ATD842^M^M
+CARRIER 19200/19200^M
+^M
+PROTOCOL: LAP_M^M
+^M
+COMPRESSION: NONE^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+}%} ;}"}&} } } ^M
+NO CARRIER^M
+AT^M^M
+OK
+ -- got it
+
+send (ATX3^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+ATX3^M^M
+OK
+ -- got it
+
+send (AT&F%S1=17%S15=0%S16=3X1W1%S18=1^M)
+expect (OK)
+^M
+ATE0^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (ATZ^M)
+expect (OK)
+ATZ^M^M
+OK
+ -- got it
+
+send (AT^M)
+send (AT^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (ATZ^M)
+expect (OK)
+ATZ^M^M
+OK
+ -- got it
+
+send (AT^M)
+send (AT^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (ATZ^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (AT^M)
+send (AT^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (ATZ^M)
+expect (OK)
+ATZ^M^M
+OK
+ -- got it
+
+send (AT^M)
+send (AT^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (ATZ^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (AT^M)
+send (AT^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (ATZ^M)
+expect (OK)
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (ATZ^M)
+expect (OK)
+ATZ^M^M
+OK
+ -- got it
+
+send (AT^M)
+send (AT^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+NO DIALTONE^M
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (ATZ^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (AT^M)
+send (AT^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (ATZ^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (AT^M)
+send (AT^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (ATZ^M)
+expect (OK)
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+SIGINT
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+NO DIALTONE^M
+alarm
+Failed
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+NO CARRIER^M
+alarm
+Failed
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+NO CARRIER^M
+alarm
+Failed
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+timeout set to 95 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD842^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+^M
+OK^M
+^M
+OK^M
+SIGTERM
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+SIGINT
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+^M
+OK^M
+^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+SIGTERM
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+abort on (BUSY) -- got it
+
+
+send (ATE0^M)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)expect (RING)
+
+^Mtimeout set to 7200 seconds
+^M
+
+BeginningOK^M
+send (AT^M)
+^M
+OK^M
+send (AT^M)
+^M
+OK^M
+expect (OK)
+^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+abort on (BUSY)expect (OK)
+^M
+abort on (NO CARRIER)
+OK
+abort on (NO DIALTONE)
+ -- got it
+
+abort on (NO ANSWER)
+send (ATE0^M)
+timeout set to 7200 seconds
+
+Beginningsend (AT^M)
+expect (RING)
+^M
+send (AT^M)
+^M
+OK^M
+expect (OK)
+^M
+NO CARRIER^M
+
+ -- failed
+Failed (NO CARRIER)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)^M
+
+OKexpect (OK)
+
+^M
+ -- got it
+^M
+
+OKsend (ATE0^M)
+
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+expect (RING)
+NO CARRIER
+ -- failed^M
+
+Failed (NO CARRIER)^M
+
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)^M
+
+OK^Mexpect (OK)
+
+^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^MSIGTERM
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+abort on (BUSY)
+
+send (ATE0^M)abort on (NO CARRIER)
+
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 secondsabort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+SIGTERM
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+abort on (BUSY)
+ -- got it
+
+abort on (NO CARRIER)
+send (ATE0^M)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningexpect (RING)
+send (AT^M)
+^M
+^M
+OK^Msend (AT^M)
+
+^M
+OK^Mexpect (OK)
+
+OK
+^M
+ -- got it
+
+^M
+send (ATE0^M)^M
+
+OK^M
+expect (RING)
+^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+SIGTERM
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OKabort on (BUSY)
+
+abort on (NO CARRIER) -- got it
+
+
+abort on (NO DIALTONE)
+send (ATE0^M)abort on (NO ANSWER)
+
+timeout set to 7200 seconds
+Beginningsend (AT^M)expect (RING)
+
+^M
+^Msend (AT^M)
+
+OK^M
+^Mexpect (OK)
+
+OK^M
+
+ -- got it
+
+^Msend (ATE0^M)
+
+OK^M
+^M
+OK^Mexpect (RING)
+
+^MOK^M
+
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+SIGTERM
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+^M
+OK^M
+^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+SIGTERM
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+abort on (BUSY)^M
+
+^Mabort on (NO CARRIER)
+
+abort on (NO DIALTONE)OK^M
+
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+^M
+OK^M
+expect (OK)
+^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+SIGTERM
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+abort on (BUSY)send (AT^M)
+
+abort on (NO CARRIER)
+expect (OK)
+abort on (NO DIALTONE)^M
+
+abort on (NO ANSWER)OK
+
+timeout set to 7200 seconds -- got it
+
+
+send (ATE0^M)
+Beginningsend (AT^M)expect (RING)
+
+^Msend (AT^M)
+
+^M
+expect (OK)OK^M
+
+^MOK^M
+
+OK^M
+
+ -- got it
+^M
+
+^Msend (ATE0^M)
+
+OK^M
+expect (RING)
+^MOK^M
+
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+SIGTERM
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)abort on (BUSY)
+
+abort on (NO CARRIER)^M
+
+OKabort on (NO DIALTONE)
+
+ -- got it
+abort on (NO ANSWER)
+
+send (ATE0^M)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+expect (RING)
+send (AT^M)^M
+
+^Mexpect (OK)
+
+OK^M^M
+
+^MOK^M
+
+OK
+^M
+ -- got it
+^M
+
+OK^M
+send (ATE0^M)
+expect (RING)
+^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+SIGTERM
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+OK^Mabort on (BUSY)
+
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+^M
+OK^M
+expect (OK)
+^MOK
+
+ -- got it
+^M
+
+send (ATE0^M)
+expect (RING)
+^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+abort on (BUSY)send (AT^M)
+
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+expect (OK)
+abort on (NO ANSWER)^M
+
+OKtimeout set to 7200 seconds
+
+Beginning -- got it
+
+send (AT^M)
+send (ATE0^M)
+send (AT^M)
+expect (RING)expect (OK)
+
+^M
+^M
+OK^M
+
+^M -- got it
+
+
+send (ATE0^M)
+OK^M
+^Mexpect (RING)
+
+OK^M
+^M
+OK^M
+SIGTERMSIGTERM
+
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+abort on (BUSY)^M
+
+OKabort on (NO CARRIER)
+
+ -- got it
+abort on (NO DIALTONE)
+
+abort on (NO ANSWER)send (ATE0^M)
+
+timeout set to 7200 seconds
+Beginningsend (AT^M)expect (RING)
+
+^Msend (AT^M)
+
+^M
+OK^M
+^Mexpect (OK)
+
+OK^M
+
+ -- got it
+^M
+
+send (ATE0^M)
+OK^M
+expect (RING)
+^MOK^M
+
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)abort on (BUSY)
+
+abort on (NO CARRIER)
+abort on (NO DIALTONE)send (AT^M)
+
+abort on (NO ANSWER)
+timeout set to 7200 secondsexpect (OK)
+
+Beginning^M
+send (AT^M)
+OK
+ -- got it
+
+send (ATE0^M)send (AT^M)
+
+expect (OK)
+^Mexpect (RING)
+
+^MOK
+
+^M -- got it
+
+
+^M
+send (ATE0^M)
+OK^M
+^M
+OK^M
+expect (RING)^M
+
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+SIGTERM
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+abort on (BUSY)^M
+
+abort on (NO CARRIER)OK
+
+abort on (NO DIALTONE) -- got it
+
+
+abort on (NO ANSWER)
+send (ATE0^M)timeout set to 7200 seconds
+
+Beginningsend (AT^M)
+expect (RING)
+^M
+send (AT^M)
+^M
+OK^Mexpect (OK)
+
+^MOK
+
+^M -- got it
+
+
+^Msend (ATE0^M)
+
+OK^M
+^M
+OK^Mexpect (RING)
+
+^MOK^M
+
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+SIGTERM
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+abort on (BUSY)
+abort on (NO CARRIER)expect (RING)
+
+^M
+abort on (NO DIALTONE)OK^M
+
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+^M
+OK^M
+expect (OK)^M
+
+OK^M
+SIGTERM
+SIGTERM
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)abort on (BUSY)
+
+abort on (NO CARRIER)
+abort on (NO DIALTONE)send (AT^M)
+
+abort on (NO ANSWER)
+timeout set to 7200 secondsexpect (OK)
+Beginning
+send (AT^M)
+^M
+OKsend (AT^M)
+
+ -- got it
+expect (OK)
+
+send (ATE0^M)^M
+
+^M
+expect (RING)
+^M
+OK^M
+OK
+^M -- got it
+
+
+^Msend (ATE0^M)
+
+OK^M
+^Mexpect (RING)
+
+OK^M^M
+
+OK^M
+SIGTERMSIGTERM
+
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^MNO CARRIER
+
+^M
+ -- failed
+Failed (NO CARRIER)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+^M
+OK
+ -- got it
+expect (OK)
+
+^M
+send (ATE0^M)^M
+
+OK
+ -- got it
+
+send (ATE0^M)expect (RING)
+
+^M
+^M
+OK^Mexpect (RING)
+^M
+
+OK^M
+^M
+RING
+^M
+ -- got it
+
+send (^M)
+expect (RING)
+^M
+RING
+^M
+ -- got it
+
+send (^M)
+expect (RING)
+^M
+RING
+^M
+ -- got it
+
+send (^M)
+expect (RING)
+alarm
+Failed
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+^M
+OK^M
+expect (OK)
+^M
+OK
+^M
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+NO DIALTONE
+ -- failed
+Failed (NO DIALTONE)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+NO DIALTONE
+ -- failed
+Failed (NO DIALTONE)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+^M
+OK^M
+^M
+NO DIALTONE
+ -- failed
+Failed (NO DIALTONE)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+^M
+OK^M
+^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 60 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+AT^M^M
+OK
+ -- got it
+
+send (ATD837^M)
+expect (CONNECT)
+^M
+ATE0^M^M
+OK^M
+^M
+CONNECT
+ -- got it
+
+send (^M)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (BUSY)
+abort on (NO ANSWER)abort on (NO CARRIER)
+
+timeout set to 7200 secondsabort on (NO DIALTONE)
+Beginningsend (AT^M)
+
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)send (AT^M)
+
+expect (OK)
+^M
+send (AT^M)
+OK
+ -- got it
+
+send (ATE0^M)
+expect (OK)
+^M
+expect (RING)
+^M
+^M
+NO CARRIER
+ -- failed
+Failed (NO CARRIER)
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+^M
+OK^M
+expect (OK)^M
+
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+SIGTERM
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+^M
+OK^M
+^M
+OK^M
+alarm
+Failed
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+^M
+OK^M
+^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+abort on (BUSY)
+abort on (NO CARRIER)
+abort on (NO DIALTONE)
+abort on (NO ANSWER)
+timeout set to 7200 seconds
+Beginningsend (AT^M)
+send (AT^M)
+expect (OK)
+AT^M^M
+OK
+ -- got it
+
+send (ATE0^M)
+expect (RING)
+^M
+AT^M^M
+OK^M
+ATE0^M^M
+OK^M
+Iniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...Iniciando script...BeginningIniciando script...Iniciando script...Iniciando script...BeginningIniciando script...Iniciando script...Iniciando script...Iniciando script...Iniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...BeginningIniciando script...Iniciando script...BeginningIniciando script...Iniciando script...BeginningIniciando script...BeginningIniciando script...Beginning

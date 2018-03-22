@@ -1,0 +1,130 @@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+       REPORTE POR REFERENCE\n
+@DBL_HEIGHT_OFF@
+@IF|/generalInfo/detailReport=TRUE@
+            - DETALLADO -\n
+@END_IF@
+@IF|/generalInfo/detailReport=FALSE@
+            - RESUMIDO -\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+Trans #   : @/generalInfo/trans@\n
+Fecha-Hora: @/generalInfo/transTime@\n
+Pto Vta   : @/generalInfo/systemId@\n
+ID Remoto	: @/generalInfo/systemIdPIMS@\n
+Reference : @/generalInfo/cashReferenceFilter@\n
+Ult Grd Z : @/generalInfo/lastZ@\n
+Dia Desde : @/generalInfo/openTime@\n
+------------------------------\n
+
+@IF|/cashReferenceList/withOutValues=TRUE@
+@BITSTREAM_FONT@
+ \n
+      NO HAY MOVIMIENTOS\n
+       PARA EL PERIODO\n
+ \n
+@END_IF@
+
+@FOR_EACH|cashReferenceList/cashReference@
+ \n
+@BOLD_ON@
+@cashReferenceName@\n
+@BITSTREAM_FONT@
+
+@IF|/generalInfo/detailReport=FALSE@
+Moneda               Subtotal\n
+-----------------------------\n
+@FOR_EACH|currencyList/currency@
+@currencyCode:3@\n
+   Validado: @referenceAmountVal:16@\n
+   Manual: @referenceAmountManual:18@\n
+   Cantidad: @referenceManQty:16@\n
+@END_FOR@
+@END_IF@
+
+
+@IF|/generalInfo/detailReport=TRUE@
+@FOR_EACH|currencyList/currency@
+ \n
+@BOLD_ON@
+Moneda: @currencyCode:3@\n
+@BITSTREAM_FONT@
+Depos   Cash  Tipo   Subtotal\n
+-----------------------------\n
+@COURIER_FONT@
+@FOR_EACH|detail@
+@depositNumber:-6@ @cimCashName:-8@ @depositValueName@ @totalAmount:10@\n
+@END_FOR@
+@BITSTREAM_FONT@
+-----------------------------\n
+Total @currencyCode:-3@: @total:18@\n
+@END_FOR@
+@END_IF@
+
+
+ \n
+@END_FOR@
+
+@IF|/cashReferenceList/withOutValues=FALSE@
+ \n
+@BOLD_ON@
+- CASH REFERENCE TOTAL -\n
+@FOR_EACH|cashReferenceList/totalCashCurrency@
+TOTAL @totalCashCurrencyCode:3@@totalCashCurr:14@\n
+@IF|/generalInfo/detailReport=FALSE@
+   Validado:@totalCashVal:11@\n
+   Manual:@totalCashManual:13@\n
+   Cantidad:@totalCashManQty:11@\n
+@END_IF@
+@END_FOR@
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/detailReport=TRUE@
+ \n
+Referencias:\n
+  M: Deposito Manual\n
+  V: Deposito Validado\n
+  CS: Efectivo\n
+  CH: Cheque\n
+  CC: Tarjeta de Credito\n
+  TC: Ticket\n
+  BK: Separador\n
+  OT: Otros\n
+@END_IF@
+ \n
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+Fecha: @/generalInfo/currentDate@\n

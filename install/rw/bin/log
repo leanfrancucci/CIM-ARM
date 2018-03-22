@@ -1,0 +1,8 @@
+#!/bin/sh
+
+#killall -9 tail
+ln -s /rw/etc/ppp /etc/ppp
+killall -9 syslogd
+syslogd &
+#tail -f /var/log/messages &
+#tail -f /etc/ppp/connect-errors &

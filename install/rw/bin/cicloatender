@@ -1,0 +1,6 @@
+#!/bin/sh
+while true;
+do
+sh /rw/bin/atender incoming > /var/atender.log
+done
+

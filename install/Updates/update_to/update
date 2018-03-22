@@ -1,0 +1,96 @@
+#!/bin/sh
+
+#########################################################
+#
+#	Consta de una serie de pasos:
+# 1) Crear las carpetas que falten en la version anterior.
+# 2) Mover los archivos nuevos reemplazando a los archivos
+#    viejos.
+# 3) Mover los archivos de configuracion nuevos 
+#    cuando no existen.
+# 4) Realizar la actualizacion de datos.
+#
+#########################################################
+
+echo "Actualizando a version CIM1.0"
+
+THISDIR=/rw/update
+
+##################################################
+# PASO 1: ACTUALIZAR BASE DE DATOS
+##################################################
+cd $THISDIR/updatedb
+./update.script /rw/CT8016/data
+
+cd $THISDIR
+
+##################################################################################
+# PASO 2: Copiar archivos comunes que no existan en /rw/CT8016/data
+##################################################################################
+
+cd $THISDIR/updatefiles
+
+for file in `find .`; do
+
+	if test -f $file; then
+	
+		if test ! -f /$file; then
+		echo Copiando archivo destino /$file
+		mv $file /$file
+		fi
+	
+	fi
+
+done
+
+cd $THISDIR
+
+##################################################################################
+# PASO 3: Copiar archivos de configuracion que no existan en /rw/CT8016/initFiles
+# Tambien se deben copiar a /rw/CT8016/copyFiles
+##################################################################################
+
+cd $THISDIR/updateconfigfiles
+
+for file in `find .`; do
+
+	if test -f $file; then
+	
+		if test ! -f /$file; then
+		cp $file /rw/CT8016/copyFiles/
+		echo Copiando archivo destino /$file
+		mv $file /$file
+		fi
+	
+	fi
+
+done
+
+cd $THISDIR
+
+##################################################################################
+# PASO 4: Pisar archivos de la carpeta copy
+##################################################################################
+
+rm /rw/CT8016/initFiles/*
+mkdir /rw/CT8016/formatFiles/thermal/fr
+chmod 777 /rw/CT8016/formatFiles/thermal/fr
+mkdir /rw/CT8016/formatFiles/standard
+chmod 777 /rw/CT8016/formatFiles/standard
+mkdir /rw/CT8016/formatFiles/standard/en
+chmod 777 /rw/CT8016/formatFiles/standard/en
+mkdir /rw/CT8016/formatFiles/standard/es
+chmod 777 /rw/CT8016/formatFiles/standard/es
+mkdir /rw/CT8016/formatFiles/standard/fr
+chmod 777 /rw/CT8016/formatFiles/standard/fr
+
+cd $THISDIR/copy
+
+for file in `find .`; do
+
+	if test -f $file; then
+	echo "mv $file /$file"
+	mv $file /$file
+	fi
+
+done

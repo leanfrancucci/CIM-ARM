@@ -1,0 +1,189 @@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+@IF|/generalInfo/isReprint=TRUE@
+ \n
+-----------------------------\n
+---------- REPRINT ----------\n
+-----------------------------\n
+ \n
+@END_IF@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+@IF|reportType=1@
+          END DAY REPORT\n
+@END_IF@
+@IF|reportType=3@
+         GRAND X REPORT\n
+@END_IF@
+@DBL_HEIGHT_OFF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@IF|reportType=1@
+Grand Z # : @/generalInfo/number@\n
+Trans #   : @/generalInfo/trans@\n
+POS       : @/generalInfo/systemId@\n
+Remote ID : @/generalInfo/systemIdPIMS@\n
+@IF|reportType=3@
+Last Grd Z: @/generalInfo/lastZ@\n
+@END_IF@
+From Date : @/generalInfo/openTime@\n
+To Date   : @/generalInfo/closeTime@\n
+From Drop : @/generalInfo/fromDepositNumber@\n
+To Drop   : @/generalInfo/toDepositNumber@\n
+Oper #    : @/generalInfo/userId@\n
+Oper Name : @/generalInfo/userName@\n
+@END_IF@
+
+@IF|reportType=3@
+Trans #   : @/generalInfo/trans@\n
+Date-Time : @/generalInfo/transTime@\n
+POS       : @/generalInfo/systemId@\n
+Remote ID : @/generalInfo/systemIdPIMS@\n
+Last Grd Z: @/generalInfo/lastZ@\n
+From Date : @/generalInfo/openTime@\n
+@END_IF@
+------------------------------\n
+@BOLD_ON@
+      SYSTEM TOTAL\n
+@BITSTREAM_FONT@
+------------------------------\n
+@FOR_EACH|currencyList/currency@
+ \n
+@BOLD_ON@
+CURRENCY: @currencyCode@\n
+@BITSTREAM_FONT@
+Validated Drops: @totalValidatedDrop:12@\n
+Manual Drops   : @totalManualDrop:12@\n
+@BOLD_ON@
+TOTAL @currencyCode:3@: @total:13@\n
+@BITSTREAM_FONT@
+------------------------------\n
+@END_FOR@
+ \n
+
+@IF|/currencyList/withOutValues=TRUE@
+@BITSTREAM_FONT@
+    WITHOUT TRANSACTIONS\n
+      IN THE MEANTIME\n
+ \n
+@END_IF@
+@IF|/currencyList/withOutValues=FALSE@
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+             CASH REPORT \n
+@DBL_HEIGHT_OFF@         
+     - DETAILED -\n
+@BITSTREAM_FONT@
+------------------------------\n
+
+
+
+@FOR_EACH|cimCashs/cimCash@
+@BOLD_ON@
+ \n
+@name@ ***\n
+@IF|cimCashType=1@
+@FOR_EACH|acceptorList/acceptor@
+ \n
+@BOLD_ON@
+@acceptorName@
+@FOR_EACH|currencyList/currency@
+ \n
+@BOLD_ON@
+Currency: @currencyCode@\n
+@BITSTREAM_FONT@
+-----------------------------\n
+ Qty       Value     Subtotal\n
+-----------------------------\n
+@FOR_EACH|extractionDetails/extractionDetail@
+@qty:6@ @amount:9@ @totalAmount:12@\n
+@END_FOR@
+-----------------------------\n
+@qty:6@ Tot @currencyCode:3@ @total:14@\n
+@END_FOR@
+@END_FOR@
+@END_IF@
+
+@IF|cimCashType=2@
+@FOR_EACH|acceptorList/acceptor@
+ \n
+@BOLD_ON@
+@acceptorName@
+@FOR_EACH|currencyList/currency@
+ \n
+@BOLD_ON@
+Currency: @currencyCode@\n
+@BITSTREAM_FONT@
+-----------------------------\n
+ Qty        Type     Subtotal\n
+-----------------------------\n
+@FOR_EACH|extractionDetails/extractionDetail@
+@qty:6@ @depositValueName:9@ @totalAmount:12@\n
+@END_FOR@
+-----------------------------\n
+@qty:6@ Tot @currencyCode:3@ @total:14@\n
+@END_FOR@
+@END_FOR@
+@END_IF@
+ \n
+@BOLD_ON@
+TOTAL: @name@\n
+@FOR_EACH|totalCurrency@
+@totalCurrencyCode:3@ @totalCurr:20@\n
+@END_FOR@
+ \n
+@END_FOR@
+@BITSTREAM_FONT@
+-----------------------------\n
+ \n
+ \n
+@BOLD_ON@
+****** CASH TOTAL ******\n
+@FOR_EACH|cimCashs/totalCashCurrency@
+TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
+@END_FOR@
+
+
+@END_IF@
+
+@BITSTREAM_FONT@
+-----------------------------\n
+@IF|/generalInfo/isReprint=TRUE@
+ \n
+-----------------------------\n
+---------- REPRINT ----------\n
+-----------------------------\n
+ \n
+@END_IF@
+@VERDANA_SMALL_FONT@
+ \n
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Printed by: @/generalInfo/currentUserId@ @/generalInfo/currentUserName@\n
+Time: @/generalInfo/currentDate@\n

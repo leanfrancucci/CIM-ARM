@@ -1,0 +1,87 @@
+@IF|/auditList/sectionHeader=TRUE@
+@VERDANA_SMALL_FONT@
+@IF|/generalInfo/vewHeader1=TRUE@
+@/generalInfo/header1@\n
+@END_IF@
+@IF|/generalInfo/vewHeader2=TRUE@
+@/generalInfo/header2@\n
+@END_IF@
+@IF|/generalInfo/vewHeader3=TRUE@
+@/generalInfo/header3@\n
+@END_IF@
+@IF|/generalInfo/vewHeader4=TRUE@
+@/generalInfo/header4@\n
+@END_IF@
+@IF|/generalInfo/vewHeader5=TRUE@
+@/generalInfo/header5@\n
+@END_IF@
+@IF|/generalInfo/vewHeader6=TRUE@
+@/generalInfo/header6@\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+@VERDANA_BIG_FONT@
+@DBL_HEIGHT_ON@
+          REPORTE AUDITORIA\n
+@DBL_HEIGHT_OFF@
+@IF|/generalInfo/reportDetail=FALSE@
+              -RESUMIDO-\n
+@END_IF@
+@IF|/generalInfo/reportDetail=TRUE@
+              -DETALLADO-\n
+@END_IF@
+@BITSTREAM_FONT@
+-----------------------------\n
+Trans #   : @/generalInfo/trans@\n
+Fecha-Hora: @/generalInfo/transTime@\n
+Pto Vta   : @/generalInfo/systemId@\n
+ID Remoto : @/generalInfo/systemIdPIMS@\n
+Dia Desde : @/generalInfo/fromDate@\n
+Dia Hasta : @/generalInfo/toDate@\n
+Dispositiv: @/generalInfo/device:-14@\n
+Usuario   : @/generalInfo/user:-16@\n
+Cat Event : @/generalInfo/eventCategory:-16@\n
+-----------------------------\n
+ \n
+Trans# Usu#   Fecha/hora\n
+ Detalle del evento\n
+-----------------------------\n
+@END_IF@
+@BITSTREAM_FONT@
+@IF|/auditList/withOutValues=TRUE@
+@BITSTREAM_FONT@
+ \n
+      NO HAY MOVIMIENTOS\n
+       PARA EL PERIODO\n
+ \n
+-----------------------------\n
+@END_IF@
+@FOR_EACH|auditList/auditInfo@
+@auditId:5@ # @userId:3@ @auditDate@\n
+@COURIER_8x16_FONT@
+ @userName:-15@  @eventDescription:-30@\n
+@IF|reportDet=TRUE@
+@IF|viewAdditional=TRUE@
+ @additional:-47@\n
+@END_IF@
+@FOR_EACH|detailList/detailInfo@
+ @field:-18@  @newValue:-27@\n
+@END_FOR@
+@END_IF@
+@BITSTREAM_FONT@
+@END_FOR@
+@IF|/auditList/sectionFooter=TRUE@
+@VERDANA_SMALL_FONT@
+ \n
+@IF|/generalInfo/vewFooter1=TRUE@
+@/generalInfo/footer1@\n
+@END_IF@
+@IF|/generalInfo/vewFooter2=TRUE@
+@/generalInfo/footer2@\n
+@END_IF@
+@IF|/generalInfo/vewFooter3=TRUE@
+@/generalInfo/footer3@\n
+@END_IF@
+Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+Fecha: @/generalInfo/currentDate@\n
+@END_IF@

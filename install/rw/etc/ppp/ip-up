@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "ENTRO IP-UP"
+echo $4
+route add default gw $4

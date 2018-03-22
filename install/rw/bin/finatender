@@ -1,0 +1,5 @@
+#!/bin/sh
+killall -9 cicloatender
+killall -9 chat
+killall -9 pppd
+echo "Espera de telemantenimiento desactivado"

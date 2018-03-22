@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo Instalando aplicacion en $1/var....
+
+curl -T ../../bin/tariff.exe ftp://$1/var/tariff.exe --user root:r2V4L5c34N
+
+#wput ../../bin/tariff.exe ftp://$1/var/tariff.exe
+#wput ../../bin/config.ini ftp://$1/var/config.ini
+#wput ../../bin/barCodeConfig.ini ftp://$1/var/barCodeConfig.ini
+
+echo Instalacion finalizada !
