@@ -7,7 +7,7 @@
 #
 *.o
 *.o.*
-*.a
+lib/arm-linux/libaudit.a
 *.su
 *.mod.c
 *.i
