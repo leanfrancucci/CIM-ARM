@@ -93,7 +93,9 @@ static id singleInstance = NULL;
 	int i = 0;
 
 	assert(myTelesups);
+    printf("aTelcoType = %d\n", aTelcoType);
 	for (i=0; i<[myTelesups size]; ++i) {
+
 		if ([ [myTelesups at: i] getTelcoType] == aTelcoType) return [myTelesups at: i];
 	}
 
@@ -871,9 +873,9 @@ static id singleInstance = NULL;
 	[newTelesup setInformAlarmsByTransaction: anInformAlarmsByTransaction];
 	[newTelesup setInformZCloseByTransaction: anInformZCloseByTransaction];
 
-	[newTelesup applyChanges];
-
-  [self addTelesupToCollection: newTelesup];
+    
+    [newTelesup applyChanges];
+    [self addTelesupToCollection: newTelesup];
 
 	TRY
 		if (![[TelesupervisionManager getInstance] writeTelesupsToFile])

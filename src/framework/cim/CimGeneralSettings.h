@@ -119,10 +119,10 @@ typedef enum {
 	int myPinLife;
 
 	/** Inactivacion automatica de pin */
-	int myPinAutoInactivate;
+	BOOL myPinAutoInactivate;
 
 	/** Borrado automatico de pin */
-	int myPinAutoDelete;
+	BOOL myPinAutoDelete;
 
 	/** Utiliza reference o no */
 	BOOL myUseCashReference;
@@ -319,16 +319,16 @@ typedef enum {
 - (int) getPinLife;
 
  /**/
-- (void) setPinAutoInactivate: (int) aValue;
-- (int) getPinAutoInactivate;
+- (void) setPinAutoInactivate: (BOOL) aValue;
+- (BOOL) getPinAutoInactivate;
 
  /**/
-- (void) setPinAutoDelete: (int) aValue;
-- (int) getPinAutoDelete;
+- (void) setPinAutoDelete: (BOOL) aValue;
+- (BOOL) getPinAutoDelete;
 
 /**/
-- (void) setAskEnvelopeNumber: (BOOL) aValue;
-- (BOOL) getAskEnvelopeNumber;
+- (void) setAskEnvelopeNumber: (int) aValue;
+- (int) getAskEnvelopeNumber;
 
 /**/
 - (void) setUseCashReference: (BOOL) aValue;

@@ -9,10 +9,31 @@
 #include "system/util/all.h"
 #include "ctapp.h"
 
+typedef enum {
+	AsyncMsgType_DoorState,
+	AsyncMsgType_AsyncMsg,
+    AsyncMsgType_BillAccepted,
+    AsyncMsgType_BillRejected
+} AsyncMsgType; 
+
 typedef struct {
-    char description[200];
-    
+    AsyncMsgType msgType;
+    char messageName[200];
+    int state;
+    int period;
+    int acceptorId;
+    char stateDsc[30];
+    char currencyCode[10];
+    char amount[30];
+    char deviceName[50];
+    int qty;
+    char code[20];
+    char aDescription[60];
+    BOOL isBlocking;
+    char rejectedCause[100];
 } AsyncMsg;
+
+
 
 /**
  *	doc template
@@ -22,13 +43,23 @@ typedef struct {
 	SYNC_QUEUE mySyncQueue;
 	BOOL myWait;
     id mySystemOpRequest;
+    id myEventsProxy;
+    id myErrorSystemOpRequest;
 }
 
 + getInstance;
 
 /**/
-- (void) addAsynMsg: (char *) aDescription;
+- (void) addAsyncMsgDoorState: (int) aState period: (int) aPeriod;
+- (void) addAsyncMsgBillAccepted: (int) anAcceptorId state: (char*) aState
+                                                        currencyCode: (char*) aCurrencyCode
+                                                        amount: (money_t) anAmount 
+                                                        deviceName: (char*) aDeviceName
+                                                        qty: (int) aQty;
+- (void) addAsyncMsgBillRejected: (int) anAcceptorId cause: (char*) aCause qty: (int) aQty;
+- (void) addAsyncMsg: (char*) aCode description: (char*) aDescription isBlocking: (BOOL) anIsBlocking; 
 - (void) setSystemOpRequest: (id) anObject;
+- (void) setEventsProxy: (id) anEventsProxy;
 
 @end
 

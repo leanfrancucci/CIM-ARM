@@ -10,6 +10,7 @@
 #include "AcceptorDAO.h"
 #include "CimExcepts.h"
 #include "POSEventAcceptor.h"
+#include "AsyncMsgThread.h"
 
 
 typedef struct {
@@ -518,6 +519,9 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 
 
 	if (myObserver) [myObserver onAcceptorError: self cause: aCause];
+    
+    printf("BillAcceptor --> addAsyncMsg\n");
+    [[AsyncMsgThread getInstance] addAsyncMsg: "1000" description: "Acceptor error" isBlocking: FALSE];
 
 	switch (aCause) {
 
@@ -671,7 +675,7 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 	id 	currency = [[CurrencyManager getInstance] getCurrencyById: aCurrencyId];
 
     //************************* logcoment
-	//doLog(0,"BillAcceptor (%d) -> billAccepted = %lld %d\n", myHardwareId, anAmount, aCurrencyId );
+	printf("BBillAcceptor (%d) -> billAccepted = %lld %d\n", myHardwareId, anAmount, aCurrencyId );
 
 	if (myObserver) [myObserver onBillAccepted: self currency: currency amount: anAmount qty: aQty];
 

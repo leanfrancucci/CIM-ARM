@@ -21,6 +21,8 @@ void sigsevHandler(int signum)
 /**/
 void sigtermHandler(int signum)
 {
+    printf("holis chauchis\n"); fflush(stdout);
+    msleep(1000);
   exit(1);
 }
 
@@ -30,7 +32,7 @@ void registerSigsevHandler(void)
 {
   signal(SIGSEGV, sigsevHandler);
   signal(SIGABRT, sigsevHandler);
-  signal(SIGBREAK, sigsevHandler);
+//  signal(SIGBREAK, sigsevHandler);
   signal(SIGTERM, sigtermHandler);
   signal(SIGILL, sigsevHandler);
 }

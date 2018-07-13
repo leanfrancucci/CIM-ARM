@@ -476,15 +476,17 @@
 - (void) debug
 {
 	int i;
-
+/*
 	doLog(0,"*******************************\n");
 	doLog(0,"Numero:     %ld\n", myNumber);
 	doLog(0,"Puerta:     %d\n", myDoor != NULL ? [myDoor getDoorId]: 0);
 	doLog(0,"Operador:   %s\n", myOperator != NULL ? [myOperator getLoginName] : "DESCONOCIDO");
 	doLog(0,"Recaudador: %s\n", myCollector != NULL ? [myCollector getLoginName] : "DESCONOCIDO");
+    */
 	/*doLog(0,"Monto acumulado:     %s\n", formatMoney(moneyStr, "", [self getAmount], 2, 40));
 	doLog(0,"Cantidad valores:    %d\n", [self getQty]);*/
-	doLog(0,"Detalle -----------------------\n");
+
+    //doLog(0,"Detalle -----------------------\n");
 
 	for (i = 0; i < [myExtractionDetails size]; ++i)
 		[[myExtractionDetails at: i] debug];

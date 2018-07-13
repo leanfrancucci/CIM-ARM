@@ -283,20 +283,42 @@ MapRequestMsg 	mapReqMsg[] =
 	,{"UserLogout",			 			 USER_LOGOUT_REQ,      			NO_REQ_OP,	0}
 	
 	,{"StartValidatedDrop", 			 START_VALIDATED_DROP_REQ,       NO_REQ_OP,	0}
-	,{"EndValidatedDrop",			 			 END_VALIDATED_DROP_REQ,      			NO_REQ_OP,	0}
+	,{"EndValidatedDrop",			 	END_VALIDATED_DROP_REQ,      			NO_REQ_OP,	0}
 	
-    ,{"InitExtractionProcess",		 			 INIT_EXTRACTION_PROCESS_REQ,      			NO_REQ_OP,	0}
-    ,{"GetDoorCurrentState",		 			 GET_DOOR_STATE_REQ,      			NO_REQ_OP,	0}
-    ,{"SetRemoveCash",		 			 SET_REMOVE_CASH_REQ,      			NO_REQ_OP,	0}	        
-    ,{"UserLoginForDoorAccess",		 			 USER_LOGIN_FOR_DOOR_ACCESS_REQ, NO_REQ_OP,	0}	
-    ,{"StartDoorAccess",		 			 START_DOOR_ACCESS_REQ, NO_REQ_OP,	0}	    
-    ,{"CloseExtraction",			 			 CLOSE_EXTRACTION_REQ,      			NO_REQ_OP,	0}
-    ,{"CancelDoorAccess",			 			 CANCEL_DOOR_ACCESS_REQ,      			NO_REQ_OP,	0}    
-    ,{"CancelTimeDelay",			 			 CANCEL_TIME_DELAY_REQ,      			NO_REQ_OP,	0}    
-    ,{"StartExtraction",			 			 START_EXTRACTION_REQ,      			NO_REQ_OP,	0}
-	
+    ,{"InitExtractionProcess",          INIT_EXTRACTION_PROCESS_REQ,      			NO_REQ_OP,	0}
+    ,{"GetDoorCurrentState",		 	GET_DOOR_STATE_REQ,      			NO_REQ_OP,	0}
+    ,{"SetRemoveCash",		 			SET_REMOVE_CASH_REQ,      			NO_REQ_OP,	0}	        
+    ,{"UserLoginForDoorAccess",		 	USER_LOGIN_FOR_DOOR_ACCESS_REQ, NO_REQ_OP,	0}	
+    ,{"StartDoorAccess",		 		START_DOOR_ACCESS_REQ, NO_REQ_OP,	0}	    
+    ,{"CloseExtraction",                CLOSE_EXTRACTION_REQ,      			NO_REQ_OP,	0}
+    ,{"CancelDoorAccess",			 	CANCEL_DOOR_ACCESS_REQ,      			NO_REQ_OP,	0}    
+    ,{"CancelTimeDelay",			 	CANCEL_TIME_DELAY_REQ,      			NO_REQ_OP,	0}    
+    ,{"StartExtraction",			 	START_EXTRACTION_REQ,      			NO_REQ_OP,	0}
 
+    ,{"StartManualDrop",			 	START_MANUAL_DROP_REQ,      			NO_REQ_OP,	0}
+    ,{"AddManualDropDetail",			ADD_MANUAL_DROP_DETAIL_REQ,      		NO_REQ_OP,	0}
+    ,{"PrintManualDropReceipt",			PRINT_MANUAL_DROP_RECEIPT_REQ,      	NO_REQ_OP,	0}
+    ,{"CancelManualDrop",			    CANCEL_MANUAL_DROP_REQ,      	NO_REQ_OP,	0}
+    ,{"FinishManualDrop",			    FINISH_MANUAL_DROP_REQ,      	NO_REQ_OP,	0}
+    
+    ,{"StartValidationMode",			START_VALIDATION_MODE_REQ,      	NO_REQ_OP,	0}    
+    ,{"StopValidationMode",			    STOP_VALIDATION_MODE_REQ,      	NO_REQ_OP,	0}    
 
+    ,{"GenerateOperatorReport",			GENERATE_OPERATOR_REPORT_REQ,      	NO_REQ_OP,	0}    
+    ,{"HasAlreadyPrintEndDay",			HAS_ALREADY_PRINT_END_DAY_REQ,      	NO_REQ_OP,	0}        
+    ,{"GenerateEndDay",			        GENERATE_END_DAY_REQ,      	NO_REQ_OP,	0}        
+    ,{"GenerateEnrolledUsersReport",	GENERATE_ENROLLED_USERS_REPORT_REQ,      	NO_REQ_OP,	0}
+    ,{"GetEventCategories",	GET_EVENTS_CATEGORIES_REQ,      	NO_REQ_OP,	0}        
+    ,{"GenerateAuditReport",	GENERATE_AUDIT_REPORT_REQ,      	NO_REQ_OP,	0}            
+    ,{"GenerateCashReport",	GENERATE_CASH_REPORT_REQ,      	NO_REQ_OP,	0}        
+    ,{"GenerateXClose",	GENERATE_X_CLOSE_REPORT_REQ,      	NO_REQ_OP,	0}            
+    ,{"GenerateReferenceReport",	GENERATE_REFERENCE_REPORT_REQ,      	NO_REQ_OP,	0}        
+    ,{"GenerateSystemInfoReport",	GENERATE_SYSTEM_INFO_REPORT_REQ,      	NO_REQ_OP,	0}            
+    ,{"GenerateTelesupReport",	GENERATE_TELESUP_REPORT_REQ,      	NO_REQ_OP,	0}        
+    ,{"ReprintDeposit",	REPRINT_DEPOSIT_REQ,      	NO_REQ_OP,	0}            
+    ,{"ReprintExtraction",	REPRINT_EXTRACTION_REQ,      	NO_REQ_OP,	0}        
+    ,{"ReprintEndDay",	REPRINT_END_DAY_REQ,      	NO_REQ_OP,	0}            
+    ,{"ReprintXClose",	REPRINT_PARTIAL_DAY_REQ,      	NO_REQ_OP,	0}            
 };
 
 #define 	MAX_REQUEST_MAPPS 	(sizeof( mapReqMsg ) / sizeof( mapReqMsg[0] ))
@@ -439,11 +461,13 @@ MapRequestMsg 	mapReqMsg[] =
 {
 	MapRequestMsg  *mreq;
 
+    printf(">>>>>>>>>>>>>>>>>>>>>>>>RequestName: %s\n", aRequestName);
+    
 	for (mreq = &mapReqMsg[0]; mreq < &mapReqMsg[MAX_REQUEST_MAPPS]; ++mreq)
 	{
 		if (strcasecmp(aRequestName, mreq->msg) == 0) return mreq->reqType;
-}
-	//doLog(0,"Invalid Request: \"%s\"", aRequestName);
+    }
+	//printf("Invalid Request: \"%s\"", aRequestName);
 	THROW( TSUP_INVALID_REQUEST_EX );
 	
 	return 0;
@@ -868,14 +892,14 @@ MapRequestMsg 	mapReqMsg[] =
 
 		case GET_CURRENCY_BY_ACCEPTOR_REQ:
 
-	  case SET_CASH_BOX_REQ:
-	  case GET_CASH_BOX_REQ:
+        case SET_CASH_BOX_REQ:
+        case GET_CASH_BOX_REQ:
 
-	  case SET_CASH_REFERENCE_REQ:
-	  case GET_CASH_REFERENCE_REQ:
+        case SET_CASH_REFERENCE_REQ:
+        case GET_CASH_REFERENCE_REQ:
 
-		case GET_ACCEPTORS_BY_CASH_REQ:
-	  case SET_ACCEPTORS_BY_CASH_REQ:
+        case GET_ACCEPTORS_BY_CASH_REQ:
+        case SET_ACCEPTORS_BY_CASH_REQ:
 
 	 	case SET_BOX_REQ:
 	 	case GET_BOX_REQ:
@@ -884,7 +908,7 @@ MapRequestMsg 	mapReqMsg[] =
 		case SET_ACCEPTORS_BY_BOX_REQ:
 	 
 		case GET_DOORS_BY_BOX_REQ:
-	  case SET_DOORS_BY_BOX_REQ:
+        case SET_DOORS_BY_BOX_REQ:
 
 		case GET_PRINT_SYSTEM_REQ:
 		case SET_PRINT_SYSTEM_REQ:
@@ -916,16 +940,19 @@ MapRequestMsg 	mapReqMsg[] =
 		case SET_CONNECTION_REQ:
 		case GET_VERSION_REQ:
 		case GET_SYSTEM_INFO_REQ:
-    case SET_DATETIME_REQ:
-    case GET_DOORS_BY_USER_REQ:
-    case GET_DOORS_BY_USERS_REQ:
-    case SET_DOOR_BY_USER_REQ:
-    case GET_DUAL_ACCESS_REQ:
-    case SET_DUAL_ACCESS_REQ:
-    case SET_FORCE_PIN_CHANGE_REQ:
-    case SET_WORK_ORDER_REQ:
-    case SET_REPAIR_ORDER_REQ:
-    case GET_REPAIR_ORDER_REQ:
+        case SET_DATETIME_REQ:
+        case GET_DOORS_BY_USER_REQ:
+        case GET_DOORS_BY_USERS_REQ:
+        case SET_DOOR_BY_USER_REQ:
+        case GET_DUAL_ACCESS_REQ:
+        case SET_DUAL_ACCESS_REQ:
+        case SET_FORCE_PIN_CHANGE_REQ:
+        case SET_WORK_ORDER_REQ:
+        case SET_REPAIR_ORDER_REQ:
+        case GET_REPAIR_ORDER_REQ:
+            
+        case GET_EVENTS_CATEGORIES_REQ:
+            
 			return [self getNewG2Request: aReqOp msg: aMessage reqType: aReqType];
 
 /* Los Request reales */
@@ -1031,12 +1058,12 @@ MapRequestMsg 	mapReqMsg[] =
 
 	// PIMS
 		case GET_CONNECTION_INTENTION_REQ:
-  	case KEEP_ALIVE_REQ:
+        case KEEP_ALIVE_REQ:
 		case INFORM_REPAIR_ORDER_DATA_REQ:
 		case INFORM_STATE_CHANGE_RESULT_REQ:
 		case GET_STATE_CHANGE_CONFIRMATION_REQ:
 		case INFORM_STATE_CHANGE_CONFIRMATION_RESULT_REQ:
-    case SET_MODULE_REQ:
+        case SET_MODULE_REQ:
 		case GET_USER_TO_LOGIN_REQ:
 		case SET_USER_TO_LOGIN_RESPONSE_REQ:
 		case SET_INSERT_DEPOSIT_RESULT_REQ:
@@ -1059,6 +1086,28 @@ MapRequestMsg 	mapReqMsg[] =
         case CANCEL_DOOR_ACCESS_REQ:
         case START_DOOR_ACCESS_REQ:
         case START_EXTRACTION_REQ:
+        case CANCEL_TIME_DELAY_REQ:
+        case START_MANUAL_DROP_REQ:
+        case ADD_MANUAL_DROP_DETAIL_REQ:
+        case PRINT_MANUAL_DROP_RECEIPT_REQ:
+        case CANCEL_MANUAL_DROP_REQ:
+        case FINISH_MANUAL_DROP_REQ:            
+        case START_VALIDATION_MODE_REQ:
+        case STOP_VALIDATION_MODE_REQ:
+        case GENERATE_OPERATOR_REPORT_REQ:
+        case HAS_ALREADY_PRINT_END_DAY_REQ:
+        case GENERATE_END_DAY_REQ:
+        case GENERATE_ENROLLED_USERS_REPORT_REQ:
+        case GENERATE_AUDIT_REPORT_REQ:
+        case GENERATE_CASH_REPORT_REQ:
+        case GENERATE_X_CLOSE_REPORT_REQ:
+        case GENERATE_REFERENCE_REPORT_REQ:
+        case GENERATE_SYSTEM_INFO_REPORT_REQ:
+        case GENERATE_TELESUP_REPORT_REQ:
+        case REPRINT_DEPOSIT_REQ:
+        case REPRINT_EXTRACTION_REQ:
+        case REPRINT_END_DAY_REQ:
+        case REPRINT_PARTIAL_DAY_REQ:            
             printf(">>>>>>>>>>>>>>>>>>>>>>>>> getNewSystemOpRequest\n");
             return [self getNewSystemOpRequest: aReqOp msg: aMessage];
 

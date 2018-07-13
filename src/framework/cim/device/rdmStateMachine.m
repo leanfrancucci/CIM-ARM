@@ -149,14 +149,15 @@ void processCurrencyTable(StateMachine *sm)
         unsigned short result;
         int i, tabsize;
         unsigned char idx = 0;
-        unsigned short denomination, noteId;
-
+        unsigned short noteId, multip;
+        unsigned char exponente;
+        unsigned short  denomination; 
         jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
         
        	memset( jcmBillAcceptor->convertionTable, 0, sizeof(jcmBillAcceptor->convertionTable));
         result = (unsigned short) *(jcmBillAcceptor->dataEvPtr+9);
     
-        doLog(1, "PROCESS CURRENCY TABLE !!! \n"); 
+        printf("PROCESS CURRENCY TABLE !!! \n"); 
 
         if (result == 0){
             for (i = 0; i < 24; i++){
@@ -164,18 +165,20 @@ void processCurrencyTable(StateMachine *sm)
 		if ((idx > (unsigned char)*(jcmBillAcceptor->dataEvPtr+11+(i*11))) && (noteId == 0x03))
 			break;
                 idx = (unsigned char)*(jcmBillAcceptor->dataEvPtr+11+(i*11));
-                denomination = (unsigned short)*(jcmBillAcceptor->dataEvPtr+17+(i*11));
-                jcmBillAcceptor->convertionTable[idx].amount =  denomination;
+                denomination = (unsigned char)*(jcmBillAcceptor->dataEvPtr+17+(i*11));
+                exponente = (unsigned char)*(jcmBillAcceptor->dataEvPtr+18+(i*11));
+                multip = pow(10, exponente);
+                jcmBillAcceptor->convertionTable[idx].amount =  (denomination * multip);
                 jcmBillAcceptor->convertionTable[idx].noteId =  noteId;
                 memcpy(jcmBillAcceptor->convertionTable[idx].countryStr, (jcmBillAcceptor->dataEvPtr+14+(i*11)), 3);
                 jcmBillAcceptor->convertionTable[idx].countryStr[3]= 0;
                 jcmBillAcceptor->convertionTable[idx].currencyId = getCurrencyIdFromISOStr( jcmBillAcceptor->convertionTable[idx].countryStr );
                 jcmBillAcceptor->convertionTable[idx].disabled = !(jcmBillAcceptor->dataEvPtr+20+(i*11));
-                doLog(1,"currency table idx %d noteId %d denomination %d countrstr %s curid %d \n", idx , noteId, denomination, jcmBillAcceptor->convertionTable[idx].countryStr, jcmBillAcceptor->convertionTable[idx].currencyId);
+                printf("currency table idx %d noteId %d denomination %d amount %d multip %d countrstr %s curid %d \n", idx , noteId, denomination, jcmBillAcceptor->convertionTable[idx].amount,multip, jcmBillAcceptor->convertionTable[idx].countryStr, jcmBillAcceptor->convertionTable[idx].currencyId);
             }
             jcmBillAcceptor->billTableLoaded = 1;
             jcmBillAcceptor->denominationQty = i;
-            doLog(1,"currency table denomination qty %d \n", jcmBillAcceptor->denominationQty);
+            printf("currency table denomination qty %d \n", jcmBillAcceptor->denominationQty);
         } else{
             doLog(1, "currency table process execution result <> 0 %d!\n", result); 
         }
@@ -426,7 +429,7 @@ void notifyBillsAccepted(StateMachine *sm)
     
     jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
     
-    doLog(1, "notify bilss accepted!\n" ); 
+    printf("Notify bilss accepted!\n" ); 
     result = (unsigned short) *(jcmBillAcceptor->dataEvPtr+9);
     if ( result < 0xE000 ){  //si es 0 o error code hay que procesar los billetes igual, si es un codigo de warning entonces no se ejecuto el comando
          qtyRejected = (unsigned char)*(jcmBillAcceptor->dataEvPtr+11);
@@ -441,8 +444,11 @@ void notifyBillsAccepted(StateMachine *sm)
              for (x =0; ((x < 12) && (jcmBillAcceptor->convertionTable[x].noteId != currencyAccepted[i].noteId)) ;x++)
                ; 
              if ((x < 12) && (jcmBillAcceptor->convertionTable[x].noteId == currencyAccepted[i].noteId)){
-		if (currencyAccepted[i].qty > 0){
-                    ( *jcmBillAcceptor->billAcceptNotificationFcn )( jcmBillAcceptor->devId, (jcmBillAcceptor->convertionTable[x].amount * MultipApp), jcmBillAcceptor->convertionTable[x].currencyId, currencyAccepted[i].qty );
+                    if (currencyAccepted[i].qty > 0){
+                        jcmBillAcceptor->amountChar = (long long) (jcmBillAcceptor->convertionTable[x].amount * MultipApp);
+                        printf("rere Bills Accepted! amount %d qty %d \n", jcmBillAcceptor->convertionTable[x].amount, currencyAccepted[i].qty); 
+                
+                    ( *jcmBillAcceptor->billAcceptNotificationFcn )( jcmBillAcceptor->devId, jcmBillAcceptor->amountChar, jcmBillAcceptor->convertionTable[x].currencyId, currencyAccepted[i].qty );
 		}
              } else 
                 doLog(1, "NOT FOUND noteB id %d  qty %d!\n", currencyAccepted[i].noteId, currencyAccepted[i].qty); 

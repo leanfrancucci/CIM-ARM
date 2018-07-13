@@ -57,20 +57,21 @@ typedef enum {
 
 /**/
 - (void) setEventsProxy: (id) anEventsProxy;
-
-
-
 - (void) readResponse;
 
-
+/*
 - (void) onBillAccepted: (id) anAcceptor currency: (CURRENCY) aCurrency amount: (money_t) anAmount;
 
 - (void) onBillAccepted: (id) anAcceptor currency: (CURRENCY) aCurrency amount: (money_t) anAmount deviceDsc: (char*) aDeviceDsc currencyTotal: (money_t) aCurrencyTotal qty: (int) aQty currencyQty: (int) aCurrencyQty rejectedQty: (int) aRejectedQty ;
 
-- (void) onBillRejected: (id) anAcceptor cause: (int) aCause deviceDsc: (char*) aDeviceDsc qty: (int) aQty rejectedQty: (int) aRejectedQty ;
+- (void) onBillRejected: (id) anAcceptor cause: (char*) aCause qty: (int) aQty;
+*/
 
-
-- (void) onAsyncMsg: (char*) aDescription;
+- (void) onAsyncMsgDoorState: (char*) aMessageName state: (int) aState period: (int) aPeriod;
+- (void) onAsyncMsgBillAccepted: (char*) aMessageName acceptorId: (int) anAcceptorId state: (char*) aState currencyCode: (char*) aCurrencyCode 
+                    amount: (char*) anAmount deviceName: (char*) aDeviceName qty: (int) aQty;
+- (void) onAsyncMsg: (char*) aMessageName code: (char*) aCode description: (char*) aDescription isBlocking: (BOOL) anIsBlocking;
+- (void) onAsyncMsgBillRejected: (char*) aMessageName acceptorId: (int) anAcceptorId cause: (char*) aCause qty: (int) aQty;
 
 /*
 - (void) onBillAccepting: (id) anAcceptor;

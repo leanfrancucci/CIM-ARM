@@ -18,7 +18,10 @@
 #include "UICimUtils.h"
 #include "CimGeneralSettings.h"
 #include "ExtractionController.h"
+#include "DepositController.h"
 #include "AsyncMsgThread.h"
+#include "ReportController.h"
+#include "ZCloseManager.h"
 
 
 // Maximo tamanio de documento
@@ -62,7 +65,7 @@ static  SYSTEM_OP_REQUEST myRestoreSingleInstance = nil;
 	myResponseBuffer = malloc(MSG_SIZE + 1);
     myMutex = [OMutex new];
     
-    //[[AsyncMsgThread getInstance] setSystemOpRequest: self];
+    [[AsyncMsgThread getInstance] setSystemOpRequest: self];
 
     return self;
 }
@@ -137,7 +140,7 @@ static  SYSTEM_OP_REQUEST myRestoreSingleInstance = nil;
 	TRY
         printf("systemoprequest message--> %s", msg);
         if (myEventsProxy == NULL) printf("myEventsProxy null");
-        else printf("myEventsProxy not null");
+        else printf("myEventsProxy not null\n");
  		[myEventsProxy sendMessage: msg qty: strlen(msg)];
 		[self readResponse];
 
@@ -156,7 +159,7 @@ static  SYSTEM_OP_REQUEST myRestoreSingleInstance = nil;
 	[myMutex lock];
 
 	TRY
-//		LOG_DEBUG( LOG_TELESUP, "--> %s", msg);
+		printf("myEventsProxy sendPackage --> %s", msg);
  		[myEventsProxy sendMessage: msg qty: strlen(msg)];
 		[self readResponse];
 	//	LOG_DEBUG( LOG_TELESUP, "<-- %s", [myResponsePackage toString]);
@@ -552,16 +555,12 @@ static int loginFailQty = 0;
 
 - (void) endValidatedDrop
 {
-    doLog(0, "endValidatedDrop 1\n");
+    printf("finaliza el deposito\n");
     [[CimManager getInstance] endDeposit];
-    doLog(0, "endValidatedDrop 2\n");
  	[[CimManager getInstance] removeObserver: self];
-    doLog(0, "endValidatedDrop 3\n");
 
 	myDeposit = NULL;
-    doLog(0, "endValidatedDrop 4\n");
     [myRemoteProxy sendAckMessage];
-    doLog(0, "endValidatedDrop 5\n");
 }
 
 /**/
@@ -592,33 +591,68 @@ static int loginFailQty = 0;
 /**/
 - (void) onBillRejected: (ABSTRACT_ACCEPTOR) anAcceptor cause: (int) aCause  qty: (int) aQty
 {
-    doLog(0, ">>>>>>>>>>>>>>>>>>>> SystemOpRequest  1\n");
+    char additional[100];
+    
+    printf(">>>>>>>>>>>>>>>>>>>> SystemOpRequest  onBillRejected\n");
+	sprintf(additional, "%d ", aCause);
+			
+    switch (aCause)
+    {
+        case 113: strcat(additional, getResourceStringDef(RESID_INSERTION_ERROR, "Error al Insertar")); break;
+        case 114: strcat(additional, getResourceStringDef(RESID_MAGNETIC_PATTERN_ERROR, "Magnetic Pattern Error")); break;
+        case 115: strcat(additional, getResourceStringDef(RESID_IDLE_SENSOR_DETECTED, "Sensor Inactivo detectado")); break;
+        case 116: strcat(additional, getResourceStringDef(RESID_DATA_AMPLITUDE_ERROR, "Error en Amplitud de datos")); break;
+        case 117: strcat(additional, getResourceStringDef(RESID_FEED_ERROR, "Error en Alimentacion")); break;
+        case 118: strcat(additional, getResourceStringDef(RESID_DENOMINATION_ASSESSING_ERROR, "Error al Evaluar denominacion")); break;
+        case 119: strcat(additional, getResourceStringDef(RESID_PHOTO_PATTERN_ERROR, "Error en Patron de foto")); break;
+        case 120: strcat(additional, getResourceStringDef(RESID_PHOTO_LEVEL_ERROR, "Error en Nivel de foto")); break;
+        case 121: strcat(additional, getResourceStringDef(RESID_BILL_DISABLED, "Billete Disabilitado")); break;
+        case 122: strcat(additional, getResourceStringDef(RESID_RESERVER, "Reservado")); break;
+        case 123: strcat(additional, getResourceStringDef(RESID_OPERATION_ERROR, "Error de Operacion")); break;
+        case 124: strcat(additional, getResourceStringDef(RESID_WRONG_TIME, "Tiempo Erroneo")); break;
+        case 125: strcat(additional, getResourceStringDef(RESID_LENGHT_ERROR, "Longitud Erronea")); break;
+        case 126: strcat(additional, getResourceStringDef(RESID_COLOR_PATTERN_ERROR, "Patron de Color erroneo")); break;
+        case 999: strcat(additional, getResourceStringDef(RESID_UNDEFINE, "Undefined")); break;
+    }    
+    
+    [[AsyncMsgThread getInstance] addAsyncMsgBillRejected: [[anAcceptor getAcceptorSettings] getAcceptorId] 
+                                                        cause: additional
+                                                        qty: aQty];
+        
 	
 }
 /**/
 - (void) onBillAccepted: (ABSTRACT_ACCEPTOR) anAcceptor currency: (CURRENCY) aCurrency amount: (money_t) anAmount  qty: (int) aQty
 {
 
-    char amountstr[50];
-	GENERIC_PACKAGE pkg;
+    //char amountstr[50];
+	//GENERIC_PACKAGE pkg;
 
-    
     printf( ">>>>>>>>>>>>>>>>>>>> SystemOpRequest  onBillAccepted\n");
-    
-   	if (myDeposit == NULL) return;
+    //if (myDeposit == NULL) return;
 
+    [[AsyncMsgThread getInstance] addAsyncMsgBillAccepted: [[anAcceptor getAcceptorSettings] getAcceptorId] 
+                                                        state: getResourceStringDef(RESID_BILL_VERIFIED, "Bill Accepted!")
+                                                        currencyCode: [aCurrency getCurrencyCode]
+                                                        amount: anAmount 
+                                                        deviceName: [[anAcceptor getAcceptorSettings] str]
+                                                        qty: aQty];
+    
+    
+/*
     pkg = myCommandPackage;
 	[pkg clear];
 	[pkg setName: "BillAccepted"];
-    [pkg addParamAsInteger: "AcceptorId" value: [[anAcceptor getAcceptorSettings] getAcceptorId]];
-	[pkg addParamAsString: "State" value: getResourceStringDef(RESID_BILL_VERIFIED, "Bill Accepted!")];
-	[pkg addParamAsString: "CurrencyCode" value: [aCurrency getCurrencyCode]];
+    [pkg addParamAsInteger: "AcceptorId" value: ];
+	[pkg addParamAsString: "State" value: ];
+	[pkg addParamAsString: "CurrencyCode" value: ];
 	formatMoney(amountstr, "", anAmount * aQty, 2, 20);
     [pkg addParamAsString: "Amount" value: amountstr];
 	[pkg addParamAsString: "DeviceName" value: [[anAcceptor getAcceptorSettings] str]];
     [pkg addParamAsInteger: "Qty" value: aQty];
     // la denominacion seria el amount dividido ADD_VEND_ITEM_BY_QTY_REQ
     [self sendPackage];    
+    */
 }
 
 /**/
@@ -631,28 +665,19 @@ static int loginFailQty = 0;
 /**/
 - (void) onDoorStateChange: (int) aState period: (long) aPeriod
 {
-	GENERIC_PACKAGE pkg;
+    [[AsyncMsgThread getInstance] addAsyncMsgDoorState: aState period: aPeriod];
+    
+    /*GENERIC_PACKAGE pkg;
     char seconds[30];
 
-    
+    printf("SystemOpRequest onDoorStateChange\n");
 	pkg = myCommandPackage;
 	[pkg clear];
 	[pkg setName: "DoorStateChange"];
 	[pkg addParamAsInteger: "State" value: aState];
-    [pkg addParamAsLong: "Period" value: aPeriod];
-/*    if (aTimeLeft > 0) {
-        sprintf(seconds, "%d", aTimeLeft); 
-        [pkg addParamAsString: "TimeLeft" value: seconds];
-    }
-    */
-/*    
-    if (anIsBlocking == TRUE)
-        [pkg addParamAsString: "Blocking" value: "True"];
-    else
-        [pkg addParamAsString: "Blocking" value: "False"];
-    
-*/
+    [pkg addParamAsInteger: "Period" value: aPeriod];
 	[self sendPackage];
+    */
 }
 
 
@@ -735,20 +760,16 @@ static int loginFailQty = 0;
     printf("SystemOpRequest->userLoginForDoorAcccess\n");    
     
     
-    printf("1\n");
     if ([myPackage isValidParam: "UserName"]) {
         stringcpy(userName, [myPackage getParamAsString: "UserName"]);
     }  else {/* TIRAR ERROR*/}
 
-    
-    printf("2\n");
     if ([myPackage isValidParam: "UserPassword"]) {
         stringcpy(userPassword, [myPackage getParamAsString: "UserPassword"]);
     } else {/**/}
 
-    printf("3\n");
     [[ExtractionController getInstance] userLoginForDoorAccess: userName userPassword: userPassword];
-    printf("4\n");
+
     [myRemoteProxy sendAckMessage];
 
 }
@@ -766,7 +787,6 @@ static int loginFailQty = 0;
     [[ExtractionController getInstance] startDoorAccess: doorId];
     [myRemoteProxy sendAckMessage];
 
-    
 }
 
 /**/
@@ -782,7 +802,7 @@ static int loginFailQty = 0;
      }  else {/* TIRAR ERROR*/}
 
     [[ExtractionController getInstance] closeExtraction: doorId];
-    [[ExtractionController getInstance] free];
+    //[[ExtractionController getInstance] free];
     [myRemoteProxy sendAckMessage];
 
 }
@@ -827,35 +847,473 @@ static int loginFailQty = 0;
 }
 
 
+/*********************************************************************/
+/*DEPOSITO MANUAL*/
+/*********************************************************************/
+/**/
+- (void) startManualDrop
+{
+	int cashId = 0;
+    int referenceId = 0;
+    unsigned long userId = 0;
+	char envelopeNumber[50];
+	char applyTo[50];
+    int excode = 0;
+    char exceptionDescription[512];
+    CIM_CASH cimCash; 
+   	*envelopeNumber = '\0';
+	*applyTo = '\0';    
+    
+    printf("SystemOpRequest->startManualDrop\n");
+
+
+    if ([myPackage isValidParam: "UserId"]) 
+        userId = [myPackage getParamAsInteger: "UserId"];
+
+    if ([myPackage isValidParam: "ApplyTo"])
+        stringcpy(applyTo, [myPackage getParamAsString: "ApplyTo"]);
+
+    if ([myPackage isValidParam: "EnvelopeNumber"])
+        stringcpy(envelopeNumber, [myPackage getParamAsString: "EnvelopeNumber"]);
+
+    if ([myPackage isValidParam: "CashId"])
+        cashId = [myPackage getParamAsInteger: "CashId"];
+
+    if ([myPackage isValidParam: "ReferenceId"])
+        referenceId = [myPackage getParamAsInteger: "ReferenceId"];    
+
+    //[[DepositController getInstance] setObserver: self];
+    [[DepositController getInstance] initManualDrop: userId cashId: cashId referenceId: referenceId applyTo: applyTo envelopeNumber: envelopeNumber];
+    
+    [myRemoteProxy sendAckMessage];
+}
+
+/**/
+- (void) addManualDropDetail
+{
+    int acceptorId = 0;
+    int currencyId = 0; 
+    int qty = 0;
+    money_t amount = 0;
+    int valueType = 0;
+    
+    
+    if ([myPackage isValidParam: "AcceptorId"]) 
+        acceptorId = [myPackage getParamAsInteger: "AcceptorId"];
+    
+    if ([myPackage isValidParam: "ValueType"]) 
+        acceptorId = [myPackage getParamAsInteger: "ValueType"];
+        
+    if ([myPackage isValidParam: "CurrencyId"])
+        currencyId = [myPackage getParamAsInteger: "CurrencyId"];
+        
+    if ([myPackage isValidParam: "Qty"])
+        qty = [myPackage getParamAsInteger: "Qty"];
+
+    if ([myPackage isValidParam: "Amount"])
+        amount = [myPackage getParamAsCurrency: "Amount"];
+    
+    
+    [[DepositController getInstance] addDropDetail: (int) acceptorId depositValueType: valueType currencyId: currencyId qty: qty amount: amount];
+
+    [myRemoteProxy sendAckMessage];   
+
+}
+
+/**/
+- (void) printManualDropReceipt
+{
+    [[DepositController getInstance] printDropReceipt];
+    [myRemoteProxy sendAckMessage];       
+}
+
+/**/
+- (void) cancelManualDrop
+{
+    [[DepositController getInstance] cancelDrop];
+
+    [myRemoteProxy sendAckMessage];       
+}
+
+/**/
+- (void) finishManualDrop
+{
+    [[DepositController getInstance] finishDrop];
+
+    [myRemoteProxy sendAckMessage];       
+    
+}
+
+/*********************************************************************/
+/*VALIDACION DE BILLETES*/
+/*********************************************************************/
+
+/**/
+- (void) startValidationMode
+{
+    [[CimManager getInstance] startValidationMode];
+	// audito el inicio de la validacion de billetes
+	[Audit auditEventCurrentUser: Event_START_BILL_VALIDATION additional: "" station: 0 logRemoteSystem: FALSE];
+	[[CimManager getInstance] addObserver: self];
+    
+    [myRemoteProxy sendAckMessage];       
+    
+}
+
+
+/**/
+- (void) stopValidationMode
+{
+ 	[[CimManager getInstance] removeObserver: self];
+	[[CimManager getInstance] stopValidationMode];
+
+	// audito el fin de la validacion de billetes
+	[Audit auditEventCurrentUser: Event_END_BILL_VALIDATION additional: "" station: 0 logRemoteSystem: FALSE];
+    
+    [myRemoteProxy sendAckMessage];       
+
+}
+
+/*********************************************************************/
+/*REPORTES*/
+/*********************************************************************/
+
+/**/
+- (void) generateOperatorReport
+{
+    int userId;
+    BOOL detailed;
+    
+    if ([myPackage isValidParam: "UserId"]) 
+        userId = [myPackage getParamAsInteger: "UserId"];
+    
+    if ([myPackage isValidParam: "Detailed"])
+        detailed = [myPackage getParamAsBoolean: "Detailed"];    
+
+    printf("1\n");
+    [[ReportController getInstance] genOperatorReport: userId detailed: detailed];
+    
+    [myRemoteProxy sendAckMessage];    
+}
+
+/**/
+- (void) hasAlreadyPrintEndDay
+{
+    BOOL alreadyPrint;
+    
+    alreadyPrint = [[ZCloseManager getInstance] hasAlreadyPrintZClose];
+        
+    [myRemoteProxy newMessage: "OK"];
+    [myRemoteProxy addParamAsInteger: "AlreadyPrint" value: alreadyPrint];
+    [myRemoteProxy appendTimestamp];
+    [myRemoteProxy sendMessage];        
+    
+}
+
+/**/
+-(void) generateEndDay
+{
+    BOOL printOperatorReport;
+    
+    if ([myPackage isValidParam: "PrintOperatorReport"])
+        printOperatorReport = [myPackage getParamAsBoolean: "PrintOperatorReport"];    
+
+    [[ReportController getInstance] genEndDay: printOperatorReport];
+    
+    [myRemoteProxy sendAckMessage];       
+}
+
+
+/**/
+- (void) generateEnrolledUsersReport
+{
+    int status;
+    BOOL detailed;
+    
+    if ([myPackage isValidParam: "Status"]) 
+        status = [myPackage getParamAsInteger: "Status"];
+    
+    if ([myPackage isValidParam: "Detailed"])
+        detailed = [myPackage getParamAsBoolean: "Detailed"];    
+
+    [[ReportController getInstance] genEnrolledUsersReport: status detailed: detailed];
+    
+    [myRemoteProxy sendAckMessage];    
+    
+}
+
+
+/**/ 
+- (void) generateAuditReport
+{
+    datetime_t dateFrom;
+    datetime_t dateTo;
+    int cashId;
+    int userId;
+    int eventCategory;
+    BOOL detailed;
+    
+    if ([myPackage isValidParam: "DateFrom"]) 
+        dateFrom = [myPackage getParamAsDateTime: "DateFrom"];
+
+    if ([myPackage isValidParam: "DateTo"]) 
+        dateTo = [myPackage getParamAsDateTime: "DateTo"];
+
+    if ([myPackage isValidParam: "UserId"]) 
+        userId = [myPackage getParamAsInteger: "UserId"];
+
+    if ([myPackage isValidParam: "CashId"]) 
+        cashId = [myPackage getParamAsInteger: "CashId"];    
+
+    if ([myPackage isValidParam: "EventCategoryId"]) 
+        eventCategory = [myPackage getParamAsInteger: "EventCategoryId"];    
+    
+    if ([myPackage isValidParam: "Detailed"])
+        detailed = [myPackage getParamAsBoolean: "Detailed"];    
+
+    [[ReportController getInstance] genAuditReport: dateFrom dateTo: dateTo userId: userId cashId: cashId eventCategoryId: eventCategory detailed: detailed];
+    
+    [myRemoteProxy sendAckMessage];        
+}
+
+/**/
+- (void) generateCashReport
+{
+    int doorId;
+    int cashId;
+    BOOL detailed;
+    
+    if ([myPackage isValidParam: "DoorId"]) 
+        doorId = [myPackage getParamAsInteger: "DoorId"];
+
+    if ([myPackage isValidParam: "CashId"]) 
+        cashId = [myPackage getParamAsInteger: "CashId"];
+    
+    if ([myPackage isValidParam: "Detailed"])
+        detailed = [myPackage getParamAsBoolean: "Detailed"];    
+
+    [[ReportController getInstance] genCashReport: doorId cashId: cashId detailed: detailed];
+    
+    [myRemoteProxy sendAckMessage];    
+        
+}
+
+/**/
+- (void) generateXCloseReport
+{
+    [[ReportController getInstance] genXCloseReport];
+    
+    [myRemoteProxy sendAckMessage];        
+}
+
+/**/
+- (void) generateReferenceReport
+{
+    int cashReferenceId;
+    BOOL detailed;
+    
+    if ([myPackage isValidParam: "CashReferenceId"]) 
+        cashReferenceId = [myPackage getParamAsInteger: "CashReferenceId"];
+
+    if ([myPackage isValidParam: "Detailed"])
+        detailed = [myPackage getParamAsBoolean: "Detailed"];     
+    
+    [[ReportController getInstance] genCashReferenceReport: cashReferenceId detailed: detailed];
+
+    [myRemoteProxy sendAckMessage];        
+}
+            
+/**/
+- (void) generateSystemInfoReport
+{
+    BOOL detailed; 
+    
+    if ([myPackage isValidParam: "Detailed"])
+        detailed = [myPackage getParamAsBoolean: "Detailed"];     
+    
+    [[ReportController getInstance] genSystemInfoReport: detailed];
+
+    [myRemoteProxy sendAckMessage];        
+
+}
+            
+
+/**/
+- (void) generateTelesupReport
+{
+    [[ReportController getInstance] genTelesupReport];
+    [myRemoteProxy sendAckMessage];    
+}
+ 
+/**/
+- (void) reprintDeposit
+{
+    
+    BOOL last; 
+    long fromId;
+    long toId;
+    
+    if ([myPackage isValidParam: "Last"])
+        last = [myPackage getParamAsBoolean: "Last"];     
+
+    if ([myPackage isValidParam: "FromId"]) 
+        fromId = [myPackage getParamAsInteger: "FromId"];
+    
+    if ([myPackage isValidParam: "ToId"]) 
+        toId = [myPackage getParamAsInteger: "ToId"];
+
+    [[ReportController getInstance] reprintDep: last fromId: fromId toId: toId];
+
+    [myRemoteProxy sendAckMessage];       
+
+}
+            
+/**/
+- (void) reprintExtraction
+{
+    BOOL last; 
+    long fromId;
+    long toId;
+    
+    if ([myPackage isValidParam: "Last"])
+        last = [myPackage getParamAsBoolean: "Last"];     
+
+    if ([myPackage isValidParam: "FromId"]) 
+        fromId = [myPackage getParamAsInteger: "FromId"];
+    
+    if ([myPackage isValidParam: "ToId"]) 
+        toId = [myPackage getParamAsInteger: "ToId"];
+
+    [[ReportController getInstance] reprintExt: last fromId: fromId toId: toId];
+
+    [myRemoteProxy sendAckMessage];       
+    
+}
+
+/**/
+- (void) reprintEndDay
+{
+    BOOL last; 
+    long fromId;
+    long toId;
+    
+    if ([myPackage isValidParam: "Last"])
+        last = [myPackage getParamAsBoolean: "Last"];     
+
+    if ([myPackage isValidParam: "FromId"]) 
+        fromId = [myPackage getParamAsInteger: "FromId"];
+    
+    if ([myPackage isValidParam: "ToId"]) 
+        toId = [myPackage getParamAsInteger: "ToId"];
+
+    [[ReportController getInstance] reprintEndD: last fromId: fromId toId: toId];
+
+    [myRemoteProxy sendAckMessage];       
+    
+}
+
+/**/
+-(void) reprintPartialDay
+{
+    BOOL last; 
+    long fromId;
+    long toId;
+    
+    if ([myPackage isValidParam: "Last"])
+        last = [myPackage getParamAsBoolean: "Last"];     
+
+    if ([myPackage isValidParam: "FromId"]) 
+        fromId = [myPackage getParamAsInteger: "FromId"];
+    
+    if ([myPackage isValidParam: "ToId"]) 
+        toId = [myPackage getParamAsInteger: "ToId"];
+
+    [[ReportController getInstance] reprintPartialD: last fromId: fromId toId: toId];
+
+    [myRemoteProxy sendAckMessage];       
+
+}
+
 
 
 /*********************************************************************/
 /*MENSAJES ASINCRONICOS*/
 /*********************************************************************/
-- (void) onAsyncMsg: (char*) aDescription
+- (void) onAsyncMsgDoorState: (char*) aMessageName state: (int) aState period: (int) aPeriod
 {
  	GENERIC_PACKAGE pkg;
     char seconds[30];
 
 	pkg = myCommandPackage;
 	[pkg clear];
-	[pkg setName: "AsyncMsg"];
-	[pkg addParamAsString: "Description" value: aDescription];
-    
-    /*if (aTimeLeft > 0) {
-        sprintf(seconds, "%d", aTimeLeft); 
-        [pkg addParamAsString: "TimeLeft" value: seconds];
-    }
-    
-    if (anIsBlocking == TRUE)
-        [pkg addParamAsString: "Blocking" value: "True"];
-    else
-        [pkg addParamAsString: "Blocking" value: "False"];
-    
-    */
-	[self sendPackage];   
-    
+	//[pkg setName: "AsyncMsg"];
+    printf("xxxxx\n");
+    [pkg setName: aMessageName];
+	[pkg addParamAsInteger: "State" value: aState];
+    [pkg addParamAsInteger: "Period" value: aPeriod];    
+    printf("yyyy\n");
+	[self sendPackage];
+    printf("zzzz\n");
 }    
+
+
+/**/
+- (void) onAsyncMsgBillAccepted: (char*) aMessageName acceptorId: (int) anAcceptorId state: (char*) aState currencyCode: (char*) aCurrencyCode 
+                    amount: (char*) anAmount deviceName: (char*) aDeviceName qty: (int) aQty
+{
+ 	GENERIC_PACKAGE pkg;
+    char seconds[30];
+
+	pkg = myCommandPackage;
+	[pkg clear];
+	//[pkg setName: "AsyncMsg"];
+    [pkg setName: aMessageName];
+    [pkg addParamAsInteger: "AcceptorId" value: anAcceptorId];
+	[pkg addParamAsString: "State" value: aState];
+	[pkg addParamAsString: "CurrencyCode" value: aCurrencyCode];
+    [pkg addParamAsString: "Amount" value: anAmount];
+	[pkg addParamAsString: "DeviceName" value: aDeviceName];
+    [pkg addParamAsInteger: "Qty" value: aQty];
+
+    [self sendPackage];        
+}    
+
+/**/
+- (void) onAsyncMsgBillRejected: (char*) aMessageName acceptorId: (int) anAcceptorId cause: (char*) aCause qty: (int) aQty
+{
+ 	GENERIC_PACKAGE pkg;
+    char seconds[30];
+
+	pkg = myCommandPackage;
+	[pkg clear];
+	//[pkg setName: "AsyncMsg"];
+    [pkg setName: aMessageName];
+    [pkg addParamAsInteger: "AcceptorId" value: anAcceptorId];
+	[pkg addParamAsString: "Cause" value: aCause];
+    [pkg addParamAsInteger: "Qty" value: aQty];
+
+    [self sendPackage];        
+    
+}
+
+
+/**/
+- (void) onAsyncMsg: (char*) aMessageName code: (char*) aCode description: (char*) aDescription isBlocking: (BOOL) anIsBlocking
+{
+ 	GENERIC_PACKAGE pkg;
+
+	pkg = myCommandPackage;
+	[pkg clear];
+	//[pkg setName: "AsyncMsg"];
+    [pkg setName: aMessageName];
+	[pkg addParamAsString: "Code" value: aCode];
+	[pkg addParamAsString: "Description" value: aDescription];
+    [pkg addParamAsBoolean: "IsBlocking" value: anIsBlocking];
+
+    [self sendPackage];        
+}    
+
+
 
 
 
@@ -1150,6 +1608,7 @@ static int loginFailQty = 0;
 			case OpenDoorStateType_TIME_DELAY: 
                 printf(" >>>>>>>>>>>>>> OpenDoorStateType_TIME_DELAY\n");
                 timerPeriod = [anObject getPeriod];
+                printf(" >>>>>>>>>>>>>> 111\n");
                  [self onDoorStateChange: state period: timerPeriod];
 				break;
 	
@@ -1157,7 +1616,8 @@ static int loginFailQty = 0;
                 printf(" >>>>>>>>>>>>>> OpenDoorStateType_ACCESS_TIME\n");
                 timerPeriod = [anObject getPeriod];
                 [self onDoorStateChange: state period: timerPeriod];
-				[self removeLoggedUsers];		
+                printf("access time xxxx\n");
+				//[self removeLoggedUsers];		
 				break;
 	
 			case OpenDoorStateType_WAIT_OPEN_DOOR: 
@@ -1165,35 +1625,45 @@ static int loginFailQty = 0;
                 
                 printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>ABRIR PUERTA!!!!!!!!!!!!!!!!!!!!!!! \n");
                 //[self onInformAlarm: notificationDsc timeLeft: 0 isBlocking: TRUE];
-                [self onDoorStateChange: state period: 0];
+                timerPeriod = [anObject getPeriod];
+                [self onDoorStateChange: state period: timerPeriod];
 				break;
 	
 			case OpenDoorStateType_WAIT_CLOSE_DOOR: 
                 printf(" >>>>>>>>>>>>>> OpenDoorStateType_WAIT_CLOSE_DOOR\n");
                 sprintf(notificationDsc, "%s", getResourceStringDef(RESID_UNDEFINED, "Cerrar Puerta"));
-                [self onDoorStateChange: state period: 0];
+                timerPeriod = [anObject getPeriod];
+                [self onDoorStateChange: state period: timerPeriod];
 				break;
 
 			case OpenDoorStateType_WAIT_CLOSE_DOOR_WARNING: 
                 printf(" >>>>>>>>>>>>>> OpenDoorStateType_WAIT_CLOSE_DOOR_WARNING\n");
 				sprintf(notificationDsc, "%s %s ", getResourceStringDef(RESID_UNDEFINED, "Cerrar Puerta"), getResourceStringDef(RESID_UNDEFINED, "Alarma en: "));
                 printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>CERRAR PUERTA 1!!!!!!!!!!!!!!!!!!!!!!! \n");
+                timerPeriod = [anObject getPeriod];
+                [self onDoorStateChange: state period: timerPeriod];
 				break;
 	
 			case OpenDoorStateType_WAIT_CLOSE_DOOR_ERROR: 
                 printf(" >>>>>>>>>>>>>> OpenDoorStateType_WAIT_CLOSE_DOOR_ERROR\n");
 				sprintf(notificationDsc, "%s %s", getResourceStringDef(RESID_UNDEFINED, "Cerrar Puerta"), getResourceStringDef(RESID_UNDEFINED, "Error"));
                 printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>CERRAR PUERTA 2!!!!!!!!!!!!!!!!!!!!!!! \n");
+                timerPeriod = [anObject getPeriod];
+                [self onDoorStateChange: state period: timerPeriod];
                 break;
 	
 			case OpenDoorStateType_LOCK_AND_OPEN_DOOR: 
                 printf(" >>>>>>>>>>>>>> OpenDoorStateType_LOCK_AND_OPEN_DOOR\n");
 				sprintf(notificationDsc, "%s %s", getResourceStringDef(RESID_UNDEFINED, "Puerta abierta"), getResourceStringDef(RESID_UNDEFINED, "Error"));
+                timerPeriod = [anObject getPeriod];
+                [self onDoorStateChange: state period: timerPeriod];
 				break;
 	
 			case OpenDoorStateType_WAIT_UNLOCK_WITH_OPEN_DOOR: 
                 printf(" >>>>>>>>>>>>>> OpenDoorStateType_WAIT_UNLOCK_WITH_OPEN_DOOR\n");
 				sprintf(notificationDsc, "%s %s", getResourceStringDef(RESID_UNDEFINED, "Destrabar Puerta"), getResourceStringDef(RESID_UNDEFINED, "Error"));
+                timerPeriod = [anObject getPeriod];
+                [self onDoorStateChange: state period: timerPeriod];
 				break;
 	
 /*			case OpenDoorStateType_WAIT_UNLOCK_ENABLE:
@@ -1203,6 +1673,8 @@ static int loginFailQty = 0;
 			case OpenDoorStateType_WAIT_LOCK_DOOR: 
                 printf(" >>>>>>>>>>>>>> OpenDoorStateType_WAIT_LOCK_DOOR\n");
 				sprintf(notificationDsc, "%s %s", getResourceStringDef(RESID_UNDEFINED, "Trabar Puerta"), getResourceStringDef(RESID_UNDEFINED, "Advertencia en: "));
+                timerPeriod = [anObject getPeriod];
+                [self onDoorStateChange: state period: timerPeriod];
 				break;
 	
 /*			case OpenDoorStateType_WAIT_LOCK_DOOR_WARNING: 
@@ -1212,17 +1684,21 @@ static int loginFailQty = 0;
 			case OpenDoorStateType_WAIT_LOCK_DOOR_ERROR: 
                 printf(" >>>>>>>>>>>>>> OpenDoorStateType_WAIT_LOCK_DOOR_ERROR\n");
 				sprintf(notificationDsc, "%s %s", getResourceStringDef(RESID_UNDEFINED, "Trabar puerta"), getResourceStringDef(RESID_UNDEFINED, "Error"));
+                timerPeriod = [anObject getPeriod];
+                [self onDoorStateChange: state period: timerPeriod];
 				break;
 
 	
 			case OpenDoorStateType_OPEN_DOOR_VIOLATION: 
                 printf(" >>>>>>>>>>>>>> OpenDoorStateType_OPEN_DOOR_VIOLATION\n");
 				strcpy(notificationDsc, getResourceStringDef(RESID_UNDEFINED, "Violacion de Seguridad"));
+                [self onDoorStateChange: state period: 0];
 				break;
 
 			case OpenDoorStateType_WAIT_OUTER_DOOR_OPEN: 
                 printf(" >>>>>>>>>>>>>> OpenDoorStateType_WAIT_OUTER_DOOR_OPEN\n");
 				strcpy(notificationDsc, getResourceStringDef(RESID_UNDEFINED, "Wait Outer Door Open"));
+                [self onDoorStateChange: state period: 0];
 				break;
 
 	
@@ -1243,10 +1719,10 @@ static int loginFailQty = 0;
 /**/
 - (void) executeRequest
 {
+    printf("execute request\n");
 	switch (myReqType) {
         
 		case USER_LOGIN_REQ:
-            doLog(0, "userLoginReq\n");
 			[self userLogin];
 			return;
 
@@ -1255,7 +1731,6 @@ static int loginFailQty = 0;
 			return;
 
 		case USER_CHANGE_PIN_REQ:
-            doLog(0, "userChangePinReq\n");
 			[self userChangePin];
 			return;
 
@@ -1306,6 +1781,92 @@ static int loginFailQty = 0;
         case CANCEL_DOOR_ACCESS_REQ:
             [self cancelDoorAccess];
             return;
+            
+        case START_MANUAL_DROP_REQ:
+            [self startManualDrop];
+            return;
+            
+        case ADD_MANUAL_DROP_DETAIL_REQ:
+            [self addManualDropDetail];
+            return;
+            
+        case PRINT_MANUAL_DROP_RECEIPT_REQ:
+            [self printManualDropReceipt];
+            return;
+            
+        case CANCEL_MANUAL_DROP_REQ:
+            [self cancelManualDrop];
+            return;
+            
+        case FINISH_MANUAL_DROP_REQ:              
+            [self finishManualDrop];
+            return;
+            
+        case START_VALIDATION_MODE_REQ:
+            printf("start validation mode\n");
+            [self startValidationMode];
+            return;
+            
+        case STOP_VALIDATION_MODE_REQ:
+            [self stopValidationMode];
+            return;
+           
+        case GENERATE_OPERATOR_REPORT_REQ:
+            [self generateOperatorReport];
+            return;
+            
+        case HAS_ALREADY_PRINT_END_DAY_REQ:
+            [self hasAlreadyPrintEndDay];
+            return;
+            
+        case GENERATE_END_DAY_REQ:            
+            [self generateEndDay];
+            return;
+            
+        case GENERATE_ENROLLED_USERS_REPORT_REQ:
+            [self generateEnrolledUsersReport];
+            return;
+            
+        case GENERATE_AUDIT_REPORT_REQ:
+            [self generateAuditReport];
+            return;
+            
+        case GENERATE_CASH_REPORT_REQ:
+            [self generateCashReport];
+            return;
+            
+        case GENERATE_X_CLOSE_REPORT_REQ:
+            [self generateXCloseReport];
+            return;
+            
+        case GENERATE_REFERENCE_REPORT_REQ:
+            [self generateReferenceReport];
+            return;
+            
+        case GENERATE_SYSTEM_INFO_REPORT_REQ:
+            [self generateSystemInfoReport];
+            return;
+            
+        case GENERATE_TELESUP_REPORT_REQ:
+            [self generateTelesupReport];
+            return;
+            
+        case REPRINT_DEPOSIT_REQ:
+            [self reprintDeposit];
+            return;
+            
+        case REPRINT_EXTRACTION_REQ:
+            [self reprintExtraction];
+            return;
+            
+        case REPRINT_END_DAY_REQ:
+            [self reprintEndDay];
+            return;
+            
+        case REPRINT_PARTIAL_DAY_REQ:                   
+            [self reprintPartialDay];
+            return;
+            
 
 		default: break;		
 

@@ -395,19 +395,19 @@ static void convertTime(datetime_t *dt, struct tm *bt)
 	  [settings setPinLife: [myPackage getParamAsInteger: "PinLife"]];
 
 	if ([myPackage isValidParam: "PinAutoInactivate"])
-	  [settings setPinAutoInactivate: [myPackage getParamAsInteger: "PinAutoInactivate"]];
+	  [settings setPinAutoInactivate: [myPackage getParamAsBoolean: "PinAutoInactivate"]];
 
 	if ([myPackage isValidParam: "PinAutoDelete"])
-	  [settings setPinAutoDelete: [myPackage getParamAsInteger: "PinAutoDelete"]];
+	  [settings setPinAutoDelete: [myPackage getParamAsBoolean: "PinAutoDelete"]];
 
 	if ([myPackage isValidParam: "AskEnvelopeNumber"])
-	  [settings setAskEnvelopeNumber: [myPackage getParamAsBoolean: "AskEnvelopeNumber"]];
+	  [settings setAskEnvelopeNumber: [myPackage getParamAsInteger: "AskEnvelopeNumber"]];
 
 	if ([myPackage isValidParam: "UseCashReference"])
-	  [settings setUseCashReference: [myPackage getParamAsInteger: "UseCashReference"]];
+	  [settings setUseCashReference: [myPackage getParamAsBoolean: "UseCashReference"]];
 
 	if ([myPackage isValidParam: "AskRemoveCash"])
-	  [settings setAskRemoveCash: [myPackage getParamAsInteger: "AskRemoveCash"]];
+	  [settings setAskRemoveCash: [myPackage getParamAsBoolean: "AskRemoveCash"]];
 
 	if ([myPackage isValidParam: "PrintLogo"])
 	  [settings setPrintLogo: [myPackage getParamAsBoolean: "PrintLogo"]];
@@ -2052,7 +2052,6 @@ static void convertTime(datetime_t *dt, struct tm *bt)
 	if ([myPackage isValidParam: "InformZCloseByTransaction"])
 		informZCloseByTrans = [myPackage getParamAsBoolean: "InformZCloseByTransaction"];
 
-
 	myEntityRef = [[TelesupFacade getInstance] addTelesup: description
 				                                       userName: userName 
                                                password: password
@@ -2409,13 +2408,14 @@ static void convertTime(datetime_t *dt, struct tm *bt)
 	int connectionId;
 	int error;
 
-  printd("GenericSetRequest->setConnection\n");
+  printf("GenericSetRequest->setConnection\n");
   
   if (![myPackage isValidParam: "ConnectionId"])
     connectionId = [facade getTelesupParamAsInteger: "ConnectionId1" telesupRol: myTelesupRol];
   else 
 		connectionId = [myPackage getParamAsInteger: "ConnectionId"];
   
+  printf("GenericSetRequest->2\n");
 	if ([myPackage isValidParam: "Description"])
 	 [facade setConnectionParamAsString: "Description" value: [myPackage getParamAsString: "Description"] connectionId: connectionId];
     	  
@@ -2466,15 +2466,16 @@ static void convertTime(datetime_t *dt, struct tm *bt)
 
 	if ([myPackage isValidParam: "DomainSup"]) 
 	 [facade setConnectionParamAsString:  "DomainSup" value: [myPackage getParamAsString: "DomainSup"] connectionId: connectionId];
-  
+  printf("GenericSetRequest->3\n");
 	[facade connectionApplyChanges: connectionId];   
-
+printf("GenericSetRequest->4\n");
 	TRY
+	printf("GenericSetRequest->5\n");
 		if (![[TelesupervisionManager getInstance] writeTelesupsToFile])
 			error = 1;
-
+printf("GenericSetRequest->6\n");
 		[[TelesupervisionManager getInstance] updateGprsConnections:  [[TelesupervisionManager getInstance] getConnection: connectionId]];
-
+printf("GenericSetRequest->7\n");
 	CATCH
 		error = 1;
 	END_TRY

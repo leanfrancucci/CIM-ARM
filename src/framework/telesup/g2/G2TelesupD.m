@@ -135,7 +135,7 @@
 			/* Lee el mensaje  */
 			[self readMessage: myCurrentMsg qty: TELESUP_MSG_SIZE - 1];
 
-			//doLog(0,"Message \n %s \n", myCurrentMsg);
+			printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Message G2TelesupD\n %s \n", myCurrentMsg);
 
 			/* Controla que sea o no un mensaje de fin de telesupervision */
 			if ([self isLogoutMessage: myCurrentMsg]) 

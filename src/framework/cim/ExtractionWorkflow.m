@@ -622,7 +622,8 @@ static State WaitUnlockDoorWithOpenDoorState =
 /**/
 - (unsigned long) getPeriod
 {
-        return [myTimer getPeriod];
+    printf("ExtractionWorkflow getPeriod\n");
+        return [myTimer getTimeLeft];
 }
 
 
@@ -670,11 +671,11 @@ static State WaitUnlockDoorWithOpenDoorState =
 /**/
 - (void) startTimer: (unsigned long) aTime
 {
-	[myTimer initTimer: ONE_SHOT period: aTime object: self callback: "timerExpired"];
+    printf("ExtractionWorkflow -> startTimer, on %ld ms\n", aTime);
+    [myTimer initTimer: ONE_SHOT period: aTime object: self callback: "timerExpired"];
 	[myTimer start];
 			    //************************* logcoment
 	//doLog(0, "ExtractionWorkflow -> startTimer, on %ld ms\n", aTime);
-    printf("ExtractionWorkflow -> startTimer, on %ld ms\n", aTime);
 }
 
 /**/
@@ -947,7 +948,7 @@ static State WaitUnlockDoorWithOpenDoorState =
 - (void) timerExpired
 {
 			    //************************* logcoment
-//	doLog(0,"ExtractionWorkflow -> timerExpired\n");
+	printf("ExtractionWorkflow -> timerExpired\n");
 	executeStateMachine(myStateMachine, TIMER_EXPIRED_EVT);
 }
 
@@ -1252,6 +1253,8 @@ static State WaitUnlockDoorWithOpenDoorState =
 //	LOG("ExtractionWorkflow -> waitOpenDoorEntry doorId = %d\n", [myDoor getDoorId]);
     printf("ExtractionWorkflow -> waitOpenDoorEntry doorId = %d\n", [myDoor getDoorId]);
 	[self startTimer: [self getMaxOpenTime] * 1000];
+    
+    [self notifyStateChange];
 }
 
 /**/
@@ -1289,6 +1292,9 @@ static State WaitUnlockDoorWithOpenDoorState =
 			    //************************* logcoment
 	printf("ExtractionWorkflow -> waitCloseDoorWarningEntry doorId = %d\n", [myDoor getDoorId]);
 	[self startTimer: [self getFireAlarmTime] * 1000];
+    
+    [self notifyStateChange];
+    
 	[[Buzzer getInstance] buzzerStart];
 }
 
@@ -1307,6 +1313,8 @@ static State WaitUnlockDoorWithOpenDoorState =
 	[self startTimer: LOCK_DOOR_WARNING_TIME * 1000];
 			    //************************* logcoment
 	printf("ExtractionWorkflow -> waitLockDoorEntry doorId = %d\n", [myDoor getDoorId]);
+    
+    [self notifyStateChange];
 }
 
 /**/
@@ -1328,6 +1336,8 @@ static State WaitUnlockDoorWithOpenDoorState =
 	if (myInnerDoorWorkflow) {
 		[myInnerDoorWorkflow cancelOuterDoor];
 	}
+	
+	[self notifyStateChange];
 }
 
 /**/
@@ -1352,6 +1362,8 @@ static State WaitUnlockDoorWithOpenDoorState =
 	if (!myHasUnlocked) {
 		[self doorViolationAction];
 	}
+	
+	[self notifyStateChange];
 }
 
 /**/
@@ -1473,6 +1485,8 @@ static State WaitUnlockDoorWithOpenDoorState =
 	if (myInnerDoorWorkflow) {
 		[myInnerDoorWorkflow cancelOuterDoor];
 	}
+	
+	[self notifyStateChange];
 }
 
 /**/
@@ -1495,6 +1509,8 @@ static State WaitUnlockDoorWithOpenDoorState =
 	if (myInnerDoorWorkflow) {
 		[myInnerDoorWorkflow cancelOuterDoor];
 	}
+	
+	[self notifyStateChange];
 }
 
 /**/

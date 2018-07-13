@@ -260,20 +260,20 @@ static CIM_GENERAL_SETTINGS singleInstance = NULL;
 - (int) getPinLife { return myPinLife; }
 
  /**/
-- (void) setPinAutoInactivate: (int) aValue { myPinAutoInactivate = aValue; }
-- (int) getPinAutoInactivate { return myPinAutoInactivate; }
+- (void) setPinAutoInactivate: (BOOL) aValue { myPinAutoInactivate = aValue; }
+- (BOOL) getPinAutoInactivate { return myPinAutoInactivate; }
 
  /**/
-- (void) setPinAutoDelete: (int) aValue { myPinAutoDelete = aValue; }
-- (int) getPinAutoDelete { return myPinAutoDelete; }
+- (void) setPinAutoDelete: (BOOL) aValue { myPinAutoDelete = aValue; }
+- (BOOL) getPinAutoDelete { return myPinAutoDelete; }
 
 /**/
 - (void) setUseCashReference: (BOOL) aValue { myUseCashReference = aValue; }
 - (BOOL) getUseCashReference { return myUseCashReference; }
 
 /**/
-- (void) setAskEnvelopeNumber: (BOOL) aValue { myAskEnvelopeNumber = aValue; }
-- (BOOL) getAskEnvelopeNumber { return myAskEnvelopeNumber; }
+- (void) setAskEnvelopeNumber: (int) aValue { myAskEnvelopeNumber = aValue; }
+- (int) getAskEnvelopeNumber { return myAskEnvelopeNumber; }
 
 /**/
 - (void) setAskRemoveCash: (BOOL) aValue { myAskRemoveCash = aValue; }

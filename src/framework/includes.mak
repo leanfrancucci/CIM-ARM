@@ -134,7 +134,7 @@ ALL_INCLUDES=\
 	 -I$(BASE_FW_SCR)/test/common
 
 CFLAGS=
-SYS_INCLUDES=-I/usr/include
+
 
 #uclinux
 ifeq "$(PLATFORM)" "uclinux"

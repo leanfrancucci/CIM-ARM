@@ -8,6 +8,7 @@
 
 #include "RemoteProxy.h"
 #include "DFileTransferProtocol.h"
+#include "system/os/all.h"
 
 /*
  *	Implementa el proxy remoto para la telesupervisi� con el G2
@@ -21,6 +22,7 @@
 	STRING_TOKENIZER myTokenizer;
 	D_FILE_TRANSFER_PROTOCOL 	myFileTransfer;
 	BOOL myPartitionMessage;
+    OMUTEX myMutex;
 }
 
 /*

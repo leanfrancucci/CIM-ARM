@@ -596,6 +596,7 @@ static CT_SYSTEM singleInstance = NULL;
 	[[PowerFailManager getInstance] start];
 	//doLog(0,"[ OK ]\n");fflush(stdout);
 
+    
 	if (anObserver) [anObserver updateDisplay: 70 msg: "Init Devices..."];
 	[CimManager getInstance];
 	[[[CimManager getInstance] getCim] setSerialNumberChangeListener: [JSystem getInstance]];
@@ -647,9 +648,6 @@ static CT_SYSTEM singleInstance = NULL;
 	[consoleAcceptor start];
 
 	printf("OK\n");
-    
-    printf("AsyncMsgThread\n");
-    //[[AsyncMsgThread getInstance] start];
     
 	[[PrinterSpooler getInstance] start];
 

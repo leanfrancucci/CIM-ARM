@@ -71,7 +71,7 @@ static TELESUP_FACTORY myTelesupFactory = nil ;
 		aTelesupViewer = [DummyTelesupViewer new];
 
 	[aTelesupViewer setTelesupId: aRol];		
-    printf("1!!!!\n");
+    
 	switch (aTelesupId) {
 
 		case PIMS_TSUP_ID:
@@ -158,7 +158,7 @@ static TELESUP_FACTORY myTelesupFactory = nil ;
             
     case CONSOLE_TSUP_ID:
 
-	printf("2!!!!\n");
+	
     telesupd = [G2TelesupD new];
 			assert(telesupd);
 			/**/
@@ -166,7 +166,7 @@ static TELESUP_FACTORY myTelesupFactory = nil ;
 			assert(activePIC);
 			/* hay que configurar el PIC adecuadamente */			
 			[telesupd setActivePIC: activePIC];
-printf("3!!!!\n");
+
 			// Se fija en el archivo de configuracion si tiene deshabilitado el PIC
 			// Esto deberia esta deshabilitado unicamente con motivos de testing
 			disablePic = [[Configuration getDefaultInstance] getParamAsInteger: "TELESUP_DISABLE_PIC"
@@ -177,14 +177,14 @@ printf("3!!!!\n");
 										default: FALSE];
 			//[telesupd setExecutePICProtocol: !disablePic];
 			//[telesupd setExecuteLoginProcess: !disableLogin];
-printf("4!!!!\n");
+
             [telesupd setExecutePICProtocol: FALSE];
             [telesupd setExecuteLoginProcess: FALSE];
-printf("5!!!!\n");
+
             proxy = [G2RemoteProxy new];
 			parser = [G2TelesupParser new];
 			formatter = [G2InfoFormatter new];
-printf("6!!!!\n");			
+
 		break;                        
 
 /*		case IMAS_TSUP_ID:
@@ -209,18 +209,14 @@ printf("6!!!!\n");
 		
 	/**/
 	[formatter setTelesupId: aRol];
-	        printf("1!!!!\n");
 	/**/	
 	[proxy setReader: aReader];
-    printf("2!!!!\n");
 	[proxy setWriter: aWriter];
 	[proxy setTelesupViewer: aTelesupViewer];
-	printf("3!!!!\n");
 	/**/
 	[telesupd setFreeOnExit: FALSE];
 	[telesupd setTelesupId: aTelesupId];
 	[telesupd setTelesupRol: aRol];
-	printf("4!!!!\n");
 	[telesupd setTelesupViewer: aTelesupViewer];
 	[telesupd setTelesupErrorManager: [self getTelesupErrorManager: aTelesupId]];
 	[telesupd setTelesupParser: parser];
@@ -228,7 +224,6 @@ printf("6!!!!\n");
 	[telesupd setRemoteProxy: proxy];
 	[telesupd setRemoteReader: aReader];
 	[telesupd setRemoteWriter: aWriter];
-printf("5!!!!\n");
 	if (aTelesupId == PIMS_TSUP_ID) 
 		[parser setViewer: aTelesupViewer];
 

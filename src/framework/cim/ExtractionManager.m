@@ -185,7 +185,7 @@ static EXTRACTION_MANAGER singleInstance = NULL;
 	// Recorro hasta el fin del recordset de depositos
 
 	while (hasDeposit && ![depositRS eof]) {
-
+        
 		// Solo me interesan los depositos de la puerta seleccionada
 		if ([depositRS getShortValue: "DOOR_ID"] == doorId) {
 

@@ -169,7 +169,8 @@
         frame: (int) aFrame /**/ cabinIdleWaitTime: (int) aCabinIdleWaitTime
 				informDepositsByTransaction: (BOOL) anInformDepositsByTransaction 
 				informExtractionsByTransaction: (BOOL) anInformExtractionsByTransaction
-				informAlarmsByTransaction: (BOOL) anInformAlarmsByTransaction;
+				informAlarmsByTransaction: (BOOL) anInformAlarmsByTransaction
+				informZCloseByTransaction: (BOOL) anInformZCloseByTransaction;
 
 
 /*

@@ -280,6 +280,11 @@ static id singleInstance = NULL;
 		return;
 	}
 
+    if (strcasecmp(aParam, "InformZCloseByTransaction") == 0 ) {
+		[[TelesupervisionManager getInstance] setTelInformZCloseByTransaction: aTelesupRol value: aValue];
+		return;
+	}
+
 	[[TelesupervisionManager getInstance] restoreTelesup: aTelesupRol];
 	THROW_MSG(INVALID_PARAM_EX, aParam);
 }
@@ -411,6 +416,9 @@ static id singleInstance = NULL;
 	if (strcasecmp(aParam, "InformAlarmsByTransaction") == 0 ) 
 		return [[TelesupervisionManager getInstance] getTelInformAlarmsByTransaction: aTelesupRol];
 
+	if (strcasecmp(aParam, "InformZCloseByTransaction") == 0 ) 
+		return [[TelesupervisionManager getInstance] getTelInformZCloseByTransaction: aTelesupRol];
+    
   [[TelesupervisionManager getInstance] restoreTelesup: aTelesupRol];
 
 	THROW_MSG(INVALID_PARAM_EX, aParam);
@@ -436,9 +444,11 @@ static id singleInstance = NULL;
         frame: (int) aFrame /**/ cabinIdleWaitTime: (int) aCabinIdleWaitTime	
 				informDepositsByTransaction: (BOOL) anInformDepositsByTransaction 
 				informExtractionsByTransaction: (BOOL) anInformExtractionsByTransaction
-				informAlarmsByTransaction: (BOOL) anInformAlarmsByTransaction			
+				informAlarmsByTransaction: (BOOL) anInformAlarmsByTransaction		
+				informZCloseByTransaction: (BOOL) anInformZCloseByTransaction
 				
 {	
+    
 	return [[TelesupervisionManager getInstance] addTelesup: aDescription
 				userName: aUserName password: aPassword
 				remoteUserName: aRemoteUserName /**/ remotePassword: aRemotePassword
@@ -454,7 +464,8 @@ static id singleInstance = NULL;
         frame: aFrame /**/ cabinIdleWaitTime: aCabinIdleWaitTime
 				informDepositsByTransaction: anInformDepositsByTransaction 
 				informExtractionsByTransaction: anInformExtractionsByTransaction
-				informAlarmsByTransaction: anInformAlarmsByTransaction];
+				informAlarmsByTransaction: anInformAlarmsByTransaction
+                informZCloseByTransaction: (BOOL) anInformZCloseByTransaction];
 }
 
 /**/

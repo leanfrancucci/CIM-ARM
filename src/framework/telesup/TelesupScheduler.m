@@ -1059,6 +1059,7 @@ static TELESUP_SCHEDULER singleInstance = NULL;
 	// para que los mensajes no se muestren por pantalla
 
 
+    printf("telesup 1\n");
 	if ([myBackgTelesupList size] > 0) {
 
 		telcoType = [[myBackgTelesupList at: 0] intValue];
@@ -1068,18 +1069,20 @@ static TELESUP_SCHEDULER singleInstance = NULL;
 		[myBackgTelesupList removeAt: 0];
 
 	}
-
+    printf("telesup 2\n");
 	if ([myBackgTelesupList size] == 0) {
 		[myMutex lock];
+            printf("telesup 3\n");
 		myStartTelesupInBackground = FALSE;
 		[myMutex unLock];
 	}	
-	
+	    printf("telesup 4\n");
 	currentTelesup = [[TelesupervisionManager getInstance] getTelesupByTelcoType: telcoType];
 
 	
 	if (currentTelesup) {
 		viewer = [DummyTelesupViewer new];
+            printf("telesup 5\n");
 		myIsInBackground = TRUE;
 
 		// Audito el comienzo de supervision
@@ -1089,7 +1092,7 @@ static TELESUP_SCHEDULER singleInstance = NULL;
 		strcat(telcoTypeSt, getResourceStringDef(RESID_TELESUP_TYPE_AUTOMATIC, "Automatica"));
 		[Audit auditEventCurrentUser: TELESUP_START additional: telcoTypeSt station: 0 logRemoteSystem: FALSE];
 */
-
+    printf("telesup 6\n");
 		[[TelesupScheduler getInstance] startTelesup: currentTelesup getCurrentSettings: FALSE telesupViewer:viewer];
 		[viewer free];
 		currentTelesup = NULL;
@@ -1146,11 +1149,11 @@ static TELESUP_SCHEDULER singleInstance = NULL;
 	msleep(10000);
 	
 	TRY
-			
+	
 		while (TRUE)
 		{
 
-			// Si ya estoy haciendo una supervision, espero
+            // Si ya estoy haciendo una supervision, espero
 			if (inTelesup) {
 				msleep(10000);
 				continue;
@@ -1161,25 +1164,28 @@ static TELESUP_SCHEDULER singleInstance = NULL;
 				msleep(10000);
 				continue;
 			}
-
+/*
 			if ((![[CimManager getInstance] isSystemIdleForTelesup]) && (myCommunicationIntention != CommunicationIntention_CHANGE_STATE_REQUEST)){
 //				doLog(0,"No supervisa porque el sistema posee depositos o extracciones en curso\n");
+                printf("3\n");
 				msleep(10000);
 				continue;
 			}
 
 			if ([[CimBackup getInstance] inRestore]) {
 				//doLog(0,"No supervisa porque esta restaurando...\n");
+                printf("4\n");
 				msleep(10000);
 				continue;
 			}
-
+    
 			if ([[CimBackup getInstance] getCurrentBackupType] != BackupType_UNDEFINED) {
 				//doLog(0,"No supervisa porque esta backupeando...\n");
+                printf("5\n");
 				msleep(10000);
 				continue;
 			}
-
+*/
 			// si se esta en proceso de login espero hasta que este finalize.
 			if ([[UserManager getInstance] isLoginInProgress]) {
 				//doLog(0,"No supervisa porque esta procesando login...\n");
@@ -1190,26 +1196,26 @@ static TELESUP_SCHEDULER singleInstance = NULL;
 //////////////////  CIM: DESCOMENTAR //////////////////////////////////////// 
       msleep(100);
 
+            printf("analiza si es en background\n");
 			//// ////
+
 			if (myStartTelesupInBackground) {
 				[self doStartTelesupInBackground];
 				continue;
 			}
 
-		
 			telesups = [[TelesupervisionManager getInstance] getTelesups];
+            
 			
 			for (i = 0; i < [telesups size]; ++i)
 			{
-			  //printf("Verifica supervision %d\n", i);
+			  printf("Verifica supervision %d\n", i);
 			  
 				telesup = [telesups at: i];
-	
 				// No es una supervision activa
 				if (![telesup isActive]) continue;
 				
 				[self printSettings: telesup];
-				
 				// Para supervisar debo verificar que la supervision sea del tipo apropiado,
 				// que se den las condiciones de ultima fecha de supervision, que no haya cabinas
 				// con tickets pendientes o tubos descolgados y que la cantidad de impresiones en cola sea 0
@@ -1238,7 +1244,7 @@ static TELESUP_SCHEDULER singleInstance = NULL;
 			}
 
 			msleep(CHECK_TELESUP_TIME); // Duermo x tiempo
-			
+
       // Pone el firstTelesup en FALSE aca para que cuando haya preguntado por las cabinas osciosas no haya evaluado
       // el tiempo la primera vez.
       if (firstTelesup) firstTelesup = FALSE;

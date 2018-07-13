@@ -34,7 +34,7 @@
 #define DFP_PRECITION		6
 #define DFP_ACURRANCY		0.0000001
 
-#define PASO_POR_ACA() {/* doLog(0,"Paso por la linea %d del archivo %s\n", __LINE__, __FILE__); fflush(stdout); */}
+#define PASO_POR_ACA() { printf(0,"Paso por la linea %d del archivo %s\n", __LINE__, __FILE__); fflush(stdout); }
 
 #define TEST_SPEED_START { unsigned long __ticks = getTicks();
 #define TEST_SPEED_END	   /*doLog(0,"SPEED --> %ld msec, %s, %s, line %d\n", getTicks() - __ticks, __FILE__, __FUNCTION__, __LINE__);*/ }

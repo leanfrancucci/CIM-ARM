@@ -64,7 +64,7 @@ printmsg(char *tittle, char *msg)
 	/**/	
 	myFileTransfer = [DFileTransferProtocol new];	
 
-		
+    myMutex = [OMutex new];	
 	return self;
 }
 
@@ -106,7 +106,9 @@ printmsg(char *tittle, char *msg)
 /**/
 - (void) sendMessage: (char*) aBuffer qty: (int) aQty
 {
+    [myMutex lock];
 	[myWriter write: aBuffer qty: aQty];		
+    [myMutex unLock];
 }
 
 /**
@@ -127,7 +129,9 @@ printmsg(char *tittle, char *msg)
 			"-----------------------------------------------------------\n", strlen(myAuxMessage), myAuxMessage);
 */
 	/**/
+    [myMutex lock];
 	[myWriter write: myAuxMessage qty: size];
+    [myMutex unLock];
 }
 
 /**/
@@ -161,7 +165,9 @@ printmsg(char *tittle, char *msg)
 
 	/**/
     printf("message = %s \n", myAuxMessage);
+    [myMutex lock];
 	[myWriter write: myAuxMessage qty: size];	
+    [myMutex unLock];
 }
 
 /**/

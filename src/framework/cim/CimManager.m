@@ -1107,22 +1107,24 @@ static CIM_MANAGER singleInstance = NULL;
 	int i;
 
 	if (myCurrentState != myCimStateIdle) {
-		PASO_POR_ACA();
+		printf("isSystemIdleForTelesup 1\n");
 		return FALSE;
 	}
 
 	if (inManualDropState) {
+        printf("isSystemIdleForTelesup 2\n");
 		return FALSE;
 }
 
 	for (i = 0; i < [myExtractionWorkflowList size]; ++i) {
 		if ([[myExtractionWorkflowList at: i] getCurrentState] != OpenDoorStateType_IDLE) {
-
+             printf("isSystemIdleForTelesup 3 state %d\n", [[myExtractionWorkflowList at: i] getCurrentState]);   
 			return FALSE;
 		}		
 	}
 
 	if ([[CommercialStateMgr getInstance] isChangingState]) {
+        printf("isSystemIdleForTelesup 4\n");
 			return FALSE;
 	}
 	return TRUE;

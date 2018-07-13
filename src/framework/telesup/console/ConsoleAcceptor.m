@@ -12,6 +12,7 @@
 //#include "SystemOpTelesupParser.h"
 //#include "SystemOpRequest.h"
 #include "RemoteConsole.h"
+#include "AsyncMsgThread.h"
 
 #define CONSOLE_PORT	9001
 #define REMOTE_SYSTEM_READ_TIMEOUT		30
@@ -164,6 +165,11 @@
 			[parser setEventsProxy: eventsProxy];
 			[myRemoteConsole setParser: parser];
 			[myRemoteConsole setEventsClientSocket: aSocket];
+            
+            printf("AsyncMsgThread\n");
+            
+            [[AsyncMsgThread getInstance] setEventsProxy: eventsProxy];
+            [[AsyncMsgThread getInstance] start];            
 	
 			printf("comienza el telesupd");		
             TRY

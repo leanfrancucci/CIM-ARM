@@ -89,6 +89,10 @@ static DEPOSIT_MANAGER singleInstance = NULL;
 	unsigned long auditNumber = 0;
   datetime_t auditDateTime = 0;	
   DepositReportParam depositParam;
+  
+  printf("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
+  printf("DEPOSIT MANAGER -------------------------------------------END DEPOSIT\n");
+  printf("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
 
 	// Solo grabo depositos que tengan algun valor
 	if (aDeposit != NULL) {
@@ -145,12 +149,18 @@ static DEPOSIT_MANAGER singleInstance = NULL;
 		4.esta configurada online el envio de depositos en la telesup
 		*/
 
+        printf("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
+        printf("Agarra la supervision PIMS\n");
+        
 		telesup = [[TelesupervisionManager getInstance] getTelesupByTelcoType: PIMS_TSUP_ID];
 
+        if( telesup ) printf("HAY supervision PIMS\n");
+        
 		if ( telesup && 
 					[telesup getInformDepositsByTransaction] /*&&
 					[[CommercialStateMgr getInstance] canExecuteModule: ModuleCode_SEND_DROPS] &&
 					[[[CommercialStateMgr getInstance] getModuleByCode: ModuleCode_SEND_DROPS] getOnline] */) {
+            if( telesup ) printf("SUPERVISA PIMS\n");
 
             //************************* logcoment
 			//doLog(0,"Supervisa el deposito\n");

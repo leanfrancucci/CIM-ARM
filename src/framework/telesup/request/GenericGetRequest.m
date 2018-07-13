@@ -28,6 +28,7 @@
 #include "ZCloseManager.h"
 #include "PrintingSettings.h"
 #include "ReportXMLConstructor.h"
+#include "EventManager.h"
 
 //#define printd(args...) doLog(0,args)
 #define printd(args...)
@@ -279,11 +280,11 @@ static GENERIC_GET_REQUEST myRestoreSingleInstance = nil;
 	[myRemoteProxy addParamAsString: "IdleText" value: [myReqFacade getIdleText]];
 	[myRemoteProxy addParamAsInteger: "PinLenght" value: [myReqFacade getPinLenght]];
 	[myRemoteProxy addParamAsInteger: "PinLife" value: [myReqFacade getPinLife]];
-	[myRemoteProxy addParamAsInteger: "PinAutoInactivate" value: [myReqFacade getPinAutoInactivate]];
-	[myRemoteProxy addParamAsInteger: "PinAutoDelete" value: [myReqFacade getPinAutoDelete]];
-	[myRemoteProxy addParamAsBoolean: "AskEnvelopeNumber" value: [myReqFacade getAskEnvelopeNumber]];
-	[myRemoteProxy addParamAsInteger: "UseCashReference" value: [myReqFacade getUseCashReference]];
-	[myRemoteProxy addParamAsInteger: "AskRemoveCash" value: [myReqFacade getAskRemoveCash]];
+	[myRemoteProxy addParamAsBoolean: "PinAutoInactivate" value: [myReqFacade getPinAutoInactivate]];
+	[myRemoteProxy addParamAsBoolean: "PinAutoDelete" value: [myReqFacade getPinAutoDelete]];
+	[myRemoteProxy addParamAsInteger: "AskEnvelopeNumber" value: [myReqFacade getAskEnvelopeNumber]];
+	[myRemoteProxy addParamAsBoolean: "UseCashReference" value: [myReqFacade getUseCashReference]];
+	[myRemoteProxy addParamAsBoolean: "AskRemoveCash" value: [myReqFacade getAskRemoveCash]];
 	[myRemoteProxy addParamAsInteger: "LastDepositNumber" value: [myReqFacade getLastDepositNumber]];
 	[myRemoteProxy addParamAsInteger: "LastExtractionNumber" value: [myReqFacade getLastExtractionNumber]];
 	[myRemoteProxy addParamAsInteger: "LastZNumber" value: [myReqFacade getLastZNumber]];
@@ -778,6 +779,39 @@ static GENERIC_GET_REQUEST myRestoreSingleInstance = nil;
 	[myRemoteProxy sendMessage];
 
 }
+
+
+/**/
+- (void) sendEventsCategories 
+{
+	COLLECTION categories; 
+	int i;
+    id category;
+
+	printd("GenericGetRequest->sendCashReferences\n");
+
+	categories = [[EventManager getInstance] getEventsCategory];
+    
+    [myRemoteProxy newResponseMessage];
+
+	for (i = 0; i < [categories size]; ++i) {
+
+		category = [categories at: i];
+
+		[self beginEntity];
+
+		[myRemoteProxy addParamAsInteger: "CategoryId" value: [category getEventCategoryId]];
+		[myRemoteProxy addParamAsString: "Description" value: [category getCatEventDescription]];
+
+		[self endEntity];
+	
+	}  
+	
+	[myRemoteProxy sendMessage];
+
+}
+
+
 
 /* DOORS */
 - (void) initSendDoors
@@ -1822,6 +1856,9 @@ static GENERIC_GET_REQUEST myRestoreSingleInstance = nil;
     case GET_REPAIR_ORDER_REQ:
       [self sendRepairOrderItems];
       return;
+      
+    case GET_EVENTS_CATEGORIES_REQ:
+        [self sendEventsCategories];
 
     default:
    //   doLog(0,"Invalid Message!!!\n ");
