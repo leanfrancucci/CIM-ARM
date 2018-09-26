@@ -29,7 +29,7 @@ REQUEST=GetFileRequest.o PutFileRequest.o \
 		GetLogRequest.o \
 		GetSettingsDumpRequest.o \
 		GetGenericFileRequest.o \
-		CipherManager.o FileManager.o ConsoleAcceptor.o SystemOpRequest.o AsyncMsgThread.o ExtractionController.o DepositController.o ReportController.o
+		CipherManager.o FileManager.o ConsoleAcceptor.o SystemOpRequest.o AsyncMsgThread.o ExtractionController.o DepositController.o ReportController.o TelesupController.o
 		
 
 #TelesupJob.o StartJobRequest.o CommitJobRequest.o RollbackJobRequest.o \

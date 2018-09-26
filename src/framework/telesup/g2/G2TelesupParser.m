@@ -319,6 +319,8 @@ MapRequestMsg 	mapReqMsg[] =
     ,{"ReprintExtraction",	REPRINT_EXTRACTION_REQ,      	NO_REQ_OP,	0}        
     ,{"ReprintEndDay",	REPRINT_END_DAY_REQ,      	NO_REQ_OP,	0}            
     ,{"ReprintXClose",	REPRINT_PARTIAL_DAY_REQ,      	NO_REQ_OP,	0}            
+    
+    ,{"StartManualTelesup",	START_MANUAL_TELESUP_REQ,      	NO_REQ_OP,	0}       
 };
 
 #define 	MAX_REQUEST_MAPPS 	(sizeof( mapReqMsg ) / sizeof( mapReqMsg[0] ))
@@ -973,13 +975,13 @@ MapRequestMsg 	mapReqMsg[] =
 			return [self getNewGetAppliedMessagesRequest: aReqOp msg: aMessage];
 			
 		/* GetDateTime */		
-		case GET_DATETIME_REQ:
+/*		case GET_DATETIME_REQ:
 
 			// Audito el evento
 		  [Audit auditEvent: TELESUP_GET_DATE_TIME additional: "" station: 0 logRemoteSystem: TRUE]; 
 
 			return [self getNewGetDateTimeRequest: aReqOp msg: aMessage];
-
+*/
 /* Transferencias de archivos */
 
 		/* GetFileRequest */
@@ -1107,7 +1109,9 @@ MapRequestMsg 	mapReqMsg[] =
         case REPRINT_DEPOSIT_REQ:
         case REPRINT_EXTRACTION_REQ:
         case REPRINT_END_DAY_REQ:
-        case REPRINT_PARTIAL_DAY_REQ:            
+        case REPRINT_PARTIAL_DAY_REQ:     
+        case START_MANUAL_TELESUP_REQ:
+        case GET_DATETIME_REQ:
             printf(">>>>>>>>>>>>>>>>>>>>>>>>> getNewSystemOpRequest\n");
             return [self getNewSystemOpRequest: aReqOp msg: aMessage];
 

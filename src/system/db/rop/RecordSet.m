@@ -405,6 +405,9 @@
 			fwrite(myBuffer, 1, myRecordSize, tmp);
 		}
 		
+		fsync(fileno(myHandle));
+        fsync(fileno(tmp));
+        
 		fclose(myHandle);
 		fclose(tmp);
 
@@ -566,6 +569,8 @@
 	if (myIsNewRecord) [myTable incRecordCount];
 
 	if (myAutoFlush) fflush(myHandle);
+    
+    fsync(fileno(myHandle));
 
 	[myMutex unLock];
 	myIsDirty = FALSE;

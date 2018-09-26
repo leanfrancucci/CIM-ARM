@@ -42,6 +42,8 @@
 #include "Door.h"
 #include "BillAcceptor.h"
 
+#include "AsyncMsgThread.h"
+
 //#define printd(args...) doLog(0,args)
 #define printd(args...)
 
@@ -440,7 +442,7 @@ static id singleInstance = NULL;
   
 	
   // hago el startUp con el CMP solo la primera vez si encuentra el archivo cmpStartUp
-  [self CMPStartUp];
+    [self CMPStartUp];
   
 
   //Activa el scheduler de supervision al POS
@@ -524,6 +526,7 @@ static id singleInstance = NULL;
 }
 
 /**/
+/*
 - (void) notifyPrinterState: (PrinterState) aPrinterState
 {
 	JEvent		evt;
@@ -539,6 +542,7 @@ static id singleInstance = NULL;
   
     case PrinterState_PAPER_OUT:
       strcpy(additional, getResourceStringDef(RESID_PRINT_ERROR_PAPER_OUT, "Falta de papel"));
+      
       break;
       
     case PrinterState_OUT_OF_LINE:
@@ -563,7 +567,7 @@ static id singleInstance = NULL;
 
 	[Audit auditEventCurrentUser: Event_PRINTING_ERROR additional: additional station: 0 logRemoteSystem: FALSE];
 }
-
+*/
 /**/
 - (void) notifySerialNumberChange: (int) anAcceptorSettingsId
 {
@@ -939,6 +943,14 @@ static id singleInstance = NULL;
 	if (myMainMenuForm)
 		[myMainMenuForm configureMainMenu];
 }
+
+/**/
+- (void) notifyPrinterState: (PrinterState) aPrinterState
+{
+    [[AsyncMsgThread getInstance] addAsyncMsg: "1000" description: "Falta de papel. Se cancela la impresion del documento." isBlocking: FALSE];
+    [[PrinterSpooler getInstance] cancelLastJob];
+}
+
 
 @end
 

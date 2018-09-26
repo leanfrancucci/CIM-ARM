@@ -902,7 +902,7 @@ static int loginFailQty = 0;
         acceptorId = [myPackage getParamAsInteger: "AcceptorId"];
     
     if ([myPackage isValidParam: "ValueType"]) 
-        acceptorId = [myPackage getParamAsInteger: "ValueType"];
+        valueType = [myPackage getParamAsInteger: "ValueType"];
         
     if ([myPackage isValidParam: "CurrencyId"])
         currencyId = [myPackage getParamAsInteger: "CurrencyId"];
@@ -1231,6 +1231,31 @@ static int loginFailQty = 0;
     [[ReportController getInstance] reprintPartialD: last fromId: fromId toId: toId];
 
     [myRemoteProxy sendAckMessage];       
+
+}
+
+
+/*********************************************************************/
+/*TELESUPERVISION*/
+/*********************************************************************/
+- (void) startManualTelesup
+{
+ /*   id telesup = [[TelesupervisionManager getInstance] getTelesupByTelcoType: PIMS_TSUP_ID];
+
+    [[TelesupScheduler getInstance] isManual: TRUE];
+    [[TelesupScheduler getInstance] startTelesup: telesup];
+    [myRemoteProxy sendAckMessage];
+    */
+}
+
+
+/**/
+- (void) sendDateTime
+{
+
+    [myRemoteProxy newMessage: "DateTime"];
+    [myRemoteProxy appendTimestamp];
+    [myRemoteProxy sendMessage];
 
 }
 
@@ -1866,6 +1891,14 @@ static int loginFailQty = 0;
         case REPRINT_PARTIAL_DAY_REQ:                   
             [self reprintPartialDay];
             return;
+            
+        case START_MANUAL_TELESUP_REQ:
+            [self startManualTelesup];
+            return;
+
+        case GET_DATETIME_REQ:
+            [self sendDateTime];
+            return;            
             
 
 		default: break;		

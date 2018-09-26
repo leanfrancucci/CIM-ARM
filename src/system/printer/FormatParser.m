@@ -646,6 +646,9 @@ char *strdup(const char *s);
 			 (strcmp(aEscapeCode, BITSTREAM_FONT) == 0) ||
 			 (strcmp(aEscapeCode, COMIC_FONT) == 0) ||
 			 (strcmp(aEscapeCode, INVERSE_ON) == 0) ||
+			 (strcmp(aEscapeCode, CUT_PAPER) == 0) ||
+			 (strcmp(aEscapeCode, CHAR_SPACE) == 0) ||
+			 (strcmp(aEscapeCode, FEED_LINE) == 0) ||
 			 (strcmp(aEscapeCode, INVERSE_OFF) == 0))
   
 

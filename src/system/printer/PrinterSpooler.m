@@ -382,7 +382,7 @@ typedef enum {
         printf("------------> EXTERNAL (SERIAL PRINTER) <---------------\n");
         
         myPort = [ComPort new];
-        [myPort setBaudRate: BR_9600];
+        [myPort setBaudRate: BR_115200];
         [myPort setStopBits: 1];
         [myPort setDataBits: 8];
         [myPort setParity: CT_PARITY_NONE];

@@ -135,10 +135,14 @@ static DEPOSIT_CONTROLLER singleInstance = NULL;
 	[deposit setEnvelopeNumber: [tempManualDeposit getEnvelopeNumber]];
 	[deposit setApplyTo: [tempManualDeposit getApplyTo]];
 	[deposit setCashReference: [tempManualDeposit getCashReference]];
-	[self addDepositDetails: deposit];
+    
+    printf("DepositConstroller->finishDrop 1 \n");
+
+	//[self addDepositDetails: deposit];
 
     details = [tempManualDeposit getDepositDetails];
     
+    printf("DepositConstroller->finishDrop 2 \n");
     for (i = 0; i < [details size]; ++i) {
 
 		detail = [details at: i];
@@ -149,10 +153,14 @@ static DEPOSIT_CONTROLLER singleInstance = NULL;
 			qty: [detail getQty]
 			amount: [detail getAmount]];        
     }
-    
+
+       printf("DepositConstroller->finishDrop 3 \n");
+
 	// Finalizo el deposito (se graba e imprime)
 	[[CimManager getInstance] endDeposit];
     
+        printf("DepositConstroller->finishDrop 4 \n");
+
     [tempManualDeposit free];       
     
 }

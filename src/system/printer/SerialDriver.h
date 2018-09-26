@@ -16,6 +16,8 @@
   id myWriter;
 }
 
+- (void) printLogo: (char*) aFileName;
+
 @end
 
 #endif

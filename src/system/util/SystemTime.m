@@ -15,7 +15,8 @@ int stime(time_t *t);
 #endif
 
 #ifdef __ARM_LINUX
-#define TIMEZONE (__timezone)
+//#define TIMEZONE (__timezone)
+#define TIMEZONE tzone
 #endif
 
 #ifdef __WIN32

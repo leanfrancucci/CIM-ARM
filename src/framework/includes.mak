@@ -3,11 +3,15 @@
 ##########################################
 
 ifndef CT_HOME
-$(error Enviorement variable CT_HOME not set, p.e: /c/Proyectos/ct)
+$(error Enviorement variable CT_HOME is not set, p.e: /c/Proyectos/ct)
 endif
 
 ifndef PLATFORM
-$(error Enviorement variable PLATFORM not set, should be win32, linux, uclinux)
+$(error Enviorement variable PLATFORM is not set, should be win32, linux, uclinux)
+endif
+
+ifndef OBJC_BASE
+$(error Environment variable OBJC_BASE is not set, p.e: /home/razor/Work/poc/objc-3.3.2)
 endif
 
 ##########################################
@@ -15,8 +19,6 @@ endif
 ##########################################
 BASE_SCR=$(CT_HOME)/src
 BASE_FW_SCR=$(CT_HOME)/src/framework
-
-OBJC_BASE=/home/delsat/Work/poc/objc-3.3.2
 OBJC_INCLUDES=-I$(OBJC_BASE)/include/objcrt -I$(OBJC_BASE)/include/objpak
 
 CT_DEFINES+=$(USER_DEBUG_MODULES) 

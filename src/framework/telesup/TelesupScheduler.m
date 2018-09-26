@@ -35,6 +35,8 @@
 #include "FTPSupervision.h"
 #include "UserManager.h"
 
+
+
 //#define printf(args...) doLog(0,args)
 #define printd(args...)
 
@@ -1094,7 +1096,7 @@ static TELESUP_SCHEDULER singleInstance = NULL;
 */
     printf("telesup 6\n");
 		[[TelesupScheduler getInstance] startTelesup: currentTelesup getCurrentSettings: FALSE telesupViewer:viewer];
-		[viewer free];
+//		[viewer free];
 		currentTelesup = NULL;
 		myIsInBackground = FALSE;
 
@@ -1159,11 +1161,12 @@ static TELESUP_SCHEDULER singleInstance = NULL;
 				continue;
 			}
 
-			if ([[Acceptor getInstance] isTelesupRunning]) {
+/*			if ([[Acceptor getInstance] isTelesupRunning]) {
 //				doLog(0,"No supervisa porque existe una supervision entrante en curso\n");
 				msleep(10000);
 				continue;
 			}
+*/
 /*
 			if ((![[CimManager getInstance] isSystemIdleForTelesup]) && (myCommunicationIntention != CommunicationIntention_CHANGE_STATE_REQUEST)){
 //				doLog(0,"No supervisa porque el sistema posee depositos o extracciones en curso\n");
@@ -1194,7 +1197,7 @@ static TELESUP_SCHEDULER singleInstance = NULL;
 			}
 
 //////////////////  CIM: DESCOMENTAR //////////////////////////////////////// 
-      msleep(100);
+            //msleep(100);
 
             printf("analiza si es en background\n");
 			//// ////

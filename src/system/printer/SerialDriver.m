@@ -7,6 +7,12 @@
 
 #define SERIAL_FORMAT_SUBDIRECTORY "standard/"
 
+
+#define	DBL_HEIGHT_ON_CODE  		"\x1B\x40\x1D\x21\x01"
+#define	FEED_LINE_CODE 			"\x1B\x64\03"
+#define	CUT_PAPER_CODE 			"\x1B\x69"
+#define	CHAR_SPACE_CODE 		"\x1B\x40\x1B\x20\01"
+
 @implementation SerialDriver
 
 /**/
@@ -59,6 +65,8 @@
 
 		msleep(10);
 	}
+	[myWriter write: CUT_PAPER_CODE qty: 2];
+	
 	
 	msleep(1000);
 }
@@ -91,10 +99,42 @@
 	free(text);
 } 
 
+- (char*) getEscapeCode: (char*) aEscapeCodeTag escapeCode: (char*) aEscapeCode
+{
+  char escCode[30];
+  
+  strcpy(escCode, "");
+	printf("SERIAL PRINTER vdfds>>>>>>>>>>> escape code setted %s\n", aEscapeCodeTag);
+
+  if ( strcmp(aEscapeCodeTag, DBL_HEIGHT_ON) == 0 )
+    strcpy(escCode, DBL_HEIGHT_ON_CODE);    
+ 
+  if ( strcmp(aEscapeCodeTag, FEED_LINE) == 0 )
+    strcpy(escCode, FEED_LINE_CODE);        
+  
+  if ( strcmp(aEscapeCodeTag, CUT_PAPER) == 0 )
+    strcpy(escCode, CUT_PAPER_CODE);          
+
+  if ( strcmp(aEscapeCodeTag, CHAR_SPACE) == 0 ) 
+    strcpy(escCode, CHAR_SPACE_CODE);
+
+  strcpy(aEscapeCode, escCode);   
+
+    
+  return aEscapeCode;          
+
+}
+
 /**/
 - (void) advancePaper
 {
 	[self advancePaper: 10];
 }
+
+- (void) printLogo: (char*) aFileName
+{
+    printf("PrintLogo!!! Serial Driver >>>>>>>>>>>>>>>>>\n");
+//  [printer printLogo: aFileName];
+} 
 
 @end

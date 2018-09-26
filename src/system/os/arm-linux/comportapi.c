@@ -156,7 +156,7 @@ OS_HANDLE com_open(int portNumber, ComPortConfig *config)
 	assert(portNumber > 0);
 
 	// modificado para que funcione con la inner conectada a un puerto usb
-    if (portNumber != 8){
+    if (portNumber == 8){
         printf(">>>>>>>>>>>>abrir puerto innerboard 485\n");
         sprintf(name, "/dev/ttymxc2");
 
@@ -229,7 +229,9 @@ OS_HANDLE com_open(int portNumber, ComPortConfig *config)
         return myHandle;
         
     }else {
-        sprintf(name, "/dev/ttyUSB0");
+        sprintf(name, "/dev/ttyUSB%d", portNumber - 1);
+        printf(">>>>>>>>>>>>abrir puerto USB %s\n", name);
+
         
         myHandle = open(name, O_RDWR | O_NOCTTY);
         if (myHandle == -1) {
@@ -246,9 +248,11 @@ OS_HANDLE com_open(int portNumber, ComPortConfig *config)
         if (config->dataBits == 7) options.c_cflag |= CS7;
         if (config->dataBits == 8) options.c_cflag |= CS8;
 
-        //if (config->parity == CT_PARITY_ODD) options.c_cflag |= PARODD;
-        options.c_cflag &= ~PARODD;
-        options.c_cflag |= PARENB;
+//        if (config->parity == CT_PARITY_ODD) options.c_cflag |= PARODD;
+	if (config->parity == CT_PARITY_ODD) options.c_cflag |= PARODD;
+	else if (config->parity == CT_PARITY_EVEN) options.c_cflag |= PARENB;
+        //options.c_cflag &= ~PARODD;
+        //options.c_cflag |= PARENB;
         options.c_cflag |= CLOCAL;
         options.c_cflag |= CREAD;
         //options.c_cflag |= CRTSCTS;

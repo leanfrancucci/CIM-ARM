@@ -4,8 +4,9 @@ export CT_HOME=../..
 case $1 in
 
 	arm-linux)
-		source /opt/fsl-imx-x11/4.1.15-1.2.0/environment-setup-cortexa9hf-vfp-neon-poky-linux-gnueabi
+		source /opt/fslc-framebuffer/2.2.1/environment-setup-armv7at2hf-neon-fslc-linux-gnueabi
 		export PLATFORM=arm-linux
+		export OBJC_BASE=/home/razor/Work/poc/objc-3.3.2
 		echo "Arm-linux Enviroment"
 	;;
 	linux)
