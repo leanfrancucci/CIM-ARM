@@ -442,7 +442,7 @@ static id singleInstance = NULL;
   
 	
   // hago el startUp con el CMP solo la primera vez si encuentra el archivo cmpStartUp
-    [self CMPStartUp];
+  //[self CMPStartUp];
   
 
   //Activa el scheduler de supervision al POS

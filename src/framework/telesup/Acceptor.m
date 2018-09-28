@@ -118,7 +118,7 @@ static ACCEPTOR singleInstance = NULL;
 
 		telesup = [self getDefaultTelesup];
 		if (!telesup) {
-	//		doLog(0,"Acceptor -> no existe la supervision al CMP, error, no se puede realizar el telemantenimiento\n");
+			printf("Acceptor -> no existe la supervision al CMP, error, no se puede realizar el telemantenimiento\n");
 			EXIT_TRY;
 			return;
 		}
@@ -131,7 +131,7 @@ static ACCEPTOR singleInstance = NULL;
 	
 		while (TRUE)
 		{
-	//		doLog(0,"Esperando conexion entrante al puerto %d\n", port);
+			printf("Esperando conexion entrante al puerto %d\n", port);
 			// Espero que llegue alguna conexion
 			
 			csocket = [ssocket  accept];
@@ -153,8 +153,8 @@ static ACCEPTOR singleInstance = NULL;
 
 			// Si no esta habilitada la opcion continua
 
-		//	doLog(0,"Conexion entrante al puerto %d\n", port);
-	//		doLog(0,"Comenzando supervision...\n");
+			printf("Conexion entrante al puerto %d\n", port);
+			printf("Comenzando supervision...\n");
 			
 			if (!myFormObserver) continue;
 

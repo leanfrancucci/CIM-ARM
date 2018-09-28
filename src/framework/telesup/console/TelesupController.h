@@ -7,6 +7,7 @@
 #include "system/util/all.h"
 #include "CimDefs.h"
 #include "TelesupViewer.h"
+#include "AsyncMsgThread.h""
 
 
 /**
@@ -20,6 +21,9 @@
 }
 
 /**/
+
+- (void) startManualTelesup;
+
 - (void) setTelesupId: (int) aTelesupId;
 - (void) start;
 - (void) finish;
@@ -31,6 +35,10 @@
 - (void) informEvent: (TelesupEventType) anEventType;
 - (void) informEvent: (TelesupEventType) anEventType name: (char*) aName;
 - (void) informError: (int) anErrorCode;
+
+
+
+- (void) acceptCMPSupervision: (BOOL) aValue;
 
 
 

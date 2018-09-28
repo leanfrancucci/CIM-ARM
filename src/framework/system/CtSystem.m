@@ -585,9 +585,8 @@ static CT_SYSTEM singleInstance = NULL;
   SSL_load_error_strings();
   
 	// creo las supervisiones al CMP entrante y saliente
-//	[self initCMPTelesup];
-
-//	[self initCMPOutTelesup];
+	[self initCMPTelesup];
+	[self initCMPOutTelesup];
     
 
 //	doLog(0,"Starting Power Failed Manager....");

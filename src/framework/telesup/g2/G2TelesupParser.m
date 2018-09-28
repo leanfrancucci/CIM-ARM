@@ -321,6 +321,9 @@ MapRequestMsg 	mapReqMsg[] =
     ,{"ReprintXClose",	REPRINT_PARTIAL_DAY_REQ,      	NO_REQ_OP,	0}            
     
     ,{"StartManualTelesup",	START_MANUAL_TELESUP_REQ,      	NO_REQ_OP,	0}       
+    ,{"AcceptIncomingSupervision",	ACCEPT_INCOMING_SUP_REQ,      	NO_REQ_OP,	0}       
+    
+    
 };
 
 #define 	MAX_REQUEST_MAPPS 	(sizeof( mapReqMsg ) / sizeof( mapReqMsg[0] ))
@@ -1111,6 +1114,7 @@ MapRequestMsg 	mapReqMsg[] =
         case REPRINT_END_DAY_REQ:
         case REPRINT_PARTIAL_DAY_REQ:     
         case START_MANUAL_TELESUP_REQ:
+        case ACCEPT_INCOMING_SUP_REQ:
         case GET_DATETIME_REQ:
             printf(">>>>>>>>>>>>>>>>>>>>>>>>> getNewSystemOpRequest\n");
             return [self getNewSystemOpRequest: aReqOp msg: aMessage];

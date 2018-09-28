@@ -16,6 +16,12 @@ typedef enum {
     AsyncMsgType_BillRejected
 } AsyncMsgType; 
 
+typedef enum {
+	AsyncMsgCode_StartIncomingSupervision,
+	AsyncMsgCode_FinishIncomingSupervision,
+} AsyncMsgCode; 
+
+
 typedef struct {
     AsyncMsgType msgType;
     char messageName[200];

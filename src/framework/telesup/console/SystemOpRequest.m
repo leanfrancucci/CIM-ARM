@@ -22,6 +22,7 @@
 #include "AsyncMsgThread.h"
 #include "ReportController.h"
 #include "ZCloseManager.h"
+#include "TelesupController.h"
 
 
 // Maximo tamanio de documento
@@ -1240,12 +1241,22 @@ static int loginFailQty = 0;
 /*********************************************************************/
 - (void) startManualTelesup
 {
- /*   id telesup = [[TelesupervisionManager getInstance] getTelesupByTelcoType: PIMS_TSUP_ID];
-
-    [[TelesupScheduler getInstance] isManual: TRUE];
-    [[TelesupScheduler getInstance] startTelesup: telesup];
+    [[TelesupController getInstance] startManualTelesup];
     [myRemoteProxy sendAckMessage];
-    */
+}
+
+
+- (void) acceptIncomingSupervision
+{
+    BOOL value;
+    
+    if ([myPackage isValidParam: "Value"])
+        value = [myPackage getParamAsBoolean: "Value"];     
+    
+    [[TelesupController getInstance] acceptCMPSupervision: value];
+    
+    [myRemoteProxy sendAckMessage];
+    
 }
 
 
@@ -1894,6 +1905,10 @@ static int loginFailQty = 0;
             
         case START_MANUAL_TELESUP_REQ:
             [self startManualTelesup];
+            return;
+            
+        case ACCEPT_INCOMING_SUP_REQ:
+            [self acceptIncomingSupervision];
             return;
 
         case GET_DATETIME_REQ:

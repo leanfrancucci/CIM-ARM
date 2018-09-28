@@ -71,7 +71,7 @@ static DEPOSIT_CONTROLLER singleInstance = NULL;
     
     /* VERIFICAR EL STACKER*/
     
-    if( tempManualDeposit) [tempManualDeposit free];
+    if(tempManualDeposit) [tempManualDeposit free];
     tempManualDeposit = NULL;
     
     user = [[UserManager getInstance] getUser: aUserId];    
@@ -162,6 +162,7 @@ static DEPOSIT_CONTROLLER singleInstance = NULL;
         printf("DepositConstroller->finishDrop 4 \n");
 
     [tempManualDeposit free];       
+    tempManualDeposit = NULL;
     
 }
 
