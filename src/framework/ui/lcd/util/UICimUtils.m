@@ -27,6 +27,7 @@
 #include "CimExcepts.h"
 #include "CommercialStateMgr.h"
 #include "doorover.h"
+#include "AsyncMsgThread.h"
 
 @implementation UICimUtils
 
@@ -765,7 +766,11 @@
 /**/
 + (void) showAlarm: (char *) aMessage
 {
-	[[AlarmThread getInstance] addAlarm: aMessage];
+	//[[AlarmThread getInstance] addAlarm: aMessage];
+    //Modificado por sole! 12/10/2018>. Despues pasar codigo a AlarmThread para hacerlo generico
+    printf("UICimUtils --> addAsyncMsg\n");
+    [[AsyncMsgThread getInstance] addAsyncMsg: "1000" description: aMessage isBlocking: FALSE];
+
 }
 
 /**/

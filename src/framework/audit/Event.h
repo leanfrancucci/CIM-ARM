@@ -371,6 +371,8 @@
 #define Event_BILL_ADDED_AFTER_RESET				(2253) /* En el archivo temporal tengo un escrow pero no me llego un stacked ni returned */
 #define Event_POWER_UP								(2254) /* El validador reporta un powerup */
 #define Event_COMM_ERROR_WITH_OPEN_DEPOSIT  		(2255) /* El validador no responde luego del reset y habia un deposito en curso */
+#define Event_MISPLACED_BAG   		(2256) /* El validador no responde luego del reset y habia un deposito en curso */
+#define Event_WAIT_BANKNOTE_TO_BE_REMOVED 	(2257) /* El validador no responde luego del reset y habia un deposito en curso */
 
 @interface	Event : Object
 {

@@ -47,6 +47,7 @@
 {
 	int i;
 
+    
 	for (i=0; i<[myAcceptedCurrencies size]; ++i)
 		if ([[[myAcceptedCurrencies at: i] getCurrency] getCurrencyId] == aCurrencyId) return [myAcceptedCurrencies at: i];
 
@@ -63,7 +64,9 @@
 	BOOL existsCurrency = FALSE;
 	id acceptorSettings = NULL;
 
-	TRY
+	printf("AcceptedDepositValue AddDepositValueTypeCurrency %d *******************\n", aCurrencyId);
+	
+    TRY
 
 		// verifico si ya existe la moneda
 		i = 0;
@@ -76,7 +79,7 @@
 		// doy de alta la nueva moneda solo si no existe
 		if (!existsCurrency) {
             //************************* logcoment
-		//	doLog(0,"comienzo a dar de alta la currency %d *******************\n", aCurrencyId);
+			printf("comienzo a dar de alta la currency %d *******************\n", aCurrencyId);
 			[dao addDepositValueTypeCurrency: anAcceptorId depositValueType: myDepositValueType currencyId: aCurrencyId];
 			
 			acceptedCurrency = [AcceptedCurrency new];
@@ -85,7 +88,9 @@
 			[self addAcceptedCurrency: acceptedCurrency];
            //************************* logcoment
 			//doLog(0,"OK...\n");
-		}
+		} else {
+			printf("Exists currency %d, is deleted? *******************\n", aCurrencyId);
+        }
 
 		// elimino las currencies que no correspondan (solo para los validadores)
 		acceptorSettings = [[[CimManager getInstance] getCim] getAcceptorSettingsById: anAcceptorId];

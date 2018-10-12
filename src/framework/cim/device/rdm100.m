@@ -248,7 +248,17 @@ unsigned char * rdmReadFrame( int timeout )
                     *bufPtrRef = *(bufPtrRef+1);
                     bufPtrRef++;
                 }
+                *bufPtrRef = *(bufPtrRef+1);
+                bufPtrRef++;
+                *bufPtrRef = *(bufPtrRef+1);
+                bufPtrRef++;
+                *bufPtrRef = *(bufPtrRef+1);
+                bufPtrRef++;
+                *bufPtrRef = *(bufPtrRef+1);
+                bufPtrRef++;
+		
                 qty--;
+                printf("ENCONTRE UNA TRAMA CON DOBLE 0X10, SUPRIMIENDO!");
             }
             qty--;
             bufPtrAux++;
@@ -262,7 +272,7 @@ unsigned char * rdmReadFrame( int timeout )
 		if ( crcval == SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2])))
                     return &bufPtr[4]; //returno a partir de blockNo
 		else{
-	   	   doLog(1,"crc mal %d %d\n", crcval, SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2]))); fflush(stdout);
+	   	   printf("crc mal %d %d\n", crcval, SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2]))); 
 		}
             }else{
 		doLog(1,"bufptr != received frame \n"); fflush(stdout);

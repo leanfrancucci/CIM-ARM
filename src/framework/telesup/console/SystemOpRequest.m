@@ -466,8 +466,8 @@ static int loginFailQty = 0;
         if ([myPackage isValidParam: "CashId"])
             cashId = [myPackage getParamAsInteger: "CashId"];
     
-        if ([myPackage isValidParam: "ReferenceId"])
-            referenceId = [myPackage getParamAsInteger: "ReferenceId"];
+        if ([myPackage isValidParam: "CashReferenceId"])
+            referenceId = [myPackage getParamAsInteger: "CashReferenceId"];
     
 
         printf("StartValidatedDrop UserId> %d\n", userId);    
@@ -561,6 +561,8 @@ static int loginFailQty = 0;
  	[[CimManager getInstance] removeObserver: self];
 
 	myDeposit = NULL;
+    
+ //   msleep(5000);
     [myRemoteProxy sendAckMessage];
 }
 
@@ -880,8 +882,8 @@ static int loginFailQty = 0;
     if ([myPackage isValidParam: "CashId"])
         cashId = [myPackage getParamAsInteger: "CashId"];
 
-    if ([myPackage isValidParam: "ReferenceId"])
-        referenceId = [myPackage getParamAsInteger: "ReferenceId"];    
+    if ([myPackage isValidParam: "CashReferenceId"])
+        referenceId = [myPackage getParamAsInteger: "CashReferenceId"];    
 
     //[[DepositController getInstance] setObserver: self];
     [[DepositController getInstance] initManualDrop: userId cashId: cashId referenceId: referenceId applyTo: applyTo envelopeNumber: envelopeNumber];
@@ -1024,6 +1026,31 @@ static int loginFailQty = 0;
     [myRemoteProxy sendAckMessage];       
 }
 
+- (void) isValidationModeAvailable
+{
+    int acceptorId;
+    BOOL validationAvailable = FALSE;
+   	id acceptorSettings = NULL;
+
+    
+    if ([myPackage isValidParam: "AcceptorId"]) 
+        acceptorId = [myPackage getParamAsInteger: "AcceptorId"];
+
+	acceptorSettings = [[[CimManager getInstance] getCim] getAcceptorSettingsById: acceptorId];
+	if ([acceptorSettings getAcceptorType] == AcceptorType_VALIDATOR) {
+        if (([acceptorSettings getAcceptorProtocol] == ProtocolType_ID0003 ) || 
+        ([acceptorSettings getAcceptorProtocol] == ProtocolType_CCNET ) || 
+        ([acceptorSettings getAcceptorProtocol] == ProtocolType_EBDS )) 
+            validationAvailable = TRUE;
+    } 
+    
+        
+    [myRemoteProxy newMessage: "OK"];
+    [myRemoteProxy addParamAsBoolean: "Available" value: validationAvailable ];
+    [myRemoteProxy appendTimestamp];
+    [myRemoteProxy sendMessage];        
+    
+}
 
 /**/
 - (void) generateEnrolledUsersReport
@@ -1914,7 +1941,10 @@ static int loginFailQty = 0;
         case GET_DATETIME_REQ:
             [self sendDateTime];
             return;            
-            
+
+        case IS_VALIDATION_MODE_AVAILABLE_REQ:
+            [self isValidationModeAvailable];
+            return;            
 
 		default: break;		
 

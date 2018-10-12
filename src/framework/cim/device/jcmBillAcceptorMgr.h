@@ -11,7 +11,7 @@
 /*
 */
 typedef struct {
-    int amount;
+    long amount;
     int disabled;
     unsigned char countryCode;
     char countryStr[4];

@@ -322,6 +322,7 @@ MapRequestMsg 	mapReqMsg[] =
     
     ,{"StartManualTelesup",	START_MANUAL_TELESUP_REQ,      	NO_REQ_OP,	0}       
     ,{"AcceptIncomingSupervision",	ACCEPT_INCOMING_SUP_REQ,      	NO_REQ_OP,	0}       
+	,{"IsValidationModeAvailable", 	IS_VALIDATION_MODE_AVAILABLE_REQ,     NO_REQ_OP,	0}
     
     
 };
@@ -1116,6 +1117,7 @@ MapRequestMsg 	mapReqMsg[] =
         case START_MANUAL_TELESUP_REQ:
         case ACCEPT_INCOMING_SUP_REQ:
         case GET_DATETIME_REQ:
+        case IS_VALIDATION_MODE_AVAILABLE_REQ:
             printf(">>>>>>>>>>>>>>>>>>>>>>>>> getNewSystemOpRequest\n");
             return [self getNewSystemOpRequest: aReqOp msg: aMessage];
 

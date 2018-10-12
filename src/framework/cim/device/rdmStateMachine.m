@@ -46,7 +46,7 @@ BOOL rdmSendFrameProcess(JcmBillAcceptData *jcmBillAcceptor, unsigned char * dat
                 } 
            }     
         }     
-        doLog(1, "hay que reenviar la ultima trama, IMPLEMENTAR! \n" ); 
+    //    doLog(1, "hay que reenviar la ultima trama, IMPLEMENTAR! \n" ); 
         return 0;
 }
 
@@ -55,7 +55,7 @@ void loadDisableRdm(StateMachine *sm)
 	JcmBillAcceptData *jcmBillAcceptor;
 	
 	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
-	doLog(1, "RDM %d loadDisable\n", jcmBillAcceptor->devId);//fflush(stdout);
+	printf("RDM %d loadDisable\n", jcmBillAcceptor->devId);//fflush(stdout);
 	jcmBillAcceptor->canChangeStatus = 1;
 
 }
@@ -67,7 +67,7 @@ void loadEnableRdm(StateMachine *sm)
 	JcmBillAcceptData *jcmBillAcceptor;
 	
 	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
-	doLog(1, "RDM %d loadES\n", jcmBillAcceptor->devId);
+	printf("RDM %d loadES\n", jcmBillAcceptor->devId);
 	jcmBillAcceptor->canChangeStatus = 1;
     
 }
@@ -88,7 +88,8 @@ void sendStartDepositingRdm(StateMachine *sm)
 	JcmBillAcceptData *jcmBillAcceptor;
 
 	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
-	doLog(1, "RDM %d SendStartDepositing \n", jcmBillAcceptor->devId);
+	printf("RDM %d SendStartDepositing \n", jcmBillAcceptor->devId);
+	jcmBillAcceptor->canChangeStatus = 0;
 	rdmSendFrameProcess(jcmBillAcceptor, startdeposit, 3 );
 }
 
@@ -98,7 +99,7 @@ void loadInitializingRdm(StateMachine *sm)
 //	int amountAux, curIdAux;
 	
 	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
-	doLog(1, "RDM %d LoadIS\n", jcmBillAcceptor->devId);//fflush(stdout);
+	printf("RDM %d LoadIS\n", jcmBillAcceptor->devId);//fflush(stdout);
     jcmBillAcceptor->recBlockNo = 0x30;
     jcmBillAcceptor->sndBlockNo = 0x30;
     jcmBillAcceptor->resetSent = 0;
@@ -114,7 +115,7 @@ void loadReceivingBillRdm(StateMachine *sm)
 	JcmBillAcceptData *jcmBillAcceptor;
 
 	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
-	doLog(1, "RDM %d loadRBill\n", jcmBillAcceptor->devId);fflush(stdout);
+	printf( "RDM %d loadRBill\n", jcmBillAcceptor->devId);
 	jcmBillAcceptor->canChangeStatus = 0;
 }
 
@@ -124,10 +125,12 @@ void loadErrorStateRdm(StateMachine *sm)
 
 	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
 	printf("RDM %d loadErrorS\n", jcmBillAcceptor->devId);//fflush(stdout);
+	jcmBillAcceptor->resetSentQty = 0;
+	jcmBillAcceptor->canChangeStatus = 1;
 
 	if ( jcmBillAcceptor->commErrorNotificationFcn != NULL )
 		( *jcmBillAcceptor->commErrorNotificationFcn )( jcmBillAcceptor->devId, jcmBillAcceptor->errorCause );
-	printf("RDM %d LLLloadErrorS\n", jcmBillAcceptor->devId);//fflush(stdout);
+//	printf("RDM %d LLLloadErrorS\n", jcmBillAcceptor->devId);//fflush(stdout);
 }
 
 /*
@@ -162,10 +165,10 @@ void processCurrencyTable(StateMachine *sm)
         if (result == 0){
             for (i = 0; i < 24; i++){
                 noteId = (unsigned short)*(jcmBillAcceptor->dataEvPtr+12+(i*11));
-		if ((idx > (unsigned char)*(jcmBillAcceptor->dataEvPtr+11+(i*11))) && (noteId == 0x03))
-			break;
+                if ((idx > (unsigned char)*(jcmBillAcceptor->dataEvPtr+11+(i*11))) && (noteId == 0x03))
+                    break;
                 idx = (unsigned char)*(jcmBillAcceptor->dataEvPtr+11+(i*11));
-                denomination = (unsigned char)*(jcmBillAcceptor->dataEvPtr+17+(i*11));
+                denomination = (unsigned short)*(jcmBillAcceptor->dataEvPtr+17+(i*11));
                 exponente = (unsigned char)*(jcmBillAcceptor->dataEvPtr+18+(i*11));
                 multip = pow(10, exponente);
                 jcmBillAcceptor->convertionTable[idx].amount =  (denomination * multip);
@@ -176,11 +179,14 @@ void processCurrencyTable(StateMachine *sm)
                 jcmBillAcceptor->convertionTable[idx].disabled = !(jcmBillAcceptor->dataEvPtr+20+(i*11));
                 printf("currency table idx %d noteId %d denomination %d amount %d multip %d countrstr %s curid %d \n", idx , noteId, denomination, jcmBillAcceptor->convertionTable[idx].amount,multip, jcmBillAcceptor->convertionTable[idx].countryStr, jcmBillAcceptor->convertionTable[idx].currencyId);
             }
+      	    if ( jcmBillAcceptor->countryCode == 0  )
+                jcmBillAcceptor->countryCode = jcmBillAcceptor->convertionTable[0].currencyId ;
+
             jcmBillAcceptor->billTableLoaded = 1;
             jcmBillAcceptor->denominationQty = i;
             printf("currency table denomination qty %d \n", jcmBillAcceptor->denominationQty);
         } else{
-            doLog(1, "currency table process execution result <> 0 %d!\n", result); 
+            printf( "currency table process execution result <> 0 %d!\n", result); 
         }
 }
 
@@ -239,9 +245,8 @@ void requestCurrencyRDM(StateMachine *sm)
 
 void doProcessStatusRdm(JcmBillAcceptData *jcmBillAcceptor, unsigned char *statusNew)
 {
-        jcmBillAcceptor->errorCause = 0;
 
-	memcpy(&jcmBillAcceptor->sst, statusNew, 7 );
+        memcpy(&jcmBillAcceptor->sst, statusNew, 7 );
 
 
        
@@ -262,23 +267,14 @@ void doProcessStatusRdm(JcmBillAcceptData *jcmBillAcceptor, unsigned char *statu
 			1F Error Ocurred
 
 	*/
+    jcmBillAcceptor->errorCause = 0;
 	if (statusNew[1] == RDM_ERROR) 
-        	jcmBillAcceptor->errorCause = statusNew[1];
+        jcmBillAcceptor->errorCause = statusNew[1];
 
-       	if ( jcmBillAcceptor->actualState != statusNew[1]){
-		if ((statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_INIT) ||(statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_INLET_SLOT) ||(statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_DEPOSIT) ){
-			if ( jcmBillAcceptor->commErrorNotificationFcn != NULL )
-				( *jcmBillAcceptor->commErrorNotificationFcn )( jcmBillAcceptor->devId, 0xB4 );
-		} else {
-			//si el estado anterior era de error y ahora ya no lo es mas, debo notificar a la app el fin del error,,
-			if ((jcmBillAcceptor->actualState == RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_INIT) ||(jcmBillAcceptor->actualState == RDM_WAIT_FOR_BANKNOTE_REMOVED_INLET_SLOT) ||(jcmBillAcceptor->actualState == RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_DEPOSIT) ){
-				if ( jcmBillAcceptor->commErrorNotificationFcn != NULL )
-					( *jcmBillAcceptor->commErrorNotificationFcn )( jcmBillAcceptor->devId, 0 );
-			}
-		}
+		if ((statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_INIT) ||(statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_INLET_SLOT) ||(statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_DEPOSIT) )
+        	jcmBillAcceptor->errorCause = 0xB4;
 		
 		jcmBillAcceptor->actualState = statusNew[1];
-	}
 
 /*        if (( statusNew[3] & 0x04 ) || ( statusNew[6] & 0x04 ))
 		jcmBillAcceptor->hasBankNotesWaiting = 1;
@@ -377,6 +373,19 @@ BOOL isRDMStatusBusy(StateMachine *sm)
 
 }
 
+BOOL errorNeedsReset(StateMachine *sm) 
+{ 
+	JcmBillAcceptData *jcmBillAcceptor;
+
+    jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
+    if (( jcmBillAcceptor->errorCause != ID003_COMM_ERROR ) &&( jcmBillAcceptor->errorCause != 0xB4 ) && (jcmBillAcceptor->resetSentQty == 0)) {
+	jcmBillAcceptor->resetSentQty = 1;
+        return 1;
+    }
+    return 0;
+
+}
+
 BOOL inOnInitStatusRDM(StateMachine *sm) 
 { 
 	JcmBillAcceptData *jcmBillAcceptor;
@@ -410,7 +419,7 @@ void sendResetRdm(StateMachine *sm)
     JcmBillAcceptData *jcmBillAcceptor; 
 
     jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
-    doLog(1, "SEND RESET RDM \n" ); 
+    printf("SEND RESET RDM \n" ); 
     rdmSendFrameProcess(jcmBillAcceptor, resetComand, 8 );
 }
 
@@ -436,7 +445,7 @@ void notifyBillsAccepted(StateMachine *sm)
 	 if (result != 0)
 	         doLog(1, "FALTA notificar un error del validador codigo %d!\n", result); 
 	
-         doLog(1, "FALTA notificar bills rejected %d!\n", qtyRejected ); 
+         printf("FALTA notificar bills rejected %d!\n", qtyRejected ); 
          memcpy(currencyAccepted,jcmBillAcceptor->dataEvPtr+12, 96);
          for (i = 0; i < jcmBillAcceptor->denominationQty; i++){
              currencyAccepted[i].noteId = SHORT_TO_L_ENDIAN(currencyAccepted[i].noteId);
@@ -444,19 +453,21 @@ void notifyBillsAccepted(StateMachine *sm)
              for (x =0; ((x < 12) && (jcmBillAcceptor->convertionTable[x].noteId != currencyAccepted[i].noteId)) ;x++)
                ; 
              if ((x < 12) && (jcmBillAcceptor->convertionTable[x].noteId == currencyAccepted[i].noteId)){
-                    if (currencyAccepted[i].qty > 0){
-                        jcmBillAcceptor->amountChar = (long long) (jcmBillAcceptor->convertionTable[x].amount * MultipApp);
-                        printf("rere Bills Accepted! amount %d qty %d \n", jcmBillAcceptor->convertionTable[x].amount, currencyAccepted[i].qty); 
-                
-                    ( *jcmBillAcceptor->billAcceptNotificationFcn )( jcmBillAcceptor->devId, jcmBillAcceptor->amountChar, jcmBillAcceptor->convertionTable[x].currencyId, currencyAccepted[i].qty );
+		if (currencyAccepted[i].qty > 0){
+                    jcmBillAcceptor->amountChar = jcmBillAcceptor->convertionTable[x].amount;
+                    jcmBillAcceptor->amountChar = (jcmBillAcceptor->amountChar* MultipApp);
+                    
+                    ( *jcmBillAcceptor->billAcceptNotificationFcn )( jcmBillAcceptor->devId,  jcmBillAcceptor->amountChar, jcmBillAcceptor->convertionTable[x].currencyId, currencyAccepted[i].qty );
+                printf("NNotify bilss accepted %lld %d!\n",jcmBillAcceptor->amountChar, currencyAccepted[i].qty ); 
 		}
              } else 
                 doLog(1, "NOT FOUND noteB id %d  qty %d!\n", currencyAccepted[i].noteId, currencyAccepted[i].qty); 
              
         }
     } else
-        doLog(1, "notify bilss accepted command execution result warning >  E000  %d!\n", result ); 
+        printf("notify bilss accepted command execution result warning >  E000  %d!\n", result ); 
 
+    jcmBillAcceptor->canChangeStatus = 1;
     
 }
 
@@ -482,7 +493,7 @@ extern State rdmErrorState;
  */
 static Transition rdmInitStateTransitions[] =
 {	
-	 { RDM_DEPOSIT_COUNT_RESULT_CMD, NULL, notifyBillsAccepted, &rdmDisabledState }
+	 { RDM_DEPOSIT_COUNT_RESULT_CMD, NULL, notifyBillsAccepted, &rdmInitializingState }
 	,{ SM_ANY, errorDetectedRdm, NULL, &rdmErrorState }
 //	,{ RDM_NORMAL_CMD, NULL, processStatusRdm, &rdmInitializingState }
 	,{ SM_ANY, isRDMStatusBusy, NULL, &rdmInitializingState }
@@ -511,6 +522,7 @@ static Transition rdmDisabledStateTransitions[] =
 {
 	{ RDM_DEPOSIT_COUNT_RESULT_CMD, NULL, notifyBillsAccepted, &rdmDisabledState }
 	,{ SM_ANY, errorDetectedRdm, NULL, &rdmErrorState }
+	,{ SM_ANY, isOnPowerUpStatusRdm, sendResetRdm, &rdmInitializingState }
 	,{ SM_ANY, isNotJCMDisable, NULL, &rdmEnabledState }
 	,{ SM_ANY, NULL, NULL, &rdmDisabledState }
 };
@@ -533,6 +545,7 @@ static Transition rdmEnabledStateTransitions[] =
 	 ,{ SM_ANY, isJCMDisable, NULL, &rdmDisabledState }
 	,{ SM_ANY, isPreparedforDepositing, sendStartDepositingRdm, &rdmEnabledState }
 	,{ SM_ANY, errorDetectedRdm, NULL, &rdmErrorState }
+	,{ SM_ANY, isOnPowerUpStatusRdm, sendResetRdm, &rdmInitializingState }
 //	 { RDM_NORMAL_CMD, NULL, processStatusRdm, &rdmEnabledState }
 	,{ SM_ANY, NULL, NULL, &rdmEnabledState }
 };
@@ -570,6 +583,7 @@ static Transition rdmErrorStateTransitions[] =
 {
 	{ RDM_DEPOSIT_COUNT_RESULT_CMD, NULL, notifyBillsAccepted, &rdmDisabledState }
 	,{ SM_ANY, endErrorDetectedRdm, NULL, &rdmInitializingState }
+	,{ SM_ANY, errorNeedsReset, sendResetRdm, &rdmErrorState }
 	 ,{ SM_ANY, NULL, NULL, &rdmErrorState }
 };
 
@@ -594,59 +608,55 @@ void pollRDM( JcmBillAcceptData *jcmBillAcceptor )
     
 //	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POLLRdmmmmmmm\n ");fflush(stdout);
     rdmWriteCtrlSignal( enqCmd, 4 );
-//	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POLLRdmmmmmmm 1\n ");fflush(stdout);
-    jcmBillAcceptor->dataEvPtr = rdmReadFrame( 1000 );
-//	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POLLRdmmmmmmm 2 \n ");fflush(stdout);
-    if ( jcmBillAcceptor->dataEvPtr != NULL ) {
-            aux = *(jcmBillAcceptor->dataEvPtr);
-    //    printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POLLRdmmmmmmm 3 \n ");fflush(stdout);
-          if  (jcmBillAcceptor->recBlockNo == aux)     {
-		jcmBillAcceptor->commErrQty = 0;
-                jcmBillAcceptor->recBlockNo = getNextBlockNo(jcmBillAcceptor->recBlockNo);
-                cmd = *(jcmBillAcceptor->dataEvPtr+1);
-	//printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POLLRdmmmmmmm 4 \n ");fflush(stdout);
-		if ( cmd == RDM_DEPOSIT_COUNT_RESULT_CMD){
-			//para que si no llego a procesarlo no mande el ack asi deps de un corte me lo reenvia
-			doProcessStatusRdm(jcmBillAcceptor, jcmBillAcceptor->dataEvPtr+2);
-			executeStateMachine(jcmBillAcceptor->billValidStateMachine, cmd);
-			rdmWriteCtrlSignal(ackCmd,2);
-			waitForEot(jcmBillAcceptor);
-		} else {
-    //        	printf("<<<<<<<<<<<<<<<<<<<<<<<<<<<<< POLLRdmmmmmmm 5 \n ");fflush(stdout);
-
-			rdmWriteCtrlSignal(ackCmd,2);
-			waitForEot(jcmBillAcceptor);
-			doProcessStatusRdm(jcmBillAcceptor, jcmBillAcceptor->dataEvPtr+2);
-			executeStateMachine(jcmBillAcceptor->billValidStateMachine, cmd);
-                }
-          } else {
-                doLog(1, "block no diferente esperado %d  %d!\n", jcmBillAcceptor->recBlockNo, jcmBillAcceptor->recBlockNo == aux); 
-                if  (jcmBillAcceptor->recBlockNo ==  getNextBlockNo(aux))     {
-                        //me reenvio la trama anterior, envio ack:
-                    rdmWriteCtrlSignal(ackCmd,2);
-                    waitForEot(jcmBillAcceptor);
+    do {		
+	jcmBillAcceptor->dataEvPtr = rdmReadFrame( 1000 );
+    	if ( jcmBillAcceptor->dataEvPtr != NULL ) {
+             	aux = *(jcmBillAcceptor->dataEvPtr);
+        	if  (jcmBillAcceptor->recBlockNo == aux)     {
+			jcmBillAcceptor->commErrQty = 0;
+                	jcmBillAcceptor->recBlockNo = getNextBlockNo(jcmBillAcceptor->recBlockNo);
+                	cmd = *(jcmBillAcceptor->dataEvPtr+1);
+			if ( cmd == RDM_DEPOSIT_COUNT_RESULT_CMD){
+				//para que si no llego a procesarlo no mande el ack asi deps de un corte me lo reenvia
+				doProcessStatusRdm(jcmBillAcceptor, jcmBillAcceptor->dataEvPtr+2);
+				executeStateMachine(jcmBillAcceptor->billValidStateMachine, cmd);
+				rdmWriteCtrlSignal(ackCmd,2);
+				waitForEot(jcmBillAcceptor);
+			} else {
+				rdmWriteCtrlSignal(ackCmd,2);
+				waitForEot(jcmBillAcceptor);
+				doProcessStatusRdm(jcmBillAcceptor, jcmBillAcceptor->dataEvPtr+2);
+				executeStateMachine(jcmBillAcceptor->billValidStateMachine, cmd);
+                	}
+	          } else {
+                	doLog(1, "block no diferente esperado %d  %d!\n", jcmBillAcceptor->recBlockNo, jcmBillAcceptor->recBlockNo == aux); 
+                	if  (jcmBillAcceptor->recBlockNo ==  getNextBlockNo(aux))     {
+                        	//me reenvio la trama anterior, envio ack:
+	                    rdmWriteCtrlSignal(ackCmd,2);
+        	            waitForEot(jcmBillAcceptor);
                     
-                }   else {
-                    //si el block no no es el siguiente que se esperaba ni tampoco una retransmision, me tengo que resincronizar con el blockno y proceso la respuesta..
-                    doLog(1, "block no totalmente diferente %d  %d!\n", jcmBillAcceptor->recBlockNo, getNextBlockNo(aux)); 
-                    jcmBillAcceptor->recBlockNo = getNextBlockNo(aux);
-                    rdmWriteCtrlSignal(ackCmd,2);
-                    waitForEot(jcmBillAcceptor);
-                    cmd = *(jcmBillAcceptor->dataEvPtr+1);
-                    executeStateMachine(jcmBillAcceptor->billValidStateMachine, cmd);
-                } 
-          }
-    } else {
-           rdmWriteCtrlSignal(nakCmd,2);
-      //     waitForEot(jcmBillAcceptor);
-           doLog(1, "readframe retorna NULLLLL\n"); 
-	jcmBillAcceptor->commErrQty++;
-	if ( jcmBillAcceptor->commErrQty > 3 ) {
-		jcmBillAcceptor->errorCause = ID003_COMM_ERROR;
-		executeStateMachine(jcmBillAcceptor->billValidStateMachine, ID003_COMM_ERROR);
+                	}   else {
+				//si el block no no es el siguiente que se esperaba ni tampoco una retransmision, me tengo que resincronizar con el blockno y proceso la respuesta..
+				doLog(1, "block no totalmente diferente %d  %d!\n", jcmBillAcceptor->recBlockNo, getNextBlockNo(aux)); 
+				jcmBillAcceptor->recBlockNo = getNextBlockNo(aux);
+				rdmWriteCtrlSignal(ackCmd,2);
+				waitForEot(jcmBillAcceptor);
+				cmd = *(jcmBillAcceptor->dataEvPtr+1);
+				executeStateMachine(jcmBillAcceptor->billValidStateMachine, cmd);
+	                } 
+        	  }
+	} else {
+        	rdmWriteCtrlSignal(nakCmd,2);
+           	doLog(1, "readframe retorna NULLLLL\n"); 
+		jcmBillAcceptor->commErrQty++;
 	}
+    } while ((jcmBillAcceptor->dataEvPtr == NULL) && ( jcmBillAcceptor->commErrQty < 3 ));
 
-   }
+
+    if ( jcmBillAcceptor->commErrQty > 3 ) {
+	jcmBillAcceptor->errorCause = ID003_COMM_ERROR;
+	executeStateMachine(jcmBillAcceptor->billValidStateMachine, ID003_COMM_ERROR);
+	}
     
 /*unsigned char msjTypeAnsw;
 	unsigned char devRead; 

@@ -16,6 +16,7 @@ typedef enum {
 	,ProtocolType_EBDS
 	,ProtocolType_FUJITSU
   ,ProtocolType_CDM3000
+  ,ProtocolType_RDM100
 } ProtocolType;
 
 #include <Object.h>

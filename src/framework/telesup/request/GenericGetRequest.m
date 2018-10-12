@@ -989,7 +989,7 @@ static GENERIC_GET_REQUEST myRestoreSingleInstance = nil;
             aCurrency= [[valCurrencies at: j] getCurrency];
             
             denominations = [cim getCurrencyDenominations: 1 acceptorId: [myPackage getParamAsInteger: "AcceptorId"] currencyId: [aCurrency getCurrencyId]];
-            printf("GenericGetRequest->sendDenominationList/>  aCurrency %d\n", [aCurrency getCurrencyId]);
+            printf("GenericGetRequest->sendDenominationList/>  aCurrency %d denominations Size %d \n", [aCurrency getCurrencyId], [denominations size]);
 
             if (denominations) {
                 for (i = 0; i < [denominations size]; ++i) {

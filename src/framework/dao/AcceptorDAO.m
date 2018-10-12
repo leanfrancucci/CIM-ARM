@@ -63,6 +63,7 @@ static id singleInstance = NULL;
 
 	[denominationsRS moveBeforeFirst];
 
+    printf(">>>>>>>>> AcceptorDao loadDenominations Acceptor %d\n >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ", anAcceptorId);
 	while ( [denominationsRS moveNext] ) {
 
 		if ( ([denominationsRS getShortValue: "ACCEPTOR_ID"] == anAcceptorId) && 
@@ -418,6 +419,8 @@ static id singleInstance = NULL;
 	char additional[21];
 	char buf[50];
 
+    printf("AcceptorDao storeDenomination acceptor %d  currencyId %d Amount %lld\n", anAcceptorId, aCurrencyId, [aDenomination getAmount]);
+    
 	[denominationsRS moveFirst];
 
 	while (![denominationsRS eof]) {

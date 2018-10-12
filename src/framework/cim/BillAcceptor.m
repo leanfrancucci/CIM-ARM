@@ -59,6 +59,8 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
  ,{BillAcceptorStatus_EXTERNAL_ROM_FAILURE, RESID_EXTERNAL_ROM_FAILURE, "Fallo memoria externa"}
  ,{BillAcceptorStatus_ROM_FAILURE, RESID_ROM_FAILURE, "Fallo en memoria"}
  ,{BillAcceptorStatus_EXTERNAL_ROM_WRITING_FAILURE, RESID_EXTERNAL_ROM_WRITING_FAILURE, "Fallo escritura en memoria externa"}
+ ,{BillAcceptorStatus_WAITING_BANKNOTE_TO_BE_REMOVED, RESID_WAIT_BANKNOTE_TO_BE_REMOVED, "Esperando que extraiga billete validador"}
+
  ,{999, RESID_UNDEFINE, "Undefined"}
 };
 
@@ -280,7 +282,7 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 	int i;
 	money_t amount;
 
-	for (i = 0; i < 8; i++) {
+	for (i = 0; i < 24; i++) {
 		if (aJcmDenominations[i].amount == 0) continue;
 		amount = ENCODE_DECIMAL(aJcmDenominations[i].amount);
 		if (amount == anAmount) return TRUE;
@@ -298,13 +300,13 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 	DENOMINATION denomination;
 	
     //************************* logcoment
-	//doLog(0,"Verificando denominaciones...\n");
+	printf("Verificando denominaciones...\n");
 
 	denominations = [anAcceptedCurrency getDenominations];
 	
 	// Recorro la lista de denominaciones que me informa el validador y si no estaban
 	// en la lista que yo tengo las agrego
-	for (i = 0; i < 8; i++) {
+	for (i = 0; i < 24; i++) {
 
 		if (aJcmDenominations[i].amount == 0) continue;
 
@@ -314,7 +316,7 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 		if (![self existsDenomination: denominations amount: amount]) {
 
             //************************* logcoment
-			//doLog(0,"Agrega denominacion de (%d) %lld a la moneda %d\n", aJcmDenominations[i].amount, amount, [[anAcceptedCurrency getCurrency] getCurrencyId]);
+			printf("Agrega denominacion de (%d) %lld a la moneda %d\n", aJcmDenominations[i].amount, amount, [[anAcceptedCurrency getCurrency] getCurrencyId]);
 	
 			denomination = [Denomination new];
 			[denomination setAmount: amount];
@@ -379,7 +381,7 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 		return;
 	}
 
-	//doLog(0,"myHardwareId = %d, jcmCurrencyId = %d\n", myHardwareId, jcmCurrencyId);
+	printf("InitCurrency myHardwareId = %d, jcmCurrencyId = %d\n", myHardwareId, jcmCurrencyId);
     //************************* logcoment
 
 	if (jcmCurrencyId == 0) {
@@ -392,11 +394,11 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 	currency = [[CurrencyManager getInstance] getCurrencyById: jcmCurrencyId];
 
     //************************* logcoment
-	//doLog(0,"currency = %d\n", currency == NULL ? -1 : [currency getCurrencyId]);
+	printf("currency = %d\n", currency == NULL ? -1 : [currency getCurrencyId]);
 
 	if (currency == NULL) {
         //************************* logcoment
-		//doLog(0,"Error: No se encontro la moneda\n");
+		printf("Error: No se encontro la moneda\n");
 		return;
 	}
 
@@ -406,7 +408,7 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 	if ([currency getCurrencyId] != [myCurrency getCurrencyId]) {
 
         //************************* logcoment
-		//doLog(0,"Warning: cambio la moneda con respecto a la que estaba configurada, nueva (%d)\n", jcmCurrencyId);
+		printf("Warning: cambio la moneda con respecto a la que estaba configurada, nueva (%d)\n", jcmCurrencyId);
 
 		// ANULO LA ELIMINACION DE LA CURRENCY ACTUAL PORQUE ESTO SE HACE EN addDepositValueTypeCurrency
 		// PARA CADA MONEDA DE DICHO ACCEPTOR. ESO ES PORQUE POR ALGUNA RAZON QUEDABAN 2 MONEDAS
@@ -479,7 +481,7 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 	// El primer estado que sea 0 lo meto en una cola bloqueante
 	// para el que esta esperando ese primer estado lo pueda tomar
 	//modificacion sole para que se quede esperando la salida del estado FirstState de Mei
-	if ((!myHasFirstStatus) && ((aCause == 0) || (aCause == BillAcceptorStatus_COMMUNICATION_ERROR ))) {
+	if (!myHasFirstStatus)  {
 		[mySyncQueue pushElement: &aCause];
 		myHasFirstStatus = TRUE;
 		myInitStatus = aCause;
@@ -520,8 +522,6 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 
 	if (myObserver) [myObserver onAcceptorError: self cause: aCause];
     
-    printf("BillAcceptor --> addAsyncMsg\n");
-    [[AsyncMsgThread getInstance] addAsyncMsg: "1000" description: "Acceptor error" isBlocking: FALSE];
 
 	switch (aCause) {
 
@@ -545,6 +545,7 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 		case BillAcceptorStatus_EXTERNAL_ROM_FAILURE: eventId = Event_EXTERNAL_ROM_FAILURE; break;
 		case BillAcceptorStatus_ROM_FAILURE: eventId = Event_ROM_FAILURE; break;
 		case BillAcceptorStatus_EXTERNAL_ROM_WRITING_FAILURE: eventId = Event_EXTERNAL_ROM_WRITING_FAILURE; break;
+		case BillAcceptorStatus_WAITING_BANKNOTE_TO_BE_REMOVED: eventId = Event_WAIT_BANKNOTE_TO_BE_REMOVED; break;
 	}
 
 	// me fijo si debo informar al POS del evento.
