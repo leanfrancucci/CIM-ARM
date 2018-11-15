@@ -143,6 +143,7 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 	// Verifica si utiliza la bolsa como stacker
 	if (strstr([myAcceptorSettings getAcceptorModel], "BAG") != NULL) {
 
+        printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>INITAcceptor, getAcceptorModel BAG %s\n", [myAcceptorSettings getAcceptorModel]); 
 		// Cableo los validadores junto con su sensor correspondiente
 		if (myHardwareId == VAL0) stackerSensorHardwareId = STACKER0;
 		else if (myHardwareId == VAL1) stackerSensorHardwareId = STACKER1;
@@ -154,7 +155,9 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 				object: self];
 		}
 	
-	}
+	} else
+          printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>INITAcceptor, NO ENTRO getAcceptorModel BAG %s\n", [myAcceptorSettings getAcceptorModel]); 
+
 
 	// 
 
@@ -242,16 +245,25 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 }
 
 /**/
+static char buff[50];
+
 - (char *) getErrorDescription: (int) aCode
 {
 	int i;
+    char *str;
 
 	for (i = 0; ; i++) {
 
-		if (BillAcceptorErrorCauseArray[i].cause == aCode || BillAcceptorErrorCauseArray[i].cause == 999) {
+		if (BillAcceptorErrorCauseArray[i].cause == aCode) {
 			return getResourceStringDef(BillAcceptorErrorCauseArray[i].resourceString, BillAcceptorErrorCauseArray[i].defaultString);
-		}
-
+		} 
+		//si llegue al final de la lista
+		if (BillAcceptorErrorCauseArray[i].cause == 999) {
+            str = getResourceStringDef(BillAcceptorErrorCauseArray[i].resourceString, BillAcceptorErrorCauseArray[i].defaultString);
+            sprintf(buff, "%s: %ld", str,aCode);
+            printf("BillAcceptor GetErrorDescription %s\n", buff);
+			return buff;
+		} 
 	}
 
 	return NULL;

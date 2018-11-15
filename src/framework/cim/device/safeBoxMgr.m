@@ -36,10 +36,10 @@ int timeoutsCmd[]= {  //este tiempo esta expresado en segundos!
 	10,  	// 	VALUSR_CMD
 	10, 	//	GETUSRINFO_CMD
 	25, 	//	USRFMT_CMD  
-	5,     // 	VERSION_CMD
+	10,     // 	VERSION_CMD
 	10,		// 	MODEL_CMD
 	10,		//	SHUTDOWN_CMD
-	2,		//  GR1_CMD
+	10,		//  GR1_CMD
 	480,	//	BLANKFS_CMD  8 minutos
 	70,	//	CREATEFILE_CMD	3  minutos y pico
 	10,		// 	STATUSFILE_CMD
@@ -420,9 +420,10 @@ char * safeBoxMgrGetVersion( void )
 	char tries;
 
 	tries = 0;
-  	*mySafeBox.version ='\0';
-  	while ( *mySafeBox.version == '\0' && tries < 6) {
-		msleep(400);
+  	//*mySafeBox.version ='\0';
+  	
+    while (( mySafeBox.version[0] == '\0') && (tries < 6)) {
+		msleep(1000);
 		++tries;
 	}
 
@@ -447,10 +448,10 @@ unsigned char data[6];
 void safeBoxMgrGr1ReqStatus( void )
 {
 	
-	if ( mySafeBox.status == NOT_INITIALIZED || *mySafeBox.version  == '\0'  ) {
+	if (( mySafeBox.status == NOT_INITIALIZED) || (mySafeBox.version[0]  == '\0' )) {
 		//safeBoxWriteRead( SAFEBOX, MODEL_CMD, NULL, 0 );
 		safeBoxWriteRead( SAFEBOX, VERSION_CMD, NULL, 0 );
-		if ( *mySafeBox.version  != '\0' ) { 
+		if ( mySafeBox.version[0]  != '\0' ) { 
 			mySafeBox.status = INITIALIZED;
 			//doLog(0,"safeboxMgr->VERSION %s\n", mySafeBox.version );fflush(stdout);
 		}
@@ -1146,8 +1147,10 @@ void safeBoxMgrRun( void * foo)
 				runDevice( 1 ); //val1 o hoppers en su lugar
 
 				safeBoxProcessQueuedElem();
-			} else
+			} else {
+                printf("SafeboxRun safeboxCommErrorStatus == 1\n");
 				msleep(100);
+            }
 		} else {
 			safeBoxProcessQueuedElem();
 			msleep(500);

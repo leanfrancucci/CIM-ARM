@@ -528,7 +528,7 @@ static CT_SYSTEM singleInstance = NULL;
 	if (anObserver) [anObserver updateDisplay: 50 msg: "Init Spooler..."];
 
 	// Inicializando spooler de impresion
-	printf(0,"Initializing printing spooler....\n");
+	printf("Initializing printing spooler....\n");
     
 	printingSettings = [PrintingSettings getInstance];
 	
@@ -542,6 +542,7 @@ static CT_SYSTEM singleInstance = NULL;
 	// seteo el idioma por defecto en el InputKeyboardManager
 	[[InputKeyboardManager getInstance] setCurrentLanguage: [[MessageHandler getInstance] getCurrentLanguage]];
 
+	printf("Initializing printing spooler 2222222222....\n");
   TRY
 
     [[PrinterSpooler getInstance] initSpooler];
@@ -557,6 +558,7 @@ static CT_SYSTEM singleInstance = NULL;
 
 	// Configuracion de cantidad de decimales
 	//doLog(0,"Configura el Round....");
+	printf("Initializing printing spooler 333333333333....\n");
 	[Round getInstance];
 //	doLog(0,"[ OK ]\n");
 
@@ -569,6 +571,8 @@ static CT_SYSTEM singleInstance = NULL;
 		doLog(0,"Hubo corte de energia a las %s\n", asctime(localtime(&powerFailTime)));
 */
 	// Audita el corte de energia
+  	printf("Initializing printing spooler 3333333333....\n");
+
   if (powerFailTime != 0) {
 	   [Audit auditEventWithDate: NULL eventId: Event_ABNORMAL_SYSTEM_SHUTDOWN 
               additional: "" station: 0 datetime: powerFailTime logRemoteSystem: FALSE];
@@ -583,6 +587,7 @@ static CT_SYSTEM singleInstance = NULL;
   SSL_library_init();
 	//Carga los strings de error para SSL & Cryptp APIs
   SSL_load_error_strings();
+	printf("Initializing printing spooler 4444444444....\n");
   
 	// creo las supervisiones al CMP entrante y saliente
 	[self initCMPTelesup];
@@ -590,6 +595,7 @@ static CT_SYSTEM singleInstance = NULL;
     
 
 //	doLog(0,"Starting Power Failed Manager....");
+	printf("Initializing printing spooler 55555555555555555....\n");
 
 	// el start lo tengo que hacer luego de recuperar las llamadas
 	[[PowerFailManager getInstance] start];
@@ -601,6 +607,7 @@ static CT_SYSTEM singleInstance = NULL;
 	[[[CimManager getInstance] getCim] setSerialNumberChangeListener: [JSystem getInstance]];
     [[CimManager getInstance] start];	
     [[CimEventDispatcher getInstance] start];	
+	printf("Initializing printing spooler 6666666666666666....\n");
 
 //	doLog(0,"[ OK ]\n");fflush(stdout);
 
@@ -1198,17 +1205,25 @@ static CT_SYSTEM singleInstance = NULL;
 	[[CimEventDispatcher getInstance] setEventQueue: syncQueue];
 	[SafeBoxHAL start: [[Configuration getDefaultInstance] getParamAsInteger: "CIM_COM_PORT" default: 3]];
 
+    printf("initSafeBox Before waiting harwaresystemStatus\n");
 	while ([SafeBoxHAL getHardwareSystemStatus] == HardwareSystemStatus_UNDEFINED) msleep(5);
+    printf("initSafeBox Before waiting harwaresystemStatus 2222222222222222222222\n");
+	while ([SafeBoxHAL getHardwareSystemStatus] == 255) msleep(5);
+    printf("initSafeBox Before waiting MemoryStatus\n");
 	while ([SafeBoxHAL getMemoryStatus: PRIMARY_MEM] == MemoryStatus_UNDEFINED) msleep(5);
+    printf("initSafeBox Before waiting SecondaryMemoryStatus\n");
 	while ([SafeBoxHAL getMemoryStatus: SECONDARY_MEM] == MemoryStatus_UNDEFINED) msleep(5);
 
 	hardwareSystemStatus  = [SafeBoxHAL getHardwareSystemStatus];
 	primaryMemoryStatus   = [SafeBoxHAL getMemoryStatus: PRIMARY_MEM];
 	secondaryMemoryStatus = [SafeBoxHAL getMemoryStatus: SECONDARY_MEM];
+    printf("hardwareSystemStatus %d primaryMemoryStaus %d secondaryMemoryStatus %d \n", hardwareSystemStatus,primaryMemoryStatus,secondaryMemoryStatus );
 
 	if (hardwareSystemStatus == HardwareSystemStatus_SECONDARY ||
 			primaryMemoryStatus == MemoryStatus_FAILURE ||
 			secondaryMemoryStatus == MemoryStatus_FAILURE) {
+
+        printf("initSafeBox hardware Failure \n");
 
 		[UICimUtils hardwareFailure: NULL
 			hardwareSystemStatus: hardwareSystemStatus
@@ -1294,7 +1309,7 @@ static CT_SYSTEM singleInstance = NULL;
 	END_TRY
 	//****************************************
 
-
+    
 
 	[[CimBackup getInstance] initBackupFileSystem];
 

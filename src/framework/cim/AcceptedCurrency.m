@@ -26,7 +26,6 @@
 	int i;
 	BOOL exist = FALSE;
 
-    printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>AcceptedCurrency addDenominatioN!!! %d\n", [aDenomination getAmount]);
     
 	for (i = 0; i < [myDenominations size]; ++i) {
 		if ([[myDenominations at: i] getAmount] == [aDenomination getAmount])
@@ -35,9 +34,7 @@
 
 	if (!exist){
 		[myDenominations add: aDenomination];
-        printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>AcceptedCurrency addEDDDDDenominatioN!!! %ld\n", [aDenomination getAmount]);
     }
-    printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>AcceptedCurrency myDenominations Size!!! %d\n", [myDenominations size]);
 
 }
 

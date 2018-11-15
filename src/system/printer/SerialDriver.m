@@ -9,7 +9,7 @@
 
 
 #define	DBL_HEIGHT_ON_CODE  		"\x1B\x40\x1D\x21\x01"
-#define	FEED_LINE_CODE              "\x1B\x64\3"
+#define	FEED_LINE_CODE              "\x1B\x64\x0F"
 #define	CUT_PAPER_CODE 			"\x1B\x69"
 #define	CHAR_SPACE_CODE 		"\x1B\x40\x1B\x20\x01"
 #define ESCPOS_CMD_PRINT_RASTER_BIT_IMAGE  "\x1d\x76\x30\x00"
@@ -68,17 +68,15 @@
 	}
 	
 	
-	printf("avanza el papel\n");
 	
-	[myWriter write: "\x1B\x64\10" qty: 10];
-	[myWriter write: CUT_PAPER_CODE qty: 2];
+	//printf("avanza el papel\n");
 	
-	printf("corta el papel\n");
+	//[myWriter write: "\x1B\x64\10" qty: 10];
+	//[myWriter write: CUT_PAPER_CODE qty: 2];
+	
+	//printf("corta el papel\n");
     
     
-	
-	
-	
 	msleep(1000);
 }
 

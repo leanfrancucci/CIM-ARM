@@ -1309,6 +1309,7 @@
 #define RESID_DYNAMIC_PIN																				(RS_BASE + 8043)
 #define RESID_CURRENT_USER																			(RS_BASE + 8044)
 #define RESID_OTHER_USER																				(RS_BASE + 8045)
+#define RESID_OP_NOT_ALLOWED                                                                        (RS_BASE + 8046)
 
 
 #endif

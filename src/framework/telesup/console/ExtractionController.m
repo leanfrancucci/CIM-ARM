@@ -58,13 +58,11 @@ static EXTRACTION_CONTROLLER singleInstance = NULL;
 {
     id door = [[CimManager getInstance] getDoorById: aDoorId];       
     
-    printf("00\n");
+
     if (door == NULL) THROW(CIM_CIM_CASH_INVALID_DOOR_EX);  
 
- 
-    printf("0\n");
 	[[CimManager getInstance] setDoorTimes];
-    printf("1\n");
+
 	if (![door getOuterDoor]) {
 		myExtractionWorkflow = [[CimManager getInstance] getExtractionWorkflowForDoor: door];
 		[myExtractionWorkflow setInnerDoorWorkflow: NULL];
@@ -78,11 +76,11 @@ static EXTRACTION_CONTROLLER singleInstance = NULL;
 		[myExtractionWorkflow setGeneratedOuterDoorExtr: FALSE];
 		[myExtractionWorkflow setHasOpened: FALSE];
 	}
-    printf("2\n");
+
 	//doorAcceptors = [door getAcceptorSettingsList];
 
 	//doLog(0, "doorAcceptors size = %d\n", [doorAcceptors size]);
-    printf("3\n");
+
 	// Controlo si puede abrir la puerta dado el Time Lock correspondiente
 	if ([myExtractionWorkflow getCurrentState] == OpenDoorStateType_IDLE) {
 
@@ -93,7 +91,7 @@ static EXTRACTION_CONTROLLER singleInstance = NULL;
 
 		}
 	}
-	printf("4\n");
+
 }
 
 /**/
@@ -129,7 +127,7 @@ static EXTRACTION_CONTROLLER singleInstance = NULL;
     id user;
     COLLECTION dallasK = [Collection new];
     
-    printf("userLoginForDoorAccess\n");
+
     
     [myExtractionWorkflow addObserver: myObserver];
     if ([myExtractionWorkflow getInnerDoorWorkflow]) {
@@ -137,7 +135,7 @@ static EXTRACTION_CONTROLLER singleInstance = NULL;
 	} else {
         [myExtractionWorkflow setBagTrackingMode: BagTrackingMode_NONE];
     }
-    printf("userLoginForDoorAccess 2 \n");
+
     TRY
         userId = [[UserManager getInstance] validateUser: aUserName password: aUserPassword dallasKeys: dallasK];
         // analisis de expiracion de password
@@ -151,7 +149,7 @@ static EXTRACTION_CONTROLLER singleInstance = NULL;
         RETHROW();
     END_TRY
 
-    printf("userLoginForDoorAccess 3\n");
+
     TRY
         //tengo que setear inicialmente que no genero Pin para que la primera puerta lo genere
         [user setWasPinGenerated: 0];
@@ -167,7 +165,7 @@ static EXTRACTION_CONTROLLER singleInstance = NULL;
         RETHROW();
     END_TRY    
     
-   printf("userLoginForDoorAccess 4\n"); 
+
 }
 
 - (void) startDoorAccess: (int) aDoorId
@@ -192,13 +190,10 @@ static EXTRACTION_CONTROLLER singleInstance = NULL;
 		//doLog(0,"removeCash = %d    bagTrackingMode = %d    hasOpened = %d \n", removeCash, bagTrackingMode, [extractionWorkflow hasOpened]);
 		hasOpened = [myExtractionWorkflow hasOpened];
 
-		while ([[ExtractionManager getInstance] isGeneratingExtraction]) msleep(100);
-
+        while ([[ExtractionManager getInstance] isGeneratingExtraction]) msleep(100);
 		lastExtractionNumber = [myExtractionWorkflow getLastExtractionNumber];
-
 		// resetea los valores en el extractionWorkflow
 		[myExtractionWorkflow resetLastExtractionNumber];
-
 	} else {
 		//doLog(0,"removeCash = %d    bagTrackingMode = %d    hasOpened = %d \n", removeCash, bagTrackingMode, [[extractionWorkflow getInnerDoorWorkflow] hasOpened]);
 		hasOpened = [[myExtractionWorkflow getInnerDoorWorkflow] hasOpened];

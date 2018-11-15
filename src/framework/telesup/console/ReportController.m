@@ -209,7 +209,15 @@ static REPORT_CONTROLLER singleInstance = NULL;
     char additional[20];
     id cash;
 
+    id user;
+    id profile;
+
+    user = [[UserManager getInstance] getUserLoggedIn];
+    profile = [[UserManager getInstance] getProfile: [user getUProfileId]];
     
+    
+    if (![profile hasPermission: CASH_REPORT_OP]) 
+        THROW(RESID_OP_NOT_ALLOWED);
 
     if (aDoorId > 0) {
   

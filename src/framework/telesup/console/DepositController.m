@@ -61,6 +61,13 @@ static DEPOSIT_CONTROLLER singleInstance = NULL;
     myObserver = anObserver;
 }    
 
+
+/*****************************************************************************************
+ * DEPOSITO MANUAL
+ * ******************************************************************************************/
+
+
+
 /**/
 - (void) initManualDrop: (unsigned long) aUserId cashId: (int) aCashId referenceId: (int) aReferenceId applyTo: (char*) anApplyTo envelopeNumber: (char*) anEnvelopeNumber
 {
@@ -165,5 +172,11 @@ static DEPOSIT_CONTROLLER singleInstance = NULL;
     tempManualDeposit = NULL;
     
 }
+
+
+/*****************************************************************************************
+ * DEPOSITO VALIDADO
+ * ******************************************************************************************/
+
 
 @end

@@ -11,6 +11,60 @@
 #define FIRM_UPD_DATA_SIZE		246
 
 
+typedef struct {
+	unsigned char status;
+	int billStackedQty;
+	int amount;
+	int currencyId;
+} TempValInfo;
+
+TempValInfo aTempValInfo;
+
+void openValStatusFile(JcmBillAcceptData *jcmBillAcceptor)
+{
+    char * valStatusFile[15]; 
+
+    sprintf(valStatusFile, "%s%d", "valStatus",  jcmBillAcceptor->devId);
+	jcmBillAcceptor->fpValStat  = openCreateFile( valStatusFile);
+}
+
+unsigned char getValStatus(JcmBillAcceptData *jcmBillAcceptor, int* billQty, int * amount, int * curId )
+{
+
+    fseek( jcmBillAcceptor->fpValStat, 0, SEEK_SET );
+	if (!fread(&aTempValInfo, sizeof(TempValInfo),1,jcmBillAcceptor->fpValStat)){
+		aTempValInfo.status = 0;
+		*amount = 0;
+		*billQty = 0;
+		*curId =0;
+	}else{
+		*amount = aTempValInfo.amount;
+		*billQty = aTempValInfo.billStackedQty;
+		*curId =aTempValInfo.currencyId;
+	} 
+	
+	//printf("GetValStatus Val: %d Status: %d  amount %d curId %d billQty %d\n", jcmBillAcceptor->devId, aTempValInfo.status, *amount, *curId, *billQty );//fflush(stdout);
+
+	return aTempValInfo.status;
+}
+
+void setValStatus(JcmBillAcceptData *jcmBillAcceptor, unsigned char newStatus, int billQty, int amount, int currencyId)
+{
+    printf("***************************** setValStatussssssssssssssssssssssssssssss  %d\n", newStatus);
+	aTempValInfo.status = newStatus;
+	aTempValInfo.billStackedQty = billQty;
+	aTempValInfo.amount = amount;
+	aTempValInfo.currencyId = currencyId;
+
+	//printf( "SetValStatus Val: %d Status: %d billQty %d amount %d curId %d\n", jcmBillAcceptor->devId, newStatus, billQty, amount, currencyId);
+    fseek( jcmBillAcceptor->fpValStat, 0, SEEK_SET );
+	fwrite( &aTempValInfo, sizeof(aTempValInfo), 1, jcmBillAcceptor->fpValStat );
+	fflush(jcmBillAcceptor->fpValStat);
+    if (fsync(fileno(jcmBillAcceptor->fpValStat))!= 0)
+        printf( "SetValStatus Val: %d Status: %d fsyn failed!\n", jcmBillAcceptor->devId, newStatus);
+
+}
+
 
 /* Eventos - se corresponden con los estados obtenidos del validador */
 
@@ -552,8 +606,7 @@ void billAcceptorStart( JcmBillAcceptData *jcmBillAcceptor )
                 printf("MEI after startStateMach id %d! \n", jcmBillAcceptor->devId );
             }else{ 
                 printf("RDM startStateMach id %d! \n", jcmBillAcceptor->devId );
-                jcmBillAcceptor->billTableLoaded = 0;
-                gotoState( jcmBillAcceptor->billValidStateMachine, &rdmInitializingState );
+                gotoState( jcmBillAcceptor->billValidStateMachine, &rdmFirstState );
                 
             }
 		}
@@ -594,7 +647,9 @@ void billAcceptorRun( JcmBillAcceptData *jcmBillAcceptor )
 		   billAcceptorSetStatus( jcmBillAcceptor, jcmBillAcceptor->pendingStatus );
 		   jcmBillAcceptor->pendingStatus = 0;
 		}
-	} 
+	} /*else    {
+     //   printf("jcmBillAcceptormgr noCommState en el billAcceptorRun val> %d\n", jcmBillAcceptor->devId);
+    }*/
 	
 }
 

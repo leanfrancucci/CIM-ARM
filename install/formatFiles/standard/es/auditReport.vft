@@ -1,5 +1,5 @@
+@CHAR_SPACE@
 @IF|/auditList/sectionHeader=TRUE@
-@VERDANA_SMALL_FONT@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -18,20 +18,17 @@
 @IF|/generalInfo/vewHeader6=TRUE@
 @/generalInfo/header6@\n
 @END_IF@
-@BITSTREAM_FONT@
------------------------------\n
-@VERDANA_BIG_FONT@
+-----------------------------------------\n
 @DBL_HEIGHT_ON@
           REPORTE AUDITORIA\n
-@DBL_HEIGHT_OFF@
+@CHAR_SPACE@ 
 @IF|/generalInfo/reportDetail=FALSE@
               -RESUMIDO-\n
 @END_IF@
 @IF|/generalInfo/reportDetail=TRUE@
               -DETALLADO-\n
 @END_IF@
-@BITSTREAM_FONT@
------------------------------\n
+-----------------------------------------\n
 Trans #   : @/generalInfo/trans@\n
 Fecha-Hora: @/generalInfo/transTime@\n
 Pto Vta   : @/generalInfo/systemId@\n
@@ -41,24 +38,21 @@ Dia Hasta : @/generalInfo/toDate@\n
 Dispositiv: @/generalInfo/device:-14@\n
 Usuario   : @/generalInfo/user:-16@\n
 Cat Event : @/generalInfo/eventCategory:-16@\n
------------------------------\n
+-----------------------------------------\n
  \n
 Trans# Usu#   Fecha/hora\n
  Detalle del evento\n
------------------------------\n
+-----------------------------------------\n
 @END_IF@
-@BITSTREAM_FONT@
 @IF|/auditList/withOutValues=TRUE@
-@BITSTREAM_FONT@
  \n
       NO HAY MOVIMIENTOS\n
        PARA EL PERIODO\n
  \n
------------------------------\n
+-----------------------------------------\n
 @END_IF@
 @FOR_EACH|auditList/auditInfo@
 @auditId:5@ # @userId:3@ @auditDate@\n
-@COURIER_8x16_FONT@
  @userName:-15@  @eventDescription:-30@\n
 @IF|reportDet=TRUE@
 @IF|viewAdditional=TRUE@
@@ -68,10 +62,8 @@ Trans# Usu#   Fecha/hora\n
  @field:-18@  @newValue:-27@\n
 @END_FOR@
 @END_IF@
-@BITSTREAM_FONT@
 @END_FOR@
 @IF|/auditList/sectionFooter=TRUE@
-@VERDANA_SMALL_FONT@
  \n
 @IF|/generalInfo/vewFooter1=TRUE@
 @/generalInfo/footer1@\n
@@ -85,3 +77,5 @@ Trans# Usu#   Fecha/hora\n
 Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
 Fecha: @/generalInfo/currentDate@\n
 @END_IF@
+
+

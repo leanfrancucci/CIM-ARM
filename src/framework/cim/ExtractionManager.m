@@ -393,13 +393,14 @@ static EXTRACTION_MANAGER singleInstance = NULL;
 	COLLECTION acceptorsList;
 	int i;
 
+    printf("myIsGeneratingExtraction = TRUE\n");
 	myIsGeneratingExtraction = TRUE;
 
 	now = [SystemTime getLocalTime];
-
+    printf("generate 1\n");
 	extraction = [self getCurrentExtraction: aDoor];
 	THROW_NULL(extraction);
-
+    printf("generate 2\n");
 	// Controlo si me configuraron un proximo numero de extraccion
 	if ([[CimGeneralSettings getInstance] getNextExtractionNumber] > myLastExtractionNumber) {
 		myLastExtractionNumber = [[CimGeneralSettings getInstance] getNextExtractionNumber] - 1;
@@ -407,7 +408,7 @@ static EXTRACTION_MANAGER singleInstance = NULL;
 
 	if ([[CimGeneralSettings getInstance] getUseEndDay]) 
 		[[ZCloseManager getInstance] generateCashCloseForDoor: aDoor user: aUser1 closeTime: now];
-
+    printf("generate 3\n");
 	// Numero de cuenta bancaria
 	[extraction setBankAccountInfo: [[CimGeneralSettings getInstance] getDefaultBankInfo]];
 
@@ -422,24 +423,24 @@ static EXTRACTION_MANAGER singleInstance = NULL;
 
 	// Configuro el usuario 2
 	[extraction setCollector: aUser2];
-
+    printf("generate 4\n");
 	// inicializo las alarmas de stacker full y warning de la extraccion y de los acceptors
 	// detras de la puerta
 	[extraction setHasEmitStackerFull: FALSE];
 	[extraction setHasEmitStackerWarning: FALSE];
-	 
+	 printf("generate 5\n");
 	acceptorsList = [[[CimManager getInstance] getCim] getAcceptors];
 	for (i = 0; i < [acceptorsList size]; ++i) {
 		[[acceptorsList at: i] setHasEmitStackerFull: FALSE];
 		[[acceptorsList at: i] setHasEmitStackerWarning: FALSE];
 	}
-
+    printf("generate 6\n");
 	// setea el numero de bolsa
 	[extraction setBagNumber: aBagNumber];
 
 	// Guardo la extraccion
 	[[[Persistence getInstance] getExtractionDAO] store: extraction];
-
+    printf("generate 7\n");
 	// Audito el evento
 	auditDateTime = [SystemTime getLocalTime];
 	sprintf(additional, "%s %ld", getResourceStringDef(RESID_REPRINT_DEPOSIT_DESC, "Retiro"), [extraction getNumber]);
@@ -463,7 +464,7 @@ static EXTRACTION_MANAGER singleInstance = NULL;
 			copiesQty: [[CimGeneralSettings getInstance] getExtractionCopiesQty]
 			ignorePaperOut: FALSE tree: tree additional: [[CimGeneralSettings getInstance] getPrintLogo]];
 	}
-
+    printf("generate 8\n");
 	if (aBagTrackingMode != BagTrackingMode_NONE) {
 		[self storeBagTrackHeader: extraction bagNumber: aBagNumber bagTrackingMode: aBagTrackingMode];
 	}
@@ -474,12 +475,12 @@ static EXTRACTION_MANAGER singleInstance = NULL;
 	
 	// Obtengo el ultimo numero de extraccion
 	myLastExtractionNumber++;
-
+printf("generate 9\n");
 	// Limpio la extraccion (resetea los valores en 0)
 	[extraction clear];
-
+printf("generate 10\n");
 	[self addCurrentCashClosesToExtraction: extraction];
-
+printf("generate 11\n");
 	
 	printf("aBagTrackingMode = %d, aBagTrackingMode\n");
 
@@ -517,6 +518,7 @@ static EXTRACTION_MANAGER singleInstance = NULL;
 		}
 	}
 */
+printf("myIsGeneratingExtraction = FALSE\n");
 	myIsGeneratingExtraction = FALSE;
 
 	return myLastExtractionNumber;

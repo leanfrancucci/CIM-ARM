@@ -1,4 +1,4 @@
-@VERDANA_SMALL_FONT@
+@CHAR_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -17,32 +17,28 @@
 @IF|/generalInfo/vewHeader6=TRUE@
 @/generalInfo/header6@\n
 @END_IF@
-@BITSTREAM_FONT@
------------------------------\n
-@VERDANA_BIG_FONT@
+-----------------------------------------\n
 @DBL_HEIGHT_ON@
         REPORTE DE USUARIOS\n
-@DBL_HEIGHT_OFF@
+@CHAR_SPACE@
 @IF|/generalInfo/detailReport=FALSE@
                -RESUMIDO-\n
 @END_IF@
 @IF|/generalInfo/detailReport=TRUE@
                -DETALLADO-\n
 @END_IF@
-@BITSTREAM_FONT@
------------------------------\n
+-----------------------------------------\n
 Trans #   : @/generalInfo/trans@\n
 Fecha-Hora: @/generalInfo/transTime@\n
 Pto Vta   : @/generalInfo/systemId@\n
 ID Remoto	: @/generalInfo/systemIdPIMS@\n
 Estado    : @/generalInfo/statusDescription@\n
------------------------------\n
+-----------------------------------------\n
  \n
 @IF|/generalInfo/withOutValues=TRUE@
-@BITSTREAM_FONT@
       NO HAY USUARIOS\n
  \n
------------------------------\n
+-----------------------------------------\n
 @END_IF@
 @FOR_EACH|userList/userInfo@
 USUARIO # : @userId@\n
@@ -54,22 +50,17 @@ Perfil    : @profile:-17@\n
 Clave     : @key@\n
 Ult. Login: @lastLogin@\n
 Cuenta  # : \n
-@VERDANA_SMALL_FONT@
  @account@\n
-@BITSTREAM_FONT@
 @IF|/generalInfo/detailReport=TRUE@
 Permisos  :\n
-@VERDANA_SMALL_FONT@
 @FOR_EACH|opList/opInfo@
 @operationName@\n
 @END_FOR@
 @END_IF@
-@BITSTREAM_FONT@
  \n
------------------------------\n
+-----------------------------------------\n
  \n
 @END_FOR@\n
-@VERDANA_SMALL_FONT@
  \n
 @IF|/generalInfo/vewFooter1=TRUE@
 @/generalInfo/footer1@\n
@@ -82,3 +73,5 @@ Permisos  :\n
 @END_IF@
 Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
 Fecha: @/generalInfo/currentDate@\n
+@FEED_LINE@
+@CUT_PAPER@

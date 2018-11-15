@@ -768,7 +768,7 @@
 {
 	//[[AlarmThread getInstance] addAlarm: aMessage];
     //Modificado por sole! 12/10/2018>. Despues pasar codigo a AlarmThread para hacerlo generico
-    printf("UICimUtils --> addAsyncMsg\n");
+    printf("UICimUtils --> addAsyncMsg description %s\n", aMessage);
     [[AsyncMsgThread getInstance] addAsyncMsg: "1000" description: aMessage isBlocking: FALSE];
 
 }

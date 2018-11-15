@@ -28,6 +28,7 @@
 #include "UpdateFirmwareThread.h"
 #include "JExceptionForm.h"
 #include "POSEventAcceptor.h"
+#include "AsyncMsgThread.h"
 
 //#define LOG(args...) doLog(0,args)
 #define TOTAL_TIME 900000//Tiempo en el que se apaga la CIM si utiliza bateria - Poner 15 minutos
@@ -484,6 +485,34 @@ static CIM_MANAGER singleInstance = NULL;
 - (void) onDoorClose: (DOOR) aDoor
 {
 	EXTRACTION_WORKFLOW extractionWorkflow;
+    
+	COLLECTION myAcceptorSettingsList;
+	BILL_ACCEPTOR myAcceptor;
+	int i;
+
+	//SOLE
+	//doLog(0, "SOLEEEEE CimManager -> onDoorClose, doorId = %d\n", [aDoor getDoorId]);
+
+	myAcceptorSettingsList = [aDoor getAcceptorSettingsList];
+	//recorrer lista de aceptadores de la puerta y si son de tipo billacceptor 
+	for (i=0; i<[myAcceptorSettingsList size]; i++) {
+
+		if (([[myAcceptorSettingsList at: i] getAcceptorType] == AcceptorType_VALIDATOR) &&
+			 ([[myAcceptorSettingsList at: i] getAcceptorProtocol] != ProtocolType_CDM3000)) {
+			myAcceptor = [myCim  getAcceptorById: [[myAcceptorSettingsList at: i] getAcceptorId]];	
+			if (myAcceptor && [myAcceptor getStackerSensorStatus] == StackerSensorStatus_REMOVED){
+				printf("SOLEEEEE CimManager encontre un stacker open con puerta cerrada\n");
+				[[Buzzer getInstance] buzzerBeep: 4500];
+				//[UICimUtils showAlarm: getResourceStringDef(RESID_STACKER_OPEN_DOOR_CLOSED, "Bolsa mal colocada. Reabrir puerta y    colocarla bien.")];
+                [[AsyncMsgThread getInstance] addAsyncMsg: "1000" description: "Bolsa Mal Colocada. Reabrir Puerta!" isBlocking: FALSE];
+
+				[Audit auditEventCurrentUser: Event_MISPLACED_BAG additional: [[myAcceptor getAcceptorSettings] getAcceptorName] station: [[myAcceptor getAcceptorSettings] getAcceptorId] logRemoteSystem: FALSE];
+
+			} 
+		}
+			
+	}
+    
 	printf("CimManager -> onDoorClose, doorId = %d\n", [aDoor getDoorId]);
 
 	// Seteo el estado actual a Idle (si la puerta es de recaudacion unicamente)
@@ -582,8 +611,8 @@ static CIM_MANAGER singleInstance = NULL;
 		if ([[anAcceptor getAcceptorSettings] getAcceptorProtocol] == ProtocolType_CDM3000) {
 
 			stringcpy(valName, [[anAcceptor getAcceptorSettings] getAcceptorName]);
-			sprintf(buf, "%-19s %-20s%-20s", valName, 
-				[anAcceptor getErrorDescription: aCause], "");
+			sprintf(buf, "%s %s", valName, 
+				[anAcceptor getErrorDescription: aCause]);
 	
 			//doLog("alarm = %s\n", buf);
 
@@ -602,7 +631,7 @@ static CIM_MANAGER singleInstance = NULL;
 				callback: "communicationErrorResponseHandler:"];*/
 
 			stringcpy(valName, [[anAcceptor getAcceptorSettings] getAcceptorName]);
-			sprintf(buf, "  %-18s%-19s %-20s", 
+			sprintf(buf, "  %s %s %s", 
 				getResourceStringDef(RESID_WARNING_MSG, "Advertencia!!"),
 				valName, [anAcceptor getErrorDescription: aCause]);
 
@@ -656,8 +685,9 @@ static CIM_MANAGER singleInstance = NULL;
 		[[Buzzer getInstance] buzzerBeep: 1500];
 
   buf[0] = '\0';
-	sprintf(buf, "%-20s%-20s", [[anAcceptor getAcceptorSettings] getAcceptorName], [anAcceptor getErrorDescription: aCause]);
-  strcat(buf,"                                   ");
+	sprintf(buf, "%s %s", [[anAcceptor getAcceptorSettings] getAcceptorName], [anAcceptor getErrorDescription: aCause]);
+    printf("CimManager onAcceptorError before showAlarm %s\n", buf);
+ // strcat(buf,"                                   ");
 
 	[UICimUtils showAlarm: buf];
 
@@ -756,14 +786,14 @@ static CIM_MANAGER singleInstance = NULL;
 
 			if (strstr([[myCim  getBoxById: 1] getBoxModel], "FLEX")) {			
 
-				sprintf(buf, "%s", getResourceStringDef(RESID_STACKER_FULL, "Stacker Lleno.      Finalice deposito!"));
+				sprintf(buf, "%s", getResourceStringDef(RESID_STACKER_FULL, "Stacker Lleno. Finalice deposito!"));
 				[UICimUtils showAlarm: buf];
 				[myCim setHasEmitStackerFullByCash: anAcceptor value: TRUE];
 				[myCim setHasEmitStackerWarningByCash: anAcceptor value: TRUE];
 
 			} else {
 
-				sprintf(buf, "%-20s%s", [[anAcceptor getAcceptorSettings] getAcceptorName], getResourceStringDef(RESID_STACKER_FULL, "Stacker Lleno.      Finalice deposito!"));
+				sprintf(buf, "%s %s", [[anAcceptor getAcceptorSettings] getAcceptorName], getResourceStringDef(RESID_STACKER_FULL, "Stacker Lleno. Finalice deposito!"));
 				//doLog("alarm = %s\n", buf);
 	
 				[UICimUtils showAlarm: buf];
@@ -792,7 +822,7 @@ static CIM_MANAGER singleInstance = NULL;
 	
 				} else {
 					
-					sprintf(buf, "%-20s%s", [[anAcceptor getAcceptorSettings] getAcceptorName], getResourceStringDef(RESID_STACKER_FULL_IS_COMING, "Esta por llegar al stacker lleno"));
+					sprintf(buf, "%s %s", [[anAcceptor getAcceptorSettings] getAcceptorName], getResourceStringDef(RESID_STACKER_FULL_IS_COMING, "Esta por llegar al stacker lleno"));
 	
 					//doLog("alarm = %s\n", buf);
 	
@@ -814,9 +844,9 @@ static CIM_MANAGER singleInstance = NULL;
 		if ((stackerSize != 0) && (stackerSize < stackerQty)) {
 
 			if (strstr([[myCim  getBoxById: 1] getBoxModel], "FLEX")) 			
-				sprintf(buf, "%s",  getResourceStringDef(RESID_STACKER_FULL, "Stacker Lleno.      Finalice deposito!"));
+				sprintf(buf, "%s",  getResourceStringDef(RESID_STACKER_FULL, "Stacker Lleno. Finalice deposito!"));
 			else
-				sprintf(buf, "%-20s%s", [[anAcceptor getAcceptorSettings] getAcceptorName], getResourceStringDef(RESID_STACKER_FULL, "Stacker Lleno.      Finalice deposito!"));
+				sprintf(buf, "%s %s", [[anAcceptor getAcceptorSettings] getAcceptorName], getResourceStringDef(RESID_STACKER_FULL, "Stacker Lleno. Finalice deposito!"));
 
 			[UICimUtils showAlarm: buf];
 		}

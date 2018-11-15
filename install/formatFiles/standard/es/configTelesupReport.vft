@@ -1,4 +1,4 @@
-@VERDANA_SMALL_FONT@
+@CHAR_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -17,32 +17,27 @@
 @IF|/generalInfo/vewHeader6=TRUE@
 @/generalInfo/header6@\n
 @END_IF@
-@BITSTREAM_FONT@
------------------------------\n
-@VERDANA_BIG_FONT@
+-----------------------------------------\n
 @DBL_HEIGHT_ON@
               REPORTE DE\n
-    CONFIG DE SUPERVISION\n
-@DBL_HEIGHT_OFF@
-@BITSTREAM_FONT@
------------------------------\n
+    CONFIGURACION DE SUPERVISION\n
+@CHAR_SPACE@
+-----------------------------------------\n
 Trans #   : @/generalInfo/trans@\n
 Fecha-Hora: @/generalInfo/transTime@\n
 Pto Vta   : @/generalInfo/systemId@\n
 ID        : @/generalInfo/telesupSystemId@\n
 ID Remoto : @/generalInfo/systemIdPIMS@\n
------------------------------\n
+-----------------------------------------\n
 
 @IF|/generalInfo/withOutValues=TRUE@
-@BITSTREAM_FONT@
  \n
     NO HAY SUPERVISIONES\n
  \n
------------------------------\n
+-----------------------------------------\n
 @END_IF@
 
 @FOR_EACH|telesupList/telesupInfo@
-@BOLD_ON@
 Nombre: @name:-16@\n
 @BITSTREAM_FONT@
 Ult Superv: @last@\n
@@ -53,9 +48,8 @@ Reintentos: @retrys@\n
 Hora reint: @retryTime@ min\n
 B Em Desde: @eBFrom@ \n
 B Em Hasta: @eBTo@ \n
------------------------------\n
+-----------------------------------------\n
 @END_FOR@\n
-@VERDANA_SMALL_FONT@
  \n
 @IF|/generalInfo/vewFooter1=TRUE@
 @/generalInfo/footer1@\n
@@ -68,3 +62,5 @@ B Em Hasta: @eBTo@ \n
 @END_IF@
 Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
 Fecha: @/generalInfo/currentDate@\n
+@FEED_LINE@
+@CUT_PAPER@

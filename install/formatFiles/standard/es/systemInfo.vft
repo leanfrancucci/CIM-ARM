@@ -1,4 +1,4 @@
-@VERDANA_SMALL_FONT@
+@CHAR_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -17,34 +17,29 @@
 @IF|/generalInfo/vewHeader6=TRUE@
 @/generalInfo/header6@\n
 @END_IF@
-@BITSTREAM_FONT@
------------------------------\n
-@VERDANA_BIG_FONT@
+-----------------------------------------\n
 @DBL_HEIGHT_ON@
             INFO. SISTEMA\n
-@DBL_HEIGHT_OFF@
+@CHAR_SPACE@
 @IF|/generalInfo/detailReport=FALSE@
              -RESUMIDO-\n
 @END_IF@
 @IF|/generalInfo/detailReport=TRUE@
              -DETALLADO-\n
 @END_IF@
-@BITSTREAM_FONT@
------------------------------\n
+-----------------------------------------\n
 Trans #   : @/generalInfo/trans@\n
 Fecha-Hora: @/generalInfo/transTime@\n
 Pto Vta   : @/generalInfo/systemId@\n
 ID        : @/generalInfo/telesupSystemId@\n
 ID Remoto : @/generalInfo/systemIdPIMS@\n
------------------------------\n
+-----------------------------------------\n
  \n
-MODELO ----------------------\n
+MODELO ----------------------------------\n
 @/generalInfo/cashModel@\n
------------------------------\n
+-----------------------------------------\n
  \n
-@BOLD_ON@
-SOFTWARE ************\n
-@BITSTREAM_FONT@
+SOFTWARE \n
 Version  : @/software/version@\n
 Release  : @/software/release@\n
 Version SO: @/software/osVersion@\n
@@ -56,21 +51,15 @@ Versiones PTSD\n
  CMP       : @/software/cmpPTSDVersion@\n
  CMP Remoto: @/software/cmpOutPTSDVersion@\n
  \n
-@BOLD_ON@
-HARDWARE ************\n
-@BITSTREAM_FONT@
+HARDWARE \n
 Nombre: BOX CONTROLLER\n
 Version SW/HW :\n
-@VERDANA_SMALL_FONT@
  @/hardware/versionHW@\n
-@BITSTREAM_FONT@
 Estado Energia: @/hardware/powerStatus@\n
 Estado Sistema: @/hardware/systemStatus@\n
 Estado Bateria: @/hardware/batteryStatus@\n
  \n
-@BOLD_ON@
-ESTADO COMERCIAL *****\n
-@BITSTREAM_FONT@
+ESTADO COMERCIAL \n
 Direcc Mac: @/commStateChange/macAddress:17@\n
 Sol. (GMT): @/commStateChange/requestDate@\n
 Est Ant.  : @/commStateChange/oldState@\n
@@ -80,22 +69,18 @@ Vence     : @/commStateChange/expireDate@\n
 Renovacion pendiente: @/commStateChange/hasPendingRenewal@\n
  \n
 @IF|/generalInfo/detailReport=TRUE@
-@BOLD_ON@
-MODULO GSM ***********\n
-@BITSTREAM_FONT@
+@DBL_HEIGHT_ON@
+MODULO GSM \n
+@CHAR_SPACE@
 Senal     : @/hardware/signal@\n
  \n
-@BOLD_ON@
-ETHERNET (eth0) ******\n
-@BITSTREAM_FONT@
+ETHERNET (eth0) \n
 DHCP    : @/hardware/dhcp@\n
 IP      : @/hardware/ip@\n
 Mascara : @/hardware/mask@\n
 Gateway : @/hardware/gateway@\n
  \n
-@BOLD_ON@
-VALIDADORES **********\n
-@BITSTREAM_FONT@
+VALIDADORES \n
 @FOR_EACH|acceptorList/acceptor@
 Nombre     : @name:-16@\n
 Moneda     : @currency:-16@\n
@@ -106,24 +91,22 @@ Version: @version1@\n
 @IF|/generalInfo/viewVersion2=TRUE@ 
 @version2:-29@\n
 @END_IF@
-@BITSTREAM_FONT@
 Tamano Stacker: @stakerSize@\n
 Uso Stacker   : @stakerUse@\n
 Estado : @status:-20@\n
------------------------------\n
+-----------------------------------------\n
 @END_FOR@\n
  \n
-@BOLD_ON@
-ESTADO DE PUERTAS ****\n
-@BITSTREAM_FONT@
+@DBL_HEIGHT_ON@
+ESTADO DE PUERTAS \n
+@CHAR_SPACE@
 @FOR_EACH|doorList/door@
 @name@ :\n
 Cerradura: @lockerState@\n
 Sensor   : @plungerState@\n
------------------------------\n
+-----------------------------------------\n
 @END_FOR@\n
 @END_IF@
-@VERDANA_SMALL_FONT@
  \n
 @IF|/generalInfo/vewFooter1=TRUE@
 @/generalInfo/footer1@\n
@@ -136,3 +119,6 @@ Sensor   : @plungerState@\n
 @END_IF@
 Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
 Fecha: @/generalInfo/currentDate@\n
+@FEED_LINE@
+@CUT_PAPER@
+

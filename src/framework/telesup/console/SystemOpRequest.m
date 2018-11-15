@@ -23,6 +23,7 @@
 #include "ReportController.h"
 #include "ZCloseManager.h"
 #include "TelesupController.h"
+#include "SafeBoxHAL.h"
 
 
 // Maximo tamanio de documento
@@ -408,22 +409,60 @@ static int loginFailQty = 0;
 - (void) userLogout
 {
     char buffer[200 ];
-    id user = NULL;
+    USER userL = NULL;
     
-    user = [[UserManager getInstance] getUserLoggedIn];
-    if (user != NULL) {
+    userL = [[UserManager getInstance] getUserLoggedIn];
+    if (userL != NULL) {
         
         printf("userLogout\n");
         
         buffer[0] = '\0';
-        sprintf(buffer, "%s-%s",[user getLoginName], [user getFullName]);
+        sprintf(buffer, "%s-%s",[user getLoginName], [userL getFullName]);
         [Audit auditEventCurrentUser: Event_LOGOUT_USER additional: buffer station: 0 logRemoteSystem: FALSE];
   	  
-        [[UserManager getInstance] logOffUser: [user getUserId]];
+        [[UserManager getInstance] logOffUser: [userL getUserId]];
         
     }
 
     [myRemoteProxy sendAckMessage];
+}
+
+
+/**/
+- (int) getTotalStackerSize: (id) anAcceptorSetting
+{
+	id cimCash;
+	COLLECTION acceptors;
+	int i;
+	int sSize = 0;
+
+	cimCash = [[[CimManager getInstance] getCim] getCimCashByAcceptorId: [anAcceptorSetting getAcceptorId]];
+	acceptors = [cimCash getAcceptorSettingsList];
+	for (i=0; i<[acceptors size]; ++i)  {
+		sSize+= [[acceptors at: i] getStackerSize];
+	}
+	
+	return sSize;
+
+}
+
+/**/
+- (int) getTotalStackerWarningSize: (id) anAcceptorSetting
+{
+	id cimCash;
+	COLLECTION acceptors;
+	int i;
+	int sWarningSize = 0;
+
+	cimCash = [[[CimManager getInstance] getCim] getCimCashByAcceptorId: [anAcceptorSetting getAcceptorId]];
+	acceptors = [cimCash getAcceptorSettingsList];
+	
+	for (i=0; i<[acceptors size]; ++i) {
+		sWarningSize+= [[acceptors at: i] getStackerWarningSize];
+	}
+	
+	return sWarningSize;
+
 }
 
 /**/
@@ -441,8 +480,17 @@ static int loginFailQty = 0;
     char exceptionDescription[512];
     CIM_CASH cimCash; 
     CASH_REFERENCE cashReference; 
-   	*envelopeNumber = '\0';
+	id acceptors;
+    int i;
+    int stackerQty;
+    int stackerSize;
+    int stackerWarningSize;
+    
+        
+    
+    *envelopeNumber = '\0';
 	*applyTo = '\0';
+
 
     printf("StartValidatedDrop\n");    
 
@@ -491,6 +539,46 @@ static int loginFailQty = 0;
         if ([[CimManager getInstance] getExtendedDrop: cimCash] != NULL) 
             THROW(RESID_CASH_ALREADY_USE_EXTENDED);
 
+        
+      	acceptors = [cimCash getAcceptorSettingsList];  
+        
+        
+        // recorro los validadores para mostrar el cartel de deshabilidao cuando corresponda
+        for (i = 0; i < [acceptors size]; ++i) {
+
+            // Si es FLEX debe tomar la configuracion de algun lado
+            if (strstr([[[[CimManager getInstance] getCim] getBoxById: 1] getBoxModel], "FLEX")) {
+
+                stackerQty = [[[ExtractionManager getInstance] getCurrentExtraction: [[acceptors at: i] getDoor]] getQty: NULL];
+                // debo tomar el total del tamano que es la sumatoria de los montos de los stackers de cada aceptador
+                stackerSize = [self getTotalStackerSize: [acceptors at: i]];
+                stackerWarningSize = [self getTotalStackerWarningSize: [acceptors at: i]];
+                printf("stacker size = %d\n", stackerSize);
+                printf("stacker warning size = %d\n", stackerWarningSize);
+                printf("stacker qty = %d\n", stackerQty);
+
+            } else {
+
+                // si es stacker full no le habilito el validador
+                stackerQty = [[[ExtractionManager getInstance] getCurrentExtraction: [[acceptors at: i] getDoor]] getQtyByAcceptor: [acceptors at: i]];
+
+                stackerSize = [[acceptors at: i] getStackerSize];
+                stackerWarningSize = [[acceptors at: i] getStackerWarningSize];
+            }
+
+
+            if ((stackerSize != 0) && (stackerSize <= stackerQty)){
+
+                if (strstr([[[[CimManager getInstance] getCim] getBoxById: 1] getBoxModel], "FLEX")) {
+                    THROW(RESID_ACCEPTORS_DISABLED);
+                    //sprintf(buff, "%s", getResourceStringDef(RESID_ACCEPTORS_DISABLED, "Validadores deshabilitados. Stacker Lleno!"));
+                } else {
+                    THROW(RESID_STACKER_FULL_VALIDATED_DROP);
+                    //sprintf(buff, "%-20s %s", [[acceptors at: i] getAcceptorName], getResourceStringDef(RESID_STACKER_FULL_VALIDATED_DROP, "Sera deshabilitado. Stacker esta Lleno!"));
+                }
+            }
+        }        
+        
         [[CimManager getInstance] checkCimCashState: cimCash];
         
         if (referenceId != 0)
@@ -806,6 +894,9 @@ static int loginFailQty = 0;
 
     [[ExtractionController getInstance] closeExtraction: doorId];
     //[[ExtractionController getInstance] free];
+    
+    
+    printf("Manda ack de closeExtraction \n");
     [myRemoteProxy sendAckMessage];
 
 }
@@ -993,7 +1084,7 @@ static int loginFailQty = 0;
     if ([myPackage isValidParam: "Detailed"])
         detailed = [myPackage getParamAsBoolean: "Detailed"];    
 
-    printf("1\n");
+    
     [[ReportController getInstance] genOperatorReport: userId detailed: detailed];
     
     [myRemoteProxy sendAckMessage];    

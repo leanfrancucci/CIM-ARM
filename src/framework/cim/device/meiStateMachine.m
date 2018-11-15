@@ -1,49 +1,6 @@
 //Funciones nuevas de inicializaion del archivo del control de billstacked>
 
-typedef struct {
-	unsigned char status;
-	int billStackedQty;
-	int amount;
-	int currencyId;
-} TempValInfo;
-
-TempValInfo aTempValInfo;
 static char moneyStr[50];
-
-unsigned char getValStatus(JcmBillAcceptData *jcmBillAcceptor, int* billQty, int * amount, int * curId )
-{
-
-    fseek( jcmBillAcceptor->fpValStat, 0, SEEK_SET );
-	if (!fread(&aTempValInfo, sizeof(TempValInfo),1,jcmBillAcceptor->fpValStat)){
-		aTempValInfo.status = 0;
-		*amount = 0;
-		*billQty = 0;
-		*curId =0;
-	}else{
-		*amount = aTempValInfo.amount;
-		*billQty = aTempValInfo.billStackedQty;
-		*curId =aTempValInfo.currencyId;
-	} 
-	
-	//printf("GetValStatus Val: %d Status: %d  amount %d curId %d billQty %d\n", jcmBillAcceptor->devId, aTempValInfo.status, *amount, *curId, *billQty );//fflush(stdout);
-
-	return aTempValInfo.status;
-}
-
-void setValStatus(JcmBillAcceptData *jcmBillAcceptor, unsigned char newStatus, int billQty, int amount, int currencyId)
-{
-	aTempValInfo.status = newStatus;
-	aTempValInfo.billStackedQty = billQty;
-	aTempValInfo.amount = amount;
-	aTempValInfo.currencyId = currencyId;
-
-	//printf( "SetValStatus Val: %d Status: %d billQty %d amount %d curId %d\n", jcmBillAcceptor->devId, newStatus, billQty, amount, currencyId);
-    fseek( jcmBillAcceptor->fpValStat, 0, SEEK_SET );
-	fwrite( &aTempValInfo, sizeof(aTempValInfo), 1, jcmBillAcceptor->fpValStat );
-	fflush(jcmBillAcceptor->fpValStat);
-	//printf( "SetValStatus Val: %d Status: %d billQty %d amount %d curId %d\n", jcmBillAcceptor->devId, newStatus, billQty, amount, currencyId);
-
-}
 
 void cleanLastBillFileStatus(StateMachine *sm)
 {
@@ -311,14 +268,13 @@ void doTransferNextFrameMei(StateMachine *sm)
 void loadFistStateMei(StateMachine *sm) 
 { 
 	JcmBillAcceptData *jcmBillAcceptor;
-    char * valStatusFile[15]; 
 	
 
 	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
 
-    sprintf(valStatusFile, "%s%d", "valStatus",  jcmBillAcceptor->devId);
+    openValStatusFile(jcmBillAcceptor);
+
 	printf("MEI %d LoadFIRSTSTATE  statusFile \n", jcmBillAcceptor->devId);//fflush(stdout);
-	jcmBillAcceptor->fpValStat  = openCreateFile( valStatusFile);
   	jcmBillAcceptor->fileInfoRequested = 0;	
 	jcmBillAcceptor->statusFiledReseted = 0;
 	jcmBillAcceptor->notifyInitApp = 0;

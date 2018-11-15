@@ -1,4 +1,4 @@
-@VERDANA_SMALL_FONT@
+@CHAR_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -17,21 +17,18 @@
 @IF|/generalInfo/vewHeader6=TRUE@
 @/generalInfo/header6@\n
 @END_IF@
-@BITSTREAM_FONT@
 @IF|/generalInfo/isReprint=TRUE@
  \n
------------------------------\n
-------- REIMPRESION ---------\n
------------------------------\n
+-----------------------------------------\n
+------------- REIMPRESION ---------------\n
+-----------------------------------------\n
  \n
 @END_IF@
------------------------------\n
-@VERDANA_BIG_FONT@
+-----------------------------------------\n
 @DBL_HEIGHT_ON@
       REPORTE CIERRE PARCIAL\n
-@DBL_HEIGHT_OFF@
-@BITSTREAM_FONT@
------------------------------\n
+@CHAR_SPACE@
+-----------------------------------------\n
 Parcial # : @/generalInfo/number@\n
 Trans #   : @/generalInfo/trans@\n
 Pto Vta   : @/generalInfo/systemId@\n
@@ -43,53 +40,46 @@ Dep. Hasta: @/generalInfo/toDepositNumber@\n
 Operador #: @/generalInfo/userId@\n
 Nombre Opr: @/generalInfo/userName@\n
 Cash      : @/generalInfo/cashName@\n
-------------------------------\n
+-----------------------------------------\n
  \n
 @IF|/cimCashs/withOutValues=TRUE@
-@BITSTREAM_FONT@
       NO HAY MOVIMIENTOS\n
        PARA EL PERIODO\n
  \n
-------------------------------\n
+-----------------------------------------\n
 @END_IF@
 @IF|/cimCashs/withOutValues=FALSE@
 @FOR_EACH|cimCashs/cimCash@
 @FOR_EACH|acceptorList/acceptor@
  \n
-@BOLD_ON@
 @acceptorName@
 @FOR_EACH|currencyList/currency@
  \n
-@BOLD_ON@
 Moneda: @currencyCode@\n
-@BITSTREAM_FONT@
------------------------------\n
+-----------------------------------------\n
  Cant Total       Monto Total\n
------------------------------\n
+-----------------------------------------\n
 @qty:6@ @total:22@\n
 @END_FOR@
 @END_FOR@
  \n
  \n
------------------------------\n
-@BOLD_ON@
+-----------------------------------------\n
 TOTAL: @name@\n
 @FOR_EACH|totalCurrency@
 @totalCurrencyCode:3@ @totalCurr:20@\n
 @END_FOR@
  \n
 @END_FOR@
-@BITSTREAM_FONT@
------------------------------\n
+-----------------------------------------\n
 @END_IF@
 @IF|/generalInfo/isReprint=TRUE@
  \n
------------------------------\n
-------- REIMPRESION ---------\n
------------------------------\n
+-----------------------------------------\n
+------------- REIMPRESION ---------------\n
+-----------------------------------------\n
  \n
 @END_IF@
-@VERDANA_SMALL_FONT@
  \n
 @IF|/generalInfo/vewFooter1=TRUE@
 @/generalInfo/footer1@\n
@@ -102,3 +92,5 @@ TOTAL: @name@\n
 @END_IF@
 Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
 Fecha: @/generalInfo/currentDate@\n
+@FEED_LINE@
+@CUT_PAPER@

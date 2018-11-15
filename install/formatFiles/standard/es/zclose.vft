@@ -1,4 +1,4 @@
-@VERDANA_SMALL_FONT@
+@CHAR_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -17,15 +17,14 @@
 @IF|/generalInfo/vewHeader6=TRUE@
 @/generalInfo/header6@\n
 @END_IF@
-@BITSTREAM_FONT@
 @IF|/generalInfo/isReprint=TRUE@
  \n
------------------------------\n
-------- REIMPRESION ---------\n
------------------------------\n
+-----------------------------------------\n
+------------- REIMPRESION ---------------\n
+-----------------------------------------\n
  \n
 @END_IF@
------------------------------\n
+-----------------------------------------\n
 @VERDANA_BIG_FONT@
 @DBL_HEIGHT_ON@
 @IF|reportType=1@
@@ -34,9 +33,8 @@
 @IF|reportType=3@
          REPORTE GRAND X \n
 @END_IF@
-@DBL_HEIGHT_OFF@
-@BITSTREAM_FONT@
------------------------------\n
+@CHAR_SPACE@
+-----------------------------------------\n
 @IF|reportType=1@
 Grand Z # : @/generalInfo/number@\n
 Trans #   : @/generalInfo/trans@\n
@@ -61,63 +59,50 @@ ID Remoto : @/generalInfo/systemIdPIMS@\n
 Ult. Grd Z: @/generalInfo/lastZ@\n
 Dia Desde : @/generalInfo/openTime@\n
 @END_IF@
-------------------------------\n
-@BOLD_ON@
+-----------------------------------------\n
         TOTALES\n
-@BITSTREAM_FONT@
-------------------------------\n
+-----------------------------------------\n
 @FOR_EACH|currencyList/currency@
  \n
-@BOLD_ON@
 MONEDA: @currencyCode@\n
-@BITSTREAM_FONT@
 Depos. Validado: @totalValidatedDrop:12@\n
 Deposito Manual: @totalManualDrop:12@\n
-@BOLD_ON@
 TOTAL @currencyCode:3@: @total:13@\n
-@BITSTREAM_FONT@
-------------------------------\n
+-----------------------------------------\n
 @END_FOR@
  \n
 
 @IF|/currencyList/withOutValues=TRUE@
-@BITSTREAM_FONT@
       NO HAY MOVIMIENTOS\n
        PARA EL PERIODO\n
  \n
 @END_IF@
 @IF|/currencyList/withOutValues=FALSE@
-@VERDANA_BIG_FONT@
 @DBL_HEIGHT_ON@
            REPORTE DE CASH\n
-@DBL_HEIGHT_OFF@         
+@CHAR_SPACE@         
      - DETALLADO -\n
-@BITSTREAM_FONT@
-------------------------------\n
+-----------------------------------------\n
 
 
 
 @FOR_EACH|cimCashs/cimCash@
-@BOLD_ON@
  \n
 @name@ ***\n
 @IF|cimCashType=1@
 @FOR_EACH|acceptorList/acceptor@
  \n
-@BOLD_ON@
 @acceptorName@
 @FOR_EACH|currencyList/currency@
  \n
-@BOLD_ON@
 Moneda: @currencyCode@\n
-@BITSTREAM_FONT@
------------------------------\n
+-----------------------------------------\n
  Cant      Valor     Subtotal\n
------------------------------\n
+-----------------------------------------\n
 @FOR_EACH|extractionDetails/extractionDetail@
 @qty:6@ @amount:9@ @totalAmount:12@\n
 @END_FOR@
------------------------------\n
+-----------------------------------------\n
 @qty:6@ Tot @currencyCode:3@ @total:14@\n
 @END_FOR@
 @END_FOR@
@@ -126,37 +111,31 @@ Moneda: @currencyCode@\n
 @IF|cimCashType=2@
 @FOR_EACH|acceptorList/acceptor@
  \n
-@BOLD_ON@
 @acceptorName@
 @FOR_EACH|currencyList/currency@
  \n
-@BOLD_ON@
 Moneda: @currencyCode@\n
-@BITSTREAM_FONT@
------------------------------\n
+-----------------------------------------\n
  Cant       Tipo     Subtotal\n
------------------------------\n
+-----------------------------------------\n
 @FOR_EACH|extractionDetails/extractionDetail@
 @qty:6@ @depositValueName:9@ @totalAmount:12@\n
 @END_FOR@
------------------------------\n
+-----------------------------------------\n
 @qty:6@ Tot @currencyCode:3@ @total:14@\n
 @END_FOR@
 @END_FOR@
 @END_IF@
  \n
-@BOLD_ON@
 TOTAL: @name@\n
 @FOR_EACH|totalCurrency@
 @totalCurrencyCode:3@ @totalCurr:20@\n
 @END_FOR@
  \n
 @END_FOR@
-@BITSTREAM_FONT@
------------------------------\n
+-----------------------------------------\n
  \n
  \n
-@BOLD_ON@
 ****** TOTAL CASH ******\n
 @FOR_EACH|cimCashs/totalCashCurrency@
 TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
@@ -165,16 +144,14 @@ TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
 
 @END_IF@
 
-@BITSTREAM_FONT@
------------------------------\n
+-----------------------------------------\n
 @IF|/generalInfo/isReprint=TRUE@
  \n
------------------------------\n
-------- REIMPRESION ---------\n
------------------------------\n
+-----------------------------------------\n
+------------- REIMPRESION ---------------\n
+-----------------------------------------\n
  \n
 @END_IF@
-@VERDANA_SMALL_FONT@
  \n
 @IF|/generalInfo/vewFooter1=TRUE@
 @/generalInfo/footer1@\n
@@ -187,3 +164,5 @@ TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
 @END_IF@
 Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
 Fecha: @/generalInfo/currentDate@\n
+@FEED_LINE@
+@CUT_PAPER@

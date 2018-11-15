@@ -1,5 +1,6 @@
 
 #include "rdm100.h"
+#include "system/util/all.h"
 
 
 #define RDM_NORMAL_CMD                  0x40
@@ -18,6 +19,23 @@
 #define RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_DEPOSIT   0x07
 #define RDM_RESET   0x11
 #define RDM_ERROR   0x1F
+
+
+
+void rdmResetFileStatusMei(StateMachine *sm)
+{
+	JcmBillAcceptData *jcmBillAcceptor;
+
+	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
+	//aca tengo que resetear la cantidad de billetes almacenados>
+	printf("resetFileStatusRDM  Val: %d \n", jcmBillAcceptor->devId);//fflush(stdout);
+	jcmBillAcceptor->billDepositQty = 0;
+	setValStatus(jcmBillAcceptor, 0, 0, 0, 0);
+	jcmBillAcceptor->statusFiledReseted = 1;
+}
+
+
+
 
 
 unsigned char getNextBlockNo(unsigned char blockN)
@@ -90,7 +108,44 @@ void sendStartDepositingRdm(StateMachine *sm)
 	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
 	printf("RDM %d SendStartDepositing \n", jcmBillAcceptor->devId);
 	jcmBillAcceptor->canChangeStatus = 0;
+    jcmBillAcceptor->sndBlockNo = getNextBlockNo(jcmBillAcceptor->sndBlockNo);
+    startdeposit[0]= jcmBillAcceptor->sndBlockNo;
 	rdmSendFrameProcess(jcmBillAcceptor, startdeposit, 3 );
+	setValStatus(jcmBillAcceptor, ID003_ESCROW, 0, 0, 0);
+
+}
+
+
+void loadFirstStateRdm(StateMachine *sm) 
+{ 
+	int amountAux, curIdAux, billQty;
+	unsigned char valSt;
+	JcmBillAcceptData *jcmBillAcceptor;
+//	int amountAux, curIdAux;
+	
+
+    jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
+    printf("RDM %d LoadFirstState\n", jcmBillAcceptor->devId);//fflush(stdout);
+    jcmBillAcceptor->actualState = 255;
+    jcmBillAcceptor->billTableLoaded = 0;
+    jcmBillAcceptor->recBlockNo = 0x30;
+    jcmBillAcceptor->sndBlockNo = 0x30;
+
+    openValStatusFile(jcmBillAcceptor);
+
+
+	valSt = getValStatus(jcmBillAcceptor, &billQty, &amountAux, &curIdAux);
+
+    if ( valSt == ID003_ESCROW ) {
+        //HABIA MANDADO A QUE EMPIECE A CONTAR BILLETES, AUDITO ESTO! 
+        //DESPUES ACA DEBERIA ENCUESTAR AL VAL ACERCA DE LA CANTIDAD
+		//formatMoney(moneyStr, [[[CurrencyManager getInstance] getCurrencyById: *currencyId] getCurrencyCode], *billAmount, 2, 40);
+        printf("]]]]]]]]]]]]]]]]] RDM get val Status en ESCROW ******************************************\n");
+		[Audit auditEvent: NULL eventId: Event_POWER_UP_WITH_ESCROW_STATUS 	additional: "" station: 0 logRemoteSystem: FALSE];
+	} else 
+        printf("]]]]]]]]]]]]]]]]] RDM get val Status unknown %d ******************************************\n", valSt);
+    
+	rdmResetFileStatusMei(sm);
 }
 
 void loadInitializingRdm(StateMachine *sm) 
@@ -100,10 +155,7 @@ void loadInitializingRdm(StateMachine *sm)
 	
 	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
 	printf("RDM %d LoadIS\n", jcmBillAcceptor->devId);//fflush(stdout);
-    jcmBillAcceptor->recBlockNo = 0x30;
-    jcmBillAcceptor->sndBlockNo = 0x30;
     jcmBillAcceptor->resetSent = 0;
-    jcmBillAcceptor->actualState = 255;
 	jcmBillAcceptor->canChangeStatus = 1;
    	jcmBillAcceptor->notifyInitApp = 0;
 
@@ -197,6 +249,8 @@ void startDepositCount(StateMachine *sm)
         jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
         doLog(1, "satart deposit count!\n" ); 
       //  jcmBillAcceptor->status = JCM_DISABLE ;
+        jcmBillAcceptor->sndBlockNo = getNextBlockNo(jcmBillAcceptor->sndBlockNo);
+        startdeposit[0]= jcmBillAcceptor->sndBlockNo;
         rdmSendFrameProcess(jcmBillAcceptor, startdeposit, 3 );
 }
 
@@ -208,26 +262,32 @@ void sendInitializationCmd(StateMachine *sm)
        	JcmBillAcceptData *jcmBillAcceptor;
 
         jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
-	doProcessStatusRdm(jcmBillAcceptor, jcmBillAcceptor->dataEvPtr+2);
+	//doProcessStatusRdm(jcmBillAcceptor, jcmBillAcceptor->dataEvPtr+2);
 	doLog(1,"RDM sewn initiliazation comd actual state %d \n", jcmBillAcceptor->actualState);
-	if (jcmBillAcceptor->actualState == 0x11 ) { //reset
-	        doLog(1, "sending initialization\n" ); 
-        	rdmSendFrameProcess(jcmBillAcceptor, initComand, 2 );
-	}
+    jcmBillAcceptor->sndBlockNo = getNextBlockNo(jcmBillAcceptor->sndBlockNo);
+    initComand[0]= jcmBillAcceptor->sndBlockNo;
+    rdmSendFrameProcess(jcmBillAcceptor, initComand, 2 );
 
 }
 
-void sendInitialCmd(StateMachine *sm)
-{
-       	JcmBillAcceptData *jcmBillAcceptor;
-
-        jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
-	doLog(1,"RDM SEND initiliazation  \n");
-       	rdmSendFrameProcess(jcmBillAcceptor, initComand, 2 );
-
+BOOL verifyCmdExecResult(StateMachine *sm) 
+{ 
+	JcmBillAcceptData *jcmBillAcceptor;
+    int result;
+    
+	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
+	
+    result = *((unsigned short*)(jcmBillAcceptor->dataEvPtr+9));
+    printf("Verificar resultado de la ejecucion de comando en RDM >>>>>>>>>>>>> %d!\n", result); 
+	 if (result != 0){
+         printf("Notificar un error del validador codigo %d!\n", result); 
+         if ( jcmBillAcceptor->commErrorNotificationFcn != NULL )
+               ( *jcmBillAcceptor->commErrorNotificationFcn )( jcmBillAcceptor->devId, result );
+    //    sendResetRdm(sm);
+		return 0;
+     }	
+	return 1;
 }
-
-
 
 static unsigned char reqCurComand[2]= { 0x32, 0x51};
 
@@ -236,8 +296,10 @@ void requestCurrencyRDM(StateMachine *sm)
        	JcmBillAcceptData *jcmBillAcceptor;
 
         jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
-
+        
         doLog(1, "request currency table\n" ); 
+        jcmBillAcceptor->sndBlockNo = getNextBlockNo(jcmBillAcceptor->sndBlockNo);
+        reqCurComand[0]= jcmBillAcceptor->sndBlockNo;
         rdmSendFrameProcess(jcmBillAcceptor, reqCurComand, 2 );
 
 }
@@ -269,39 +331,22 @@ void doProcessStatusRdm(JcmBillAcceptData *jcmBillAcceptor, unsigned char *statu
 	*/
     jcmBillAcceptor->errorCause = 0;
 	if (statusNew[1] == RDM_ERROR) 
-        jcmBillAcceptor->errorCause = statusNew[1];
-
-		if ((statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_INIT) ||(statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_INLET_SLOT) ||(statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_DEPOSIT) )
-        	jcmBillAcceptor->errorCause = 0xB4;
+        jcmBillAcceptor->errorCause = ID003_JAM_IN_ACCEPTOR;
+        
+	if ((statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_INIT) ||(statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_INLET_SLOT) ||(statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_DEPOSIT) )
+       	jcmBillAcceptor->errorCause = 0xB4;
 		
-		jcmBillAcceptor->actualState = statusNew[1];
+	jcmBillAcceptor->actualState = statusNew[1];
 
+    
 /*        if (( statusNew[3] & 0x04 ) || ( statusNew[6] & 0x04 ))
 		jcmBillAcceptor->hasBankNotesWaiting = 1;
 	else
 		jcmBillAcceptor->hasBankNotesWaiting = 0;
 */	
- /*       //sst3
-        if (statusNew[2] != 0)
-            jcmBillAcceptor->errorCause = statusNew[2];
-
-        //sst4
-        if (statusNew[3] != 0)
-            jcmBillAcceptor->errorCause = statusNew[3];
-
-        //sst5
-        if (statusNew[4] != 0)
-            jcmBillAcceptor->errorCause = statusNew[4];
-
-        //sst6
-        if (statusNew[5] != 0)
-            jcmBillAcceptor->errorCause = statusNew[5];
-
-        //sst7
-        if (statusNew[6] != 0)
-            jcmBillAcceptor->errorCause = statusNew[6];
-        
-*/
+       //sst3
+     /*   if ((statusNew[3] != 0) || (statusNew[4] != 0) || (statusNew[6] != 0))
+            jcmBillAcceptor->errorCause = ;*/
 }
 
 
@@ -351,13 +396,29 @@ BOOL initializacionComplete(StateMachine *sm)
 
 }
 
+BOOL isOnResetStatusRdm(StateMachine *sm) 
+{ 
+	JcmBillAcceptData *jcmBillAcceptor;
+
+    jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
+    if (( jcmBillAcceptor->actualState == RDM_RESET ) || (jcmBillAcceptor->sst[0] & 0x01 ))	{//powerOn true 
+        printf("RDM is on RESET Status!\n");
+        return 1;
+    }
+    return 0;
+
+}
+
+
 BOOL isOnPowerUpStatusRdm(StateMachine *sm) 
 { 
 	JcmBillAcceptData *jcmBillAcceptor;
 
     jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
-    if (jcmBillAcceptor->actualState == 0)	//powerOn true 
+    if ( jcmBillAcceptor->actualState == RDM_POWERON ){ 	//powerOn true 
+        printf("RDM is on PowerOn Status!\n");
         return 1;
+    }
     return 0;
 
 }
@@ -367,8 +428,10 @@ BOOL isRDMStatusBusy(StateMachine *sm)
 	JcmBillAcceptData *jcmBillAcceptor;
 
     jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
-    if ( jcmBillAcceptor->sst[0] & 0x02 ) 
+    if ( jcmBillAcceptor->sst[0] & 0x02 ) {
+        printf("RDM Status is BUSY.. WAITINGGGGG \n");        
         return 1;
+    }
     return 0;
 
 }
@@ -378,23 +441,11 @@ BOOL errorNeedsReset(StateMachine *sm)
 	JcmBillAcceptData *jcmBillAcceptor;
 
     jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
-    if (( jcmBillAcceptor->errorCause != ID003_COMM_ERROR ) &&( jcmBillAcceptor->errorCause != 0xB4 ) && (jcmBillAcceptor->resetSentQty == 0)) {
-	jcmBillAcceptor->resetSentQty = 1;
+    if (( jcmBillAcceptor->errorCause != ID003_COMM_ERROR ) && (jcmBillAcceptor->resetSentQty == 0)) {
+        printf("RDM ERROR NEEDS RESET !\n");
+        jcmBillAcceptor->resetSentQty = 1;
         return 1;
     }
-    return 0;
-
-}
-
-BOOL inOnInitStatusRDM(StateMachine *sm) 
-{ 
-	JcmBillAcceptData *jcmBillAcceptor;
-
-    jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
-	//si el bit de reset esta en 
-
-    if (jcmBillAcceptor->sst[0] & 0x01 ) 
-        return 1;
     return 0;
 
 }
@@ -417,9 +468,24 @@ static unsigned char resetComand[8]= { 0x30, 0x30, 0x14, 0x11, 0x03, 0x06, 0x0b,
 void sendResetRdm(StateMachine *sm)
 {
     JcmBillAcceptData *jcmBillAcceptor; 
+	struct tm currentBrokenTime;
+
+    
 
     jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
     printf("SEND RESET RDM \n" ); 
+    jcmBillAcceptor->recBlockNo = 0x30;
+    jcmBillAcceptor->sndBlockNo = 0x30;
+
+	[SystemTime decodeTime: [SystemTime getLocalTime] brokenTime: &currentBrokenTime];
+
+    resetComand[2]=  0x14; //aca le mando el 20
+    resetComand[3]= (currentBrokenTime.tm_year - 100); //aca le mando el 18  year 2018
+    resetComand[4] = (currentBrokenTime.tm_mon + 1);
+    resetComand[5] = currentBrokenTime.tm_mday;
+    resetComand[6] = currentBrokenTime.tm_hour;
+    resetComand[7] = currentBrokenTime.tm_min;
+    
     rdmSendFrameProcess(jcmBillAcceptor, resetComand, 8 );
 }
 
@@ -439,13 +505,15 @@ void notifyBillsAccepted(StateMachine *sm)
     jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
     
     printf("Notify bilss accepted!\n" ); 
-    result = (unsigned short) *(jcmBillAcceptor->dataEvPtr+9);
+    result = *((unsigned short*)(jcmBillAcceptor->dataEvPtr+9));
     if ( result < 0xE000 ){  //si es 0 o error code hay que procesar los billetes igual, si es un codigo de warning entonces no se ejecuto el comando
          qtyRejected = (unsigned char)*(jcmBillAcceptor->dataEvPtr+11);
-	 if (result != 0)
-	         doLog(1, "FALTA notificar un error del validador codigo %d!\n", result); 
-	
-         printf("FALTA notificar bills rejected %d!\n", qtyRejected ); 
+	 if (result != 0){
+	         printf("Notificar un error del validador codigo %d!\n", result); 
+              if ( jcmBillAcceptor->commErrorNotificationFcn != NULL )
+                ( *jcmBillAcceptor->commErrorNotificationFcn )( jcmBillAcceptor->devId, result );
+     }	
+      printf("FALTA notificar bills rejected %d!\n", qtyRejected ); 
          memcpy(currencyAccepted,jcmBillAcceptor->dataEvPtr+12, 96);
          for (i = 0; i < jcmBillAcceptor->denominationQty; i++){
              currencyAccepted[i].noteId = SHORT_TO_L_ENDIAN(currencyAccepted[i].noteId);
@@ -467,6 +535,7 @@ void notifyBillsAccepted(StateMachine *sm)
     } else
         printf("notify bilss accepted command execution result warning >  E000  %d!\n", result ); 
 
+   	setValStatus(jcmBillAcceptor, 0, 0, 0, 0);
     jcmBillAcceptor->canChangeStatus = 1;
     
 }
@@ -474,6 +543,7 @@ void notifyBillsAccepted(StateMachine *sm)
 
 ////// Estados de la maquina de estados //////////////////////////////////
 
+extern State rdmFirstState;
 extern State rdmInitializingState;
 extern State rdmEnabledState;
 extern State rdmDisabledState;
@@ -491,17 +561,29 @@ extern State rdmErrorState;
 /**
  *  Estado jcmInitializingState
  */
+static Transition rdmFirstStateTransitions[] =
+{	
+	{ SM_ANY, NULL, NULL, &rdmInitializingState }
+};
+
+State rdmFirstState = 
+{
+  	loadFirstStateRdm,  // entry
+  	NULL,                // exit
+	rdmFirstStateTransitions
+};
+
 static Transition rdmInitStateTransitions[] =
 {	
 	 { RDM_DEPOSIT_COUNT_RESULT_CMD, NULL, notifyBillsAccepted, &rdmInitializingState }
-	,{ SM_ANY, errorDetectedRdm, NULL, &rdmErrorState }
 //	,{ RDM_NORMAL_CMD, NULL, processStatusRdm, &rdmInitializingState }
+	,{ SM_ANY, errorDetectedRdm, NULL, &rdmErrorState }
 	,{ SM_ANY, isRDMStatusBusy, NULL, &rdmInitializingState }
-	,{ RDM_RESET_CMD, NULL, sendInitializationCmd, &rdmInitializingState }
-	,{ RDM_INIT_CMD, NULL, requestCurrencyRDM, &rdmInitializingState }
-	,{ RDM_REQ_CURRENCY_TABLE_CMD, NULL, processCurrencyTable, &rdmInitializingState }
+	,{ RDM_RESET_CMD, verifyCmdExecResult, NULL, &rdmInitializingState }
+	,{ RDM_INIT_CMD, verifyCmdExecResult, requestCurrencyRDM, &rdmInitializingState }
+	,{ RDM_REQ_CURRENCY_TABLE_CMD, verifyCmdExecResult, processCurrencyTable, &rdmInitializingState }
 	,{ SM_ANY, isOnPowerUpStatusRdm, sendResetRdm, &rdmInitializingState }
-	,{ SM_ANY, inOnInitStatusRDM, sendInitialCmd, &rdmInitializingState }
+	,{ SM_ANY, isOnResetStatusRdm, sendInitializationCmd, &rdmInitializingState }
 	,{ SM_ANY, currencyTableNotLoaded, requestCurrencyRDM, &rdmInitializingState }
 	,{ SM_ANY, initializacionComplete, NULL, &rdmDisabledState }
 	,{ SM_ANY, NULL, NULL, &rdmInitializingState }
@@ -521,8 +603,10 @@ State rdmInitializingState =
 static Transition rdmDisabledStateTransitions[] =
 {
 	{ RDM_DEPOSIT_COUNT_RESULT_CMD, NULL, notifyBillsAccepted, &rdmDisabledState }
+	,{ SM_ANY, isRDMStatusBusy, NULL, &rdmDisabledState }
 	,{ SM_ANY, errorDetectedRdm, NULL, &rdmErrorState }
 	,{ SM_ANY, isOnPowerUpStatusRdm, sendResetRdm, &rdmInitializingState }
+	,{ SM_ANY, isOnResetStatusRdm, sendInitializationCmd, &rdmInitializingState }
 	,{ SM_ANY, isNotJCMDisable, NULL, &rdmEnabledState }
 	,{ SM_ANY, NULL, NULL, &rdmDisabledState }
 };
@@ -543,9 +627,11 @@ static Transition rdmEnabledStateTransitions[] =
 {
 	{ RDM_DEPOSIT_COUNT_RESULT_CMD, NULL, notifyBillsAccepted, &rdmEnabledState }
 	 ,{ SM_ANY, isJCMDisable, NULL, &rdmDisabledState }
+	,{ SM_ANY, isRDMStatusBusy, NULL, &rdmEnabledState }
 	,{ SM_ANY, isPreparedforDepositing, sendStartDepositingRdm, &rdmEnabledState }
 	,{ SM_ANY, errorDetectedRdm, NULL, &rdmErrorState }
 	,{ SM_ANY, isOnPowerUpStatusRdm, sendResetRdm, &rdmInitializingState }
+	,{ SM_ANY, isOnResetStatusRdm, sendInitializationCmd, &rdmInitializingState }
 //	 { RDM_NORMAL_CMD, NULL, processStatusRdm, &rdmEnabledState }
 	,{ SM_ANY, NULL, NULL, &rdmEnabledState }
 };
@@ -583,7 +669,12 @@ static Transition rdmErrorStateTransitions[] =
 {
 	{ RDM_DEPOSIT_COUNT_RESULT_CMD, NULL, notifyBillsAccepted, &rdmDisabledState }
 	,{ SM_ANY, endErrorDetectedRdm, NULL, &rdmInitializingState }
+	,{ SM_ANY, isRDMStatusBusy, NULL, &rdmErrorState }
+	,{ RDM_RESET_CMD, verifyCmdExecResult, NULL, &rdmErrorState }
+	,{ RDM_INIT_CMD, verifyCmdExecResult, requestCurrencyRDM, &rdmInitializingState }
+	,{ SM_ANY, isOnPowerUpStatusRdm, sendResetRdm, &rdmErrorState }
 	,{ SM_ANY, errorNeedsReset, sendResetRdm, &rdmErrorState }
+	,{ SM_ANY, isOnResetStatusRdm, sendInitializationCmd, &rdmErrorState }
 	 ,{ SM_ANY, NULL, NULL, &rdmErrorState }
 };
 

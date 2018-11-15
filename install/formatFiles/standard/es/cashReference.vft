@@ -1,4 +1,4 @@
-@VERDANA_SMALL_FONT@
+@CHAR_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -17,20 +17,17 @@
 @IF|/generalInfo/vewHeader6=TRUE@
 @/generalInfo/header6@\n
 @END_IF@
-@BITSTREAM_FONT@
------------------------------\n
-@VERDANA_BIG_FONT@
+-----------------------------------------\n
 @DBL_HEIGHT_ON@
        REPORTE POR REFERENCE\n
-@DBL_HEIGHT_OFF@
+@CHAR_SPACE@
 @IF|/generalInfo/detailReport=TRUE@
             - DETALLADO -\n
 @END_IF@
 @IF|/generalInfo/detailReport=FALSE@
             - RESUMIDO -\n
 @END_IF@
-@BITSTREAM_FONT@
------------------------------\n
+-----------------------------------------\n
 Trans #   : @/generalInfo/trans@\n
 Fecha-Hora: @/generalInfo/transTime@\n
 Pto Vta   : @/generalInfo/systemId@\n
@@ -38,10 +35,9 @@ ID Remoto	: @/generalInfo/systemIdPIMS@\n
 Reference : @/generalInfo/cashReferenceFilter@\n
 Ult Grd Z : @/generalInfo/lastZ@\n
 Dia Desde : @/generalInfo/openTime@\n
-------------------------------\n
+-----------------------------------------\n
 
 @IF|/cashReferenceList/withOutValues=TRUE@
-@BITSTREAM_FONT@
  \n
       NO HAY MOVIMIENTOS\n
        PARA EL PERIODO\n
@@ -50,9 +46,8 @@ Dia Desde : @/generalInfo/openTime@\n
 
 @FOR_EACH|cashReferenceList/cashReference@
  \n
-@BOLD_ON@
+
 @cashReferenceName@\n
-@BITSTREAM_FONT@
 
 @IF|/generalInfo/detailReport=FALSE@
 Moneda               Subtotal\n
@@ -68,14 +63,11 @@ Moneda               Subtotal\n
  \n
 @BOLD_ON@
 Moneda: @currencyCode:3@\n
-@BITSTREAM_FONT@
 Depos   Cash  Tipo   Subtotal\n
 -----------------------------\n
-@COURIER_FONT@
 @FOR_EACH|detail@
 @depositNumber:-6@ @cimCashName:-8@ @depositValueName@ @totalAmount:10@\n
 @END_FOR@
-@BITSTREAM_FONT@
 -----------------------------\n
 Total @currencyCode:-3@: @total:18@\n
 @END_FOR@
@@ -87,15 +79,13 @@ Total @currencyCode:-3@: @total:18@\n
 
 @IF|/cashReferenceList/withOutValues=FALSE@
  \n
-@BOLD_ON@
+
 - CASH REFERENCE TOTAL -\n
 @FOR_EACH|cashReferenceList/totalCashCurrency@
 TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
 @END_FOR@
 @END_IF@
-@BITSTREAM_FONT@
------------------------------\n
-@VERDANA_SMALL_FONT@
+-----------------------------------------\n
 @IF|/generalInfo/detailReport=TRUE@
  \n
 Referencias:\n
@@ -120,3 +110,5 @@ Referencias:\n
 @END_IF@
 Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
 Fecha: @/generalInfo/currentDate@\n
+@FEED_LINE@
+@CUT_PAPER@

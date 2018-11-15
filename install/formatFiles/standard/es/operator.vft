@@ -1,4 +1,4 @@
-@VERDANA_SMALL_FONT@
+@CHAR_SPACE@
 @IF|/generalInfo/vHeader=TRUE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
@@ -18,21 +18,19 @@
 @IF|/generalInfo/vewHeader6=TRUE@
 @/generalInfo/header6@\n
 @END_IF@
-@BITSTREAM_FONT@
 @IF|/generalInfo/isReprint=TRUE@
  \n
------------------------------\n
-------- REIMPRESION ---------\n
------------------------------\n
+-----------------------------------------\n
+------------- REIMPRESION ---------------\n
+-----------------------------------------\n
  \n
 @END_IF@
 @END_IF@
 @IF|/generalInfo/vHeader=TRUE@
------------------------------\n
-@VERDANA_BIG_FONT@
+-----------------------------------------\n
 @DBL_HEIGHT_ON@
        REPORTE DE OPERADOR \n
-@DBL_HEIGHT_OFF@
+@CHAR_SPACE@
 @IF|/generalInfo/includeDetails=FALSE@
               -RESUMIDO-\n
 @END_IF@
@@ -40,9 +38,7 @@
              -DETALLADO-\n
 @END_IF@
 @END_IF@
-@DBL_HEIGHT_OFF@
-@BITSTREAM_FONT@
------------------------------\n
+-----------------------------------------\n
 @IF|/generalInfo/resumeReport=FALSE@
 Trans #   : @/generalInfo/trans@\n
 Fecha-Hora: @/generalInfo/transTime@\n
@@ -57,14 +53,11 @@ Operador #: @/generalInfo/userId@\n
 Nombre Opr: @/generalInfo/userName@\n
 @IF|/generalInfo/resumeReport=FALSE@
 Cuenta #  : \n
-@VERDANA_SMALL_FONT@
  @/generalInfo/account@\n
-@BITSTREAM_FONT@
 @END_IF@
 
 @IF|/currencyList/withOutValues=TRUE@
-@BITSTREAM_FONT@
-------------------------------\n
+-----------------------------------------\n
  \n
       NO HAY MOVIMIENTOS\n
        PARA EL PERIODO\n
@@ -73,16 +66,14 @@ Cuenta #  : \n
 
 @IF|/generalInfo/includeDetails=TRUE@
 @IF|/currencyList/withOutValues=FALSE@
-------------------------------\n
+-----------------------------------------\n
             TOTAL\n
-------------------------------\n
+-----------------------------------------\n
 @END_IF@
 @END_IF@
-@BOLD_ON@
 @FOR_EACH|currencyList/currency@
  \n
 Moneda: @currencyCode:3@\n
-@COURIER_FONT@
 @IF|/currencyList/withNoInfoData=TRUE@
 Deposito Manual:\n
 @FOR_EACH|manualDropDetails/manualDropDetail@
@@ -93,41 +84,33 @@ Deposito Manual:\n
 Total Dep Manual: @totalManualDrop:12@\n
 Total Dep Val   : @totalValidatedDrop:12@\n
 @BITSTREAM_FONT@
------------------------------\n
-@BOLD_ON@
+-----------------------------------------\n
 Total: @total:16@\n
 @END_FOR@
-@BITSTREAM_FONT@
 @IF|/generalInfo/includeDetails=TRUE@\n
 @IF|/currencyList/withOutValues=FALSE@
  \n
-------------------------------\n
+-----------------------------------------\n
 DEPOSITO OPERADOR DETALLADO\n
-------------------------------\n
+-----------------------------------------\n
 @END_IF@
-@BOLD_ON@
 @FOR_EACH|dropDetails/currency@
  \n
 Moneda: @currencyCode@\n
-@BITSTREAM_FONT@
 Depos. Cash   Tipo   Subtotal\n
------------------------------\n
-@COURIER_FONT@
+-----------------------------------------\n
 @FOR_EACH|detail@
 @depositNumber:-6@ @cimCashName:-8@ @depositValueName@ @totalAmount:12@\n
 @IF|viewEnv=TRUE@
   Sobre #: @env:-15@\n
 @END_IF@
 @END_FOR@
-@BITSTREAM_FONT@
------------------------------\n
-@BOLD_ON@
+-----------------------------------------\n
 Total: @total:16@\n
 @END_FOR@
 @IF|/currencyList/withOutValues=FALSE@
  \n
------------------------------\n
-@VERDANA_SMALL_FONT@
+-----------------------------------------\n
 Referencias:\n
   M: Deposito Manual\n
   V: Deposito Validado\n
@@ -140,10 +123,8 @@ Referencias:\n
  \n
 @END_IF@
 @END_IF@
-@BITSTREAM_FONT@
 @IF|/generalInfo/vFooter=TRUE@
------------------------------\n
-@VERDANA_SMALL_FONT@
+-----------------------------------------\n
  \n
 @IF|/generalInfo/vewFooter1=TRUE@
 @/generalInfo/footer1@\n
@@ -157,3 +138,5 @@ Referencias:\n
 Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
 Fecha: @/generalInfo/currentDate@\n
 @END_IF@
+@FEED_LINE@
+@CUT_PAPER@

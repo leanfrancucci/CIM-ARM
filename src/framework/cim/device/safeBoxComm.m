@@ -89,7 +89,8 @@ static void socketReconnect(void)
 char safeBoxCommOpen( char portNumber )
 {
 	ComPortConfig config;
-	
+    int tries = 0;
+    
 	openConfigFile();
 	
 	if (strcmp([[Configuration getDefaultInstance] getParamAsString: "USE_CIM_SOCKET" default: "no"], "yes") == 0) {
@@ -108,8 +109,15 @@ char safeBoxCommOpen( char portNumber )
 			config.parity = CT_PARITY_NONE;
 			config.dataBits = 8;
 			config.stopBits = 1;
-			osHandle = com_open(portNumber, &config);
-		}
+		    osHandle = com_open(portNumber, &config);
+            printf("ComPort CIM osHandle Result %d!!! \n", osHandle);
+            while (( osHandle == -1 ) && (tries < 3)){
+               printf("ComPort CIM not ready YET! Retrying!!! \n");
+               msleep(1000);
+               tries++;
+                osHandle = com_open(portNumber, &config);
+            }
+    }
 
   	if ( osHandle != -1 ) 
   	   return 1;
@@ -213,7 +221,7 @@ unsigned char * safeBoxCommRead( int timeout )
 	*/
 			chkVal = calcChksumC2( bufPtr, len + 5 );
 			if ( chkVal == bufPtr[len + 5 ]){
-				if ( getLogType() == FULL_LOG ) {
+				if (( getLogType() == FULL_LOG ) || ( getLogType() == FULL_LOG_SCREEN )) {
 					logFrame( lastdev, writeBuf, lastlen, 1 );
 					logFrame( bufPtr[1], readBuf, qty, 0 );
 				}

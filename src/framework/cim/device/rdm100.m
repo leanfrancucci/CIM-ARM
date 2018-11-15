@@ -221,6 +221,7 @@ unsigned char * rdmReadFrame( int timeout )
 {
     int qty, len;
     unsigned char *bufPtr = readBuf;
+    unsigned char *strFrame;
     unsigned char *bufPtrAux = readBuf;
     unsigned char *bufPtrRef;
     unsigned short crcval;
@@ -243,6 +244,10 @@ unsigned char * rdmReadFrame( int timeout )
         bufPtrAux = bufPtr;
         while (qty > 0 && !((*bufPtrAux == 0x10) && (*(bufPtrAux+1) == 0x03)) ){
             if ((*bufPtrAux == 0x10) && (*(bufPtrAux+1) == 0x10)){
+                //sacar despues!!
+                strFrame = getHexFrame(bufPtr, qty);
+                printf("****************** logueando trama doble 0x10 %s\n", strFrame);
+                ////////////
                 bufPtrRef = bufPtrAux;
                 while (!((*bufPtrRef == 0x10) && (*(bufPtrRef+1) == 0x03))) {
                     *bufPtrRef = *(bufPtrRef+1);
@@ -258,7 +263,7 @@ unsigned char * rdmReadFrame( int timeout )
                 bufPtrRef++;
 		
                 qty--;
-                printf("ENCONTRE UNA TRAMA CON DOBLE 0X10, SUPRIMIENDO!");
+                printf("ENCONTRE UNA TRAMA CON DOBLE 0X10, SUPRIMIENDO!\n");
             }
             qty--;
             bufPtrAux++;
