@@ -64,6 +64,7 @@
 
 #include "ServerSocket.h"
 #include "AsyncMsgThread.h"
+#include "SupportThread.h"
 
 //#define printd(args...) doLogs(args)
 #define printd(args...)
@@ -655,7 +656,13 @@ static CT_SYSTEM singleInstance = NULL;
 
 	printf("OK\n");
     
+    printf("Iniciando hilo de impresora\n");
 	[[PrinterSpooler getInstance] start];
+    
+    //Comienza el hilo de tareas de soporte
+    //printf("Iniciando hilo de tareas de soporte\n");
+    //[[SupportThread getInstance] start];
+    
 
 	// verifica si se debe aplicar algun template
 	//[self checkTemplate: anObserver];

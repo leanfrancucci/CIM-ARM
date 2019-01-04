@@ -12,6 +12,7 @@
 #define	FEED_LINE_CODE              "\x1B\x64\x0F"
 #define	CUT_PAPER_CODE 			"\x1B\x69"
 #define	CHAR_SPACE_CODE 		"\x1B\x40\x1B\x20\x01"
+#define	LEFT_SPACE_CODE 		"\x1B\x40\x1D\x4c\x50\x00"
 #define ESCPOS_CMD_PRINT_RASTER_BIT_IMAGE  "\x1d\x76\x30\x00"
 
 @implementation SerialDriver
@@ -126,6 +127,9 @@
 
   if ( strcmp(aEscapeCodeTag, CHAR_SPACE) == 0 ) 
     strcpy(escCode, CHAR_SPACE_CODE);
+
+  if ( strcmp(aEscapeCodeTag, LEFT_SPACE) == 0 ) 
+    strcpy(escCode, LEFT_SPACE_CODE);
 
   strcpy(aEscapeCode, escCode);   
 

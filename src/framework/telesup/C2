@@ -208,7 +208,6 @@ MapRequestMsg 	mapReqMsg[] =
 	,{"DeactivateDoorByUser", 	SET_DOOR_BY_USER_REQ,	   DEACTIVATE_REQ_OP,	1}
   ,{"GetDoorsByUserId",       GET_DOORS_BY_USER_REQ,   LIST_REQ_OP,       0}
   ,{"GetDoorsByUsers",        GET_DOORS_BY_USERS_REQ,  LIST_REQ_OP,       0}
-  ,{"GetDoorsByUserTable",        GET_DOORS_BY_USER_TABLE_REQ,  NO_REQ_OP,       0}
 
 	,{"AddDualAccess", 	        SET_DUAL_ACCESS_REQ,	   ADD_REQ_OP,	    1}
 	,{"RemoveDualAccess", 	    SET_DUAL_ACCESS_REQ,	   REMOVE_REQ_OP,	  1}
@@ -326,12 +325,7 @@ MapRequestMsg 	mapReqMsg[] =
     ,{"StartManualTelesup",	START_MANUAL_TELESUP_REQ,      	NO_REQ_OP,	0}       
     ,{"AcceptIncomingSupervision",	ACCEPT_INCOMING_SUP_REQ,      	NO_REQ_OP,	0}       
 	,{"IsValidationModeAvailable", 	IS_VALIDATION_MODE_AVAILABLE_REQ,     NO_REQ_OP,	0}
-	
-	,{"HasModelSet", 	HAS_MODEL_SET_REQ,     NO_REQ_OP,	0}
-	,{"SetBoxModel", 	SET_BOX_MODEL_REQ,     NO_REQ_OP,	0}
-	,{"HasMovements", 	HAS_MOVEMENTS_REQ,     NO_REQ_OP,	0}
-    ,{"GetAvailableBoxModels", 	GET_AVAILABLE_BOX_MODELS,     NO_REQ_OP,	0}
-    ,{"GetAvailableValModels", 	GET_AVAILABLE_VAL_MODELS,     NO_REQ_OP,	0}    
+    
     
 };
 
@@ -961,7 +955,6 @@ MapRequestMsg 	mapReqMsg[] =
         case GET_DOORS_BY_USER_REQ:
         case GET_DOORS_BY_USERS_REQ:
         case SET_DOOR_BY_USER_REQ:
-        case GET_DOORS_BY_USER_TABLE_REQ:
         case GET_DUAL_ACCESS_REQ:
         case SET_DUAL_ACCESS_REQ:
         case SET_FORCE_PIN_CHANGE_REQ:
@@ -1130,11 +1123,6 @@ MapRequestMsg 	mapReqMsg[] =
         case ACCEPT_INCOMING_SUP_REQ:
         case GET_DATETIME_REQ:
         case IS_VALIDATION_MODE_AVAILABLE_REQ:
-        case HAS_MODEL_SET_REQ:
-        case SET_BOX_MODEL_REQ:
-        case HAS_MOVEMENTS_REQ:
-        case GET_AVAILABLE_BOX_MODELS:
-        case GET_AVAILABLE_VAL_MODELS:            
             printf(">>>>>>>>>>>>>>>>>>>>>>>>> getNewSystemOpRequest\n");
             return [self getNewSystemOpRequest: aReqOp msg: aMessage];
 

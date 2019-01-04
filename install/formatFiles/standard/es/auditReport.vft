@@ -1,81 +1,81 @@
 @CHAR_SPACE@
 @IF|/auditList/sectionHeader=TRUE@
 @IF|/generalInfo/vewHeader1=TRUE@
-@/generalInfo/header1@\n
+ @/generalInfo/header1@\n
 @END_IF@
-@IF|/generalInfo/vewHeader2=TRUE@
-@/generalInfo/header2@\n
+@IF|/generalInfo/vewHeader2=TRUE@ 
+  @/generalInfo/header2@\n
 @END_IF@
 @IF|/generalInfo/vewHeader3=TRUE@
-@/generalInfo/header3@\n
+  @/generalInfo/header3@\n
 @END_IF@
 @IF|/generalInfo/vewHeader4=TRUE@
-@/generalInfo/header4@\n
+  @/generalInfo/header4@\n
 @END_IF@
 @IF|/generalInfo/vewHeader5=TRUE@
-@/generalInfo/header5@\n
+  @/generalInfo/header5@\n
 @END_IF@
 @IF|/generalInfo/vewHeader6=TRUE@
-@/generalInfo/header6@\n
+  @/generalInfo/header6@\n
 @END_IF@
------------------------------------------\n
+  -----------------------------------------\n
 @DBL_HEIGHT_ON@
-          REPORTE AUDITORIA\n
+            REPORTE AUDITORIA\n
 @CHAR_SPACE@ 
 @IF|/generalInfo/reportDetail=FALSE@
-              -RESUMIDO-\n
+                -RESUMIDO-\n
 @END_IF@
 @IF|/generalInfo/reportDetail=TRUE@
-              -DETALLADO-\n
+                -DETALLADO-\n
 @END_IF@
------------------------------------------\n
-Trans #   : @/generalInfo/trans@\n
-Fecha-Hora: @/generalInfo/transTime@\n
-Pto Vta   : @/generalInfo/systemId@\n
-ID Remoto : @/generalInfo/systemIdPIMS@\n
-Dia Desde : @/generalInfo/fromDate@\n
-Dia Hasta : @/generalInfo/toDate@\n
-Dispositiv: @/generalInfo/device:-14@\n
-Usuario   : @/generalInfo/user:-16@\n
-Cat Event : @/generalInfo/eventCategory:-16@\n
------------------------------------------\n
+  -----------------------------------------\n
+  Trans #   : @/generalInfo/trans@\n
+  Fecha-Hora: @/generalInfo/transTime@\n
+  Pto Vta   : @/generalInfo/systemId@\n
+  ID Remoto : @/generalInfo/systemIdPIMS@\n
+  Dia Desde : @/generalInfo/fromDate@\n
+  Dia Hasta : @/generalInfo/toDate@\n
+  Dispositiv: @/generalInfo/device:-14@\n
+  Usuario   : @/generalInfo/user:-16@\n
+  Cat Event : @/generalInfo/eventCategory:-16@\n
+  -----------------------------------------\n
  \n
-Trans# Usu#   Fecha/hora\n
- Detalle del evento\n
------------------------------------------\n
+  Trans# Usu#   Fecha/hora\n
+   Detalle del evento\n
+  -----------------------------------------\n
 @END_IF@
 @IF|/auditList/withOutValues=TRUE@
  \n
-      NO HAY MOVIMIENTOS\n
-       PARA EL PERIODO\n
+        NO HAY MOVIMIENTOS\n
+         PARA EL PERIODO\n
  \n
------------------------------------------\n
+  -----------------------------------------\n
 @END_IF@
 @FOR_EACH|auditList/auditInfo@
-@auditId:5@ # @userId:3@ @auditDate@\n
- @userName:-15@  @eventDescription:-30@\n
+  @auditId:5@ # @userId:3@ @auditDate@\n
+   @userName:-15@  @eventDescription:-30@\n
 @IF|reportDet=TRUE@
 @IF|viewAdditional=TRUE@
- @additional:-47@\n
+   @additional:-47@\n
 @END_IF@
 @FOR_EACH|detailList/detailInfo@
- @field:-18@  @newValue:-27@\n
+   @field:-18@  @newValue:-27@\n
 @END_FOR@
 @END_IF@
 @END_FOR@
 @IF|/auditList/sectionFooter=TRUE@
  \n
 @IF|/generalInfo/vewFooter1=TRUE@
-@/generalInfo/footer1@\n
+  @/generalInfo/footer1@\n
 @END_IF@
 @IF|/generalInfo/vewFooter2=TRUE@
-@/generalInfo/footer2@\n
+  @/generalInfo/footer2@\n
 @END_IF@
 @IF|/generalInfo/vewFooter3=TRUE@
-@/generalInfo/footer3@\n
+  @/generalInfo/footer3@\n
 @END_IF@
-Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
-Fecha: @/generalInfo/currentDate@\n
+  Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+  Fecha: @/generalInfo/currentDate@\n
 @END_IF@
 
 

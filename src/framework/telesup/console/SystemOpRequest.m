@@ -24,6 +24,7 @@
 #include "ZCloseManager.h"
 #include "TelesupController.h"
 #include "SafeBoxHAL.h"
+#include "BoxModel.h"
 
 
 // Maximo tamanio de documento
@@ -1359,8 +1360,24 @@ static int loginFailQty = 0;
 /*********************************************************************/
 - (void) startManualTelesup
 {
-    [[TelesupController getInstance] startManualTelesup];
-    [myRemoteProxy sendAckMessage];
+    int excode = 0;
+    
+    TRY
+        [[TelesupController getInstance] startManualTelesup];
+        [myRemoteProxy sendAckMessage];
+    CATCH
+    
+        ex_printfmt();
+        excode = ex_get_code();
+        
+        [myRemoteProxy newMessage: "Error"];
+        [myRemoteProxy addParamAsInteger: "Code" value: excode];
+        [myRemoteProxy addParamAsString: "Description" value: "Superivion PIMS inexistente"];
+        [myRemoteProxy appendTimestamp];
+        [myRemoteProxy sendMessage];
+    
+    END_TRY
+    
 }
 
 
@@ -1389,6 +1406,80 @@ static int loginFailQty = 0;
 }
 
 
+/**********************************************************************/
+/*MODELO DE CAJA*/
+/**********************************************************************/
+- (void) hasModelSet
+{
+    BOOL verfifyBoxModelChange = [[[CimManager getInstance] getCim] verifyBoxModelChange];
+    
+    [myRemoteProxy newResponseMessage];
+
+    if (verfifyBoxModelChange == TRUE)
+        [myRemoteProxy addParamAsBoolean: "Result" value: FALSE];
+    else
+        [myRemoteProxy addParamAsBoolean: "Result" value: TRUE];
+    
+    [myRemoteProxy sendMessage];
+    
+}
+
+/**/
+- (void) hasMovements
+{
+    BOOL hasMovements = [[[CimManager getInstance] getCim] hasMovements];
+    
+    [myRemoteProxy newResponseMessage];
+
+    [myRemoteProxy addParamAsBoolean: "Result" value: hasMovements];
+    
+    [myRemoteProxy sendMessage];
+
+}
+
+/**/
+- (void) setBoxModel
+{
+    int modelId = 0;
+    int val1ModelId = 0;
+    int val2ModelId = 0;
+    
+    id boxModel = [BoxModel new];
+    
+    if ([myPackage isValidParam: "ModelId"]) 
+        modelId = [myPackage getParamAsInteger: "ModeId"];
+    
+    if ([myPackage isValidParam: "Val1ModelId"]) 
+        val1ModelId = [myPackage getParamAsInteger: "Val1ModelId"];
+    
+    if ([myPackage isValidParam: "Val2ModelId"]) 
+        val2ModelId = [myPackage getParamAsInteger: "Val2ModelId"];
+
+    [boxModel setPhisicalModel: modelId];
+    [boxModel setVal1Model: val1ModelId];
+    [boxModel setVal2Model: val2ModelId];
+
+    TRY
+        [boxModel save]; 
+    FINALLY
+        [boxModel free];
+    END_TRY
+    
+        
+}
+
+/**/ 
+- (void) getAvailableBoxModels
+{
+}
+
+
+/**/
+- (void) getAvailableValModels
+{
+    
+}
+
 
 /*********************************************************************/
 /*MENSAJES ASINCRONICOS*/
@@ -1401,13 +1492,11 @@ static int loginFailQty = 0;
 	pkg = myCommandPackage;
 	[pkg clear];
 	//[pkg setName: "AsyncMsg"];
-    printf("xxxxx\n");
     [pkg setName: aMessageName];
 	[pkg addParamAsInteger: "State" value: aState];
     [pkg addParamAsInteger: "Period" value: aPeriod];    
-    printf("yyyy\n");
 	[self sendPackage];
-    printf("zzzz\n");
+
 }    
 
 
@@ -2036,6 +2125,26 @@ static int loginFailQty = 0;
         case IS_VALIDATION_MODE_AVAILABLE_REQ:
             [self isValidationModeAvailable];
             return;            
+            
+        case HAS_MODEL_SET_REQ:
+            [self hasModelSet];
+            return;
+            
+        case SET_BOX_MODEL_REQ:
+            [self setBoxModel];
+            return;
+            
+        case HAS_MOVEMENTS_REQ:
+            [self hasMovements];
+            return;
+            
+        case GET_AVAILABLE_BOX_MODELS:
+            [self getAvailableBoxModels];
+            return;
+            
+        case GET_AVAILABLE_VAL_MODELS:                
+            [self getAvailableValModels];
+            return;
 
 		default: break;		
 

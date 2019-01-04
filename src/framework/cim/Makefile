@@ -61,7 +61,8 @@ OBJECTS= \
 	SwipeReaderThread.o \
 	BoxModel.o \
 	AESencript.o \
-	dynamicPin.o
+	SupportThread.o \
+	dynamicPin.o 
 
 #	CimStateExtraction.o \
 #OBJECTS+= TestCim.o

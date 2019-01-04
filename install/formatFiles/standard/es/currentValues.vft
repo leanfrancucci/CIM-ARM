@@ -1,82 +1,82 @@
 @CHAR_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
-@/generalInfo/header1@\n
+ @/generalInfo/header1@\n
 @END_IF@
 @IF|/generalInfo/vewHeader2=TRUE@
-@/generalInfo/header2@\n
+  @/generalInfo/header2@\n
 @END_IF@
 @IF|/generalInfo/vewHeader3=TRUE@
-@/generalInfo/header3@\n
+  @/generalInfo/header3@\n
 @END_IF@
 @IF|/generalInfo/vewHeader4=TRUE@
-@/generalInfo/header4@\n
+  @/generalInfo/header4@\n
 @END_IF@
 @IF|/generalInfo/vewHeader5=TRUE@
-@/generalInfo/header5@\n
+  @/generalInfo/header5@\n
 @END_IF@
 @IF|/generalInfo/vewHeader6=TRUE@
-@/generalInfo/header6@\n
+  @/generalInfo/header6@\n
 @END_IF@
------------------------------------------\n
+  -----------------------------------------\n
 @DBL_HEIGHT_ON@
-          REPORTE DE CASH\n
+            REPORTE DE CASH\n
 @CHAR_SPACE@
 @IF|/generalInfo/detailReport=TRUE@
-            - DETALLADO -\n
+              - DETALLADO -\n
 @END_IF@
 @IF|/generalInfo/detailReport=FALSE@
-            - RESUMIDO -\n
+              - RESUMIDO -\n
 @END_IF@
------------------------------------------\n
-Trans #   : @/generalInfo/trans@\n
-Fecha-Hora: @/generalInfo/transTime@\n
-Pto Vta   : @/generalInfo/systemId@\n
-ID Remoto	: @/generalInfo/systemIdPIMS@\n
+  -----------------------------------------\n
+  Trans #   : @/generalInfo/trans@\n
+  Fecha-Hora: @/generalInfo/transTime@\n
+  Pto Vta   : @/generalInfo/systemId@\n
+  ID Remoto	: @/generalInfo/systemIdPIMS@\n
 @IF|reportType=1@
-Selec Prta: @/generalInfo/doorName:-17@\n
+  Selec Prta: @/generalInfo/doorName:-17@\n
 @END_IF@
 @IF|reportType=2@
-Selec Cash: @/generalInfo/cashName:-17@\n
+  Selec Cash: @/generalInfo/cashName:-17@\n
 @END_IF@
-Ult.Grd Z : @/generalInfo/lastZ@\n
-Dia Desde : @/generalInfo/lastDateZ@\n
------------------------------------------\n
+  Ult.Grd Z : @/generalInfo/lastZ@\n
+  Dia Desde : @/generalInfo/lastDateZ@\n
+  -----------------------------------------\n
 
 @IF|/cimCashs/withOutValues=TRUE@
  \n
-      NO HAY MOVIMIENTOS\n
-       PARA EL PERIODO\n
+        NO HAY MOVIMIENTOS\n
+         PARA EL PERIODO\n
  \n
 @END_IF@
 
 @FOR_EACH|cimCashs/cimCash@
  \n
-@name@ ***\n
-
+  @name@ ***\n
+ 
 @IF|cimCashType=1@
 @FOR_EACH|acceptorList/acceptor@
  \n
-@acceptorName@
+  @acceptorName@
 @FOR_EACH|currencyList/currency@
  \n
-Moneda: @currencyCode@\n
------------------------------------------\n
+  Moneda: @currencyCode@\n
+  -----------------------------------------\n
 @IF|/generalInfo/detailReport=TRUE@
-  Cant     Valor     Subtotal\n
+    Cant     Valor     Subtotal\n
 @END_IF@
 @IF|/generalInfo/detailReport=FALSE@
-  Cant   Tipo        Subtotal\n
+    Cant   Tipo        Subtotal\n
 @END_IF@
------------------------------------------\n
+  -----------------------------------------\n
 @IF|/generalInfo/detailReport=TRUE@
 @FOR_EACH|extractionDetails/extractionDetail@
-@qty:6@ @amount:9@ @totalAmount:12@\n
+  @qty:6@ @amount:9@ @totalAmount:12@\n
 @END_FOR@
------------------------------------------\n
-@qty:6@ Tot @currencyCode:3@ @total:14@\n
+  -----------------------------------------\n
+  @qty:6@ Tot @currencyCode:3@ @total:14@\n
 @END_IF@
 @IF|/generalInfo/detailReport=FALSE@
-@qty:6@   @currencyCode:3@ @total:16@\n
+  @qty:6@   @currencyCode:3@ @total:16@\n
 @END_IF@
 @END_FOR@
 @END_FOR@
@@ -85,30 +85,30 @@ Moneda: @currencyCode@\n
 @IF|cimCashType=2@
 @FOR_EACH|acceptorList/acceptor@
  \n
-@acceptorName@
+  @acceptorName@
 
 @IF|/generalInfo/detailReport=TRUE@
 @FOR_EACH|currencyList/currency@
  \n
-Moneda: @currencyCode@\n
------------------------------------------\n
-  Cant      Tipo     Subtotal\n
------------------------------------------\n
+  Moneda: @currencyCode@\n
+  -----------------------------------------\n
+    Cant      Tipo     Subtotal\n
+  -----------------------------------------\n
 @FOR_EACH|extractionDetails/extractionDetail@
-@qty:6@ @depositValueName:9@ @totalAmount:12@\n
+  @qty:6@ @depositValueName:9@ @totalAmount:12@\n
 @END_FOR@
------------------------------------------\n
-@qty:6@ Tot @currencyCode:3@ @total:14@\n
+  -----------------------------------------\n
+  @qty:6@ Tot @currencyCode:3@ @total:14@\n
 @END_FOR@
 @END_IF@
 
 @IF|/generalInfo/detailReport=FALSE@
  \n
------------------------------------------\n
-  Cant   Cash        Subtotal\n
------------------------------------------\n
+  -----------------------------------------\n
+    Cant   Cash        Subtotal\n
+  -----------------------------------------\n
 @FOR_EACH|currencyList/currency@
-@qty:6@   @currencyCode:3@ @total:16@\n
+  @qty:6@   @currencyCode:3@ @total:16@\n
 @END_FOR@
 @END_IF@
 
@@ -116,61 +116,61 @@ Moneda: @currencyCode@\n
 @END_IF@
  \n
 @IF|/generalInfo/reportType=1@
-TOTAL: @name@\n
+  TOTAL: @name@\n
 @END_IF@
 @IF|/generalInfo/reportType=2@
  \n
-****** TOTAL CASH ******\n
+  ****** TOTAL CASH ******\n
 @END_IF@
 @FOR_EACH|totalCurrency@
-@totalCurrencyCode:3@ @totalCurr:20@\n
+  @totalCurrencyCode:3@ @totalCurr:20@\n
 @END_FOR@
  \n
 @END_FOR@
 
 @IF|/generalInfo/reportType=1@
 @IF|/cimCashs/withOutValues=FALSE@
------------------------------------------\n
+  -----------------------------------------\n
  \n
- \n
-****** CASH TOTAL ******\n
+ \n 
+  ****** CASH TOTAL ******\n
 @FOR_EACH|cimCashs/totalCashCurrency@
-TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
+  TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
 @END_FOR@
 @END_IF@
 @IF|/cimCashs/withOutValues=FALSE@
  \n
------------------------------------------\n
-  DETALLE POR CIERRE DIARIO\n
------------------------------------------\n
+  -----------------------------------------\n
+    DETALLE POR CIERRE DIARIO\n
+  -----------------------------------------\n
 @FOR_EACH|breakdown/endOfDay@
-C. Diario @number@  @date@\n
+  C. Diario @number@  @date@\n
 @FOR_EACH|cashClose@
- -Parcial @number@ - @date@\n
+   -Parcial @number@ - @date@\n
 @FOR_EACH|cashCloseDetails/cashCloseDetail@
-  -@cimCashName:-9@ @currencyCode:3@ @amount:12@\n
+    -@cimCashName:-9@ @currencyCode:3@ @amount:12@\n
 @END_FOR@
 @END_FOR@
 @END_FOR@
  \n
-Referencias:\n
-  S  : Siguiente\n
-  P  : Parcial\n
-  N/D: No Disponible\n
+  Referencias:\n
+    S  : Siguiente\n
+    P  : Parcial\n
+    N/D: No Disponible\n
 @END_IF@
 @END_IF@
------------------------------------------\n
+  -----------------------------------------\n
  \n
 @IF|/generalInfo/vewFooter1=TRUE@
-@/generalInfo/footer1@\n
+  @/generalInfo/footer1@\n
 @END_IF@
 @IF|/generalInfo/vewFooter2=TRUE@
-@/generalInfo/footer2@\n
+  @/generalInfo/footer2@\n
 @END_IF@
 @IF|/generalInfo/vewFooter3=TRUE@
-@/generalInfo/footer3@\n
+  @/generalInfo/footer3@\n
 @END_IF@
-Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
-Fecha: @/generalInfo/currentDate@\n
+  Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+  Fecha: @/generalInfo/currentDate@\n
 @FEED_LINE@
 @CUT_PAPER@

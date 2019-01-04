@@ -436,6 +436,43 @@ static GENERIC_GET_REQUEST myRestoreSingleInstance = nil;
 
 }
 
+
+/**/
+- (void) sendDoorsByUserTable
+{
+	int j, i;
+    COLLECTION doors; 
+    COLLECTION users;
+	id door;
+	id cim;
+	
+  printd("GenericGetRequest->DoorsByUserTable\n");
+    
+	cim = [[CimManager getInstance] getCim];
+    
+    doors = [cim getDoors];
+    
+    [myRemoteProxy newResponseMessage];
+    
+    for (i=0; i<[doors size]; ++i) {
+        
+        users = [[doors at: i] getUsers];
+        
+             
+        for (j = 0; j < [users size]; ++j)
+        {
+            [self beginEntity];
+            [myRemoteProxy addParamAsInteger: "DoorId" value: [[doors at: i] getDoorId]];
+            [myRemoteProxy addParamAsInteger: "UserId" value: [[users at: j] getUserId]];
+            [self endEntity];
+		} 
+        
+    }
+	
+	[myRemoteProxy sendMessage];
+}    
+
+
 /*DUPLAS*/
 /**/
 - (void) sendDualAccess
@@ -753,7 +790,7 @@ static GENERIC_GET_REQUEST myRestoreSingleInstance = nil;
 
 	references = [[CashReferenceManager getInstance] getCashReferences];
   
-  [myRemoteProxy newResponseMessage];
+    [myRemoteProxy newResponseMessage];
 
 	for (i = 0; i < [references size]; ++i) {
 
@@ -778,6 +815,30 @@ static GENERIC_GET_REQUEST myRestoreSingleInstance = nil;
 	
 	[myRemoteProxy sendMessage];
 
+}
+
+/**/
+- (void) sendCashReference
+{
+    id cashReference;
+    
+    if (![myPackage isValidParam: "CashReferenceId"]) 
+		THROW(TSUP_KEY_NOT_FOUND);
+    
+    cashReference = [[CashReferenceManager getInstance] getCashReferenceById: [myPackage getParamAsInteger: "CashReferenceId"]];
+    
+    [myRemoteProxy newResponseMessage];
+    [myRemoteProxy addParamAsInteger: "CashReferenceId" value: [cashReference getCashReferenceId]];
+    [myRemoteProxy addParamAsString: "Name" value: [cashReference getName]];
+
+    if ([cashReference getParent]) {
+        [myRemoteProxy addParamAsInteger: "ParentId" value: [[cashReference getParent] getCashReferenceId]];
+    } else {
+        [myRemoteProxy addParamAsInteger: "ParentId" value: 0];
+    }
+
+    [myRemoteProxy addParamAsBoolean: "Deleted" value: [cashReference isDeleted]];
+	[myRemoteProxy sendMessage];    
 }
 
 
@@ -1207,6 +1268,39 @@ static GENERIC_GET_REQUEST myRestoreSingleInstance = nil;
 	[myRemoteProxy sendMessage];
 }
 
+/**/
+- (void) sendAcceptorsByCashTable
+{
+	int j, i;
+    COLLECTION cashes; 
+	id acceptors;
+	id cim;
+	
+  printd("GenericGetRequest->sendAcceptorsByCashTable\n");
+    
+	cim = [[CimManager getInstance] getCim];
+    
+    cashes = [cim getCimCashs];
+    
+    [myRemoteProxy newResponseMessage];
+    
+    for (j=0; j<[cashes size]; ++j) {
+        
+        acceptors = [cim getAcceptorsByCash: [[cashes at: j] getCimCashId]];
+        
+             
+        for (i = 0; i < [acceptors size]; ++i)
+        {
+            [self beginEntity];
+            [myRemoteProxy addParamAsInteger: "CashId" value: [[cashes at: j] getCimCashId]];
+            [myRemoteProxy addParamAsInteger: "AcceptorId" value: [[acceptors at: i] getAcceptorId]];
+            [self endEntity];
+		}
+        
+    }
+	
+	[myRemoteProxy sendMessage];
+}
 
 /*BOXES*/
 - (void) initSendBoxes
@@ -1771,6 +1865,10 @@ static GENERIC_GET_REQUEST myRestoreSingleInstance = nil;
 			// este es especial por eso es return
 			[self sendAcceptorsByCash];
 			return;
+            
+        case GET_ACCEPTORS_BY_CASH_TABLE_REQ:
+            [self sendAcceptorsByCashTable];
+            return;            
 
 		case GET_BOX_REQ:
 			[self initSendBoxes];
@@ -1820,8 +1918,12 @@ static GENERIC_GET_REQUEST myRestoreSingleInstance = nil;
       [self sendOperations];
       return;
 
-  	case GET_CASH_REFERENCE_REQ:
+  	case GET_CASH_REFERENCES_REQ:
       [self sendCashReferences];
+      return;
+      
+    case GET_CASH_REFERENCE_REQ:
+      [self sendCashReference];
       return;
       
     case GET_VERSION_REQ:
@@ -1844,6 +1946,10 @@ static GENERIC_GET_REQUEST myRestoreSingleInstance = nil;
     case GET_DOORS_BY_USERS_REQ:
       [self sendDoorsByUsers];
       return;      
+
+    case GET_DOORS_BY_USER_TABLE_REQ:
+     [self sendDoorsByUserTable];
+     return;
 
     case GET_DUAL_ACCESS_REQ:
       [self sendDualAccess];

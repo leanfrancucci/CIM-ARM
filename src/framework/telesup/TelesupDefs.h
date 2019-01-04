@@ -89,6 +89,7 @@ typedef enum {
 	CommunicationIntention_EXPIRED_MODULES				// 10
 	CommunicationIntention_LOGIN									// 11
 	CommunicationIntention_INFORM_Z_CLOSE	 = 15		// 15
+    CommunicationIntention_INFORM_SUPPORT_TASK	 = 16		// 16
 
 } CommunicationIntention;
 

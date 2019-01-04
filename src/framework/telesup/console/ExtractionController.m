@@ -143,9 +143,9 @@ static EXTRACTION_CONTROLLER singleInstance = NULL;
     CATCH
     
         [myExtractionWorkflow removeLoggedUsers];
-        [myExtractionWorkflow setGenerateExtraction: FALSE];
+        /*[myExtractionWorkflow setGenerateExtraction: FALSE];
         if ([myExtractionWorkflow getInnerDoorWorkflow])
-            [[myExtractionWorkflow getInnerDoorWorkflow] setGenerateExtraction: FALSE];
+            [[myExtractionWorkflow getInnerDoorWorkflow] setGenerateExtraction: FALSE];*/
         RETHROW();
     END_TRY
 
@@ -157,10 +157,10 @@ static EXTRACTION_CONTROLLER singleInstance = NULL;
     CATCH
         [self showDefaultExceptionDialogWithExCode: ex_get_code()];
         [myExtractionWorkflow removeLoggedUsers];
-        [myExtractionWorkflow setGenerateExtraction: FALSE];
+        /*[myExtractionWorkflow setGenerateExtraction: FALSE];
 
         if ([myExtractionWorkflow getInnerDoorWorkflow])
-            [[myExtractionWorkflow getInnerDoorWorkflow] setGenerateExtraction: FALSE];
+            [[myExtractionWorkflow getInnerDoorWorkflow] setGenerateExtraction: FALSE];*/
         /* LANZAR ERROR*/
         RETHROW();
     END_TRY    

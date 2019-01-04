@@ -1,77 +1,77 @@
 @CHAR_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
-@/generalInfo/header1@\n
+ @/generalInfo/header1@\n
 @END_IF@
 @IF|/generalInfo/vewHeader2=TRUE@
-@/generalInfo/header2@\n
+  @/generalInfo/header2@\n
 @END_IF@
 @IF|/generalInfo/vewHeader3=TRUE@
-@/generalInfo/header3@\n
+  @/generalInfo/header3@\n
 @END_IF@
 @IF|/generalInfo/vewHeader4=TRUE@
-@/generalInfo/header4@\n
+  @/generalInfo/header4@\n
 @END_IF@
 @IF|/generalInfo/vewHeader5=TRUE@
-@/generalInfo/header5@\n
+  @/generalInfo/header5@\n
 @END_IF@
 @IF|/generalInfo/vewHeader6=TRUE@
-@/generalInfo/header6@\n
+  @/generalInfo/header6@\n
 @END_IF@
------------------------------------------\n
+  -----------------------------------------\n
 @DBL_HEIGHT_ON@
-        REPORTE DE USUARIOS\n
+          REPORTE DE USUARIOS\n
 @CHAR_SPACE@
 @IF|/generalInfo/detailReport=FALSE@
-               -RESUMIDO-\n
+                 -RESUMIDO-\n
 @END_IF@
 @IF|/generalInfo/detailReport=TRUE@
-               -DETALLADO-\n
+                 -DETALLADO-\n
 @END_IF@
------------------------------------------\n
-Trans #   : @/generalInfo/trans@\n
-Fecha-Hora: @/generalInfo/transTime@\n
-Pto Vta   : @/generalInfo/systemId@\n
-ID Remoto	: @/generalInfo/systemIdPIMS@\n
-Estado    : @/generalInfo/statusDescription@\n
------------------------------------------\n
+  -----------------------------------------\n
+  Trans #   : @/generalInfo/trans@\n
+  Fecha-Hora: @/generalInfo/transTime@\n
+  Pto Vta   : @/generalInfo/systemId@\n
+  ID Remoto	: @/generalInfo/systemIdPIMS@\n
+  Estado    : @/generalInfo/statusDescription@\n
+  -----------------------------------------\n
  \n
 @IF|/generalInfo/withOutValues=TRUE@
-      NO HAY USUARIOS\n
+        NO HAY USUARIOS\n
  \n
------------------------------------------\n
+  -----------------------------------------\n
 @END_IF@
 @FOR_EACH|userList/userInfo@
-USUARIO # : @userId@\n
-Nomb Usuar: @userName:-17@\n
-Fecha Alta: @enrolledDate@\n
-ID Personal: @personalId@\n
-Estado    : @status@\n
-Perfil    : @profile:-17@\n
-Clave     : @key@\n
-Ult. Login: @lastLogin@\n
-Cuenta  # : \n
- @account@\n
+  USUARIO # : @userId@\n
+  Nomb Usuar: @userName:-17@\n
+  Fecha Alta: @enrolledDate@\n
+  ID Personal: @personalId@\n
+  Estado    : @status@\n
+  Perfil    : @profile:-17@\n
+  Clave     : @key@\n
+  Ult. Login: @lastLogin@\n
+  Cuenta  # : \n
+   @account@\n
 @IF|/generalInfo/detailReport=TRUE@
-Permisos  :\n
+  Permisos  :\n
 @FOR_EACH|opList/opInfo@
-@operationName@\n
+  @operationName@\n
 @END_FOR@
 @END_IF@
  \n
------------------------------------------\n
+  -----------------------------------------\n
  \n
 @END_FOR@\n
  \n
 @IF|/generalInfo/vewFooter1=TRUE@
-@/generalInfo/footer1@\n
+  @/generalInfo/footer1@\n
 @END_IF@
 @IF|/generalInfo/vewFooter2=TRUE@
-@/generalInfo/footer2@\n
+  @/generalInfo/footer2@\n
 @END_IF@
 @IF|/generalInfo/vewFooter3=TRUE@
-@/generalInfo/footer3@\n
+  @/generalInfo/footer3@\n
 @END_IF@
-Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
-Fecha: @/generalInfo/currentDate@\n
+  Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+  Fecha: @/generalInfo/currentDate@\n
 @FEED_LINE@
 @CUT_PAPER@

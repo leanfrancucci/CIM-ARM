@@ -25,6 +25,7 @@
 #define FEED_LINE		"FEED_LINE"
 #define CUT_PAPER		"CUT_PAPER"
 #define CHAR_SPACE		"CHAR_SPACE"
+#define LEFT_SPACE		"LEFT_SPACE"
 
 #define BAR_CODE_ITF "BAR_CODE_ITF"
 

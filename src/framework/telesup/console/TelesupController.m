@@ -40,6 +40,8 @@ static TELESUP_CONTROLLER singleInstance = NULL;
         
     id telesup = [[TelesupervisionManager getInstance] getTelesupByTelcoType: PIMS_TSUP_ID];
 
+    if (telesup == NULL) THROW(TSUP_PIMS_SUPERVISION_NOT_DEFINED);
+    
     [[TelesupScheduler getInstance] isManual: TRUE];
     [[TelesupScheduler getInstance] startTelesup: telesup getCurrentSettings: FALSE telesupViewer: self];
 

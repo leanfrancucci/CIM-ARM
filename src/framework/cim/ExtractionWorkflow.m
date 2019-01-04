@@ -811,6 +811,7 @@ static State WaitUnlockDoorWithOpenDoorState =
 
 			    //************************* logcoment
 //	doLog(0,"verifyPinGeneration User %d\n", [anUser getUserId]);
+/*
 	if ([anUser getUsesDynamicPin]) {
 		[anUser setPreviousPin: [anUser getRealPassword]];
 		generateNewPin( [anUser getUserId], newClosingCode, [anUser getRealPassword], newPassword, newDuressPass );
@@ -827,6 +828,7 @@ static State WaitUnlockDoorWithOpenDoorState =
   		[ anUser setWasPinGenerated: 1];
 
 	}
+	*/
 }
 
 

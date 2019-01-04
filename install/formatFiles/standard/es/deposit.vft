@@ -1,138 +1,138 @@
 @CHAR_SPACE@
-@IF|/generalInfo/vewHeader1=TRUE@
+ @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
-@IF|/generalInfo/vewHeader2=TRUE@
+  @IF|/generalInfo/vewHeader2=TRUE@
 @/generalInfo/header2@\n
 @END_IF@
-@IF|/generalInfo/vewHeader3=TRUE@
+  @IF|/generalInfo/vewHeader3=TRUE@
 @/generalInfo/header3@\n
 @END_IF@
-@IF|/generalInfo/vewHeader4=TRUE@
+  @IF|/generalInfo/vewHeader4=TRUE@
 @/generalInfo/header4@\n
 @END_IF@
-@IF|/generalInfo/vewHeader5=TRUE@
+  @IF|/generalInfo/vewHeader5=TRUE@
 @/generalInfo/header5@\n
 @END_IF@
-@IF|/generalInfo/vewHeader6=TRUE@
+  @IF|/generalInfo/vewHeader6=TRUE@
 @/generalInfo/header6@\n
 @END_IF@
 @IF|/generalInfo/isReprint=TRUE@
  \n
------------------------------------------\n
-------------- REIMPRESION ---------------\n
------------------------------------------\n
+  -----------------------------------------\n
+  ------------- REIMPRESION ---------------\n
+  -----------------------------------------\n
  \n
 @END_IF@
------------------------------------------\n
+  -----------------------------------------\n
 @IF|/generalInfo/depositType=1@
 @DBL_HEIGHT_ON@
-       DEPOSITO VALIDADO\n
+         DEPOSITO VALIDADO\n
 @END_IF@
 @CHAR_SPACE@
 @IF|/generalInfo/depositType=2@
 @DBL_HEIGHT_ON@
-          DEPOSITO MANUAL\n
+            DEPOSITO MANUAL\n
 @CHAR_SPACE@
 @IF|/generalInfo/viewTrans=FALSE@
-        (Inserte este recibo en el sobre)\n
+          (Inserte este recibo en el sobre)\n
 @END_IF@
 @END_IF@
------------------------------------------\n
+  -----------------------------------------\n
 @IF|/generalInfo/isManualDropReceipt=FALSE@
-Deposito# : @/generalInfo/number@\n
+  Deposito# : @/generalInfo/number@\n
 @IF|/generalInfo/viewTrans=TRUE@
-Trans #   : @/generalInfo/trans@\n
+  Trans #   : @/generalInfo/trans@\n
 @END_IF@
-Fecha-Hora: @/generalInfo/closeTime@\n
+  Fecha-Hora: @/generalInfo/closeTime@\n
 @END_IF@
 @IF|/generalInfo/isManualDropReceipt=TRUE@
-Fecha-Hora: @/generalInfo/currentDate@\n
+  Fecha-Hora: @/generalInfo/currentDate@\n
 @END_IF@
-Pto Vta   : @/generalInfo/systemId@\n
-ID Remoto	: @/generalInfo/systemIdPIMS@\n
-Operador #: @/generalInfo/userId@\n
-Nombre Opr: @/generalInfo/userName@\n
-Cash      : @/generalInfo/cimCashName@\n
+  Pto Vta   : @/generalInfo/systemId@\n
+  ID Remoto	: @/generalInfo/systemIdPIMS@\n
+  Operador #: @/generalInfo/userId@\n
+  Nombre Opr: @/generalInfo/userName@\n
+  Cash      : @/generalInfo/cimCashName@\n
 @IF|/generalInfo/depositType=1@
-Rechazado : @/generalInfo/rejectedQty@\n
+  Rechazado : @/generalInfo/rejectedQty@\n
 @END_IF@
 @IF|/generalInfo/hasReference=TRUE@
-Reference : \n
+  Reference : \n
 @FOR_EACH|/generalInfo/cashReference@
-  @referenceName@\n
+    @referenceName@\n
 @END_FOR@
 @END_IF@
------------------------------------------\n
+  -----------------------------------------\n
 @IF|/generalInfo/viewEnvelopeNumber=TRUE@
 @IF|/generalInfo/depositType=2@
-SOBRE #: @/generalInfo/envelopeNumber:-15@\n
------------------------------------------\n
+  SOBRE #: @/generalInfo/envelopeNumber:-15@\n
+  -----------------------------------------\n
 @END_IF@
 @END_IF@
 @IF|/generalInfo/viewApplyTo=TRUE@
-APLICAR A: @/generalInfo/applyTo:-15@\n
------------------------------------------\n
+  APLICAR A: @/generalInfo/applyTo:-15@\n
+  -----------------------------------------\n
 @END_IF@
 @FOR_EACH|acceptorList/acceptor@
  \n
-@acceptorName@\n
+  @acceptorName@\n
 @FOR_EACH|currencyList/currency@
  \n
-Moneda: @currencyCode:3@\n
+  Moneda: @currencyCode:3@\n
 @IF|/generalInfo/depositType=1@
------------------------------------------\n
- Cant      Valor     Subtotal\n
------------------------------------------\n
+  -----------------------------------------\n
+   Cant      Valor     Subtotal\n 
+  -----------------------------------------\n
 @END_IF@
 @IF|/generalInfo/depositType=2@
------------------------------------------\n
- Cant       Tipo     Subtotal\n
------------------------------------------\n
+  -----------------------------------------\n
+   Cant       Tipo     Subtotal\n
+  -----------------------------------------\n
 @END_IF@
 @FOR_EACH|depositDetails/depositDetail@
 @IF|/generalInfo/depositType=1@
-@qty:6@ @amount:9@ @totalAmount:12@\n
+  @qty:6@ @amount:9@ @totalAmount:12@\n
 @END_IF@
 @IF|/generalInfo/depositType=2@
-@qty:6@ @depositValueName:9@ @totalAmount:12@\n
+  @qty:6@ @depositValueName:9@ @totalAmount:12@\n
 @END_IF@
 @END_FOR@
------------------------------------------\n
-@qty:6@ Tot @currencyCode:3@ @total:14@\n
+  -----------------------------------------\n
+  @qty:6@ Tot @currencyCode:3@ @total:14@\n
 @END_FOR@
 @END_FOR@
------------------------------------------\n
+  -----------------------------------------\n
  \n
  \n
-************** TOTAL **************\n
+  ************** TOTAL **************\n
 @FOR_EACH|totalCurr/totalByCurrency@
-TOTAL @totalCurrencyCode:3@ @totalCurrency:14@\n
+  TOTAL @totalCurrencyCode:3@ @totalCurrency:14@\n
 @END_FOR@
  \n
 @IF|/generalInfo/depositType=2@
-El total del deposito manual sera\n 
-confirmado posterior al proceso\n
-de conteo.\n
+  El total del deposito manual sera\n 
+  confirmado posterior al proceso\n
+  de conteo.\n
 @END_IF@
------------------------------------------\n
+  -----------------------------------------\n
 @IF|/generalInfo/isReprint=TRUE@
  \n
------------------------------------------\n
-------------- REIMPRESION ---------------\n
------------------------------------------\n
+  -----------------------------------------\n
+  ------------- REIMPRESION ---------------\n
+  -----------------------------------------\n
  \n
 @END_IF@
 @IF|/generalInfo/vewFooter1=TRUE@
-@/generalInfo/footer1@\n
+  @/generalInfo/footer1@\n
 @END_IF@
 @IF|/generalInfo/vewFooter2=TRUE@
-@/generalInfo/footer2@\n
+  @/generalInfo/footer2@\n
 @END_IF@
 @IF|/generalInfo/vewFooter3=TRUE@
-@/generalInfo/footer3@\n
+  @/generalInfo/footer3@\n
 @END_IF@
-Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
-Fecha: @/generalInfo/currentDate@\n
+  Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+  Fecha: @/generalInfo/currentDate@\n
 @FEED_LINE@
 @CUT_PAPER@

@@ -1,12 +1,12 @@
------------------------------\n
+  -----------------------------\n
 @VERDANA_BIG_FONT@
 @DBL_HEIGHT_ON@
-       CODIGO DE CIERRE \n
-@BITSTREAM_FONT@
------------------------------\n
-Usuario: @/generalInfo/operatorName@\n
-Cod. Cierre: @/generalInfo/ClosingCode@\n
------------------------------\n
+         CODIGO DE CIERRE \n
+@BITSTREAM_FONT@  
+  -----------------------------\n
+  Usuario: @/generalInfo/operatorName@\n
+  Cod. Cierre: @/generalInfo/ClosingCode@\n
+  -----------------------------\n
 @VERDANA_SMALL_FONT@
-Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName@\n
-Fecha: @/generalInfo/currentDate@\n
+  Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName@\n
+  Fecha: @/generalInfo/currentDate@\n

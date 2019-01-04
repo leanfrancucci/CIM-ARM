@@ -25,7 +25,7 @@ char *strdup(const char*);
 	char *name;
 	char *index;
 
-	printd("Try to opendir |%s|\n", aPath);
+	printf("Try to opendir |%s|\n", aPath);
 	
 	dfd = opendir(aPath);
 	if (!dfd) THROW_MSG(INVALID_PATH_EX, aPath);
@@ -35,16 +35,19 @@ char *strdup(const char*);
 	while ( (dp = readdir(dfd)) != NULL )
 	{
 
-		printd("File -> Analizando archivo %s, type = %d\n", dp->d_name, dp->d_type);
+		printf("File -> Analizando archivo %s, type = %d\n", dp->d_name, dp->d_type);
 		
 		//if (dp->d_type != 8) continue;
-		printd("File -> Es un archivo\n");
+		printf("File -> Es un archivo\n");
 		
 		index = strrchr(dp->d_name, '.');
 		if (index == NULL && strlen(anExtension) != 0) continue;
-		printd("File -> Contiene una extension\n");
+		printf("File -> Contiene una extension\n");
 		if (index) index++;
 		
+        
+        printf("index =%s extension = %s", index, anExtension);
+        
 		// No coincide con el criterio, continuo hacia el siguiente
 		if (aCaseSensitive) {
 			if (index != NULL && strcmp(index, anExtension) != 0) continue;
@@ -55,11 +58,11 @@ char *strdup(const char*);
 		// Si el archivo debe comenzar con cierta cadena, verifica eso
 		if (strlen(aStartsWith) != 0) {
 			index = dp->d_name;
-			printd("Comienza |%s| con |%s|?\n", index, aStartsWith);
+			printf("Comienza |%s| con |%s|?\n", index, aStartsWith);
 			if (strstr(index, aStartsWith) != index) continue;
 		}
 
-		printd("File -> OK. Lo agrego a la lista\n");
+		printf("File -> OK. Lo agrego a la lista\n");
 
 		name = strdup(dp->d_name);
 		[files add: name];

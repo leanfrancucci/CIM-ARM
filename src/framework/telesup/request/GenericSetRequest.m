@@ -2828,7 +2828,7 @@ printf("GenericSetRequest->7\n");
 		case SET_ACCEPTORS_BY_CASH_REQ:
 			[self initSetAcceptorByCash];
 			break;
-
+            
 		case SET_BOX_REQ:
 			[self initSetBox];
 			break;	

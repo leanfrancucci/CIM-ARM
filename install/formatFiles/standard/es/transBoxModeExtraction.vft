@@ -1,98 +1,98 @@
 @VERDANA_SMALL_FONT@
 @IF|/generalInfo/vewHeader1=TRUE@
-@/generalInfo/header1@\n
+ @/generalInfo/header1@\n
 @END_IF@
 @IF|/generalInfo/vewHeader2=TRUE@
-@/generalInfo/header2@\n
+  @/generalInfo/header2@\n
 @END_IF@
 @IF|/generalInfo/vewHeader3=TRUE@
-@/generalInfo/header3@\n
+  @/generalInfo/header3@\n
 @END_IF@
 @IF|/generalInfo/vewHeader4=TRUE@
-@/generalInfo/header4@\n
+  @/generalInfo/header4@\n
 @END_IF@
 @IF|/generalInfo/vewHeader5=TRUE@
-@/generalInfo/header5@\n
+  @/generalInfo/header5@\n
 @END_IF@
 @IF|/generalInfo/vewHeader6=TRUE@
-@/generalInfo/header6@\n
+  @/generalInfo/header6@\n
 @END_IF@
 @BITSTREAM_FONT@
 @IF|/generalInfo/isReprint=TRUE@
  \n
------------------------------\n
--------- REIMPRESION --------\n
------------------------------\n
+  -----------------------------\n
+  -------- REIMPRESION --------\n
+  -----------------------------\n
  \n
 @END_IF@
------------------------------\n
+  -----------------------------\n
 @VERDANA_BIG_FONT@
 @DBL_HEIGHT_ON@
-                 RETIRO \n
+                   RETIRO \n
 @BITSTREAM_FONT@
------------------------------\n
-Retiro#   : @/generalInfo/number@\n
-Trans #   : @/generalInfo/trans@\n
-Fecha-Hora: @/generalInfo/dateTime@\n
-Pto Vta   : @/generalInfo/systemId@\n
-ID Remoto	: @/generalInfo/systemIdPIMS@\n
-Puerta    : @/generalInfo/doorName:-17@\n
-Usuario 1 : @/generalInfo/operatorName@\n
+  -----------------------------\n
+  Retiro#   : @/generalInfo/number@\n
+  Trans #   : @/generalInfo/trans@\n
+  Fecha-Hora: @/generalInfo/dateTime@\n
+  Pto Vta   : @/generalInfo/systemId@\n
+  ID Remoto	: @/generalInfo/systemIdPIMS@\n
+  Puerta    : @/generalInfo/doorName:-17@\n
+  Usuario 1 : @/generalInfo/operatorName@\n
 @IF|/generalInfo/viewCollectorName=TRUE@
-Usuario 2 : @/generalInfo/collectorName@\n
+  Usuario 2 : @/generalInfo/collectorName@\n
 @END_IF@
-Cuenta #  : @/generalInfo/bankAccountInfo@\n
------------------------------\n
+  Cuenta #  : @/generalInfo/bankAccountInfo@\n
+  -----------------------------\n
 
 @IF|/cimCashs/withOutValues=TRUE@
 @BITSTREAM_FONT@
  \n
-      NO HAY MOVIMIENTOS\n
-       PARA EL PERIODO\n
+        NO HAY MOVIMIENTOS\n
+         PARA EL PERIODO\n
  \n
 @END_IF@
 
 @FOR_EACH|cimCashs/cimCash@
 @BOLD_ON@
  \n
-@name@ ***\n
+  @name@ ***\n
 @IF|cimCashType=1@
 @FOR_EACH|acceptorList/acceptor@
  \n
 @BOLD_ON@
-@acceptorName@
+  @acceptorName@
 @FOR_EACH|currencyList/currency@
  \n
 @BITSTREAM_FONT@
-Moneda: @currencyCode@\n
------------------------------\n
- Cant      Valor     Subtotal\n
------------------------------\n
+  Moneda: @currencyCode@\n
+  -----------------------------\n
+   Cant      Valor     Subtotal\n
+  -----------------------------\n
 @FOR_EACH|extractionDetails/extractionDetail@
-@qty:6@ @amount:9@ @totalAmount:12@\n
+  @qty:6@ @amount:9@ @totalAmount:12@\n
 @END_FOR@
------------------------------\n
-@qty:6@ Tot @currencyCode:3@ @total:14@\n
+  -----------------------------\n
+  @qty:6@ Tot @currencyCode:3@ @total:14@\n
 @END_FOR@
 @END_FOR@
 @FOR_EACH|totalValReference@
 @IF|showReferenceTitle=TRUE@
  \n
------------------------------\n
-Por Referencias\n
------------------------------\n
+  -----------------------------\n
+  Por Referencias\n
+  -----------------------------\n
 @END_IF@
 @IF|showCurrencyCode=TRUE@
  \n
-Moneda: @currencyCode:3@\n
------------------------------\n
+  Moneda: @currencyCode:3@\n
+  -----------------------------\n
 @END_IF@
 @IF|showReference=TRUE@
-@referenceName:-16@ @totalReference:12@\n
+  @referenceName:-16@ @totalReference:12@\n
 @END_IF@
 @IF|showCurrencyTot=TRUE@
------------------------------\n
-Total @totalCurrRef:23@\n
+  -----------------------------\n
+  Total @totalCurrRef:23@\n
 @END_IF@
 @END_FOR@
 @END_IF@
@@ -101,21 +101,21 @@ Total @totalCurrRef:23@\n
 @FOR_EACH|acceptorList/acceptor@
  \n
 @BOLD_ON@
-@acceptorName@
+  @acceptorName@
  \n
 @IF|viewManualDetail=TRUE@
 @FOR_EACH|currencyList/currency@
  \n
 @BITSTREAM_FONT@
-Moneda: @currencyCode@\n
------------------------------\n
- Cant       Tipo     Subtotal\n
------------------------------\n
+  Moneda: @currencyCode@\n
+  -----------------------------\n
+   Cant       Tipo     Subtotal\n
+  -----------------------------\n
 @FOR_EACH|extractionDetails/extractionDetail@
-@qty:6@ @depositValueName:9@ @totalAmount:12@\n
+  @qty:6@ @depositValueName:9@ @totalAmount:12@\n
 @END_FOR@
------------------------------\n
-@qty:6@ Tot @currencyCode:3@ @total:14@\n
+  -----------------------------\n
+  @qty:6@ Tot @currencyCode:3@ @total:14@\n
 @END_FOR@
 @END_IF@
 @END_FOR@
@@ -124,96 +124,96 @@ Moneda: @currencyCode@\n
 @BITSTREAM_FONT@
 @IF|showCurrencyCode=TRUE@
  \n
-Moneda: @currencyCode:3@\n
------------------------------\n
+  Moneda: @currencyCode:3@\n
+  -----------------------------\n
 @END_IF@
 @IF|showReferenceName=TRUE@
-@referenceName:-16@\n
+  @referenceName:-16@\n
 @END_IF@
 @IF|showReference=TRUE@
- @depValType:-15@ @totalReference:12@\n
+   @depValType:-15@ @totalReference:12@\n
 @END_IF@
 @IF|showCurrencyTot=TRUE@
------------------------------\n
-Total @totalCurrRef:23@\n
+  -----------------------------\n
+  Total @totalCurrRef:23@\n
 @END_IF@
 @END_FOR@
 @END_IF@
 
  \n
 @BOLD_ON@
-TOTAL: @name@\n
+  TOTAL: @name@\n
 @FOR_EACH|totalCurrency@
-@totalCurrencyCode:3@ @totalCurr:20@\n
+  @totalCurrencyCode:3@ @totalCurr:20@\n
 @END_FOR@
 @IF|cimCashType=2@
  \n
-Cant. Sobres: @envelopeQty@\n
+  Cant. Sobres: @envelopeQty@\n
 @END_IF@
  \n
 @END_FOR@
 @BITSTREAM_FONT@
 @IF|/cimCashs/withOutValues=FALSE@
------------------------------\n
+  -----------------------------\n
 @BOLD_ON@
-******** TOTAL ********\n
+  ******** TOTAL ********\n
 @FOR_EACH|cimCashs/totalCashCurrency@
-TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
+  TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
 @END_FOR@
 @BITSTREAM_FONT@
  \n
 @BITSTREAM_FONT@
------------------------------\n
-  DETALLE POR CIERRE DIARIO\n
------------------------------\n
+  -----------------------------\n
+    DETALLE POR CIERRE DIARIO\n
+  -----------------------------\n
 @FOR_EACH|breakdown/endOfDay@
-C. Diario @number@  @date@\n
+  C. Diario @number@  @date@\n
 @FOR_EACH|cashClose@
- -Parcial @number@ - @date@\n
+   -Parcial @number@ - @date@\n
 @FOR_EACH|cashCloseDetails/cashCloseDetail@
-  -@cimCashName:-9@ @currencyCode:3@ @amount:12@\n
+    -@cimCashName:-9@ @currencyCode:3@ @amount:12@\n
 @END_FOR@
 @END_FOR@
 @END_FOR@
  \n
 @VERDANA_SMALL_FONT@
-Referencias:\n
-  S  : Siguiente\n
-  P  : Parcial\n
-  N/D: No Disponible\n
+  Referencias:\n
+    S  : Siguiente\n
+    P  : Parcial\n
+    N/D: No Disponible\n
 @END_IF@
 @BITSTREAM_FONT@
------------------------------\n
+  -----------------------------\n
  \n
-Firma\n
+  Firma\n
  \n
-.............................\n
+  .............................\n
  \n
-Nombre\n
+  Nombre\n
  \n
-.............................\n
+  .............................\n
  \n
-Identificacion\n
+  Identificacion\n
  \n
-.............................\n
+  .............................\n
  \n
 @IF|/generalInfo/isReprint=TRUE@
  \n
------------------------------\n
--------- REIMPRESION --------\n
------------------------------\n
+  -----------------------------\n
+  -------- REIMPRESION --------\n
+  -----------------------------\n
  \n
 @END_IF@
 @VERDANA_SMALL_FONT@
  \n
 @IF|/generalInfo/vewFooter1=TRUE@
-@/generalInfo/footer1@\n
+  @/generalInfo/footer1@\n
 @END_IF@
 @IF|/generalInfo/vewFooter2=TRUE@
-@/generalInfo/footer2@\n
+  @/generalInfo/footer2@\n
 @END_IF@
 @IF|/generalInfo/vewFooter3=TRUE@
-@/generalInfo/footer3@\n
+  @/generalInfo/footer3@\n
 @END_IF@
-Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
-Fecha: @/generalInfo/currentDate@\n
+  Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+  Fecha: @/generalInfo/currentDate@\n
