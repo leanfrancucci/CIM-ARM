@@ -541,11 +541,8 @@ static id singleInstance = NULL;
 		[myRecordSet setStringValue: "CLOSING_CODE" value: [anObject getClosingCode]];
 		[myRecordSet setStringValue: "PREVIOUS_PIN" value: [anObject getPreviousPin]];
 		[myRecordSet setCharValue: "USES_DYNAMIC_PIN" value: [anObject getUsesDynamicPin]];
-	*/	
-    	[myRecordSet setStringValue: "CLOSING_CODE" value: ""];
-		[myRecordSet setStringValue: "PREVIOUS_PIN" value: ""];
-		[myRecordSet setCharValue: "USES_DYNAMIC_PIN" value: 0];
-        
+            */
+       
 		userId = [myRecordSet save];
 		[anObject setUserId: userId];
 		// vuelvo a setear el password y duress ficticios para que en la pantalla de ABM de usuarios se muestre algo.

@@ -518,9 +518,9 @@ void notifyBillsAccepted(StateMachine *sm)
          for (i = 0; i < jcmBillAcceptor->denominationQty; i++){
              currencyAccepted[i].noteId = SHORT_TO_L_ENDIAN(currencyAccepted[i].noteId);
              currencyAccepted[i].qty = SHORT_TO_L_ENDIAN(currencyAccepted[i].qty);
-             for (x =0; ((x < 12) && (jcmBillAcceptor->convertionTable[x].noteId != currencyAccepted[i].noteId)) ;x++)
+             for (x =0; ((x < 24) && (jcmBillAcceptor->convertionTable[x].noteId != currencyAccepted[i].noteId)) ;x++)
                ; 
-             if ((x < 12) && (jcmBillAcceptor->convertionTable[x].noteId == currencyAccepted[i].noteId)){
+             if ((x < 24) && (jcmBillAcceptor->convertionTable[x].noteId == currencyAccepted[i].noteId)){
 		if (currencyAccepted[i].qty > 0){
                     jcmBillAcceptor->amountChar = jcmBillAcceptor->convertionTable[x].amount;
                     jcmBillAcceptor->amountChar = (jcmBillAcceptor->amountChar* MultipApp);
@@ -529,7 +529,7 @@ void notifyBillsAccepted(StateMachine *sm)
                 printf("NNotify bilss accepted %lld %d!\n",jcmBillAcceptor->amountChar, currencyAccepted[i].qty ); 
 		}
              } else 
-                doLog(1, "NOT FOUND noteB id %d  qty %d!\n", currencyAccepted[i].noteId, currencyAccepted[i].qty); 
+                printf("NOT FOUND noteB id %d  qty %d!\n", currencyAccepted[i].noteId, currencyAccepted[i].qty); 
              
         }
     } else

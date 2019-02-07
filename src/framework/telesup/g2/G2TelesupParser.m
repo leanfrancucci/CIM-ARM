@@ -330,8 +330,11 @@ MapRequestMsg 	mapReqMsg[] =
 	,{"HasModelSet", 	HAS_MODEL_SET_REQ,     NO_REQ_OP,	0}
 	,{"SetBoxModel", 	SET_BOX_MODEL_REQ,     NO_REQ_OP,	0}
 	,{"HasMovements", 	HAS_MOVEMENTS_REQ,     NO_REQ_OP,	0}
-    ,{"GetAvailableBoxModels", 	GET_AVAILABLE_BOX_MODELS,     NO_REQ_OP,	0}
-    ,{"GetAvailableValModels", 	GET_AVAILABLE_VAL_MODELS,     NO_REQ_OP,	0}    
+    ,{"GetAvailableBoxModels", 	GET_AVAILABLE_BOX_MODELS_REQ,     NO_REQ_OP,	0}
+    ,{"GetAvailableValModels", 	GET_AVAILABLE_VAL_MODELS_REQ,     NO_REQ_OP,	0}    
+    
+    ,{"GetCurrentCommercialState", 	GET_CURRENT_COMMERCIAL_STATE_REQ,     NO_REQ_OP,	0}
+    ,{"ChangeCommercialState", 	CHANGE_COMMERCIAL_STATE_REQ,     NO_REQ_OP,	0}    
     
 };
 
@@ -1133,8 +1136,10 @@ MapRequestMsg 	mapReqMsg[] =
         case HAS_MODEL_SET_REQ:
         case SET_BOX_MODEL_REQ:
         case HAS_MOVEMENTS_REQ:
-        case GET_AVAILABLE_BOX_MODELS:
-        case GET_AVAILABLE_VAL_MODELS:            
+        case GET_AVAILABLE_BOX_MODELS_REQ:
+        case GET_AVAILABLE_VAL_MODELS_REQ:            
+        case GET_CURRENT_COMMERCIAL_STATE_REQ:
+        case CHANGE_COMMERCIAL_STATE_REQ:
             printf(">>>>>>>>>>>>>>>>>>>>>>>>> getNewSystemOpRequest\n");
             return [self getNewSystemOpRequest: aReqOp msg: aMessage];
 

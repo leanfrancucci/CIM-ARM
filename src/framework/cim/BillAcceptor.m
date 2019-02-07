@@ -276,6 +276,7 @@ static char buff[50];
 	return myVersion;
 }
 
+
 /**/
 - (BOOL) existsDenomination: (COLLECTION) aDenominationList amount: (money_t) anAmount
 {
@@ -312,7 +313,7 @@ static char buff[50];
 	DENOMINATION denomination;
 	
     //************************* logcoment
-	printf("Verificando denominaciones...\n");
+	printf("**************************************************************Verificando denominaciones...\n");
 
 	denominations = [anAcceptedCurrency getDenominations];
 	
@@ -320,9 +321,17 @@ static char buff[50];
 	// en la lista que yo tengo las agrego
 	for (i = 0; i < 24; i++) {
 
-		if (aJcmDenominations[i].amount == 0) continue;
+        //printf("denominacion %lld a la moneda %d\n", aJcmDenominations[i].amount, [[anAcceptedCurrency getCurrency] getCurrencyId]);
+        printf("i= %d\n", i);
+        
+		if (aJcmDenominations[i].amount == 0) {
+                printf("amount es 0\n");
+                continue;
+        }
 
 		amount = ENCODE_DECIMAL(aJcmDenominations[i].amount);
+        
+        printf("amount = %lld \n", amount); 
 
 		// No existe la denominacion, voy a agregarla
 		if (![self existsDenomination: denominations amount: amount]) {
@@ -336,7 +345,10 @@ static char buff[50];
 			[denomination setDenominationSecurity: DenominationSecurity_STANDARD];
 			
 			[anAcceptedCurrency addDenomination: denomination];
-	
+        
+            
+            printf("acceptorId = %d\n", [myAcceptorSettings getAcceptorId]);
+            
 			[[[Persistence getInstance] getAcceptorDAO] storeDenomination: DepositValueType_VALIDATED_CASH 
 				acceptorId: [myAcceptorSettings getAcceptorId]
 				currencyId: [[anAcceptedCurrency getCurrency] getCurrencyId]

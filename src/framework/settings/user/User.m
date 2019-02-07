@@ -216,7 +216,7 @@
 	// si la lista ya tiene datos salgo
 	if ([myDoors size] > 0) return;
 
-  obj = [[Persistence getInstance] getUserDAO];
+    obj = [[Persistence getInstance] getUserDAO];
 	myDoorsList =	[obj getDoorsByUser: myUserId];
 	
   for (i=0;i<[myDoorsList size];++i) {

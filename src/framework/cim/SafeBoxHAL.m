@@ -1007,7 +1007,7 @@ void billAcceptingFirmwareUploadCallback(unsigned char devId, unsigned char newS
 	TRY
 	
 			    //************************* logcoment
-//		doLog(0,"SafeBoxHAL -> sbFormatUsers\n");
+		printf("************************************************SafeBoxHAL -> sbFormatUsers\n");
 	
 		safeBoxMgrFormatUsrs();
 		[SafeBoxHAL waitForResponse: 60 * 5 * 1000];

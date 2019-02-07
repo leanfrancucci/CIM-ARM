@@ -443,22 +443,37 @@ static GENERIC_GET_REQUEST myRestoreSingleInstance = nil;
 	int j, i;
     COLLECTION doors; 
     COLLECTION users;
+    COLLECTION allUsers;
 	id door;
 	id cim;
 	
-  printd("GenericGetRequest->DoorsByUserTable\n");
+    printf("****************************GenericGetRequest->DoorsByUserTable\n");
     
-	cim = [[CimManager getInstance] getCim];
+	
     
+	// inicializo en memoria las doors de todos los usuarios que NO estan dados de baja y que
+	// aun no han sido inicializadas sus doors.
+	allUsers = [[UserManager getInstance] getUsers];
+	for (i = 0; i < [allUsers size]; ++i) {
+		[[allUsers at:i] initializeDoorsByUser];
+	}    
+    
+    printf("Toma las puertas\n");
+    cim = [[CimManager getInstance] getCim];
     doors = [cim getDoors];
     
+    
     [myRemoteProxy newResponseMessage];
+    
+    
+    printf("cantidad  puertas = %d\n", [doors size]);
     
     for (i=0; i<[doors size]; ++i) {
         
         users = [[doors at: i] getUsers];
         
-             
+        printf("cantidad de usuarios puerta = %d\n", [users size]);
+        
         for (j = 0; j < [users size]; ++j)
         {
             [self beginEntity];

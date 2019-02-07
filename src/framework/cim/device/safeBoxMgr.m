@@ -986,6 +986,7 @@ void billAcceptorCommunicatStat ( char devId, char enableComm )
 JCMDenomination *billAcceptorGetDenominationList( char devId, int *currencyId )
 {
  	if ( devId <= 1 ) {
+        printf("**********************************billAcceptorGetDenominationList\n");
  		*currencyId = mySafeBox.jcmBillAcceptors[devId]->countryCode;
 		return mySafeBox.jcmBillAcceptors[devId]->convertionTable;
 	} else

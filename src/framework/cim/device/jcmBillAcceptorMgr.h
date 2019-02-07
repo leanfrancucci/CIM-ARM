@@ -110,7 +110,7 @@ typedef struct {
   unsigned char lastRejectCause;
   unsigned int errorCause;
   int errorAditInfo;	
-  JCMDenomination convertionTable[24]; 
+  JCMDenomination convertionTable[26]; 
   int denominationsQty;
   unsigned char billTableLoaded;
   int countryCode;

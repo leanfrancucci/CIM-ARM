@@ -25,7 +25,10 @@
 #include "TelesupController.h"
 #include "SafeBoxHAL.h"
 #include "BoxModel.h"
-
+#include "TelesupScheduler.h"
+#include "TelesupervisionManager.h"
+#include "CommercialState.h"
+#include "CommercialStateMgr.h"
 
 // Maximo tamanio de documento
 /** @todo: ver si alcanza este tamnaio de archivo de preview en todos los casos */
@@ -1471,6 +1474,76 @@ static int loginFailQty = 0;
 /**/ 
 - (void) getAvailableBoxModels
 {
+    [myRemoteProxy newResponseMessage];
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ModelId" value: 0];
+    [myRemoteProxy addParamAsString: "Description" value: "Box2ED2V1M"];
+    [myRemoteProxy addParamAsInteger: "ValQty" value: 2];
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ModelId" value: 1];
+    [myRemoteProxy addParamAsString: "Description" value: "Box2ED1V1M"];
+    [myRemoteProxy addParamAsInteger: "ValQty" value: 1];
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ModelId" value: 2];
+    [myRemoteProxy addParamAsString: "Description" value: "Box2EDI2V1M"];
+    [myRemoteProxy addParamAsInteger: "ValQty" value: 2];    
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ModelId" value: 3];
+    [myRemoteProxy addParamAsString: "Description" value: "Box2EDI1V1M"];
+    [myRemoteProxy addParamAsInteger: "ValQty" value: 1];    
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ModelId" value: 4];
+    [myRemoteProxy addParamAsString: "Description" value: "Box1ED2V1M"];
+    [myRemoteProxy addParamAsInteger: "ValQty" value: 2];    
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ModelId" value: 5];
+    [myRemoteProxy addParamAsString: "Description" value: "Box1ED1V1M"];
+    [myRemoteProxy addParamAsInteger: "ValQty" value: 1];    
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ModelId" value: 6];
+    [myRemoteProxy addParamAsString: "Description" value: "Box1ED1M"];
+    [myRemoteProxy addParamAsInteger: "ValQty" value: 0];    
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ModelId" value: 7];
+    [myRemoteProxy addParamAsString: "Description" value: "Box1D2V1M"];
+    [myRemoteProxy addParamAsInteger: "ValQty" value: 2];    
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ModelId" value: 8];
+    [myRemoteProxy addParamAsString: "Description" value: "Box1D1V1M"];
+    [myRemoteProxy addParamAsInteger: "ValQty" value: 1];    
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ModelId" value: 9];
+    [myRemoteProxy addParamAsString: "Description" value: "Box1D1M"];
+    [myRemoteProxy addParamAsInteger: "ValQty" value: 0];    
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ModelId" value: 10];
+    [myRemoteProxy addParamAsString: "Description" value: "Flex"];
+    [myRemoteProxy addParamAsInteger: "ValQty" value: 2];    
+    [self endEntity];
+    
+    
+    [myRemoteProxy sendMessage];
+
 }
 
 
@@ -1478,7 +1551,112 @@ static int loginFailQty = 0;
 - (void) getAvailableValModels
 {
     
+    [myRemoteProxy newResponseMessage];
+    
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ValId" value: 0];
+    [myRemoteProxy addParamAsString: "Description" value: "JCM_PUB11_BAG"];
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ValId" value: 1];
+    [myRemoteProxy addParamAsString: "Description" value: "JCM_WBA_Stacker"];
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ValId" value: 2];
+    [myRemoteProxy addParamAsString: "Description" value: "JCM_BNF_Stacker"];
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ValId" value: 3];
+    [myRemoteProxy addParamAsString: "Description" value: "JCM_BNF_BAG"];
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ValId" value: 4];
+    [myRemoteProxy addParamAsString: "Description" value: "CC_CS_Stacker"];
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ValId" value: 5];
+    [myRemoteProxy addParamAsString: "Description" value: "CC_CCB_BAG"];
+    [self endEntity];
+
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ValId" value: 6];
+    [myRemoteProxy addParamAsString: "Description" value: "MEI_S66_Stacker"];
+    [self endEntity];
+    
+    [myRemoteProxy sendMessage];    
+	
 }
+
+
+/**********************************************************************/
+/*ESTADO COMERCIAL*/
+/**********************************************************************/
+/**/
+- (void) getCurrentCommercialState
+{
+ 	id currentState = [[CommercialStateMgr getInstance] getCurrentCommercialState];
+    
+    [myRemoteProxy newResponseMessage];
+
+    [myRemoteProxy addParamAsInteger: "State" value: [currentState getCommState]];
+    
+    [myRemoteProxy sendMessage];    
+    
+}
+
+/**/
+- (void) changeCommercialState
+{
+    // se asume que el cambio de estado comercial es de TEST_STAND_ALONE A PRODUCTION_PIMS
+    id commercialState;
+    id telesup;
+    id telesupScheduler;
+    id commercialStateMgr = [CommercialStateMgr getInstance];
+    
+   	commercialState = [CommercialState new];
+	[commercialState setCommState: [[[CommercialStateMgr getInstance] getCurrentCommercialState] getCommState]];
+    [commercialState setNextCommState: SYSTEM_PRODUCTION_PIMS];
+    
+	if (![commercialStateMgr canChangeState: [commercialState getNextCommState] msg: ""]) {
+
+        // DEVOLVER ERRPR NO PUEDE HACER EL CAMBIO DE ESTADO
+        return;
+	}
+	
+	
+	// comienza el cambio de estado
+    telesup = [[TelesupervisionManager getInstance] getTelesupByTelcoType: PIMS_TSUP_ID];
+
+    if (!telesup) {
+    
+        // DEVOLVER ERROR QUE NO EXISTE SUPERVISION PIMS
+        
+    }
+
+    telesupScheduler = [TelesupScheduler getInstance];
+
+    if ([telesupScheduler inTelesup]) {
+        
+        //DEVOLVER QUE EXISTE UNA SUPERVISION EN CURSO
+        
+    }
+
+    [[CommercialStateMgr getInstance] setPendingCommercialStateChange: commercialState];
+    [telesupScheduler setCommunicationIntention: CommunicationIntention_CHANGE_STATE_REQUEST];
+
+    // auditoria intento de supervision por pims
+    [Audit auditEventCurrentUser: Event_PIMS_STATE_CHANGE_INTENTION additional: "" station: 0 logRemoteSystem: FALSE]; 			
+
+    [telesupScheduler startTelesup: telesup];
+	
+    
+}
+
 
 
 /*********************************************************************/
@@ -2138,12 +2316,20 @@ static int loginFailQty = 0;
             [self hasMovements];
             return;
             
-        case GET_AVAILABLE_BOX_MODELS:
+        case GET_AVAILABLE_BOX_MODELS_REQ:
             [self getAvailableBoxModels];
             return;
             
-        case GET_AVAILABLE_VAL_MODELS:                
+        case GET_AVAILABLE_VAL_MODELS_REQ:                
             [self getAvailableValModels];
+            return;
+            
+        case GET_CURRENT_COMMERCIAL_STATE_REQ:
+            [self getCurrentCommercialState];
+            return;
+            
+        case CHANGE_COMMERCIAL_STATE_REQ:
+            [self changeCommercialState];
             return;
 
 		default: break;		

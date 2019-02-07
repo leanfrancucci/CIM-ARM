@@ -1018,7 +1018,7 @@ static TELESUP_SCHEDULER singleInstance = NULL;
 	if ([connectionSettings getConnectionType] != ConnectionType_LAN &&
 			[connectionSettings getConnectionType] != ConnectionType_GPRS) [self startIncomingPPP];
   
-  inTelesup = FALSE;
+    inTelesup = FALSE;
 	if (myCommunicationIntention == CommunicationIntention_CHANGE_STATE_REQUEST) {
 
 		if (success) [[CommercialStateMgr getInstance] changeSystemStatus];			
@@ -1167,14 +1167,13 @@ static TELESUP_SCHEDULER singleInstance = NULL;
 				continue;
 			}
 */
-/*
+
 			if ((![[CimManager getInstance] isSystemIdleForTelesup]) && (myCommunicationIntention != CommunicationIntention_CHANGE_STATE_REQUEST)){
 //				doLog(0,"No supervisa porque el sistema posee depositos o extracciones en curso\n");
-                printf("3\n");
 				msleep(10000);
 				continue;
 			}
-
+/*
 			if ([[CimBackup getInstance] inRestore]) {
 				//doLog(0,"No supervisa porque esta restaurando...\n");
                 printf("4\n");

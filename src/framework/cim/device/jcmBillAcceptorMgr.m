@@ -140,7 +140,7 @@ void notifyBillAccepted(StateMachine *sm)
 	
 	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
 
-	//doLog(0,"NOTIFY BILL ACCEPTED -------------- AMOUNT = %lld\n", jcmBillAcceptor->amountChar);
+	printf("NOTIFY BILL ACCEPTED -------------- AMOUNT = %lld\n", jcmBillAcceptor->amountChar);
 
 	if ( jcmBillAcceptor->billAcceptNotificationFcn != NULL &&  jcmBillAcceptor->amountChar != -1  ) {
 
@@ -355,6 +355,7 @@ typedef struct {
 	unsigned char tzeros;
 } JCM_CUR;
 
+/*
 void processCurrencyAssignment(StateMachine *sm)
 {
 	JcmBillAcceptData *jcmBillAcceptor;
@@ -400,6 +401,69 @@ void processCurrencyAssignment(StateMachine *sm)
 			}
 		} else return;
 	}
+	jcmBillAcceptor->billTableLoaded = 1;
+    doLog(0,"jcmBillAcceptor->billTableLoaded\n"); fflush(stdout);
+
+}
+*/
+
+void processCurrencyAssignment(StateMachine *sm)
+{
+	JcmBillAcceptData *jcmBillAcceptor;
+	int i, multip;
+	int cantCurrencies = 8;
+	CCNET_CUR *ccnetBillTable;
+	JCM_CUR *jcmBillTable;
+
+	
+	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
+	doLog(0,"SOLE len currency %d\n", jcmBillAcceptor->dataLenEvt); fflush(stdout);
+	memset( jcmBillAcceptor->convertionTable, 0, sizeof(jcmBillAcceptor->convertionTable));
+
+	if ( jcmBillAcceptor->protocol == ID003 ){
+		jcmBillTable = (JCM_CUR *)jcmBillAcceptor->dataEvPtr;
+		cantCurrencies = (jcmBillAcceptor->dataLenEvt / 4);
+		doLog(0,"SOLE cant Currency calculated %d\n", cantCurrencies); fflush(stdout);
+		for ( i = 0	; i < cantCurrencies; i++  ){
+			if ( jcmBillTable->countryCode != 0 )  {
+				jcmBillAcceptor->countryCode = getCurrencyIdFromJcm ( jcmBillTable->countryCode );
+				jcmBillAcceptor->convertionTable[jcmBillTable->escrowCode - 0x61].countryCode = jcmBillTable->countryCode; 				
+				multip = pow(10, jcmBillTable->tzeros );
+				jcmBillAcceptor->convertionTable[jcmBillTable->escrowCode - 0x61].amount = ( jcmBillTable->val * multip );
+				jcmBillAcceptor->convertionTable[jcmBillTable->escrowCode - 0x61].currencyId = getCurrencyIdFromJcm ( jcmBillTable->countryCode );
+			    doLog(0,"JCM $ %d Country %d currencyId %d escrowCode %d \n", jcmBillAcceptor->convertionTable[jcmBillTable->escrowCode - 0x61].amount, jcmBillAcceptor->convertionTable[jcmBillTable->escrowCode - 0x61].countryCode,  jcmBillAcceptor->convertionTable[jcmBillTable->escrowCode - 0x61].currencyId, jcmBillTable->escrowCode); fflush(stdout);
+			} else {
+			    doLog(0,"CountryCode es Zero, EscrowCode %d \n", jcmBillTable->escrowCode); fflush(stdout);
+			}
+		    jcmBillTable++;
+		}
+		//doLog(0,"country code %d\n", jcmBillAcceptor->countryCode ); fflush(stdout);
+
+		for ( i = 0; i < 26; i++  ){
+		    doLog(0,"Convertion Table idx %d  ==>>> amount $ %d currencyId %d \n", i, jcmBillAcceptor->convertionTable[i].amount, jcmBillAcceptor->convertionTable[i].currencyId);fflush(stdout);
+		}
+	} else {
+		if ( *jcmBillAcceptor->dataEvPtr != 0x30 ) {
+			jcmBillAcceptor->countryCode = 0;
+			ccnetBillTable = (CCNET_CUR *)jcmBillAcceptor->dataEvPtr;
+			for ( i = 0	; i < 24; ++i ){
+				multip = pow(10, ccnetBillTable->tzeros );
+				jcmBillAcceptor->convertionTable[i].amount = ( ccnetBillTable->val * multip );
+				memcpy(jcmBillAcceptor->convertionTable[i].countryStr, ccnetBillTable->country,  3 );
+				jcmBillAcceptor->convertionTable[i].countryStr[3] = 0;
+				jcmBillAcceptor->convertionTable[i].currencyId = getCurrencyIdFromCashCode( jcmBillAcceptor->convertionTable[i].countryStr );
+				if ( jcmBillAcceptor->countryCode == 0  ){
+					jcmBillAcceptor->countryCode = jcmBillAcceptor->convertionTable[i].currencyId;
+				    //doLog(0,"JCMBillAcceptorMgr - Currency Id Assignment: index %d country %s currency %d\n", i, jcmBillAcceptor->convertionTable[i].countryStr, jcmBillAcceptor->convertionTable[i].currencyId ); fflush(stdout);
+				} 
+
+			    //doLog(0,"CCNET $ %d country %s curId %d\n", jcmBillAcceptor->convertionTable[i].amount, jcmBillAcceptor->convertionTable[i].countryStr, jcmBillAcceptor->convertionTable[i].currencyId ); fflush(stdout);
+			    ccnetBillTable++;
+			}
+		} else return;
+	}
+
+	
 	jcmBillAcceptor->billTableLoaded = 1;
     doLog(0,"jcmBillAcceptor->billTableLoaded\n"); fflush(stdout);
 
