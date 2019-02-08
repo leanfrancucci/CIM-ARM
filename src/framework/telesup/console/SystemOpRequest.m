@@ -1375,7 +1375,7 @@ static int loginFailQty = 0;
         
         [myRemoteProxy newMessage: "Error"];
         [myRemoteProxy addParamAsInteger: "Code" value: excode];
-        [myRemoteProxy addParamAsString: "Description" value: "Superivion PIMS inexistente"];
+        [myRemoteProxy addParamAsString: "Description" value: "No es posible ejecutar la supervision"];
         [myRemoteProxy appendTimestamp];
         [myRemoteProxy sendMessage];
     
@@ -1616,45 +1616,67 @@ static int loginFailQty = 0;
     id commercialState;
     id telesup;
     id telesupScheduler;
+    int excode;
+    char exceptionDescription[100];
     id commercialStateMgr = [CommercialStateMgr getInstance];
     
    	commercialState = [CommercialState new];
 	[commercialState setCommState: [[[CommercialStateMgr getInstance] getCurrentCommercialState] getCommState]];
     [commercialState setNextCommState: SYSTEM_PRODUCTION_PIMS];
     
-	if (![commercialStateMgr canChangeState: [commercialState getNextCommState] msg: ""]) {
+    TRY 
+        if (![commercialStateMgr canChangeState: [commercialState getNextCommState] msg: ""]) 
+            THROW(RESID_CANNOT_CHANGE_STATE_VERIFY_SYSTEM);
 
-        // DEVOLVER ERRPR NO PUEDE HACER EL CAMBIO DE ESTADO
-        return;
-	}
-	
-	
-	// comienza el cambio de estado
-    telesup = [[TelesupervisionManager getInstance] getTelesupByTelcoType: PIMS_TSUP_ID];
+        // comienza el cambio de estado
+        telesup = [[TelesupervisionManager getInstance] getTelesupByTelcoType: PIMS_TSUP_ID];
 
-    if (!telesup) {
+        if (!telesup) 
+            THROW(TSUP_PIMS_SUPERVISION_NOT_DEFINED);
+        
+
+        telesupScheduler = [TelesupScheduler getInstance];
+
+        if ([telesupScheduler inTelesup]) 
+            THROW(RESID_TELESUP_IN_PROGRESS);
+        
+        [[CommercialStateMgr getInstance] setPendingCommercialStateChange: commercialState];
+        [telesupScheduler setCommunicationIntention: CommunicationIntention_CHANGE_STATE_REQUEST];
+
+        // auditoria intento de supervision por pims
+        [Audit auditEventCurrentUser: Event_PIMS_STATE_CHANGE_INTENTION additional: "" station: 0 logRemoteSystem: FALSE]; 			
+
+        [telesupScheduler startTelesup: telesup];
+
+    CATCH
+
+        ex_printfmt();
+        excode = ex_get_code();
+
     
-        // DEVOLVER ERROR QUE NO EXISTE SUPERVISION PIMS
+        TRY
+                [[MessageHandler getInstance] processMessage: exceptionDescription messageNumber: excode];
+        CATCH
+                 strcpy(exceptionDescription, "");
+        END_TRY
         
-    }
+       printf("userChangePin inside catch excode %d\n",excode);
 
-    telesupScheduler = [TelesupScheduler getInstance];
+        if (excode != 0) {
 
-    if ([telesupScheduler inTelesup]) {
+            [myRemoteProxy newMessage: "Error"];
+            [myRemoteProxy addParamAsInteger: "Code" value: excode];
+            [myRemoteProxy addParamAsString: "Description" value: exceptionDescription];
+            [myRemoteProxy appendTimestamp];
+            [myRemoteProxy sendMessage];
         
-        //DEVOLVER QUE EXISTE UNA SUPERVISION EN CURSO
-        
-    }
-
-    [[CommercialStateMgr getInstance] setPendingCommercialStateChange: commercialState];
-    [telesupScheduler setCommunicationIntention: CommunicationIntention_CHANGE_STATE_REQUEST];
-
-    // auditoria intento de supervision por pims
-    [Audit auditEventCurrentUser: Event_PIMS_STATE_CHANGE_INTENTION additional: "" station: 0 logRemoteSystem: FALSE]; 			
-
-    [telesupScheduler startTelesup: telesup];
-	
+        }
+            
+            
     
+    END_TRY
+    
+    [myRemoteProxy sendAckMessage];
 }
 
 
