@@ -146,6 +146,9 @@ void loadFirstStateRdm(StateMachine *sm)
         printf("]]]]]]]]]]]]]]]]] RDM get val Status unknown %d ******************************************\n", valSt);
     
 	rdmResetFileStatusMei(sm);
+    
+    sendResetRdm(sm); //agregado hoy 18/02/2019  para probar si funciona//
+    
 }
 
 void loadInitializingRdm(StateMachine *sm) 
@@ -307,6 +310,7 @@ void requestCurrencyRDM(StateMachine *sm)
 
 void doProcessStatusRdm(JcmBillAcceptData *jcmBillAcceptor, unsigned char *statusNew)
 {
+    unsigned char statusTemp;
 
         memcpy(&jcmBillAcceptor->sst, statusNew, 7 );
 
@@ -330,13 +334,14 @@ void doProcessStatusRdm(JcmBillAcceptData *jcmBillAcceptor, unsigned char *statu
 
 	*/
     jcmBillAcceptor->errorCause = 0;
-	if (statusNew[1] == RDM_ERROR) 
+    statusTemp = (statusNew[1] & 0x3F);
+	if (statusTemp == RDM_ERROR) 
         jcmBillAcceptor->errorCause = ID003_JAM_IN_ACCEPTOR;
         
-	if ((statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_INIT) ||(statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_INLET_SLOT) ||(statusNew[1] == RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_DEPOSIT) )
+	if ((statusTemp == RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_INIT) ||(statusTemp == RDM_WAIT_FOR_BANKNOTE_REMOVED_INLET_SLOT) ||(statusTemp == RDM_WAIT_FOR_BANKNOTE_REMOVED_AFTER_DEPOSIT) )
        	jcmBillAcceptor->errorCause = 0xB4;
 		
-	jcmBillAcceptor->actualState = statusNew[1];
+	jcmBillAcceptor->actualState = statusTemp;
 
     
 /*        if (( statusNew[3] & 0x04 ) || ( statusNew[6] & 0x04 ))

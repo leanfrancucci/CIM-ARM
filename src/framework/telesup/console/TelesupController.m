@@ -6,6 +6,8 @@
 #include "TelesupervisionManager.h"
 #include "TelesupScheduler.h"
 #include "Acceptor.h"
+#include "ResourceStringDefs.h"
+#include "CommercialStateMgr.h"
 
 @implementation TelesupController
 
@@ -43,7 +45,7 @@ static TELESUP_CONTROLLER singleInstance = NULL;
     if (telesup == NULL) THROW(TSUP_PIMS_SUPERVISION_NOT_DEFINED);
     
     if (![[CommercialStateMgr getInstance] canExecutePimsSupervision]) 
-        THROW(RESID_NO_AUT_FOR_TELESUP)
+        THROW(RESID_NO_AUT_FOR_TELESUP);
     
     [[TelesupScheduler getInstance] isManual: TRUE];
     [[TelesupScheduler getInstance] startTelesup: telesup getCurrentSettings: FALSE telesupViewer: self];
