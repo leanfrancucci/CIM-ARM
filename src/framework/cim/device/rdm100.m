@@ -129,7 +129,7 @@ static unsigned char m_Crc2Tbl[256] =
 	0x7b, 0x6a, 0x58, 0x49, 0x3d, 0x2c, 0x1e, 0x0f
 };
 
-
+/*
 unsigned short makeCRC(unsigned char* pbuf, int len)
 {
 	unsigned short m_Crc16work = 0; 
@@ -145,8 +145,8 @@ unsigned short makeCRC(unsigned char* pbuf, int len)
 
 	return m_Crc16work;
 }
+*/
 
-/*
 unsigned short makeCRC(unsigned char* pbuf, int len)
 {
     unsigned short m_Crc16work = 0; 
@@ -165,14 +165,45 @@ unsigned short makeCRC(unsigned char* pbuf, int len)
 
 	return m_Crc16work;
 }
-*/
 
+
+/*
+ * 
+ * 
 void rdmWriteFrame(unsigned char *data, int dataLen)
 {
         unsigned short crcval;
         
         memcpy(writeBuf, sntFrameEnc, 4);
         memcpy(&writeBuf[4], data, dataLen);
+        writeBuf[dataLen + 4]= 0x03;
+        crcval = makeCRC( writeBuf+2, dataLen + 3);
+        memcpy(&writeBuf[dataLen + 4], etxCmd, 2);
+       *((unsigned short*) &writeBuf[dataLen + 6]) = SHORT_TO_L_ENDIAN(crcval);
+        
+        com_write( osHandleR, writeBuf, dataLen + 8 );
+
+        logFrame( 0, writeBuf, dataLen + 8, 1 );        
+
+}
+
+*/
+
+void rdmWriteFrame(unsigned char *data, int dataLen)
+{
+        int i, j, len;
+        unsigned short crcval;
+        
+        memcpy(writeBuf, sntFrameEnc, 4);
+        len = dataLen;
+        for ( i = 4, j = 0; j < len; i++, j++){ 
+            writeBuf[i] = data[j];
+            if ( data[j] == 0x10 ){
+                    i++;
+                    writeBuf[i] = 0x10;
+                    dataLen++;
+            }
+        }    
         writeBuf[dataLen + 4]= 0x03;
         crcval = makeCRC( writeBuf+2, dataLen + 3);
         memcpy(&writeBuf[dataLen + 4], etxCmd, 2);
