@@ -1,4 +1,5 @@
-@CHAR_SPACE@
+@RESET@
+@LEFT_SPACE@
 @IF|/auditList/sectionHeader=TRUE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
@@ -21,7 +22,7 @@
 -----------------------------------------\n
 @DBL_HEIGHT_ON@
           REPORTE AUDITORIA\n
-@CHAR_SPACE@ 
+@DBL_HEIGHT_OFF@
 @IF|/generalInfo/reportDetail=FALSE@
               -RESUMIDO-\n
 @END_IF@

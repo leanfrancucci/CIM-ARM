@@ -1,3 +1,5 @@
+@RESET@
+@LEFT_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@

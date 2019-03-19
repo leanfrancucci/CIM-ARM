@@ -1,4 +1,5 @@
-@VERDANA_SMALL_FONT@
+@RESET@
+@LEFT_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -17,7 +18,6 @@
 @IF|/generalInfo/vewHeader6=TRUE@
 @/generalInfo/header6@\n
 @END_IF@
-@BITSTREAM_FONT@
 @IF|/generalInfo/isReprint=TRUE@
 \n
 -----------------------------\n
@@ -26,10 +26,9 @@
 \n
 @END_IF@
 -----------------------------\n
-@VERDANA_BIG_FONT@
 @DBL_HEIGHT_ON@
                  RETIRO \n
-@BITSTREAM_FONT@
+@DBL_HEIGHT_OFF@
 -----------------------------\n
 Retiro#   : @/generalInfo/number@\n
 Trans #   : @/generalInfo/trans@\n
@@ -45,7 +44,6 @@ Cuenta #  : @/generalInfo/bankAccountInfo@\n
 -----------------------------\n
 
 @IF|/cimCashs/withOutValues=TRUE@
-@BITSTREAM_FONT@
 \n
       NO HAY MOVIMIENTOS\n
        PARA EL PERIODO\n
@@ -53,17 +51,14 @@ Cuenta #  : @/generalInfo/bankAccountInfo@\n
 @END_IF@
 
 @FOR_EACH|cimCashs/cimCash@
-@BOLD_ON@
 \n
 @name@ ***\n
 @IF|cimCashType=1@
 @FOR_EACH|acceptorList/acceptor@
 \n
-@BOLD_ON@
 @acceptorName@
 @FOR_EACH|currencyList/currency@
 \n
-@BITSTREAM_FONT@
 Moneda: @currencyCode@\n
 -----------------------------\n
  Cant      Valor     Subtotal\n
@@ -106,7 +101,6 @@ Total @totalCurrRef:23@\n
 @IF|viewManualDetail=TRUE@
 @FOR_EACH|currencyList/currency@
 \n
-@BITSTREAM_FONT@
 Moneda: @currencyCode@\n
 -----------------------------\n
  Cant       Tipo     Subtotal\n
@@ -121,7 +115,6 @@ Moneda: @currencyCode@\n
 @END_FOR@
 
 @FOR_EACH|totalManualReference@
-@BITSTREAM_FONT@
 @IF|showCurrencyCode=TRUE@
 \n
 Moneda: @currencyCode:3@\n
@@ -141,7 +134,6 @@ Total @totalCurrRef:23@\n
 @END_IF@
 
 \n
-@BOLD_ON@
 TOTAL: @name@\n
 @FOR_EACH|totalCurrency@
 @totalCurrencyCode:3@ @totalCurr:20@\n
@@ -152,17 +144,13 @@ Cant. Sobres: @envelopeQty@\n
 @END_IF@
 \n
 @END_FOR@
-@BITSTREAM_FONT@
 @IF|/cimCashs/withOutValues=FALSE@
 -----------------------------\n
-@BOLD_ON@
 ******** TOTAL ********\n
 @FOR_EACH|cimCashs/totalCashCurrency@
 TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
 @END_FOR@
-@BITSTREAM_FONT@
 \n
-@BITSTREAM_FONT@
 -----------------------------\n
   DETALLE POR CIERRE DIARIO\n
 -----------------------------\n
@@ -176,13 +164,11 @@ C. Diario @number@  @date@\n
 @END_FOR@
 @END_FOR@
 \n
-@VERDANA_SMALL_FONT@
 Referencias:\n
   S  : Siguiente\n
   P  : Parcial\n
   N/D: No Disponible\n
 @END_IF@
-@BITSTREAM_FONT@
 -----------------------------\n
 \n
 Firma\n
@@ -204,7 +190,6 @@ Identificacion\n
 -----------------------------\n
 \n
 @END_IF@
-@VERDANA_SMALL_FONT@
 \n
 @IF|/generalInfo/vewFooter1=TRUE@
 @/generalInfo/footer1@\n

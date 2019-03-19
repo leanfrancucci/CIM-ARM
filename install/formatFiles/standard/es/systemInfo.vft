@@ -1,4 +1,5 @@
-@CHAR_SPACE@
+@RESET@
+@LEFT_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -20,7 +21,7 @@
 -----------------------------------------\n
 @DBL_HEIGHT_ON@
             INFO. SISTEMA\n
-@CHAR_SPACE@
+@DBL_HEIGHT_OFF@
 @IF|/generalInfo/detailReport=FALSE@
              -RESUMIDO-\n
 @END_IF@
@@ -99,7 +100,7 @@ Estado : @status:-20@\n
 \n
 @DBL_HEIGHT_ON@
 ESTADO DE PUERTAS \n
-@CHAR_SPACE@
+@DBL_HEIGHT_OFF@
 @FOR_EACH|doorList/door@
 @name@ :\n
 Cerradura: @lockerState@\n

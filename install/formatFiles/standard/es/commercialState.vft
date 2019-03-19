@@ -1,4 +1,5 @@
-@VERDANA_SMALL_FONT@
+@RESET@
+@LEFT_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -17,14 +18,11 @@
 @IF|/generalInfo/vewHeader6=TRUE@
 @/generalInfo/header6@\n
 @END_IF@
-@BITSTREAM_FONT@
 \n
 -----------------------------\n
-@VERDANA_BIG_FONT@
 @DBL_HEIGHT_ON@
    REPORTE ESTADO COMERCIAL\n
 @DBL_HEIGHT_OFF@
-@BITSTREAM_FONT@
 -----------------------------\n
 ID Remoto : @/generalInfo/systemIdPIMS@\n
 Direcc Mac: @/commState/macAddress:17@\n

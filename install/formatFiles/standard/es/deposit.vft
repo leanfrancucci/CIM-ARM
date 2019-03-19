@@ -1,4 +1,5 @@
-@CHAR_SPACE@
+@RESET@
+@LEFT_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -29,11 +30,11 @@
 @DBL_HEIGHT_ON@
        DEPOSITO VALIDADO\n
 @END_IF@
-@CHAR_SPACE@
+@DBL_HEIGHT_OFF@
 @IF|/generalInfo/depositType=2@
 @DBL_HEIGHT_ON@
           DEPOSITO MANUAL\n
-@CHAR_SPACE@
+@DBL_HEIGHT_OFF@
 @IF|/generalInfo/viewTrans=FALSE@
         (Inserte este recibo en el sobre)\n
 @END_IF@

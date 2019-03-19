@@ -1,4 +1,5 @@
-@CHAR_SPACE@
+@RESET@
+@LEFT_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -21,7 +22,7 @@
 @DBL_HEIGHT_ON@
               REPORTE DE\n
     CONFIGURACION DE SUPERVISION\n
-@CHAR_SPACE@
+@DBL_HEIGHT_OFF@
 -----------------------------------------\n
 Trans #   : @/generalInfo/trans@\n
 Fecha-Hora: @/generalInfo/transTime@\n

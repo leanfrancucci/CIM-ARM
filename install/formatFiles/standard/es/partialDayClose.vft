@@ -1,4 +1,5 @@
-@CHAR_SPACE@
+@RESET@
+@LEFT_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -27,7 +28,7 @@
 -----------------------------------------\n
 @DBL_HEIGHT_ON@
       REPORTE CIERRE PARCIAL\n
-@CHAR_SPACE@
+@DBL_HEIGHT_OFF@
 -----------------------------------------\n
 Parcial # : @/generalInfo/number@\n
 Trans #   : @/generalInfo/trans@\n

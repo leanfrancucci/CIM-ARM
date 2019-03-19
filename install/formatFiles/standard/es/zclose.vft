@@ -1,4 +1,5 @@
-@CHAR_SPACE@
+@RESET@
+@LEFT_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -25,7 +26,6 @@
 \n
 @END_IF@
 -----------------------------------------\n
-@VERDANA_BIG_FONT@
 @DBL_HEIGHT_ON@
 @IF|reportType=1@
        REPORTE CIERRE DIARIO\n
@@ -33,7 +33,7 @@
 @IF|reportType=3@
          REPORTE GRAND X \n
 @END_IF@
-@CHAR_SPACE@
+@DBL_HEIGHT_OFF@
 -----------------------------------------\n
 @IF|reportType=1@
 Grand Z # : @/generalInfo/number@\n
@@ -80,7 +80,7 @@ TOTAL @currencyCode:3@: @total:13@\n
 @IF|/currencyList/withOutValues=FALSE@
 @DBL_HEIGHT_ON@
            REPORTE DE CASH\n
-@CHAR_SPACE@         
+@DBL_HEIGHT_OFF@
      - DETALLADO -\n
 -----------------------------------------\n
 

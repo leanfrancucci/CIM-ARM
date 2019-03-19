@@ -1,4 +1,5 @@
-@VERDANA_SMALL_FONT@
+@RESET@
+@LEFT_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -17,23 +18,18 @@
 @IF|/generalInfo/vewHeader6=TRUE@
 @/generalInfo/header6@\n
 @END_IF@
-@BITSTREAM_FONT@
 \n
 -----------------------------\n
-@VERDANA_BIG_FONT@
 @DBL_HEIGHT_ON@
    REPORTE LICENCIA        \n
 @DBL_HEIGHT_OFF@
-@BITSTREAM_FONT@
 -----------------------------\n
 @FOR_EACH|modulesList/module@
-@BOLD_ON@
 Nombre: @name:-18@\n
 @IF|enable=No@
 MODULO NO HABIL.\n
 @END_IF@
 @IF|enable=Si@
-@BITSTREAM_FONT@
 Base (GMT): @baseDate@\n
 @IF|expires=Si@
 Venc.(GMT): @expireDate@\n
@@ -51,7 +47,6 @@ Envia onl.: @sendOnline@\n
 @END_IF@
 -----------------------------\n
 @END_FOR@\n
-@VERDANA_SMALL_FONT@
 \n
 @IF|/generalInfo/vewFooter1=TRUE@
 @/generalInfo/footer1@\n

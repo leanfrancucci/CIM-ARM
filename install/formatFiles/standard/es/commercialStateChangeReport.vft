@@ -1,4 +1,5 @@
-@VERDANA_SMALL_FONT@
+@RESET@
+@LEFT_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -17,15 +18,11 @@
 @IF|/generalInfo/vewHeader6=TRUE@
 @/generalInfo/header6@\n
 @END_IF@
-@BITSTREAM_FONT@
 \n
 -----------------------------\n
-@VERDANA_BIG_FONT@
 @DBL_HEIGHT_ON@
  		     REPORTE CAMBIO DE ESTADO\n
 @DBL_HEIGHT_OFF@
-
-@BITSTREAM_FONT@
 *****************************\n
 @/commStateChange/result@\n
 *****************************\n
@@ -35,7 +32,6 @@ Sol. (GMT): @/commStateChange/requestDate@\n
 Est Actual: @/commStateChange/currentState@\n
 \n 
 *****************************\n
-@VERDANA_SMALL_FONT@
 \n
 @IF|/generalInfo/vewFooter1=TRUE@
 @/generalInfo/footer1@\n

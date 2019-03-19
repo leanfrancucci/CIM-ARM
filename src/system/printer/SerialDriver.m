@@ -5712,7 +5712,7 @@ static char header_data[] = {
     char buffer[4];
     FILE * fp;
     int sizeF;
-    
+    char escposCmdPrintRasterBitImage[4] = {'\x1D','\x76','\x30','\x00'};
  
     [self generateFileConverted];
     
@@ -5736,7 +5736,7 @@ static char header_data[] = {
     
 	fread( header_data2, 1, ((h*w)/8), fp );
     
-   	[myWriter write: ESCPOS_CMD_PRINT_RASTER_BIT_IMAGE qty: 4];
+   	[myWriter write: escposCmdPrintRasterBitImage qty: 4];
 
     buffer[0] = (((w / 8) >> 0) & 0xFF);
     buffer[1] = (((w / 8) >> 8) & 0xFF);
