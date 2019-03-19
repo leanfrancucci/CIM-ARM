@@ -11,3 +11,5 @@ User: @/repairOrderInfo/User@\n
 Support: @/repairOrderInfo/SupportContact@\n
 -----------------------------\n
 @END_IF@
+@FEED_LINE@
+@CUT_PAPER@

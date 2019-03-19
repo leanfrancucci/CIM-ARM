@@ -1,168 +1,168 @@
 @CHAR_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
- @/generalInfo/header1@\n
+@/generalInfo/header1@\n
 @END_IF@
 @IF|/generalInfo/vewHeader2=TRUE@
-  @/generalInfo/header2@\n
+@/generalInfo/header2@\n
 @END_IF@
 @IF|/generalInfo/vewHeader3=TRUE@
-  @/generalInfo/header3@\n
+@/generalInfo/header3@\n
 @END_IF@
 @IF|/generalInfo/vewHeader4=TRUE@
-  @/generalInfo/header4@\n
+@/generalInfo/header4@\n
 @END_IF@
 @IF|/generalInfo/vewHeader5=TRUE@
-  @/generalInfo/header5@\n
+@/generalInfo/header5@\n
 @END_IF@
 @IF|/generalInfo/vewHeader6=TRUE@ 
-  @/generalInfo/header6@\n
+@/generalInfo/header6@\n
 @END_IF@
 @IF|/generalInfo/isReprint=TRUE@
- \n
-  -----------------------------------------\n
-  ------------- REIMPRESION ---------------\n  
-  -----------------------------------------\n
- \n
+\n
+-----------------------------------------\n
+------------- REIMPRESION ---------------\n  
+-----------------------------------------\n
+\n
 @END_IF@
-  -----------------------------------------\n
+-----------------------------------------\n
 @VERDANA_BIG_FONT@
 @DBL_HEIGHT_ON@
 @IF|reportType=1@
-         REPORTE CIERRE DIARIO\n
+       REPORTE CIERRE DIARIO\n
 @END_IF@
 @IF|reportType=3@
-           REPORTE GRAND X \n
+         REPORTE GRAND X \n
 @END_IF@
 @CHAR_SPACE@
-  -----------------------------------------\n
+-----------------------------------------\n
 @IF|reportType=1@
-  Grand Z # : @/generalInfo/number@\n
-  Trans #   : @/generalInfo/trans@\n
-  Pto Vta   : @/generalInfo/systemId@\n
-  ID Remoto : @/generalInfo/systemIdPIMS@\n
+Grand Z # : @/generalInfo/number@\n
+Trans #   : @/generalInfo/trans@\n
+Pto Vta   : @/generalInfo/systemId@\n
+ID Remoto : @/generalInfo/systemIdPIMS@\n
 @IF|reportType=3@
-  Ult. Grd Z: @/generalInfo/lastZ@\n
+Ult. Grd Z: @/generalInfo/lastZ@\n
 @END_IF@
-  Dia Desde : @/generalInfo/openTime@\n 
-  Dia Hasta : @/generalInfo/closeTime@\n
-  Dep. Desde: @/generalInfo/fromDepositNumber@\n
-  Dep. Hasta: @/generalInfo/toDepositNumber@\n
-  Operador #: @/generalInfo/userId@\n
-  Nombre Opr: @/generalInfo/userName@\n
+Dia Desde : @/generalInfo/openTime@\n 
+Dia Hasta : @/generalInfo/closeTime@\n
+Dep. Desde: @/generalInfo/fromDepositNumber@\n
+Dep. Hasta: @/generalInfo/toDepositNumber@\n
+Operador #: @/generalInfo/userId@\n
+Nombre Opr: @/generalInfo/userName@\n
 @END_IF@
 
 @IF|reportType=3@
-  Trans #   : @/generalInfo/trans@\n
-  Fecha-Hora: @/generalInfo/transTime@\n
-  Pto Vta   : @/generalInfo/systemId@\n  
-  ID Remoto : @/generalInfo/systemIdPIMS@\n
-  Ult. Grd Z: @/generalInfo/lastZ@\n
-  Dia Desde : @/generalInfo/openTime@\n
+Trans #   : @/generalInfo/trans@\n
+Fecha-Hora: @/generalInfo/transTime@\n
+Pto Vta   : @/generalInfo/systemId@\n  
+ID Remoto : @/generalInfo/systemIdPIMS@\n
+Ult. Grd Z: @/generalInfo/lastZ@\n
+Dia Desde : @/generalInfo/openTime@\n
 @END_IF@
-  -----------------------------------------\n
-          TOTALES\n
-  -----------------------------------------\n
+-----------------------------------------\n
+        TOTALES\n
+-----------------------------------------\n
 @FOR_EACH|currencyList/currency@
- \n
-  MONEDA: @currencyCode@\n
-  Depos. Validado: @totalValidatedDrop:12@\n
-  Deposito Manual: @totalManualDrop:12@\n
-  TOTAL @currencyCode:3@: @total:13@\n
-  -----------------------------------------\n
+\n
+MONEDA: @currencyCode@\n
+Depos. Validado: @totalValidatedDrop:12@\n
+Deposito Manual: @totalManualDrop:12@\n
+TOTAL @currencyCode:3@: @total:13@\n
+-----------------------------------------\n
 @END_FOR@
- \n
+\n
 
 @IF|/currencyList/withOutValues=TRUE@
-        NO HAY MOVIMIENTOS\n
-         PARA EL PERIODO\n
- \n
+      NO HAY MOVIMIENTOS\n
+       PARA EL PERIODO\n
+\n
 @END_IF@
 @IF|/currencyList/withOutValues=FALSE@
 @DBL_HEIGHT_ON@
-             REPORTE DE CASH\n
+           REPORTE DE CASH\n
 @CHAR_SPACE@         
-       - DETALLADO -\n
-  -----------------------------------------\n
+     - DETALLADO -\n
+-----------------------------------------\n
 
 
 
 @FOR_EACH|cimCashs/cimCash@
- \n
-  @name@ ***\n
+\n
+@name@ ***\n
 @IF|cimCashType=1@
 @FOR_EACH|acceptorList/acceptor@
- \n
-  @acceptorName@
+\n
+@acceptorName@
 @FOR_EACH|currencyList/currency@
- \n
-  Moneda: @currencyCode@\n
-  -----------------------------------------\n
-   Cant      Valor     Subtotal\n
-  -----------------------------------------\n
+\n
+Moneda: @currencyCode@\n
+-----------------------------------------\n
+ Cant      Valor     Subtotal\n
+-----------------------------------------\n
 @FOR_EACH|extractionDetails/extractionDetail@
-  @qty:6@ @amount:9@ @totalAmount:12@\n
+@qty:6@ @amount:9@ @totalAmount:12@\n
 @END_FOR@
-  -----------------------------------------\n
-  @qty:6@ Tot @currencyCode:3@ @total:14@\n
+-----------------------------------------\n
+@qty:6@ Tot @currencyCode:3@ @total:14@\n
 @END_FOR@
 @END_FOR@
 @END_IF@
 
 @IF|cimCashType=2@
 @FOR_EACH|acceptorList/acceptor@
- \n
-  @acceptorName@
+\n
+@acceptorName@
 @FOR_EACH|currencyList/currency@
- \n
-  Moneda: @currencyCode@\n
-  -----------------------------------------\n
-   Cant       Tipo     Subtotal\n
-  -----------------------------------------\n
+\n
+Moneda: @currencyCode@\n
+-----------------------------------------\n
+ Cant       Tipo     Subtotal\n
+-----------------------------------------\n
 @FOR_EACH|extractionDetails/extractionDetail@
-  @qty:6@ @depositValueName:9@ @totalAmount:12@\n
+@qty:6@ @depositValueName:9@ @totalAmount:12@\n
 @END_FOR@
-  -----------------------------------------\n
-  @qty:6@ Tot @currencyCode:3@ @total:14@\n
+-----------------------------------------\n
+@qty:6@ Tot @currencyCode:3@ @total:14@\n
 @END_FOR@
 @END_FOR@
 @END_IF@
- \n
-  TOTAL: @name@\n
+\n
+TOTAL: @name@\n
 @FOR_EACH|totalCurrency@
-  @totalCurrencyCode:3@ @totalCurr:20@\n
+@totalCurrencyCode:3@ @totalCurr:20@\n
 @END_FOR@
- \n
+\n
 @END_FOR@
-  -----------------------------------------\n
- \n
- \n
-  ****** TOTAL CASH ******\n
+-----------------------------------------\n
+\n
+\n
+****** TOTAL CASH ******\n
 @FOR_EACH|cimCashs/totalCashCurrency@
-  TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
+TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
 @END_FOR@
 
 
 @END_IF@
 
-  -----------------------------------------\n
+-----------------------------------------\n
 @IF|/generalInfo/isReprint=TRUE@
- \n
-  -----------------------------------------\n
-  ------------- REIMPRESION ---------------\n
-  -----------------------------------------\n
- \n
+\n
+-----------------------------------------\n
+------------- REIMPRESION ---------------\n
+-----------------------------------------\n
+\n
 @END_IF@
- \n
+\n
 @IF|/generalInfo/vewFooter1=TRUE@
-  @/generalInfo/footer1@\n
+@/generalInfo/footer1@\n
 @END_IF@
 @IF|/generalInfo/vewFooter2=TRUE@
-  @/generalInfo/footer2@\n
+@/generalInfo/footer2@\n
 @END_IF@
 @IF|/generalInfo/vewFooter3=TRUE@
-  @/generalInfo/footer3@\n
+@/generalInfo/footer3@\n
 @END_IF@
-  Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
-  Fecha: @/generalInfo/currentDate@\n
+Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+Fecha: @/generalInfo/currentDate@\n
 @FEED_LINE@
 @CUT_PAPER@

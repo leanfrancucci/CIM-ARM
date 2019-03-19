@@ -7,13 +7,14 @@
 
 #define SERIAL_FORMAT_SUBDIRECTORY "standard/"
 
-
-#define	DBL_HEIGHT_ON_CODE  		"\x1B\x40\x1D\x21\x01"
-#define	FEED_LINE_CODE              "\x1B\x64\x0F"
-#define	CUT_PAPER_CODE 			"\x1B\x69"
-#define	CHAR_SPACE_CODE 		"\x1B\x40\x1B\x20\x01"
-#define	LEFT_SPACE_CODE 		"\x1B\x40\x1D\x4c\x50\x00"
-#define ESCPOS_CMD_PRINT_RASTER_BIT_IMAGE  "\x1d\x76\x30\x00"
+#define	DBL_HEIGHT_ON_CODE                  "\x01"
+#define	FEED_LINE_CODE                      "\x02"
+#define	CUT_PAPER_CODE                      "\x03"
+#define	CHAR_SPACE_CODE                     "\x04"
+#define	LEFT_SPACE_CODE                     "\x05"
+#define	RESET_CODE                          "\x06"
+#define ESCPOS_CMD_PRINT_RASTER_BIT_IMAGE   "\x07"
+#define	DBL_HEIGHT_OFF_CODE                 "\x08"
 
 @implementation SerialDriver
 
@@ -47,9 +48,60 @@
 {
 	int size;
 	char *to;
-  char *p = aText;
-
+    char *p = aText;
+    char dblHeightONCode[4] = {'\x1D','\x21','\x01','\x0D'};
+    char feedLineCode[4] = {'\x1B','\x64','\x0F','\x0D'};
+    char cutPaperCode[3] = {'\x1B','\x69','\x0D'};
+    char charSpaceCode[3] = {'\x1B','\x20','\x01'};
+    char leftSpaceCode[5] = {'\x1D','\x4C','\x40',0,'\x0D'};
+    char resetCode[3] = {'\x1B','\x40','\x0D'};
+    char escposCmdPrintRasterBitImage[4] = {'\x1D','\x76','\x30','\x00'};
+    char dblHeightOFFCode[4] = {'\x1D','\x21',0,'\x0D'};
+    
 	while ( *p != '\0' ) {
+        
+        switch (*p) {
+            case '\x01':
+                [myWriter write: dblHeightONCode qty: 4];
+                p++;
+                continue;
+                break;
+            case '\x02':
+                [myWriter write: feedLineCode qty: 4];
+                p++;
+                continue;
+                break;                
+            case '\x03':
+                [myWriter write: cutPaperCode qty: 3];            
+                p++;
+                continue;
+                break;
+            case '\x04':
+                [myWriter write: charSpaceCode qty: 3];                
+                p++;
+                continue;
+                break;
+            case '\x05': 
+                [myWriter write: leftSpaceCode qty: 5];                
+                p++;
+                continue;
+                break;
+            case '\x06':
+                [myWriter write: resetCode qty: 3];                
+                p++;
+                continue;
+                break;
+            case '\x07':
+                [myWriter write: escposCmdPrintRasterBitImage qty: 4];                
+                p++;
+                continue;
+                break;            
+            case '\x08':
+                [myWriter write: dblHeightOFFCode qty: 4];                
+                p++;
+                continue;
+                break;            
+        }
 
 		// Encuentro el proximo fin de linea
 		to = strchr(p, '\n');
@@ -59,24 +111,14 @@
 		else to++;
 
 		// Escribo en la impresora
-		size = to - p;
-
-		[myWriter write: p qty: size];
+		size = to - p;             
+                      
+        [myWriter write: p qty: size];
 
 		p = to;
-
+   
 		msleep(10);
 	}
-	
-	
-	
-	//printf("avanza el papel\n");
-	
-	//[myWriter write: "\x1B\x64\10" qty: 10];
-	//[myWriter write: CUT_PAPER_CODE qty: 2];
-	
-	//printf("corta el papel\n");
-    
     
 	msleep(1000);
 }
@@ -114,10 +156,12 @@
   char escCode[30];
   
   strcpy(escCode, "");
-//	printf("SERIAL PRINTER vdfds>>>>>>>>>>> escape code setted %s\n", aEscapeCodeTag);
 
   if ( strcmp(aEscapeCodeTag, DBL_HEIGHT_ON) == 0 )
     strcpy(escCode, DBL_HEIGHT_ON_CODE);    
+  
+  if ( strcmp(aEscapeCodeTag, DBL_HEIGHT_OFF) == 0 )
+    strcpy(escCode, DBL_HEIGHT_OFF_CODE);        
  
   if ( strcmp(aEscapeCodeTag, FEED_LINE) == 0 )
     strcpy(escCode, FEED_LINE_CODE);        
@@ -131,8 +175,10 @@
   if ( strcmp(aEscapeCodeTag, LEFT_SPACE) == 0 ) 
     strcpy(escCode, LEFT_SPACE_CODE);
 
-  strcpy(aEscapeCode, escCode);   
+  if ( strcmp(aEscapeCodeTag, RESET) == 0 ) 
+    strcpy(escCode, RESET_CODE);
 
+  strcpy(aEscapeCode, escCode);   
     
   return aEscapeCode;          
 

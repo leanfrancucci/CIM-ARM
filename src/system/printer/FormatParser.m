@@ -510,7 +510,7 @@ char *strdup(const char *s);
 
       // Codigo de escape?
       if ( [self isEscapeCode: out] ) {
-        if (myPrinterDefinition) strcat(aFinalDoc, [myPrinterDefinition getEscapeCode: out escapeCode: escapeCode]);
+        if (myPrinterDefinition) strcat(aFinalDoc, [myPrinterDefinition getEscapeCode: out escapeCode: escapeCode]);         
         continue;
       }                
     
@@ -650,6 +650,7 @@ char *strdup(const char *s);
 			 (strcmp(aEscapeCode, CHAR_SPACE) == 0) ||
 			 (strcmp(aEscapeCode, LEFT_SPACE) == 0) ||
 			 (strcmp(aEscapeCode, FEED_LINE) == 0) ||
+			 (strcmp(aEscapeCode, RESET) == 0) ||
 			 (strcmp(aEscapeCode, INVERSE_OFF) == 0))
   
 

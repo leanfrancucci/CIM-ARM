@@ -122,3 +122,5 @@ References:\n
 Printed by: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
 Time: @/generalInfo/currentDate@\n
 @END_IF@
+@FEED_LINE@
+@CUT_PAPER@

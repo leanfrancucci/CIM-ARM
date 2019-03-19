@@ -1,66 +1,66 @@
 @CHAR_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
- @/generalInfo/header1@\n
+@/generalInfo/header1@\n
 @END_IF@
 @IF|/generalInfo/vewHeader2=TRUE@
-  @/generalInfo/header2@\n
+@/generalInfo/header2@\n
 @END_IF@
 @IF|/generalInfo/vewHeader3=TRUE@
-  @/generalInfo/header3@\n
+@/generalInfo/header3@\n
 @END_IF@
 @IF|/generalInfo/vewHeader4=TRUE@
-  @/generalInfo/header4@\n
+@/generalInfo/header4@\n
 @END_IF@
 @IF|/generalInfo/vewHeader5=TRUE@
-  @/generalInfo/header5@\n
+@/generalInfo/header5@\n
 @END_IF@
 @IF|/generalInfo/vewHeader6=TRUE@
-  @/generalInfo/header6@\n
+@/generalInfo/header6@\n
 @END_IF@
-  -----------------------------------------\n
+-----------------------------------------\n
 @DBL_HEIGHT_ON@
-                REPORTE DE\n
-      CONFIGURACION DE SUPERVISION\n
+              REPORTE DE\n
+    CONFIGURACION DE SUPERVISION\n
 @CHAR_SPACE@
-  -----------------------------------------\n
-  Trans #   : @/generalInfo/trans@\n
-  Fecha-Hora: @/generalInfo/transTime@\n
-  Pto Vta   : @/generalInfo/systemId@\n
-  ID        : @/generalInfo/telesupSystemId@\n
-  ID Remoto : @/generalInfo/systemIdPIMS@\n
-  -----------------------------------------\n
+-----------------------------------------\n
+Trans #   : @/generalInfo/trans@\n
+Fecha-Hora: @/generalInfo/transTime@\n
+Pto Vta   : @/generalInfo/systemId@\n
+ID        : @/generalInfo/telesupSystemId@\n
+ID Remoto : @/generalInfo/systemIdPIMS@\n
+-----------------------------------------\n
 
 @IF|/generalInfo/withOutValues=TRUE@
- \n
-      NO HAY SUPERVISIONES\n
- \n
-  -----------------------------------------\n
+\n
+    NO HAY SUPERVISIONES\n
+\n
+-----------------------------------------\n
 @END_IF@
 
 @FOR_EACH|telesupList/telesupInfo@
-  Nombre: @name:-16@\n
+Nombre: @name:-16@\n
 @BITSTREAM_FONT@
-  Ult Superv: @last@\n
-  Ult int.  : @lastTry@\n
-  Prox. sup.: @next@\n
-  Marco     : @frame@ min\n
-  Reintentos: @retrys@\n
-  Hora reint: @retryTime@ min\n
-  B Em Desde: @eBFrom@ \n
-  B Em Hasta: @eBTo@ \n
-  -----------------------------------------\n
+Ult Superv: @last@\n
+Ult int.  : @lastTry@\n
+Prox. sup.: @next@\n
+Marco     : @frame@ min\n
+Reintentos: @retrys@\n
+Hora reint: @retryTime@ min\n
+B Em Desde: @eBFrom@ \n
+B Em Hasta: @eBTo@ \n
+-----------------------------------------\n
 @END_FOR@\n
- \n
+\n
 @IF|/generalInfo/vewFooter1=TRUE@
-  @/generalInfo/footer1@\n
+@/generalInfo/footer1@\n
 @END_IF@
 @IF|/generalInfo/vewFooter2=TRUE@
-  @/generalInfo/footer2@\n
+@/generalInfo/footer2@\n
 @END_IF@
 @IF|/generalInfo/vewFooter3=TRUE@
-  @/generalInfo/footer3@\n
+@/generalInfo/footer3@\n
 @END_IF@
-  Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
-  Fecha: @/generalInfo/currentDate@\n
+Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+Fecha: @/generalInfo/currentDate@\n
 @FEED_LINE@
 @CUT_PAPER@

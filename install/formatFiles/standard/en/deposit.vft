@@ -121,3 +121,5 @@ TOTAL @totalCurrencyCode:3@ @totalCurrency:14@\n
 @END_IF@
 Printed by: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
 Time: @/generalInfo/currentDate@\n
+@FEED_LINE@
+@CUT_PAPER@

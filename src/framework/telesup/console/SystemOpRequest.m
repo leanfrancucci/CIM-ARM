@@ -1045,6 +1045,9 @@ static int loginFailQty = 0;
 /**/
 - (void) enableMailbox
 {
+    int excode;
+    char exceptionDescription[100];
+
     TRY
         // Debería habilitar la cerradura electrónica.
     CATCH
@@ -1073,6 +1076,9 @@ static int loginFailQty = 0;
 /**/
 - (void) disableMailbox
 {
+    int excode;
+    char exceptionDescription[100];
+
     TRY
         // Debería deshabilitar la cerradura electrónica.
     CATCH

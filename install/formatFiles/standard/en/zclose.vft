@@ -133,3 +133,5 @@ TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:19@\n
 @END_IF@
 Printed by: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
 Time: @/generalInfo/currentDate@\n
+@FEED_LINE@
+@CUT_PAPER@

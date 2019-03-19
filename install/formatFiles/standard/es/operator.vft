@@ -1,145 +1,144 @@
 @CHAR_SPACE@
 @IF|/generalInfo/vHeader=TRUE@
 @IF|/generalInfo/vewHeader1=TRUE@
- @/generalInfo/header1@\n
+@/generalInfo/header1@\n
 @END_IF@
 @IF|/generalInfo/vewHeader2=TRUE@
-  @/generalInfo/header2@\n
+@/generalInfo/header2@\n
 @END_IF@
 @IF|/generalInfo/vewHeader3=TRUE@
-  @/generalInfo/header3@\n
+@/generalInfo/header3@\n
 @END_IF@
 @IF|/generalInfo/vewHeader4=TRUE@
-  @/generalInfo/header4@\n
+@/generalInfo/header4@\n
 @END_IF@
 @IF|/generalInfo/vewHeader5=TRUE@
-  @/generalInfo/header5@\n
+@/generalInfo/header5@\n
 @END_IF@
 @IF|/generalInfo/vewHeader6=TRUE@
-  @/generalInfo/header6@\n
+@/generalInfo/header6@\n
 @END_IF@
 @IF|/generalInfo/isReprint=TRUE@
- \n
-  -----------------------------------------\n
-  ------------- REIMPRESION ---------------\n
-  -----------------------------------------\n
- \n
+\n
+-----------------------------------------\n
+------------- REIMPRESION ---------------\n
+-----------------------------------------\n
+\n
 @END_IF@
 @END_IF@
 @IF|/generalInfo/vHeader=TRUE@
-  -----------------------------------------\n
+-----------------------------------------\n
 @DBL_HEIGHT_ON@
-         REPORTE DE OPERADOR \n
+       REPORTE DE OPERADOR \n
 @CHAR_SPACE@
 @IF|/generalInfo/includeDetails=FALSE@
-                -RESUMIDO-\n
+              -RESUMIDO-\n
 @END_IF@
 @IF|/generalInfo/includeDetails=TRUE@
-               -DETALLADO-\n
+             -DETALLADO-\n
 @END_IF@
 @END_IF@
-  -----------------------------------------\n
+-----------------------------------------\n
 @IF|/generalInfo/resumeReport=FALSE@
-  Trans #   : @/generalInfo/trans@\n
-  Fecha-Hora: @/generalInfo/transTime@\n
-  Pto Vta   : @/generalInfo/systemId@\n
-  ID Remoto : @/generalInfo/systemIdPIMS@\n
-  Dep Desde : @/generalInfo/fromDepositNumber@\n
-  Dep Hasta : @/generalInfo/toDepositNumber@\n
-  Ult. Grd Z: @/generalInfo/lastZ@\n
-  Dia Desde : @/generalInfo/openTime@\n
+Trans #   : @/generalInfo/trans@\n
+Fecha-Hora: @/generalInfo/transTime@\n
+Pto Vta   : @/generalInfo/systemId@\n
+ID Remoto : @/generalInfo/systemIdPIMS@\n
+Dep Desde : @/generalInfo/fromDepositNumber@\n
+Dep Hasta : @/generalInfo/toDepositNumber@\n
+Ult. Grd Z: @/generalInfo/lastZ@\n
+Dia Desde : @/generalInfo/openTime@\n
 @END_IF@
-  Operador #: @/generalInfo/userId@\n
-  Nombre Opr: @/generalInfo/userName@\n
+Operador #: @/generalInfo/userId@\n
+Nombre Opr: @/generalInfo/userName@\n
 @IF|/generalInfo/resumeReport=FALSE@
-  Cuenta #  : \n
-   @/generalInfo/account@\n
+Cuenta #  : \n
+ @/generalInfo/account@\n
 @END_IF@
 
 @IF|/currencyList/withOutValues=TRUE@
-  -----------------------------------------\n
- \n
-        NO HAY MOVIMIENTOS\n
-         PARA EL PERIODO\n
- \n
+-----------------------------------------\n
+\n
+      NO HAY MOVIMIENTOS\n
+       PARA EL PERIODO\n
+\n
 @END_IF@
 
 @IF|/generalInfo/includeDetails=TRUE@
 @IF|/currencyList/withOutValues=FALSE@
-  -----------------------------------------\n
-              TOTAL\n
-  -----------------------------------------\n
+-----------------------------------------\n
+            TOTAL\n
+-----------------------------------------\n
 @END_IF@
 @END_IF@
 @FOR_EACH|currencyList/currency@
- \n
-  Moneda: @currencyCode:3@\n
+\n
+Moneda: @currencyCode:3@\n
 @IF|/currencyList/withNoInfoData=TRUE@
-  Deposito Manual:\n
+Deposito Manual:\n
 @FOR_EACH|manualDropDetails/manualDropDetail@
-    @depositValueName:-14@: @totalAmount:12@\n
+  @depositValueName:-14@: @totalAmount:12@\n
 @END_FOR@
-                    -------------\n
+                  -------------\n
 @END_IF@
-  Total Dep Manual: @totalManualDrop:12@\n
-  Total Dep Val   : @totalValidatedDrop:12@\n
+Total Dep Manual: @totalManualDrop:12@\n
+Total Dep Val   : @totalValidatedDrop:12@\n
 @BITSTREAM_FONT@ 
-  -----------------------------------------\n
-  Total: @total:16@\n
+-----------------------------------------\n
+Total: @total:16@\n
 @END_FOR@
 @IF|/generalInfo/includeDetails=TRUE@\n
 @IF|/currencyList/withOutValues=FALSE@
- \n
-  -----------------------------------------\n
-  DEPOSITO OPERADOR DETALLADO\n
-  -----------------------------------------\n
+\n
+-----------------------------------------\n
+DEPOSITO OPERADOR DETALLADO\n
+-----------------------------------------\n
 @END_IF@
 @FOR_EACH|dropDetails/currency@
- \n 
-  Moneda: @currencyCode@\n
-  Depos. Cash   Tipo   Subtotal\n
-  -----------------------------------------\n
+\n 
+Moneda: @currencyCode@\n
+Depos. Cash   Tipo   Subtotal\n
+-----------------------------------------\n
 @FOR_EACH|detail@
-  @depositNumber:-6@ @cimCashName:-8@ @depositValueName@ @totalAmount:12@\n
+@depositNumber:-6@ @cimCashName:-8@ @depositValueName@ @totalAmount:12@\n
 @IF|viewEnv=TRUE@
-    Sobre #: @env:-15@\n
+  Sobre #: @env:-15@\n
 @END_IF@
 @END_FOR@
-  -----------------------------------------\n
-  Total: @total:16@\n
+-----------------------------------------\n
+Total: @total:16@\n
 @END_FOR@
 @IF|/currencyList/withOutValues=FALSE@
- \n
-  -----------------------------------------\n
-  Referencias:\n
-    M: Deposito Manual\n
-    V: Deposito Validado\n
-    CS: Efectivo\n
-    CH: Cheque\n
-    CC: Tarjeta de Credito\n
-    TC: Ticket\n
-    BK: Separador\n
-    OT: Otros\n
- \n
+\n
+-----------------------------------------\n
+Referencias:\n
+  M: Deposito Manual\n
+  V: Deposito Validado\n
+  CS: Efectivo\n
+  CH: Cheque\n
+  CC: Tarjeta de Credito\n
+  TC: Ticket\n
+  BK: Separador\n
+  OT: Otros\n
+\n
 @END_IF@
 @END_IF@
 @IF|/generalInfo/vFooter=TRUE@
-  -----------------------------------------\n
- \n
+-----------------------------------------\n
+\n
 @IF|/generalInfo/vewFooter1=TRUE@
-  @/generalInfo/footer1@\n
+@/generalInfo/footer1@\n
 @END_IF@
 @IF|/generalInfo/vewFooter2=TRUE@
-  @/generalInfo/footer2@\n
+@/generalInfo/footer2@\n
 @END_IF@
 @IF|/generalInfo/vewFooter3=TRUE@
-  @/generalInfo/footer3@\n
+@/generalInfo/footer3@\n
 @END_IF@
-  Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
-  Fecha: @/generalInfo/currentDate@\n
+Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+Fecha: @/generalInfo/currentDate@\n
 @END_IF@
 @IF|/generalInfo/vewFooter1=TRUE@
+@END_IF@
 @FEED_LINE@
 @CUT_PAPER@
-@END_IF@
-
