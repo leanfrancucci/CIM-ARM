@@ -899,7 +899,7 @@ char safeBoxMgrInit( char portNumber, changeAcceptorStatusNotif statusNotifFcn, 
 		safeBoxMgrSetDevStatus(1,1);
         
         rdmInit( 1 );
-        
+      
     	return 1;  
   }
   return 0;

@@ -77,6 +77,8 @@ Trans# Usu#   Fecha/hora\n
 @END_IF@
 Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
 Fecha: @/generalInfo/currentDate@\n
+@FEED_LINE@
+@CUT_PAPER@
 @END_IF@
 
 
