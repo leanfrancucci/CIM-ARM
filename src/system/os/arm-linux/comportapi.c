@@ -31,6 +31,9 @@ static int BaudRateMap[] =
 
 /**/
 
+int handle485;
+int handleValidador;
+
 #if 0
 
 OS_HANDLE com_open(int portNumber, ComPortConfig *config)
@@ -161,8 +164,10 @@ OS_HANDLE com_open(int portNumber, ComPortConfig *config)
         sprintf(name, "/dev/ttymxc2");
 
         myHandle = open(name, O_RDWR );
+        handle485 = myHandle;
         if (myHandle == -1) {
             printf("Error opening com port /dev/ttymxc2\n");
+            return -1;
         }
         
 
@@ -229,15 +234,20 @@ OS_HANDLE com_open(int portNumber, ComPortConfig *config)
         return myHandle;
         
     }else {
-        sprintf(name, "/dev/ttyUSB%d", portNumber - 1);
-        printf(">>>>>>>>>>>>abrir puerto USB %s\n", name);
+        //sprintf(name, "/dev/ttyUSB%d", portNumber - 1);
+        sprintf(name, "%s%d", config->ttyStr , portNumber - 1);
+        printf(">>>>>>>>>>>>abrir puerto TTYx %s\n", name);
 
         
         myHandle = open(name, O_RDWR | O_NOCTTY);
         if (myHandle == -1) {
             //doLog(0,"Error opening com port\n");
+            return -1;
         }
-        
+        if (!strcmp(config->ttyStr, "/dev/ttyACM")){
+            handleValidador = myHandle;
+            printf("TCDRAIN + FLUJO>>>>>>>>>>>>Handle validador detectado %d\n", myHandle);
+        }
         tcgetattr(myHandle, &options);
         bzero(&options, sizeof(options));
 
@@ -255,6 +265,11 @@ OS_HANDLE com_open(int portNumber, ComPortConfig *config)
         //options.c_cflag |= PARENB;
         options.c_cflag |= CLOCAL;
         options.c_cflag |= CREAD;
+
+        if ( handleValidador != myHandle )
+            options.c_cflag &= ~CRTSCTS;
+        else
+            options.c_cflag |= CRTSCTS;
         //options.c_cflag |= CRTSCTS;
         
         
@@ -262,7 +277,9 @@ OS_HANDLE com_open(int portNumber, ComPortConfig *config)
 
     /* set input mode (non-canonical, no echo,...) */
     options.c_lflag = 0;
+    options.c_iflag &= ~(IXON | IXOFF | IXANY);
 
+    
     options.c_cc[VMIN]  = 0;
         /*options.c_cc[VTIME] = config->readTimeout / 100;
         if (options.c_cc[VTIME] == 0) options.c_cc[VTIME] = 1;
@@ -315,9 +332,41 @@ int com_read(OS_HANDLE handle, char *buffer, int qty, int timeout)
 /**/
 int com_write(OS_HANDLE handle, char *buffer, int qty)
 {
-	int n = write(handle, buffer, qty);
-	tcdrain(handle);
-	return n;
+    if (handle == handle485){
+        int n = write(handle, buffer, qty);
+        if (n <= 0){
+            printf("ERROR com_write!!!! %d HANDLE %d\n", n, handle);
+            return n;
+        }
+        tcdrain(handle);
+        return n;
+    } else {
+        if (handle == handleValidador){
+        //    printf("ACM com_write before tcdrain!!!! %d HANDLE %d\n", qty, handle);
+        //    tcdrain(handle);
+            printf("ACM com_write!!!! %d HANDLE %d\n", qty, handle);
+            int n = write(handle, buffer, qty);
+            if (n <= 0){
+                printf("ERROR com_write!!!! %d HANDLE %d\n", n, handle);
+                return n;
+            }
+           printf("ACM after com_write!!!! %d HANDLE %d\n", n, handle);
+           tcdrain(handle);
+        //   printf("com_write Sali del tcdrain!!!! HANDLE %d\n", handle);
+            return n;
+        } else{
+           // printf("USB com_write!!!! %d HANDLE %d\n", qty, handle);
+            int n = write(handle, buffer, qty);
+            if (n <= 0){
+                printf("ERROR com_write!!!! %d HANDLE %d\n", n, handle);
+                return n;
+            }
+        //  printf("before tcdrain com_write!!!! %d HANDLE %d\n", n, handle);
+            tcdrain(handle);
+        //   printf("com_write Sali del tcdrain!!!! HANDLE %d\n", handle);
+            
+        }
+    }
 }
 
 

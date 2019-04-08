@@ -39,6 +39,7 @@ char rdmCommOpen( char portNumber )
     config.parity = CT_PARITY_EVEN;
     config.dataBits = 8;
     config.stopBits = 1;
+    strcpy(config.ttyStr, "/dev/ttyUSB");
     osHandleR = com_open(portNumber, &config);
 
   	if ( osHandleR != -1 ) 

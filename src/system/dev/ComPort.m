@@ -106,6 +106,8 @@
 	config.parity = myParity;
 	config.dataBits = myDataBits;
 	config.stopBits = myStopBits;
+    strcpy(config.ttyStr, "/dev/ttyUSB");
+
 
 /*	doLog(0,"Datos del puerto al hacer el open: baudRate: %d  | stopBits: %d  | dataBits: %d  | parity: %d  | readTimeout: %d  | writeTimeout: %d \n",  myBaudRate, myStopBits,  myDataBits, myParity, myReadTimeout, myWriteTimeout);*/
 	
