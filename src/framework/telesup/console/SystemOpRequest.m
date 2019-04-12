@@ -1042,6 +1042,69 @@ static int loginFailQty = 0;
     
 }
 
+/**/
+- (void) enableMailbox
+{
+    int excode;
+    char exceptionDescription[100];
+
+    TRY
+        // Debería habilitar la cerradura electrónica.
+    CATCH
+        ex_printfmt();
+        excode = ex_get_code();
+        
+        TRY
+            [[MessageHandler getInstance] processMessage: exceptionDescription messageNumber: excode];
+        CATCH
+            strcpy(exceptionDescription, "");
+        END_TRY
+        
+        if (excode != 0) {
+            [myRemoteProxy newMessage: "Error"];
+            [myRemoteProxy addParamAsInteger: "Code" value: excode];
+            [myRemoteProxy addParamAsString: "Description" value: exceptionDescription];
+            [myRemoteProxy appendTimestamp];
+            [myRemoteProxy sendMessage];
+        }
+    END_TRY
+    
+    [myRemoteProxy sendAckMessage];       
+    
+}
+
+/**/
+- (void) disableMailbox
+{
+    int excode;
+    char exceptionDescription[100];
+
+    TRY
+        // Debería deshabilitar la cerradura electrónica.
+    CATCH
+        ex_printfmt();
+        excode = ex_get_code();
+        
+        TRY
+            [[MessageHandler getInstance] processMessage: exceptionDescription messageNumber: excode];
+        CATCH
+            strcpy(exceptionDescription, "");
+        END_TRY
+        
+        if (excode != 0) {
+            [myRemoteProxy newMessage: "Error"];
+            [myRemoteProxy addParamAsInteger: "Code" value: excode];
+            [myRemoteProxy addParamAsString: "Description" value: exceptionDescription];
+            [myRemoteProxy appendTimestamp];
+            [myRemoteProxy sendMessage];
+        }
+    
+    END_TRY
+
+    [myRemoteProxy sendAckMessage];       
+    
+}
+
 /*********************************************************************/
 /*VALIDACION DE BILLETES*/
 /*********************************************************************/
@@ -2380,6 +2443,14 @@ static int loginFailQty = 0;
             
         case CHANGE_COMMERCIAL_STATE_REQ:
             [self changeCommercialState];
+            return;
+            
+        case ENABLE_MAILBOX_REQ:
+            [self enableMailbox];
+            return;
+            
+        case DISABLE_MAILBOX_REQ:
+            [self disableMailbox];
             return;
 
 		default: break;		

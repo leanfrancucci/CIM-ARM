@@ -119,7 +119,7 @@ char *strdup(const char *s);
 			out = aFormat;
 			count = 0;
 			
-		}	else if (*p != '\n' && *p != '\r') {
+		} else if (*p != '\n' && *p != '\r') {
 		
 			if (*p == '\\' && *(p+1) == 'n') {
 				out[count] = '\n';
@@ -129,9 +129,7 @@ char *strdup(const char *s);
 			
 			out[++count] = '\0';
 		}
-		
 		p++;
-		
 	}
 	
 	return p - anInput;
@@ -444,143 +442,102 @@ char *strdup(const char *s);
     elementName: (char*) anElementName          /* Nombre del elemento a buscar */
     path: (char*) aPath                         /* Path al elemento a buscar ?? */
 {
-	char *p = anInput;
-  int	 tokenType;
-  static char out[512];
-  char format[64];
-  int itemsQty;
-  scew_element** list; 
-  int i;
-  static char info[255];
-  int count;
-  static char statement[255];
-  static char path[255];
-  static char realPath[255];
-  CommandType commandType;
-  static char initialPath[255];
-  scew_element* rootElement = NULL;
-  static char elementName[255];
-  static char conditionValue[255];
-  static char escapeCode[255];
-  IfOperation operation;
-	strcpy(format, "");
-	strcpy(out, "");
-  itemsQty = 0;
+  char *p = anInput;
+  
+  int	 tokenType, i, count, itemsQty = 0;
+  char   format[64];
 
-	//doLog(0,"process -> path = %s\n", aPath);fflush(stdout);
-  /*
-	p = strrchr(aPath, '/');
-	strncpy(realPath, aPath, p - aPath);
-	realPath[p-aPath] = 0;
-	p++;
-*/
-//  rootElement = [self getElement: aFromElement path: realPath];
-	
-	//if (rootElement == NULL) return anInput;
+  static char out[512], info[255], statement[255], path[255], realPath[255];
+  static char initialPath[255], elementName[255], conditionValue[255], escapeCode[255];
+
+  CommandType commandType;
+  IfOperation operation;
+  scew_element** list; 
+  scew_element* rootElement = NULL;
+
+  strcpy(format, "");
+  strcpy(out, "");
+
   rootElement = aRootElement;
   
   p = anInput;
-    
+  
 	while ( TRUE )
 	{
-		
-    count = [self getToken: p output: out format: format tokenType: &tokenType];
-    
+        count = [self getToken: p output: out format: format tokenType: &tokenType];
+      
 		if (count == 0) break;
+        
 		p = p + count;
 
 		// Si es un literal, lo concateno directamente
 		if (tokenType == TOKEN_LITERAL) {
-		//  doLog(0,"out = %s\n", out);
-    	strcat(aFinalDoc, out);
+            //  doLog(0,"out = %s\n", out);
+            strcat(aFinalDoc, out);
 			continue;
 		}
       
-    if (strcmp(out, MULTIPLE_END_COMMAND) == 0) break;
-    if (strcmp(out, CONDITION_END_COMMAND) == 0 ) break;
+        if (strcmp(out, MULTIPLE_END_COMMAND) == 0) break;
+        if (strcmp(out, CONDITION_END_COMMAND) == 0 ) break;
     
-    strcpy(statement, "");
-    strcpy(path, "");
-    strcpy(realPath, "");
+        strcpy(statement, "");
+        strcpy(path, "");
+        strcpy(realPath, "");
           
-    commandType = [self getCommandType: out statement: statement path: path];
-    
-    ///// Es un reemplazo simple //////////////////////////////////////////////
-    if ( commandType == SIMPLE_COMMAND_TYPE ) {
-
-      // Codigo de escape?
-      if ( [self isEscapeCode: out] ) {
-        if (myPrinterDefinition) strcat(aFinalDoc, [myPrinterDefinition getEscapeCode: out escapeCode: escapeCode]);
-        continue;
-      }                
-    
-      // Variable a reemplazar
-      if ([self getRealPath: path realPath: realPath] == COMPLETE_PATH_TYPE) 
-        rootElement = [self getXMLStructure: NULL path: realPath elementName: elementName];
-      else {        
-				rootElement = aRootElement;
-        strcpy(elementName, realPath);
-      }          
-      
-      [self appendString: aFinalDoc value: [self getXMLInfoByElement: rootElement elementName: elementName info: info] format: format];                
-      continue;
-    }
-    
-    ///// Comienza un IF /////////////////////////////////////////////////////
-    if (strcmp(statement, CONDITION_BEGIN_COMMAND) == 0 ) {
-    
-      
-      operation = [self getConditionValue: path realPath: initialPath conditionValue: conditionValue];
-      //doLog(0,"=======> IF (%s:%s)\n", path, conditionValue);
-      if ( [self getRealPath: initialPath realPath: realPath] == COMPLETE_PATH_TYPE) 
-          rootElement = [self getXMLStructure: NULL path: realPath elementName: elementName];
-      else {
-        strcpy(elementName, initialPath);
-      }
+        commandType = [self getCommandType: out statement: statement path: path];
+        ///// Es un reemplazo simple //////////////////////////////////////////////
+        if ( commandType == SIMPLE_COMMAND_TYPE ) {
+            // Codigo de escape?
+            if ( [self isEscapeCode: out] ) {
+                if (myPrinterDefinition) strcat(aFinalDoc, [myPrinterDefinition getEscapeCode: out escapeCode: escapeCode]);         
+                continue;
+            }                
+            // Variable a reemplazar
+            if ([self getRealPath: path realPath: realPath] == COMPLETE_PATH_TYPE) 
+                rootElement = [self getXMLStructure: NULL path: realPath elementName: elementName];
+            else {        
+                rootElement = aRootElement;
+                strcpy(elementName, realPath);
+            }          
+            [self appendString: aFinalDoc value: [self getXMLInfoByElement: rootElement elementName: elementName info: info] format: format];                
+            continue;
+        }  
+        ///// Comienza un IF /////////////////////////////////////////////////////
+        if (strcmp(statement, CONDITION_BEGIN_COMMAND) == 0 ) {
+            operation = [self getConditionValue: path realPath: initialPath conditionValue: conditionValue];
+            //doLog(0,"=======> IF (%s:%s)\n", path, conditionValue);
+            if ( [self getRealPath: initialPath realPath: realPath] == COMPLETE_PATH_TYPE) 
+                rootElement = [self getXMLStructure: NULL path: realPath elementName: elementName];
+            else {
+                strcpy(elementName, initialPath);
+            }
   
-      if ([self evalCondition: rootElement elementName: elementName conditionValue: conditionValue ifOperation: operation]) {
-        [self process: p finalDoc: aFinalDoc rootElement: aRootElement elementName: anElementName path: ""];
-      }
- 
-      //doLog(0,"======= > TERMINO EL IF %s\n", elementName);fflush(stdout);
- 
-      [self advanceToEndIf: &p];
-        
-      continue;
-    }
-
-    ///// Comienza un Si encuentra un FOR_EACH //////////////////////////////
-    if (strcmp(statement, MULTIPLE_BEGIN_COMMAND) == 0 ) {
-        
-				[self getRealPath: path realPath: realPath];
-        
-        rootElement = [self getXMLStructure: aRootElement path: realPath elementName: elementName];
-        //rootElement = scew_element_by_name(aRootElement, "cimCashs");
-        //doLog(0,"realPath = %s, elementName = %s\n", realPath, elementName);
-        
-        list = scew_element_list(rootElement, elementName, &itemsQty);
-          	
-        //doLog(0,"======= > FOR %s\n", elementName);fflush(stdout);
-        
-        for (i = 0; i < itemsQty; ++i ) {
-        
-          [self process: p finalDoc: aFinalDoc rootElement: list[i] elementName: elementName path: realPath];
-
+            if ([self evalCondition: rootElement elementName: elementName conditionValue: conditionValue ifOperation: operation]) {
+                [self process: p finalDoc: aFinalDoc rootElement: aRootElement elementName: anElementName path: ""];
+            }
+            //doLog(0,"======= > TERMINO EL IF %s\n", elementName);fflush(stdout);
+            [self advanceToEndIf: &p];
+            continue;
         }
-        // Libera la lista
-        scew_element_list_free(list);
-                
-        [self advanceToEndFor: &p];
-        //doLog(0,"======= > TERMINO EL FOR %s\n", elementName);fflush(stdout);
-               
-        //doLog(0,"p = %s\n", p);
-      	continue;
-    }     
-    
-  }
-
-
-
+        ///// Comienza un Si encuentra un FOR_EACH //////////////////////////////
+        if (strcmp(statement, MULTIPLE_BEGIN_COMMAND) == 0 ) {
+            [self getRealPath: path realPath: realPath];
+            rootElement = [self getXMLStructure: aRootElement path: realPath elementName: elementName];
+            //rootElement = scew_element_by_name(aRootElement, "cimCashs");
+            //doLog(0,"realPath = %s, elementName = %s\n", realPath, elementName);
+            list = scew_element_list(rootElement, elementName, &itemsQty);
+            //doLog(0,"======= > FOR %s\n", elementName);fflush(stdout);
+            for (i = 0; i < itemsQty; ++i ) {
+                [self process: p finalDoc: aFinalDoc rootElement: list[i] elementName: elementName path: realPath];
+            }
+            // Libera la lista
+            scew_element_list_free(list);
+            [self advanceToEndFor: &p];
+            //doLog(0,"======= > TERMINO EL FOR %s\n", elementName);fflush(stdout);
+            //doLog(0,"p = %s\n", p);
+            continue;
+        }     
+    }
 	return p;
 }
 
@@ -650,6 +607,7 @@ char *strdup(const char *s);
 			 (strcmp(aEscapeCode, CHAR_SPACE) == 0) ||
 			 (strcmp(aEscapeCode, LEFT_SPACE) == 0) ||
 			 (strcmp(aEscapeCode, FEED_LINE) == 0) ||
+			 (strcmp(aEscapeCode, RESET) == 0) ||
 			 (strcmp(aEscapeCode, INVERSE_OFF) == 0))
   
 

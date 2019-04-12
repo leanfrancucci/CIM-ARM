@@ -37,11 +37,11 @@ Pto Vta   : @/generalInfo/systemId@\n
 ID        : @/generalInfo/telesupSystemId@\n
 ID Remoto : @/generalInfo/systemIdPIMS@\n
 -----------------------------\n
- \n
+\n
 MODELO ----------------------\n
 @/generalInfo/cashModel@\n
 -----------------------------\n
- \n
+\n
 @BOLD_ON@
 SOFTWARE ************\n
 @BITSTREAM_FONT@
@@ -49,13 +49,13 @@ Version  : @/software/version@\n
 Release  : @/software/release@\n
 Version SO: @/software/osVersion@\n
 Uso Flash: @/software/flashUse@\n
- \n
+\n
 Versiones PTSD\n
  Consola   : @/software/maxPTSDVersion@\n
  PIMS      : @/software/pimsPTSDVersion@\n
  CMP       : @/software/cmpPTSDVersion@\n
  CMP Remoto: @/software/cmpOutPTSDVersion@\n
- \n
+\n
 @BOLD_ON@
 HARDWARE ************\n
 @BITSTREAM_FONT@

@@ -251,38 +251,35 @@ static char *formatBrokenDate(char *dest, struct tm *brokenTime)
 	param: (AuditReportParam *) anAuditParam
 	tree: (scew_tree*) tree
 {
-  scew_element *element;
+    scew_element *element;
 	scew_element *auditList;	
 	scew_element *auditInfo;
-  scew_element *detailList;
+    scew_element *detailList;
 	scew_element *detailInfo;
-	scew_element* generalInfo = NULL;
-	scew_element* newElement = NULL;
-	scew_tree* newTree;
-	
-	char buf[150];
-	datetime_t date;
-	struct tm brokenTime;
-	char dateStr[50];
-  BOOL reportDetail = FALSE;
-  datetime_t fromDate = 0;
-  datetime_t toDate = 0;
-	CIM_CASH cimCash = NULL;
-	USER user = NULL;
-	EVENT_CATEGORY category = NULL;
-	EVENT event;
-  USER userAudit;	
-	ABSTRACT_RECORDSET auditsRS = NULL;
-	ABSTRACT_RECORDSET changeLogRS = NULL;
-	char buffer[50];
-	int categId;
-	int count = 0;
+	scew_element *generalInfo = NULL;
+	scew_element *newElement = NULL;
+    scew_tree* newTree;
+	char buf[150], dateStr[50], buffer[50];
+    int categId, count = 0;
+    datetime_t date;
+    datetime_t fromDate = 0;
+    datetime_t toDate = 0;
+    struct tm brokenTime;
+    BOOL reportDetail = FALSE;
 	BOOL oneBlock = TRUE;
 	BOOL hasData = FALSE; 
+    ABSTRACT_RECORDSET auditsRS = NULL;
+	ABSTRACT_RECORDSET changeLogRS = NULL;
+	CIM_CASH cimCash = NULL;
+	USER user = NULL;
+    USER userAudit;	
+	EVENT event;
+	EVENT_CATEGORY category = NULL;
 	unsigned long printLogo;     // 0 = por defecto (muestra el logo) / 1 = (no muestra el logo) 
                                // 2 = (no muestra el logo, pero ademas imprime las lineas de separacion al final del reporte)
 
-  // para el caso de la auditoria la logica es inversa. Ademas se utiliza otro posible valor que puede ser "2"
+                               
+// para el caso de la auditoria la logica es inversa. Ademas se utiliza otro posible valor que puede ser "2"
   if ([[CimGeneralSettings getInstance] getPrintLogo] == 1)
     printLogo = 0;
   else
@@ -314,10 +311,11 @@ static char *formatBrokenDate(char *dest, struct tm *brokenTime)
 
 	element = scew_element_add(auditList, "sectionHeader");
 	scew_element_set_contents(element, "TRUE");
-  element = scew_element_add(auditList, "sectionFooter");
+
+    element = scew_element_add(auditList, "sectionFooter");
 	scew_element_set_contents(element, "FALSE");
 
-	do {
+    do {
 		
 		if ([auditsRS getDateTimeValue: "DATE"] >= fromDate && 
 				[auditsRS getDateTimeValue: "DATE"] <= toDate) {
@@ -393,7 +391,7 @@ static char *formatBrokenDate(char *dest, struct tm *brokenTime)
 							
 							// detalle
 							if (reportDetail) {                
-                element = scew_element_add(auditInfo, "additional");
+                                element = scew_element_add(auditInfo, "additional");
 								sprintf(buf, [auditsRS getStringValue: "ADDITIONAL" buffer: buffer]);      
 								scew_element_set_contents(element, buf);
 								
@@ -435,11 +433,10 @@ static char *formatBrokenDate(char *dest, struct tm *brokenTime)
 				} // if device
 			} // if user
 
-			
 			// imprimo por bloques el body del reporte
 			if (count == BLOCK_SIZE_AUDIT){
         
-        oneBlock = FALSE;
+                oneBlock = FALSE;
         
 				[[PrinterSpooler getInstance] addPrintingJob: CIM_AUDIT_PRT copiesQty: 1 ignorePaperOut: FALSE tree: newTree additional: printLogo];
 				count = 0;
@@ -464,6 +461,7 @@ static char *formatBrokenDate(char *dest, struct tm *brokenTime)
 				element = scew_element_add(auditList, "sectionFooter");
 				scew_element_set_contents(element, "FALSE");
 			}
+			//
 
 		}
 
@@ -475,10 +473,11 @@ static char *formatBrokenDate(char *dest, struct tm *brokenTime)
   // si no hubo movimientos muestro el mensaje
 	// No hay depositos para mostrar
 	element = scew_element_add(auditList, "withOutValues");
-	if (!hasData)
-    scew_element_set_contents(element, "TRUE");
-  else
-    scew_element_set_contents(element, "FALSE");
+
+    if (!hasData)
+        scew_element_set_contents(element, "TRUE");
+    else
+        scew_element_set_contents(element, "FALSE");
 
   // imprimo lo que quedo pendiente del body ************************
   printLogo = 1;
@@ -489,7 +488,7 @@ static char *formatBrokenDate(char *dest, struct tm *brokenTime)
   }
 
   [[PrinterSpooler getInstance] addPrintingJob: CIM_AUDIT_PRT copiesQty: 1 ignorePaperOut: FALSE tree: newTree additional: printLogo];
-  
+
   // creo nuevamente el tree
   newTree = scew_tree_create();
   
@@ -501,9 +500,9 @@ static char *formatBrokenDate(char *dest, struct tm *brokenTime)
   [self concatGeneralInfo: generalInfo isReprint: isReprint];
   auditList = scew_element_add(newElement, "auditList");
   element = scew_element_add(auditList, "sectionHeader");
-	scew_element_set_contents(element, "FALSE");
+  scew_element_set_contents(element, "FALSE");
   element = scew_element_add(auditList, "sectionFooter");
-	scew_element_set_contents(element, "TRUE");
+  scew_element_set_contents(element, "TRUE");
 
 	// llamo nuevamente al addPrintingJob para imprimir el pie y las lineas de avance
 	printLogo = 2;

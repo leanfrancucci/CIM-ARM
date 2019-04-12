@@ -26,6 +26,7 @@
 #define CUT_PAPER		"CUT_PAPER"
 #define CHAR_SPACE		"CHAR_SPACE"
 #define LEFT_SPACE		"LEFT_SPACE"
+#define RESET		"RESET"
 
 #define BAR_CODE_ITF "BAR_CODE_ITF"
 

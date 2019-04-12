@@ -47,6 +47,7 @@ typedef struct {
 	int dataBits;
 	int readTimeout;
 	int writeTimeout;
+    char ttyStr[20];
 } ComPortConfig;
 
 /**

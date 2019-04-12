@@ -1,3 +1,5 @@
+@RESET@
+@LEFT_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@
 @/generalInfo/header1@\n
 @END_IF@
@@ -153,3 +155,5 @@ References:\n
 @END_IF@
 Printed by: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
 Time: @/generalInfo/currentDate@\n
+@FEED_LINE@
+@CUT_PAPER@

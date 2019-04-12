@@ -337,7 +337,10 @@ MapRequestMsg 	mapReqMsg[] =
     
     ,{"GetCurrentCommercialState", 	GET_CURRENT_COMMERCIAL_STATE_REQ,     NO_REQ_OP,	0}
     ,{"ChangeCommercialState", 	CHANGE_COMMERCIAL_STATE_REQ,     NO_REQ_OP,	0}    
-    
+
+    ,{"EnableMailbox", 	    ENABLE_MAILBOX_REQ,     NO_REQ_OP,	0}    
+    ,{"DisableMailbox", 	DISABLE_MAILBOX_REQ,    NO_REQ_OP,	0}    
+   
 };
 
 #define 	MAX_REQUEST_MAPPS 	(sizeof( mapReqMsg ) / sizeof( mapReqMsg[0] ))

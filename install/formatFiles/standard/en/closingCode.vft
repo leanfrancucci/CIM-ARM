@@ -1,3 +1,5 @@
+@RESET@
+@LEFT_SPACE@
 -----------------------------\n
          CLOSE SEAL\n
 -----------------------------\n
@@ -6,3 +8,5 @@ Close Seal: @/generalInfo/ClosingCode@\n
 -----------------------------\n
 Printed by: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
 Time: @/generalInfo/currentDate@\n
+@FEED_LINE@
+@CUT_PAPER@

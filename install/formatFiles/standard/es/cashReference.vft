@@ -1,115 +1,116 @@
-@CHAR_SPACE@
+@RESET@
+@LEFT_SPACE@
 @IF|/generalInfo/vewHeader1=TRUE@ 
- @/generalInfo/header1@\n
+@/generalInfo/header1@\n
 @END_IF@
 @IF|/generalInfo/vewHeader2=TRUE@
-  @/generalInfo/header2@\n
+@/generalInfo/header2@\n
 @END_IF@
 @IF|/generalInfo/vewHeader3=TRUE@
-  @/generalInfo/header3@\n
+@/generalInfo/header3@\n
 @END_IF@
 @IF|/generalInfo/vewHeader4=TRUE@
-  @/generalInfo/header4@\n
+@/generalInfo/header4@\n
 @END_IF@
 @IF|/generalInfo/vewHeader5=TRUE@
-  @/generalInfo/header5@\n
+@/generalInfo/header5@\n
 @END_IF@
 @IF|/generalInfo/vewHeader6=TRUE@
-  @/generalInfo/header6@\n
+@/generalInfo/header6@\n
 @END_IF@
-  -----------------------------------------\n
+-----------------------------------------\n
 @DBL_HEIGHT_ON@
-        REPORTE POR REFERENCE\n
-@CHAR_SPACE@
+      REPORTE POR REFERENCE\n
+@DBL_HEIGHT_OFF@
 @IF|/generalInfo/detailReport=TRUE@
-              - DETALLADO -\n
+            - DETALLADO -\n
 @END_IF@
 @IF|/generalInfo/detailReport=FALSE@
-              - RESUMIDO -\n
+            - RESUMIDO -\n
 @END_IF@
-  -----------------------------------------\n
-  Trans #   : @/generalInfo/trans@\n
-  Fecha-Hora: @/generalInfo/transTime@\n
-  Pto Vta   : @/generalInfo/systemId@\n
-  ID Remoto	: @/generalInfo/systemIdPIMS@\n
-  Reference : @/generalInfo/cashReferenceFilter@\n
-  Ult Grd Z : @/generalInfo/lastZ@\n
-  Dia Desde : @/generalInfo/openTime@\n
-  -----------------------------------------\n
+-----------------------------------------\n
+Trans #   : @/generalInfo/trans@\n
+Fecha-Hora: @/generalInfo/transTime@\n
+Pto Vta   : @/generalInfo/systemId@\n
+ID Remoto	: @/generalInfo/systemIdPIMS@\n
+Reference : @/generalInfo/cashReferenceFilter@\n
+Ult Grd Z : @/generalInfo/lastZ@\n
+Dia Desde : @/generalInfo/openTime@\n
+-----------------------------------------\n
 
 @IF|/cashReferenceList/withOutValues=TRUE@
- \n
-        NO HAY MOVIMIENTOS\n
-         PARA EL PERIODO\n
- \n
+\n
+      NO HAY MOVIMIENTOS\n
+       PARA EL PERIODO\n
+\n
 @END_IF@
 
 @FOR_EACH|cashReferenceList/cashReference@
- \n
+\n
 
-  @cashReferenceName@\n
+@cashReferenceName@\n
 
 @IF|/generalInfo/detailReport=FALSE@
-  Moneda               Subtotal\n
-  -----------------------------\n
+Moneda               Subtotal\n
+-----------------------------\n
 @FOR_EACH|currencyList/currency@
-  @currencyCode:3@ @amount:25@\n
+@currencyCode:3@ @amount:25@\n
 @END_FOR@
 @END_IF@
 
 
 @IF|/generalInfo/detailReport=TRUE@
 @FOR_EACH|currencyList/currency@
- \n
+\n
 @BOLD_ON@
-  Moneda: @currencyCode:3@\n
-  Depos   Cash  Tipo   Subtotal\n
-  -----------------------------\n
+Moneda: @currencyCode:3@\n
+Depos   Cash  Tipo   Subtotal\n
+-----------------------------\n
 @FOR_EACH|detail@
-  @depositNumber:-6@ @cimCashName:-8@ @depositValueName@ @totalAmount:10@\n
+@depositNumber:-6@ @cimCashName:-8@ @depositValueName@ @totalAmount:10@\n
 @END_FOR@
-  -----------------------------\n
-  Total @currencyCode:-3@: @total:18@\n
+-----------------------------\n
+Total @currencyCode:-3@: @total:18@\n
 @END_FOR@
 @END_IF@
 
 
- \n
+\n
 @END_FOR@
 
 @IF|/cashReferenceList/withOutValues=FALSE@
- \n
+\n
 
-  - CASH REFERENCE TOTAL -\n
+- CASH REFERENCE TOTAL -\n
 @FOR_EACH|cashReferenceList/totalCashCurrency@
-  TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
+TOTAL @totalCashCurrencyCode:3@ @totalCashCurr:14@\n
 @END_FOR@
 @END_IF@
-  -----------------------------------------\n
+-----------------------------------------\n
 @IF|/generalInfo/detailReport=TRUE@
- \n
-  Referencias:\n
-    M: Deposito Manual\n
-    V: Deposito Validado\n
-    CS: Efectivo\n
-    CH: Cheque\n
-    CC: Tarjeta de Credito\n
-    TC: Ticket\n
-    BK: Separador\n
-    OT: Otros\n
+\n
+Referencias:\n
+  M: Deposito Manual\n
+  V: Deposito Validado\n
+  CS: Efectivo\n
+  CH: Cheque\n
+  CC: Tarjeta de Credito\n
+  TC: Ticket\n
+  BK: Separador\n
+  OT: Otros\n
 @END_IF@
- \n
+\n
 @IF|/generalInfo/vewFooter1=TRUE@
-  @/generalInfo/footer1@\n
+@/generalInfo/footer1@\n
 @END_IF@
 @IF|/generalInfo/vewFooter2=TRUE@
-  @/generalInfo/footer2@\n
+@/generalInfo/footer2@\n
 @END_IF@
 @IF|/generalInfo/vewFooter3=TRUE@
-  @/generalInfo/footer3@\n
+@/generalInfo/footer3@\n
 @END_IF@
-  Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
-  Fecha: @/generalInfo/currentDate@\n
+Impreso por: @/generalInfo/currentUserId@ @/generalInfo/currentUserName:-17@\n
+Fecha: @/generalInfo/currentDate@\n
 @FEED_LINE@
 @CUT_PAPER@
 
