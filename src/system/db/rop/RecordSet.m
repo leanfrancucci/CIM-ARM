@@ -141,6 +141,7 @@
 	LOG("cerro el recordset %s\n", [myTable getFileName]);
 	if (myHandle == NULL) return;
 	if (!myIsOpen) return;
+    fsync(fileno(myHandle));
 	fclose(myHandle);
 	myHandle = NULL;
 }

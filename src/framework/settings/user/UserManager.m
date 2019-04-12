@@ -1372,8 +1372,10 @@ static id singleInstance = NULL;
           //Audita el login erroneo
   	  	[Audit auditEvent: Event_WRONG_LOGIN additional: "" station: 0 logRemoteSystem: FALSE];
       }
+    
+      if (user) [user setLoggedIn : FALSE];
 
-			[[CimManager getInstance] enableAcceptorsWithCommError];
+    [[CimManager getInstance] enableAcceptorsWithCommError];
 
       RETHROW();
 	
@@ -1556,6 +1558,7 @@ static id singleInstance = NULL;
 {
 	USER user = NULL;
 
+    printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>logOffUser = %d\n", aUserId);
 	user = [self getUser: aUserId];
 	[user setLoggedIn: FALSE];
 
@@ -1569,10 +1572,13 @@ static id singleInstance = NULL;
 {
 	int i = 0;
 	
+    printf("getUserLoggedIn-----");
 	for (i=0; i<[myUsers size]; ++i)  
-		if ( [[myUsers at: i] isLoggedIn] == TRUE ) 
+		if ( [[myUsers at: i] isLoggedIn] == TRUE ) {
+            printf(" Id = %d\n", [[myUsers at: i] getUserId]);
 			return [myUsers at: i];
-
+        }
+    printf("NO HAY\n");
 	return NULL;
 }
 
@@ -1882,6 +1888,8 @@ static id singleInstance = NULL;
 {
 	int userId = 0;
 	COLLECTION dallasKeys = [Collection new];
+    
+    printf("VerifySpecialUsers\n");
 
 	// 1) me intento loguear con el usuario admin con contrasenia por defecto
 	// 2) si puedo loguearme entonces creo a los usuarios PIMS y Override. Caso contrario no hago nada.
@@ -1893,6 +1901,7 @@ static id singleInstance = NULL;
 		
 		[dallasKeys free];
 	CATCH
+        if (userId !=0) [self logOffUser: userId];
         userId = 0;
 	END_TRY
 

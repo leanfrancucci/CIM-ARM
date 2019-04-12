@@ -1427,6 +1427,34 @@ static int loginFailQty = 0;
     
 }
 
+- (void) getBoxModel
+{
+    id cim;
+    int boxModelId = -1;
+    int val1ModelId = -1;
+    int val2ModelId = -1;
+    
+    BOOL verfifyBoxModelChange = [[[CimManager getInstance] getCim] verifyBoxModelChange];
+    
+    [myRemoteProxy newResponseMessage];
+
+    if (verfifyBoxModelChange == FALSE) { 
+        
+        cim = [[CimManager getInstance] getCim];
+        boxModelId = [[[cim getBoxById: 1] getBoxModel] getPhisicalModel];
+        val1ModelId =[[[cim getBoxById: 1] getBoxModel] getVal1Model]; 
+        val2ModelId = [[[cim getBoxById: 1] getBoxModel] getVal2Model]; 
+        
+    } 
+    
+    [myRemoteProxy addParamAsInteger: "BoxModelId" value: boxModelId];
+    [myRemoteProxy addParamAsInteger: "ValModelId" value: val1ModelId];
+    [myRemoteProxy addParamAsInteger: "ValModelId" value: val2ModelId];
+    
+    [myRemoteProxy sendMessage];
+    
+}
+
 /**/
 - (void) hasMovements
 {
@@ -2326,8 +2354,8 @@ static int loginFailQty = 0;
             [self isValidationModeAvailable];
             return;            
             
-        case HAS_MODEL_SET_REQ:
-            [self hasModelSet];
+        case GET_BOX_MODEL_REQ:
+            [self getBoxModel];
             return;
             
         case SET_BOX_MODEL_REQ:

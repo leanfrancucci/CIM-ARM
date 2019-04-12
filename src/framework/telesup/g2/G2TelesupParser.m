@@ -328,6 +328,8 @@ MapRequestMsg 	mapReqMsg[] =
 	,{"IsValidationModeAvailable", 	IS_VALIDATION_MODE_AVAILABLE_REQ,     NO_REQ_OP,	0}
 	
 	,{"HasModelSet", 	HAS_MODEL_SET_REQ,     NO_REQ_OP,	0}
+	,{"GetBoxModel", 	GET_BOX_MODEL_REQ,     NO_REQ_OP,	0}
+	
 	,{"SetBoxModel", 	SET_BOX_MODEL_REQ,     NO_REQ_OP,	0}
 	,{"HasMovements", 	HAS_MOVEMENTS_REQ,     NO_REQ_OP,	0}
     ,{"GetAvailableBoxModels", 	GET_AVAILABLE_BOX_MODELS_REQ,     NO_REQ_OP,	0}
@@ -1134,6 +1136,7 @@ MapRequestMsg 	mapReqMsg[] =
         case GET_DATETIME_REQ:
         case IS_VALIDATION_MODE_AVAILABLE_REQ:
         case HAS_MODEL_SET_REQ:
+        case GET_BOX_MODEL_REQ:
         case SET_BOX_MODEL_REQ:
         case HAS_MOVEMENTS_REQ:
         case GET_AVAILABLE_BOX_MODELS_REQ:

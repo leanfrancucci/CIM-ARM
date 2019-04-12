@@ -47,12 +47,14 @@ typedef enum {
 
 /**/
 - (void) setPhisicalModel: (PhisicalModel) aValue;
+- (PhisicalModel) getPhisicalModel;
 
 /**/
 - (void) setVal1Model: (ValidatorModel) aValue;
-
+- (ValidatorModel) getVal1Model;
 /**/
 - (void) setVal2Model: (ValidatorModel) aValue;
+- (ValidatorModel) getVal2Model;
 
 /**/
 - (void) save;

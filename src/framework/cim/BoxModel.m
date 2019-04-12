@@ -28,16 +28,33 @@
 	myPhisicalModel = aValue;
 }
 
+
+- (PhisicalModel) getPhisicalModel
+{
+	return myPhisicalModel;
+}
+
+
 /**/
 - (void) setVal1Model: (ValidatorModel) aValue
 {
 	myVal1Model = aValue;
 }
 
+- (ValidatorModel) getVal1Model
+{
+	return myVal1Model;
+}
+
 /**/
 - (void) setVal2Model: (ValidatorModel) aValue
 {
 	myVal2Model = aValue;
+}
+
+- (ValidatorModel) getVal2Model
+{
+	 return myVal2Model;
 }
 
 /**/

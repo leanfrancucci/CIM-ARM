@@ -559,7 +559,6 @@ static CT_SYSTEM singleInstance = NULL;
 
 	// Configuracion de cantidad de decimales
 	//doLog(0,"Configura el Round....");
-	printf("Initializing printing spooler 333333333333....\n");
 	[Round getInstance];
 //	doLog(0,"[ OK ]\n");
 
@@ -572,7 +571,6 @@ static CT_SYSTEM singleInstance = NULL;
 		doLog(0,"Hubo corte de energia a las %s\n", asctime(localtime(&powerFailTime)));
 */
 	// Audita el corte de energia
-  	printf("Initializing printing spooler 3333333333....\n");
 
   if (powerFailTime != 0) {
 	   [Audit auditEventWithDate: NULL eventId: Event_ABNORMAL_SYSTEM_SHUTDOWN 
@@ -588,15 +586,14 @@ static CT_SYSTEM singleInstance = NULL;
   SSL_library_init();
 	//Carga los strings de error para SSL & Cryptp APIs
   SSL_load_error_strings();
-	printf("Initializing printing spooler 4444444444....\n");
-  
+
 	// creo las supervisiones al CMP entrante y saliente
 	[self initCMPTelesup];
 	[self initCMPOutTelesup];
     
 
 //	doLog(0,"Starting Power Failed Manager....");
-	printf("Initializing printing spooler 55555555555555555....\n");
+
 
 	// el start lo tengo que hacer luego de recuperar las llamadas
 	[[PowerFailManager getInstance] start];
@@ -608,7 +605,6 @@ static CT_SYSTEM singleInstance = NULL;
 	[[[CimManager getInstance] getCim] setSerialNumberChangeListener: [JSystem getInstance]];
     [[CimManager getInstance] start];	
     [[CimEventDispatcher getInstance] start];	
-	printf("Initializing printing spooler 6666666666666666....\n");
 
 //	doLog(0,"[ OK ]\n");fflush(stdout);
 
