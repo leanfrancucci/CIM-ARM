@@ -184,7 +184,7 @@ void billAcceptingCallback(unsigned char devId, unsigned char newStatus)
 }
 
 /**/
-void billRejectedCallback(unsigned char devId, int cause )
+void billRejectedCallback(unsigned char devId, int cause, int qty )
 {
 	CimEvent event;
 
@@ -194,7 +194,7 @@ void billRejectedCallback(unsigned char devId, int cause )
 	event.status = cause;
 	event.event  = CimEvent_BILL_REJECTED;
 	event.amount = 0;
-    event.qty = 1;
+    event.qty = qty;
 
 	[myEventQueue pushElement: &event];
 }

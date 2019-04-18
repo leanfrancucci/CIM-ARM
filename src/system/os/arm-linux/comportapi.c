@@ -344,13 +344,13 @@ int com_write(OS_HANDLE handle, char *buffer, int qty)
         if (handle == handleValidador){
         //    printf("ACM com_write before tcdrain!!!! %d HANDLE %d\n", qty, handle);
         //    tcdrain(handle);
-            printf("ACM com_write!!!! %d HANDLE %d\n", qty, handle);
+        //    printf("ACM com_write!!!! %d HANDLE %d\n", qty, handle);
             int n = write(handle, buffer, qty);
             if (n <= 0){
                 printf("ERROR com_write!!!! %d HANDLE %d\n", n, handle);
                 return n;
             }
-           printf("ACM after com_write!!!! %d HANDLE %d\n", n, handle);
+        //   printf("ACM after com_write!!!! %d HANDLE %d\n", n, handle);
            tcdrain(handle);
         //   printf("com_write Sali del tcdrain!!!! HANDLE %d\n", handle);
             return n;

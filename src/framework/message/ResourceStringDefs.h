@@ -1181,6 +1181,9 @@
 #define RESID_ACCEPTORS_DISABLED																(RS_BASE + 3816)
 #define RESID_STACKER_OPEN_DOOR_CLOSED																(RS_BASE + 3817)
 #define RESID_WAIT_BANKNOTE_TO_BE_REMOVED													(RS_BASE + 3818)
+#define RESID_OPEN_DOOR_RDM         													(RS_BASE + 3819)
+#define RESID_ERROR         													(RS_BASE + 3820)
+
 
 
 // Menues

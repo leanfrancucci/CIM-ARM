@@ -43,7 +43,7 @@ typedef void( *changeAcceptorStatusNotif )( unsigned char devId, unsigned char n
 	0x7D : length error
 	0x7E : color pattern error
 */
-typedef void( *billRejectedNotif )( unsigned char devId, int cause );
+typedef void( *billRejectedNotif )( unsigned char devId, int cause, int qty );
 
 /*
 	Notificacion de error detectado en el validador. El parametro cause entrega
@@ -150,6 +150,7 @@ typedef struct {
   unsigned char recBlockNo;
   unsigned char sndBlockNo;
   unsigned char resetSent;
+  unsigned char initalizationAlarmSent;
 } JcmBillAcceptData;
 
 /*

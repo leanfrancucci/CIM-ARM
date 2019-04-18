@@ -60,8 +60,10 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
  ,{BillAcceptorStatus_ROM_FAILURE, RESID_ROM_FAILURE, "Fallo en memoria"}
  ,{BillAcceptorStatus_EXTERNAL_ROM_WRITING_FAILURE, RESID_EXTERNAL_ROM_WRITING_FAILURE, "Fallo escritura en memoria externa"}
  ,{BillAcceptorStatus_WAITING_BANKNOTE_TO_BE_REMOVED, RESID_WAIT_BANKNOTE_TO_BE_REMOVED, "Esperando que extraiga billete validador"}
+ ,{BillAcceptorStatus_OPEN_DOOR, RESID_OPEN_DOOR_RDM, "Puerta abierta en el validador! Verifique"}
 
- ,{999, RESID_UNDEFINE, "Undefined"}
+
+ ,{999, RESID_ERROR, "Error: "}
 };
 
 @implementation BillAcceptor
@@ -260,8 +262,8 @@ static char buff[50];
 		//si llegue al final de la lista
 		if (BillAcceptorErrorCauseArray[i].cause == 999) {
             str = getResourceStringDef(BillAcceptorErrorCauseArray[i].resourceString, BillAcceptorErrorCauseArray[i].defaultString);
-            sprintf(buff, "%s: %ld", str,aCode);
-            printf("BillAcceptor GetErrorDescription %s\n", buff);
+            sprintf(buff, "%s: %lX", str,aCode);
+         //   printf("BillAcceptor GetErrorDescription %s\n", buff);
 			return buff;
 		} 
 	}
@@ -570,6 +572,7 @@ static char buff[50];
 		case BillAcceptorStatus_ROM_FAILURE: eventId = Event_ROM_FAILURE; break;
 		case BillAcceptorStatus_EXTERNAL_ROM_WRITING_FAILURE: eventId = Event_EXTERNAL_ROM_WRITING_FAILURE; break;
 		case BillAcceptorStatus_WAITING_BANKNOTE_TO_BE_REMOVED: eventId = Event_WAIT_BANKNOTE_TO_BE_REMOVED; break;
+        
 	}
 
 	// me fijo si debo informar al POS del evento.
@@ -602,7 +605,8 @@ static char buff[50];
 
 	// No logueo el evento de REJECTING porque ya lo va a auditar con la funcion de callback 
 	// propia del Bill Rejected
-	if (aCause != BillAcceptorStatus_REJECTING) {
+    //No logueo waiting banknotetoberemoved , es solo un msj al usuario 
+	if ((aCause != BillAcceptorStatus_REJECTING) && (aCause != BillAcceptorStatus_WAITING_BANKNOTE_TO_BE_REMOVED)){
 		if (eventId != -1)
 			[Audit auditEventCurrentUser: eventId additional: [myAcceptorSettings getAcceptorName] station: [myAcceptorSettings getAcceptorId] logRemoteSystem: FALSE];
 		else { // es un evento desconocido. En el adicional pongo el numero de la causa
