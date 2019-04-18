@@ -134,6 +134,10 @@ static BillAcceptorCause BillAcceptorErrorCauseArray[] = {
 	printf("***************************\n");
 	
 	[SafeBoxHAL setBillAcceptorCommConfig: myHardwareId acceptorCommConfig: &valConfig];
+    
+    if (valConfig.protocol == 7)        
+           rdmInit( [myAcceptorSettings getAcceptorHardwareId] + 1 );
+
 
 	// Habilita el bill acceptor
   if (![myAcceptorSettings isDisabled]) {
