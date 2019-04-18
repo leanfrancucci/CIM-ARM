@@ -436,9 +436,10 @@ BOOL isOnResetStatusRdm(StateMachine *sm)
                     errorD = 0xB5;
                 else 
                     errorD = ID003_JAM_IN_ACCEPTOR;
-                  if ( jcmBillAcceptor->commErrorNotificationFcn != NULL )
-                        ( *jcmBillAcceptor->commErrorNotificationFcn )( jcmBillAcceptor->devId, errorD );
                 
+                if ( jcmBillAcceptor->commErrorNotificationFcn != NULL )
+                        ( *jcmBillAcceptor->commErrorNotificationFcn )( jcmBillAcceptor->devId, errorD );
+                jcmBillAcceptor->initalizationAlarmSent = 1;
             }
         }
     }
