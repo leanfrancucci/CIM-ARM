@@ -1493,6 +1493,8 @@ static int loginFailQty = 0;
 - (void) getBoxModel
 {
     id cim;
+    id box;
+    id boxModel;
     int boxModelId = -1;
     int val1ModelId = -1;
     int val2ModelId = -1;
@@ -1504,15 +1506,19 @@ static int loginFailQty = 0;
     if (verfifyBoxModelChange == FALSE) { 
         
         cim = [[CimManager getInstance] getCim];
-        boxModelId = [[[cim getBoxById: 1] getBoxModel] getPhisicalModel];
-        val1ModelId =[[[cim getBoxById: 1] getBoxModel] getVal1Model]; 
-        val2ModelId = [[[cim getBoxById: 1] getBoxModel] getVal2Model]; 
+        box = [cim getBoxById: 1];
+        
+        if (box == NULL) exit;
+        
+        boxModelId = [box getModel];                                                        
+        val1ModelId = [box getValModel: 1];
+        val2ModelId = [box getValModel: 2]; 
         
     } 
     
-    [myRemoteProxy addParamAsInteger: "BoxModelId" value: boxModelId];
-    [myRemoteProxy addParamAsInteger: "ValModelId" value: val1ModelId];
-    [myRemoteProxy addParamAsInteger: "ValModelId" value: val2ModelId];
+    [myRemoteProxy addParamAsInteger: "ModelId" value: boxModelId];
+    [myRemoteProxy addParamAsInteger: "Val1ModelId" value: val1ModelId];
+    [myRemoteProxy addParamAsInteger: "Val2ModelId" value: val2ModelId];
     
     [myRemoteProxy sendMessage];
     

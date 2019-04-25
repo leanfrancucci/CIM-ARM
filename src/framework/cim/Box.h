@@ -62,6 +62,10 @@
 - (void) removeAllAcceptorsByBox;
 - (void) removeAllDoorsByBox;
 
+/**/
+- (int) getValModel: (int) aValId;
+- (int) getModel;
+
 @end
 
 #endif

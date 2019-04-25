@@ -2,6 +2,7 @@
 #include "CimExcepts.h"
 #include "CimManager.h"
 #include "Persistence.h"	
+#include "BoxModel.h"	
 
 @implementation Box
 
@@ -164,5 +165,64 @@
 		[self removeDoor: [myDoorsList at: 0]];
 }
 
+
+- (int) getValModel: (int) aValId
+{
+	//id box = NULL;
+	id acceptorSett = NULL;
+	char acceptorModel[60];
+
+	// si aun el modelo de caja no fue seteado retorno 0
+	//box = [[[CimManager getInstance] getCim] getBoxById: 1];
+	if (strlen(trim([self getBoxModel])) == 0) return ValidatorModel_JCM_PUB11_BAG;
+
+	// obtengo el modelo de validador
+	acceptorSett = [[[CimManager getInstance] getCim] getAcceptorSettingsById: aValId];
+
+	if (!acceptorSett) return -1;
+	strcpy(acceptorModel,trim([acceptorSett getAcceptorModel]));
+	if (strlen(acceptorModel) == 0) return -1;
+
+	if (strstr(acceptorModel, "PUB11|BAG|")) return ValidatorModel_JCM_PUB11_BAG;
+	if (strstr(acceptorModel, "WBA|SS|")) return ValidatorModel_JCM_WBA_Stacker;
+	if (strstr(acceptorModel, "BNF|SS|")) return ValidatorModel_JCM_BNF_Stacker;
+	if (strstr(acceptorModel, "BNF|BAG|")) return ValidatorModel_JCM_BNF_BAG;
+	if (strstr(acceptorModel, "FRONTLOAD MW|V|")) return ValidatorModel_CC_CS_Stacker;
+	if (strstr(acceptorModel, "CCB|BAG|")) return ValidatorModel_CC_CCB_BAG;
+	if (strstr(acceptorModel, "S66 BULK|H|")) return ValidatorModel_MEI_S66_Stacker;
+
+	// por las dudas que no haya entrado en ningun if
+	return -1;
+
+}
+
+/**/
+- (int) getModel
+{
+	//id box = NULL;
+	char boxModel[60];
+
+	//box = [[[CimManager getInstance] getCim] getBoxById: 1];
+	//if (!box) return PhisicalModel_Box2ED2V1M;
+	strcpy(boxModel, trim([self getBoxModel]));
+	if (strlen(boxModel) == 0) return -1;
+	
+	// busco el modelo de caja
+	if (strstr(boxModel, "Box2ED2V1M")) return PhisicalModel_Box2ED2V1M;
+	if (strstr(boxModel, "Box2ED1V1M")) return PhisicalModel_Box2ED1V1M;
+	if (strstr(boxModel, "Box2EDI2V1M")) return PhisicalModel_Box2EDI2V1M;
+	if (strstr(boxModel, "Box2EDI1V1M")) return PhisicalModel_Box2EDI1V1M;
+	if (strstr(boxModel, "Box1ED2V1M")) return PhisicalModel_Box1ED2V1M;
+	if (strstr(boxModel, "Box1ED1V1M")) return PhisicalModel_Box1ED1V1M;
+	if (strstr(boxModel, "Box1ED1M")) return PhisicalModel_Box1ED1M;
+	if (strstr(boxModel, "Box1D2V1M")) return PhisicalModel_Box1D2V1M;
+	if (strstr(boxModel, "Box1D1V1M")) return PhisicalModel_Box1D1V1M;
+	if (strstr(boxModel, "Box1D1M")) return PhisicalModel_Box1D1M;
+	if (strstr(boxModel, "FLEX")) return PhisicalModel_Flex;
+	
+	// por las dudas que no haya entrado en ningun if
+	return -1;
+
+}
 
 @end
