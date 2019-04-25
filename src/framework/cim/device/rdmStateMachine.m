@@ -128,6 +128,7 @@ void loadFirstStateRdm(StateMachine *sm)
     printf("RDM %d LoadFirstState\n", jcmBillAcceptor->devId);//fflush(stdout);
     jcmBillAcceptor->actualState = 255;
     jcmBillAcceptor->billTableLoaded = 0;
+    jcmBillAcceptor->initalizationAlarmSent = 0;
     jcmBillAcceptor->recBlockNo = 0x30;
     jcmBillAcceptor->sndBlockNo = 0x30;
 
@@ -210,7 +211,7 @@ void processCurrencyTable(StateMachine *sm)
         jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
         
        	memset( jcmBillAcceptor->convertionTable, 0, sizeof(jcmBillAcceptor->convertionTable));
-        result = (unsigned short) *(jcmBillAcceptor->dataEvPtr+9);
+        result = SHORT_TO_L_ENDIAN((unsigned short) *(jcmBillAcceptor->dataEvPtr+9));
     
         printf("PROCESS CURRENCY TABLE !!! \n"); 
 
@@ -267,6 +268,7 @@ void sendInitializationCmd(StateMachine *sm)
     jcmBillAcceptor->sndBlockNo = getNextBlockNo(jcmBillAcceptor->sndBlockNo);
     initComand[0]= jcmBillAcceptor->sndBlockNo;
     rdmSendFrameProcess(jcmBillAcceptor, initComand, 2 );
+    jcmBillAcceptor->initalizationAlarmSent = 0;
 
 }
 
@@ -277,7 +279,7 @@ BOOL verifyCmdExecResult(StateMachine *sm)
     
 	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
 	
-    result = *((unsigned short*)(jcmBillAcceptor->dataEvPtr+9));
+    result = SHORT_TO_L_ENDIAN(*((unsigned short*)(jcmBillAcceptor->dataEvPtr+9)));
     printf("Verificar resultado de la ejecucion de comando en RDM >>>>>>>>>>>>> %d!\n", result); 
 	 if (result != 0){
          printf("Notificar un error del validador codigo %d!\n", result); 
@@ -409,6 +411,7 @@ BOOL initializacionComplete(StateMachine *sm)
 BOOL isOnResetStatusRdm(StateMachine *sm) 
 { 
 	JcmBillAcceptData *jcmBillAcceptor;
+    unsigned char errorD;
 
     //Antes de la visita de Omar Jorge en febrero 2019, esperaba que el validador este en estado reset
     //para enviarle el cmd de inicializacion. En su visita acordamos que para enviar el comando inicializacion 
@@ -426,6 +429,18 @@ BOOL isOnResetStatusRdm(StateMachine *sm)
                 ((jcmBillAcceptor->sst[6] & 0x01) == 0)){ //powerOn true 
                     printf("INITIALIZE!...\n");
                     return 1;
+        } else {
+            //no puedo enviar a inicializar porque hay sensores activos, enviar alarma una sola vez>
+            if ( !jcmBillAcceptor->initalizationAlarmSent ){
+                if ((jcmBillAcceptor->sst[2] & 0xFD) != 0)
+                    errorD = 0xB5;
+                else 
+                    errorD = ID003_JAM_IN_ACCEPTOR;
+                
+                if ( jcmBillAcceptor->commErrorNotificationFcn != NULL )
+                        ( *jcmBillAcceptor->commErrorNotificationFcn )( jcmBillAcceptor->devId, errorD );
+                jcmBillAcceptor->initalizationAlarmSent = 1;
+            }
         }
     }
   
@@ -532,15 +547,19 @@ void notifyBillsAccepted(StateMachine *sm)
     jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
     
     printf("Notify bilss accepted!\n" ); 
-    result = *((unsigned short*)(jcmBillAcceptor->dataEvPtr+9));
+    result = SHORT_TO_L_ENDIAN(*((unsigned short*)(jcmBillAcceptor->dataEvPtr+9)));
     if ( result < 0xE000 ){  //si es 0 o error code hay que procesar los billetes igual, si es un codigo de warning entonces no se ejecuto el comando
          qtyRejected = (unsigned char)*(jcmBillAcceptor->dataEvPtr+11);
-	 if (result != 0){
+  		 if (( jcmBillAcceptor->billRejectNotificationFcn != NULL ) && (qtyRejected > 0)){ 
+            printf("Qty rejected> %d!\n", qtyRejected ); 
+			( *jcmBillAcceptor->billRejectNotificationFcn )( jcmBillAcceptor->devId, 0x7B, qtyRejected );//mando siempre "Operation Error" porq no me lo discrimina mei
+         }
+          if (result != 0){
 	         printf("Notificar un error del validador codigo %d!\n", result); 
               if ( jcmBillAcceptor->commErrorNotificationFcn != NULL )
                 ( *jcmBillAcceptor->commErrorNotificationFcn )( jcmBillAcceptor->devId, result );
      }	
-      printf("FALTA notificar bills rejected %d!\n", qtyRejected ); 
+  //    printf("FALTA notificar bills rejected %d!\n", qtyRejected ); 
          memcpy(currencyAccepted,jcmBillAcceptor->dataEvPtr+12, 96);
          for (i = 0; i < jcmBillAcceptor->denominationQty; i++){
              currencyAccepted[i].noteId = SHORT_TO_L_ENDIAN(currencyAccepted[i].noteId);

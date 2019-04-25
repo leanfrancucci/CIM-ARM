@@ -40,6 +40,7 @@ typedef enum {
 	,BillAcceptorStatus_ROM_FAILURE
 	,BillAcceptorStatus_EXTERNAL_ROM_WRITING_FAILURE
 	,BillAcceptorStatus_WAITING_BANKNOTE_TO_BE_REMOVED
+	,BillAcceptorStatus_OPEN_DOOR
 
 } BillAcceptorStatus;
 

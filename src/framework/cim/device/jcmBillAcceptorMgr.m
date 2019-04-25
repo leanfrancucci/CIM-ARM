@@ -161,7 +161,7 @@ void sendRejectNotification(StateMachine *sm)
 	jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
 	rejectCause = mapRejectCause( jcmBillAcceptor->protocol, (unsigned char) *jcmBillAcceptor->dataEvPtr );
 	if ( jcmBillAcceptor->billRejectNotificationFcn != NULL ){
-		( *jcmBillAcceptor->billRejectNotificationFcn )( jcmBillAcceptor->devId, rejectCause );
+		( *jcmBillAcceptor->billRejectNotificationFcn )( jcmBillAcceptor->devId, rejectCause, 1 );
 		jcmBillAcceptor->lastRejectCause = rejectCause;  
 		jcmBillAcceptor->errorCause = ID003_REJECTING;	
 	} 

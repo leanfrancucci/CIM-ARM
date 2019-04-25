@@ -358,7 +358,7 @@ void loadErrorStateMei(StateMachine *sm)
 
 	if ( jcmBillAcceptor->errorCause == ID003_REJECTING ){
 		if ( jcmBillAcceptor->billRejectNotificationFcn != NULL )
-			( *jcmBillAcceptor->billRejectNotificationFcn )( jcmBillAcceptor->devId, 0x7B );//mando siempre "Operation Error" porq no me lo discrimina mei
+			( *jcmBillAcceptor->billRejectNotificationFcn )( jcmBillAcceptor->devId, 0x7B, 1 );//mando siempre "Operation Error" porq no me lo discrimina mei
 	} else {
 		if 	( jcmBillAcceptor->errorCause == ID003_CHEATED ) {
 			//deshabilito el validador, NUEVO:
