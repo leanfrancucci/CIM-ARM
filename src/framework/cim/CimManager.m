@@ -1412,4 +1412,24 @@ static CIM_MANAGER singleInstance = NULL;
 
 }
 
+/**
+ * Modificacion para RDM Logs 
+ * 
+ */
+- (void) getMaintenanceInfLog
+{
+     
+    COLLECTION acceptors;
+    int i;
+
+    acceptors = [myCim getAcceptors];
+  
+    for (i = 0; i < [acceptors size]; ++i) {
+        if ([[acceptors at: i] isKindOf: [BillAcceptor class]] && ![[[acceptors at: i] getAcceptorSettings] isDisabled]) 
+            [[acceptors at: i] getMaintenanceInfLog];  
+                  
+    }
+    
+}
+
 @end

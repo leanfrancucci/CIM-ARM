@@ -1,7 +1,7 @@
 
 #include "rdm100.h"
+#include "rdmLogs.h"
 #include "system/util/all.h"
-
 
 #define RDM_NORMAL_CMD                  0x40
 #define RDM_RESET_CMD                   0x30
@@ -9,6 +9,12 @@
 #define RDM_DEPOSIT_COUNT_CMD           0x41
 #define RDM_DEPOSIT_COUNT_RESULT_CMD    0x42
 #define RDM_REQ_CURRENCY_TABLE_CMD      0x51
+#define RDM_REQ_MAINTENANCE_INF_LOG     0x70
+#define RDM_REQ_ERROR_LOG               0x73
+#define RDM_REQ_OPERATION_LOG           0x74
+
+#define RDM_OPERATION_LOG_TYPE_1        0X30
+#define RDM_OPERATION_LOG_TYPE_2        0x31
 
 //ActualState
 #define RDM_POWERON  0x00
@@ -63,9 +69,11 @@ BOOL rdmSendFrameProcess(JcmBillAcceptData *jcmBillAcceptor, unsigned char * dat
                     return 1;
                 } 
            }     
-        }     
+        } else {
+            printf("rdmSendFrameProcess -> rdmReadCtrlSignal NULL\n");
     //    doLog(1, "hay que reenviar la ultima trama, IMPLEMENTAR! \n" ); 
-        return 0;
+            return 0;
+        }
 }
 
 void loadDisableRdm(StateMachine *sm) 
@@ -311,9 +319,6 @@ void doProcessStatusRdm(JcmBillAcceptData *jcmBillAcceptor, unsigned char *statu
 {
 
         memcpy(&jcmBillAcceptor->sst, statusNew, 7 );
-
-
-       
 
 //        if ( statusNew[0] & 0x04 ) jcmBillAcceptor->errorCause = 1;
         
@@ -586,6 +591,251 @@ void notifyBillsAccepted(StateMachine *sm)
     
 }
 
+void processMaintenanceInformationLog(StateMachine *sm)
+{
+    
+    JcmBillAcceptData *jcmBillAcceptor; 
+    jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
+
+    unsigned short result = 0;
+    result = SHORT_TO_L_ENDIAN(*((unsigned short*)(jcmBillAcceptor->dataEvPtr+9)));
+    
+    unsigned char acceptedNotes[4], storedNotes[4], rejectedNotes[4]; 
+    
+    if (result == 0){
+        memcpy(acceptedNotes, jcmBillAcceptor->dataEvPtr+11, 4);
+        memcpy(storedNotes,   jcmBillAcceptor->dataEvPtr+15, 4);
+        memcpy(rejectedNotes, jcmBillAcceptor->dataEvPtr+19, 4);
+        
+        // saveMaintenanceLogLineToFile( jcmBillAcceptor->dataEvPtr+11, 4 );        
+        
+        printf (" billetes aceptados: %02x %02x %02x %02x\n", acceptedNotes[0], acceptedNotes[1], acceptedNotes[2],acceptedNotes[3]);
+
+        printf (" billetes almacenados: %02x %02x %02x %02x\n", storedNotes[0], storedNotes[1], storedNotes[2],storedNotes[3]);
+
+        printf (" billetes rechazados: %02x %02x %02x %02x\n", rejectedNotes[0], rejectedNotes[1], rejectedNotes[2],rejectedNotes[3]);
+
+        printf (" billetes aceptados: %d\n billetes almacenados: %d\n billetes rechazados: %d\n", 
+                SHORT_TO_L_ENDIAN(*(unsigned short *)(acceptedNotes)), SHORT_TO_L_ENDIAN(*(unsigned short *)(storedNotes)), SHORT_TO_L_ENDIAN(*(unsigned short *)(rejectedNotes)));
+
+    } else
+        printf("RDM %d Error Detected \n", jcmBillAcceptor->devId ); 
+ 
+}
+
+void processRDMErrorLog(StateMachine *sm)
+{   
+    JcmBillAcceptData *jcmBillAcceptor; 
+    jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
+
+    unsigned short result = 0;
+    unsigned char *bufferPtr;
+    
+    struct dataLog {
+        unsigned char year[2];
+        unsigned char month;
+        unsigned char day;
+        unsigned char hh;
+        unsigned char mm;
+        unsigned char ss;
+        unsigned char codeError[2];
+    } dataLogEntry;        
+    
+    /*
+     * BLK (1 byte) -> jcmBillAcceptor->dataEvPtr 
+     * CMD (1 byte)
+     * SST1 ... STT7 (7 bytes)
+     * RESULT (2 bytes)
+     * */
+    
+    printf("ENTRY processRDMErrorLog\n");
+
+    bufferPtr = jcmBillAcceptor->dataEvPtr+11;
+ 
+    BOOL sendACK = FALSE;
+   
+    do {
+         if ( jcmBillAcceptor->dataEvPtr != NULL ) {
+          
+            result = SHORT_TO_L_ENDIAN(*((unsigned short*)(jcmBillAcceptor->dataEvPtr+9)));
+                
+            if ( result == 0 ) {
+                
+                if ( (*bufferPtr == 0x10) && (*(bufferPtr+1) == 0x17) ) {  // 0x10 0x17 ETB
+                        if (sendACK)
+                            rdmWriteCtrlSignal(ackCmd,2);
+                        else 
+                            sendACK = TRUE;
+                        do {
+                            jcmBillAcceptor->dataEvPtr = rdmReadFrame( 1000 );
+                            if ( jcmBillAcceptor->dataEvPtr != NULL){
+                                doProcessStatusRdm(jcmBillAcceptor, jcmBillAcceptor->dataEvPtr+2);                            
+                                bufferPtr = jcmBillAcceptor->dataEvPtr+11;
+                            }
+                            else {
+                                printf("10 17 jcmBillAcceptor->dataEvPtr NULL\n");
+                                rdmWriteCtrlSignal(nakCmd,2);
+                                jcmBillAcceptor->commErrQty++;
+                            }
+                        } while ( jcmBillAcceptor->dataEvPtr == NULL && jcmBillAcceptor->commErrQty++ < 3 );
+                        continue;
+                }
+                
+                memcpy( &dataLogEntry, bufferPtr, 9 );
+                 
+                printf (" %d/%02d/%02d %02d:%02d:%02d Code error: %02x %02x\n", 
+                SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.year)), dataLogEntry.month, dataLogEntry.day, dataLogEntry.hh, dataLogEntry.mm, dataLogEntry.ss, dataLogEntry.codeError[0], dataLogEntry.codeError[1] );              
+                
+                bufferPtr+=9;
+               
+            } else {
+                // result != 0                 
+            }
+        } else {
+            rdmWriteCtrlSignal(nakCmd,2);
+            printf("readframe retorna NULLLLL\n");
+            jcmBillAcceptor->commErrQty++;                
+        }
+        if ((jcmBillAcceptor->dataEvPtr == NULL) && ( jcmBillAcceptor->commErrQty >= 3 ))
+            break;   
+
+    } while ( !((*bufferPtr == 0x10) && (*(bufferPtr+1) == 0x03)) ); // 0x10 0x03 EOT
+     
+    if ( jcmBillAcceptor->commErrQty > 3 ) {        
+        jcmBillAcceptor->errorCause = ID003_COMM_ERROR;
+        executeStateMachine(jcmBillAcceptor->billValidStateMachine, ID003_COMM_ERROR);        
+    } else {
+        rdmWriteCtrlSignal(ackCmd,2);
+        waitForEot(jcmBillAcceptor);
+    }
+    
+   
+    printf(">>>>> SALGO processRDMErrorLog \n\n");
+
+}
+
+void processRDMOperationLog(StateMachine *sm)
+{   
+    JcmBillAcceptData *jcmBillAcceptor; 
+    jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
+
+    unsigned short result = 0, i;
+    unsigned char *bufferPtr;
+    
+    union stOperationLog {
+        
+        struct LogType1 {
+            unsigned char type;
+            unsigned char code;
+            unsigned char year[2];
+            unsigned char month;
+            unsigned char day;
+            unsigned char hh;
+            unsigned char mm;
+            unsigned char ss;
+            unsigned char dummy;
+            unsigned char dataSize[2];
+            unsigned char block;
+            unsigned char mode1;
+            unsigned char mode2;
+            unsigned char data[4];        
+        } dataLogType1;
+        
+        struct LogType2 {
+            unsigned char type;
+            unsigned char data[18];
+        } dataLogType2;
+        
+    } operationLogEntry;
+   
+    printf("ENTRY processRDMOperationLog\n");
+
+    bufferPtr = jcmBillAcceptor->dataEvPtr+11;
+ 
+    BOOL sendACK = FALSE;
+   
+    do {
+         if ( jcmBillAcceptor->dataEvPtr != NULL ) {
+          
+            result = SHORT_TO_L_ENDIAN(*((unsigned short*)(jcmBillAcceptor->dataEvPtr+9)));
+                
+            if ( result == 0 ) {
+                
+                if ( (*bufferPtr == 0x10) && (*(bufferPtr+1) == 0x17)  ) {  // 0x10 0x17 ETB
+                        if (sendACK)
+                            rdmWriteCtrlSignal(ackCmd,2);
+                        else 
+                            sendACK = TRUE;
+                        do {
+                            /*if ( !memcmp(rdmReadCtrlSignal(1000),enqCmd,2) ){
+                                rdmWriteCtrlSignal(ackCmd,2);
+                                continue;                                
+                            }*/                            
+                            jcmBillAcceptor->dataEvPtr = rdmReadFrame( 300 );
+                            if ( jcmBillAcceptor->dataEvPtr != NULL){
+                                if ( *(jcmBillAcceptor->dataEvPtr) == 0x10 && *(jcmBillAcceptor->dataEvPtr+1) == 0x05) {
+                                    rdmWriteCtrlSignal(ackCmd,2);
+                                    continue;
+                                }                                
+                                doProcessStatusRdm(jcmBillAcceptor, jcmBillAcceptor->dataEvPtr+2);                            
+                                bufferPtr = jcmBillAcceptor->dataEvPtr+11;
+                            }
+                            else {
+                                printf("10 17 jcmBillAcceptor->dataEvPtr NULL\n");
+                                rdmWriteCtrlSignal(nakCmd,2);
+                                jcmBillAcceptor->commErrQty++;
+                            }
+                        } while ( jcmBillAcceptor->dataEvPtr == NULL && jcmBillAcceptor->commErrQty++ < 3 );
+                        continue;
+                }
+                
+                memcpy( &operationLogEntry, bufferPtr, 19 );
+                
+                switch ( operationLogEntry.dataLogType1.type ){
+                    case RDM_OPERATION_LOG_TYPE_1:
+                        printf (" %d/%02d/%02d %02d:%02d:%02d Code: %02x Size: %d Blocks: %d\n",                SHORT_TO_L_ENDIAN(*(unsigned short *)(operationLogEntry.dataLogType1.year)), operationLogEntry.dataLogType1.month, operationLogEntry.dataLogType1.day, operationLogEntry.dataLogType1.hh, operationLogEntry.dataLogType1.mm, operationLogEntry.dataLogType1.ss, operationLogEntry.dataLogType1.code, SHORT_TO_L_ENDIAN(*(unsigned short *)(operationLogEntry.dataLogType1.dataSize)), operationLogEntry.dataLogType1.block );   
+                        break;
+                        
+                    case RDM_OPERATION_LOG_TYPE_2:
+                        for ( i=0; i<18 ; ++i ){
+                            printf("%02X ",operationLogEntry.dataLogType2.data[i]);
+                        }
+                        printf("\n");
+                        break;
+                }
+                /* if (operationLogEntry.dataLogType1.type == RDM_OPERATION_LOG_TYPE_1)
+                    printf (" %d/%02d/%02d %02d:%02d:%02d Code: %02x Size: %02x\n", 
+                SHORT_TO_L_ENDIAN(*(unsigned short *)(operationLogEntry.dataLogType1.year)), operationLogEntry.dataLogType1.month, operationLogEntry.dataLogType1.day, operationLogEntry.dataLogType1.hh, operationLogEntry.dataLogType1.mm, operationLogEntry.dataLogType1.ss, operationLogEntry.dataLogType1.code, SHORT_TO_L_ENDIAN(*(unsigned short *)(operationLogEntry.dataLogType1.dataSize)) );              
+                */
+                
+                bufferPtr+=sizeof(operationLogEntry);           
+                
+               
+            } else {
+                // result != 0                 
+            }
+        } else {
+            rdmWriteCtrlSignal(nakCmd,2);
+            printf("readframe retorna NULLLLL\n");
+            jcmBillAcceptor->commErrQty++;                
+        }
+        if ((jcmBillAcceptor->dataEvPtr == NULL) && ( jcmBillAcceptor->commErrQty >= 3 ))
+            break;   
+
+    } while ( !((*bufferPtr == 0x10) && (*(bufferPtr+1) == 0x03)) ); // 0x10 0x03 EOT
+     
+    if ( jcmBillAcceptor->commErrQty > 3 ) {        
+        jcmBillAcceptor->errorCause = ID003_COMM_ERROR;
+        executeStateMachine(jcmBillAcceptor->billValidStateMachine, ID003_COMM_ERROR);        
+    } else {
+        rdmWriteCtrlSignal(ackCmd,2);
+        waitForEot(jcmBillAcceptor);
+    }
+   
+    printf(">>>>> SALGO processRDMOperationLog \n\n");
+
+}
+
 
 ////// Estados de la maquina de estados //////////////////////////////////
 
@@ -648,7 +898,10 @@ State rdmInitializingState =
  
 static Transition rdmDisabledStateTransitions[] =
 {
-	{ RDM_DEPOSIT_COUNT_RESULT_CMD, NULL, notifyBillsAccepted, &rdmDisabledState }
+	 { RDM_DEPOSIT_COUNT_RESULT_CMD, NULL, notifyBillsAccepted, &rdmDisabledState }
+	,{ RDM_REQ_MAINTENANCE_INF_LOG, NULL, processMaintenanceInformationLog, &rdmDisabledState } 
+	,{ RDM_REQ_ERROR_LOG, NULL, processRDMErrorLog, &rdmDisabledState }
+	,{ RDM_REQ_OPERATION_LOG, NULL, processRDMOperationLog, &rdmDisabledState }
 	,{ SM_ANY, isRDMStatusBusy, NULL, &rdmDisabledState }
 	,{ SM_ANY, errorDetectedRdm, NULL, &rdmErrorState }
 	,{ SM_ANY, isOnPowerUpStatusRdm, sendResetRdm, &rdmInitializingState }
@@ -672,7 +925,7 @@ State rdmDisabledState =
 static Transition rdmEnabledStateTransitions[] =
 {
 	{ RDM_DEPOSIT_COUNT_RESULT_CMD, NULL, notifyBillsAccepted, &rdmEnabledState }
-	 ,{ SM_ANY, isJCMDisable, NULL, &rdmDisabledState }
+    ,{ SM_ANY, isJCMDisable, NULL, &rdmDisabledState }
 	,{ SM_ANY, isRDMStatusBusy, NULL, &rdmEnabledState }
 	,{ SM_ANY, isPreparedforDepositing, sendStartDepositingRdm, &rdmEnabledState }
 	,{ SM_ANY, errorDetectedRdm, NULL, &rdmErrorState }
@@ -741,6 +994,53 @@ void waitForEot(JcmBillAcceptData *jcmBillAcceptor )
    
 }
 
+static unsigned char rawData[6]; 
+
+void requestJCMRDMLog(JcmBillAcceptData *jcmBillAcceptor)
+{
+    int dataLen;
+    
+    char qtyLogs5000[] = { 0x01 , 0x00 , 0x88 , 0x13 }; // From 1 to 5000 log request (little endian).
+    char qtyLogs6000[] = { 0x01 , 0x00 , 0x70 , 0x17 }; // From 1 to 6000 log request (little endian).
+    char qtyLogs1000[] = { 0xE8 , 0x03 }; 
+    char qtyLogs100[] =  { 0x64 , 0x00 }; 
+    char qtyLogs2000[] = { 0xD0 , 0x07 }; 
+
+    jcmBillAcceptor->sndBlockNo = getNextBlockNo(jcmBillAcceptor->sndBlockNo);
+    
+    rawData[0] = jcmBillAcceptor->sndBlockNo;
+    
+    printf("jcmBillAcceptor->getRDMLog %d\n", jcmBillAcceptor->getRDMLog);
+    
+    switch ( jcmBillAcceptor->getRDMLog )
+    {
+        case JCMRDMGetLog_MAINTENANCE_INFO:
+            rawData[1] = RDM_REQ_MAINTENANCE_INF_LOG;
+            dataLen = 2;
+            break;
+            
+        case JCMRDMGetLog_ERROR_LOG:
+            rawData[1] = RDM_REQ_ERROR_LOG;
+            memcpy(rawData+2, qtyLogs5000, 4);
+            dataLen = 6;
+            break;
+        
+        case JCMRDMGetLog_OPERATION_LOG:
+            rawData[1] = RDM_REQ_OPERATION_LOG;
+            memcpy(rawData+2, qtyLogs2000, 2);
+            dataLen = 4;
+            break;
+    }
+
+    printf("rawData\n BLK: %02x\n CMD: %02x\t\n jcmBillAcceptor->status: %d \n",rawData[0], rawData[1], jcmBillAcceptor->status );
+
+    rdmSendFrameProcess(jcmBillAcceptor, rawData, dataLen );
+    
+    jcmBillAcceptor->getRDMLog = JCMRDMGetLog_NOT_REQUESTED;       
+        
+}
+
+
 void pollRDM( JcmBillAcceptData *jcmBillAcceptor )
 {
     unsigned char aux, cmd;
@@ -763,9 +1063,10 @@ void pollRDM( JcmBillAcceptData *jcmBillAcceptor )
                         waitForEot(jcmBillAcceptor);
                     } else {
                         rdmWriteCtrlSignal(ackCmd,2);
-                        waitForEot(jcmBillAcceptor);
+//                        waitForEot(jcmBillAcceptor);
                         doProcessStatusRdm(jcmBillAcceptor, jcmBillAcceptor->dataEvPtr+2);
                         executeStateMachine(jcmBillAcceptor->billValidStateMachine, cmd);
+                        waitForEot(jcmBillAcceptor);
                      }
                 } else {
                 	doLog(1, "block no diferente esperado %d  %d!\n", jcmBillAcceptor->recBlockNo, jcmBillAcceptor->recBlockNo == aux); 

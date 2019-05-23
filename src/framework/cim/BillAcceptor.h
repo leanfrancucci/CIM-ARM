@@ -60,6 +60,11 @@
 /**/
 - (BOOL) hasCommunicationError;
 
+/**/
+- (void) getMaintenanceInfLog;
+
+
+
 @end
 
 #endif

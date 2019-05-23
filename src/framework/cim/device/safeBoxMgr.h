@@ -365,6 +365,8 @@ char *billAcceptorGetVersion( char devId );
 void billAcceptorsEnableReset( void );
 void billAcceptorCommunicatStat ( char devId, char enableComm );
 
+void billAcceptorGetMaintenanceLog( char devId );
+
 void billAcceptorSetParams ( unsigned char device, ValConfig *valConfig );
 
  /*

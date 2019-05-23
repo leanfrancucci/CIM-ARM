@@ -335,7 +335,7 @@ int com_write(OS_HANDLE handle, char *buffer, int qty)
     if (handle == handle485){
         int n = write(handle, buffer, qty);
         if (n <= 0){
-            printf("ERROR com_write!!!! %d HANDLE %d\n", n, handle);
+            // printf("ERROR com_write!!!! %d HANDLE %d\n", n, handle);
             return n;
         }
         tcdrain(handle);
@@ -347,7 +347,7 @@ int com_write(OS_HANDLE handle, char *buffer, int qty)
         //    printf("ACM com_write!!!! %d HANDLE %d\n", qty, handle);
             int n = write(handle, buffer, qty);
             if (n <= 0){
-                printf("ERROR com_write!!!! %d HANDLE %d\n", n, handle);
+                // printf("ERROR com_write!!!! %d HANDLE %d\n", n, handle);
                 return n;
             }
         //   printf("ACM after com_write!!!! %d HANDLE %d\n", n, handle);
@@ -358,7 +358,7 @@ int com_write(OS_HANDLE handle, char *buffer, int qty)
            // printf("USB com_write!!!! %d HANDLE %d\n", qty, handle);
             int n = write(handle, buffer, qty);
             if (n <= 0){
-                printf("ERROR com_write!!!! %d HANDLE %d\n", n, handle);
+                // printf("ERROR com_write!!!! %d HANDLE %d\n", n, handle);
                 return n;
             }
         //  printf("before tcdrain com_write!!!! %d HANDLE %d\n", n, handle);

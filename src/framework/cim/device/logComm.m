@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "util.h"
 #include "logComm.h"
 #include "log.h"
@@ -144,7 +145,7 @@ void logFrame( unsigned char devId, unsigned char *frame, int n, char direction 
 		str = getHexFrame(frame, n);	
 
 		//sprintf(strFormat, "%s | %d | %s", strDate, devId, directionList[direction] );
-		sprintf(strFormat, "%d | %s", devId, directionList[direction] );
+		sprintf(strFormat, "%lu - %d | %s", time(NULL), devId, directionList[direction] );
 
 		if ( logType == FILE_LOG || logType == FULL_LOG || logType == VALS_LOG  ){
 			logSaveToFile( strFormat, str );

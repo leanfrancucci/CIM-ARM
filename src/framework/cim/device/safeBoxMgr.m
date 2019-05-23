@@ -1132,6 +1132,25 @@ void runDevice( unsigned char devId )
 	billAcceptorRun( mySafeBox.jcmBillAcceptors[devId] );
 }
 
+/**
+ * Modificacion para RDM Logs 
+ * 
+ */
+void billAcceptorGetMaintenanceLog( char devId )
+{
+    printf("billAcceptorGetMaintenanceLog %d\n", devId);
+    
+//    mySafeBox.jcmBillAcceptors[devId]->getRDMLog = JCMRDMGetLog_MAINTENANCE_INFO;
+    
+//    mySafeBox.jcmBillAcceptors[devId]->getRDMLog = JCMRDMGetLog_ERROR_LOG;
+    
+    mySafeBox.jcmBillAcceptors[devId]->getRDMLog = JCMRDMGetLog_OPERATION_LOG;
+    
+ 
+    // billAcceptorGetRDMMaintenanceLog( mySafeBox.jcmBillAcceptors[devId] );
+}
+/**/
+
 void safeBoxMgrRun( void * foo)
 {
 

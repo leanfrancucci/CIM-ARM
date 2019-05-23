@@ -786,5 +786,15 @@ static char buff[50];
 	myEnableCommunication = FALSE;
 }
 
+/**
+ * Modificacion para RDM Logs 
+ * 
+ */
+
+- (void) getMaintenanceInfLog
+{
+    [SafeBoxHAL getMaintenanceInfLog: myHardwareId];   
+}
+
 
 @end

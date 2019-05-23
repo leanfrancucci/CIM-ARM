@@ -21,9 +21,7 @@ static int 	osHandleR;
 static unsigned char writeBuf[570];
 static unsigned char readBuf[570];
 static unsigned char readCtrlSignalsBuff[4];
-//static int lastlen;
-//static unsigned char lastdev;
-
+static unsigned char writeCtrlSignalBuff[4];
 
 /*
 	Abre el puerto pasado por parametro, inicializando la comunicacion con la placa.
@@ -130,23 +128,7 @@ static unsigned char m_Crc2Tbl[256] =
 	0x7b, 0x6a, 0x58, 0x49, 0x3d, 0x2c, 0x1e, 0x0f
 };
 
-/*
-unsigned short makeCRC(unsigned char* pbuf, int len)
-{
-	unsigned short m_Crc16work = 0; 
-    int ii;
-    unsigned char work, temp;
 
-	for( ii=0; ii < len; ii++)
-	{
-        temp = pbuf[ii];   
-        work =  temp ^ ((m_Crc16work) >> 8);
-        m_Crc16work = ((m_Crc16work^m_Crc1Tbl[work]) << 8) | m_Crc2Tbl[work];        
-	}
-
-	return m_Crc16work;
-}
-*/
 
 unsigned short makeCRC(unsigned char* pbuf, int len)
 {
@@ -168,27 +150,6 @@ unsigned short makeCRC(unsigned char* pbuf, int len)
 }
 
 
-/*
- * 
- * 
-void rdmWriteFrame(unsigned char *data, int dataLen)
-{
-        unsigned short crcval;
-        
-        memcpy(writeBuf, sntFrameEnc, 4);
-        memcpy(&writeBuf[4], data, dataLen);
-        writeBuf[dataLen + 4]= 0x03;
-        crcval = makeCRC( writeBuf+2, dataLen + 3);
-        memcpy(&writeBuf[dataLen + 4], etxCmd, 2);
-       *((unsigned short*) &writeBuf[dataLen + 6]) = SHORT_TO_L_ENDIAN(crcval);
-        
-        com_write( osHandleR, writeBuf, dataLen + 8 );
-
-        logFrame( 0, writeBuf, dataLen + 8, 1 );        
-
-}
-
-*/
 
 void rdmWriteFrame(unsigned char *data, int dataLen)
 {
@@ -220,12 +181,19 @@ void rdmWriteFrame(unsigned char *data, int dataLen)
 	Realiza el entramado de los datos pasados por parametro y envia los datos por el puerto
 	que se haya inicializado..
 */
+static int rdmWriteCtrlCounter = 1;
+
 void rdmWriteCtrlSignal( unsigned char * data, int dataLen )
 {
-    memcpy(writeBuf, data, dataLen);
-   	com_write( osHandleR, writeBuf, dataLen );
-
-	logFrame( 0, writeBuf, dataLen, 1 );
+    
+    memset(writeCtrlSignalBuff,0,sizeof(writeCtrlSignalBuff));
+    
+    memcpy(writeCtrlSignalBuff, data, dataLen);
+    
+   	com_write( osHandleR, writeCtrlSignalBuff, dataLen );
+   
+	logFrame( 0, writeCtrlSignalBuff, dataLen, 1 );    
+    
 }
 
 unsigned char * rdmReadCtrlSignal( int timeout )
@@ -235,6 +203,9 @@ unsigned char * rdmReadCtrlSignal( int timeout )
 
 	qty = com_read( osHandleR, bufPtr, 2,  300 );
 //	doLog(0,"RDM QTY READ %d\n", qty); fflush(stdout);
+
+    // printf("rdmWriteCtrlSignal RDM QTY READ %d\n", qty); fflush(stdout);
+    
 	logFrame( 0, readCtrlSignalsBuff, qty, 0 );
 
     if ( qty >= 2 ){
@@ -251,16 +222,25 @@ unsigned char * rdmReadCtrlSignal( int timeout )
 */
 unsigned char * rdmReadFrame( int timeout )
 {
-    int qty, len;
+    int qty = 0 , len, i;
     unsigned char *bufPtr = readBuf;
     unsigned char *strFrame;
     unsigned char *bufPtrAux = readBuf;
     unsigned char *bufPtrRef;
     unsigned short crcval;
-    unsigned short frameLen;
-
-	qty = com_read( osHandleR, bufPtr, 300,  300 );
-//	printf("RDM QTY READ %d\n", qty); fflush(stdout);
+    unsigned short frameLen, frameLenAux;
+    
+    memset(readBuf,0,sizeof(readBuf));
+    
+ //	qty = com_read( osHandleR, bufPtr, 300,  300 );
+    qty = com_read( osHandleR, bufPtr, 550,  timeout );
+    /*
+	printf("rdmReadFrame RDM QTY READ %d\n", qty); fflush(stdout);
+    for ( i = 0 ; i < qty; ++i){
+        printf("%02x ",readBuf[i]);        
+    }
+    printf("\n");
+    */
 	logFrame( 0, readBuf, qty, 0 );
 
     	if ( qty >= 2 ){
@@ -269,21 +249,36 @@ unsigned char * rdmReadFrame( int timeout )
                 bufPtr += 2;
                 qty -= 2;
         	}
-        
+        if ( !memcmp(bufPtr, enqCmd, 2) ){
+            return bufPtr;
+        }
+            
         
         //Calculo la longitud de la trama buscando el DLE ETX
         frameLen = 0;
         bufPtrAux = bufPtr;
-        while (qty > 0 && !((*bufPtrAux == 0x10) && (*(bufPtrAux+1) == 0x03)) ){
+        while (qty > 0 && !((*bufPtrAux == 0x10) && ((*(bufPtrAux+1) == 0x03) || (*(bufPtrAux+1) == 0x17)) ) ) {
             if ((*bufPtrAux == 0x10) && (*(bufPtrAux+1) == 0x10)){
                 //sacar despues!!
                 strFrame = getHexFrame(bufPtr, qty);
-                printf("****************** logueando trama doble 0x10 %s\n", strFrame);
+                // printf("****************** logueando trama doble 0x10 %s\n", strFrame);
                 ////////////
+                if ( (*bufPtrAux == 0x10) && (*(bufPtrAux+1) == 0x10) && ((*(bufPtrAux+2) == 0x03) || (*(bufPtrAux+2) == 0x17)) ) {
+                    ++bufPtrAux;
+                    *(bufPtrAux) = *(bufPtrAux+1);
+                    ++frameLen;
+                    --qty;
+                }
                 bufPtrRef = bufPtrAux;
-                while (!((*bufPtrRef == 0x10) && (*(bufPtrRef+1) == 0x03))) {
+                while ( !( (*bufPtrRef == 0x10) && ((*(bufPtrRef+1) == 0x03) || (*(bufPtrRef+1) == 0x17) ) ) ) {
                     *bufPtrRef = *(bufPtrRef+1);
-                    bufPtrRef++;
+                    ++bufPtrRef;                    
+                    if ( (*bufPtrRef == 0x10) && (*(bufPtrRef+1) == 0x10) && ((*(bufPtrRef+2) == 0x03) || (*(bufPtrRef+2) == 0x17)) ) {
+                        ++bufPtrRef;
+                        *bufPtrRef = *(bufPtrRef+1); 
+                        ++frameLen;
+                        --qty;
+                    }
                 }
                 *bufPtrRef = *(bufPtrRef+1);
                 bufPtrRef++;
@@ -293,31 +288,56 @@ unsigned char * rdmReadFrame( int timeout )
                 bufPtrRef++;
                 *bufPtrRef = *(bufPtrRef+1);
                 bufPtrRef++;
-		
-                qty--;
-                printf("ENCONTRE UNA TRAMA CON DOBLE 0X10, SUPRIMIENDO!\n");
+                //qty--;
+                // printf("ENCONTRE UNA TRAMA CON DOBLE 0X10, SUPRIMIENDO!\n");
             }
             qty--;
             bufPtrAux++;
             frameLen++;
-        }        
+        }
+        
+        frameLenAux = frameLen - i;
+        
+        printf("qty = %d, frameLen = %d, bufPtr[frameLen] = %02x, *(bufPtrAux+1) = %02x\n", qty, frameLen, readBuf[frameLen], *(bufPtrAux+1) );
         //encontro el DLE ETX:  
         if ( qty > 0 && frameLen > 8 ){
             if ( !memcmp(bufPtr, rcvdFrameEnc, 4 )){
-                bufPtr[frameLen]= 0x03;
+                bufPtr[frameLen]=*(bufPtrAux+1);
+               // bufPtr[frameLen]= 0x03;
+
+                printf("CECVAL from: \n");
+                for (i=2;i<=(frameLen-1);++i){
+                    printf("%02X ",*(bufPtr+i));
+                }
+                    printf("\n");
+                
                 crcval = makeCRC( bufPtr+2, frameLen - 1);
-		if ( crcval == SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2])))
+                printf("bufPtr: %02x\nframeLen : %d\n",*bufPtr, frameLen);
+                if ( crcval == SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2]))){
+                    bufPtr[frameLen]=0x10;
+                    /*for (i=0;i<=(frameLen+1);++i){
+                     *   printf("%02X ",readBuf[i]);
+                     *}
+                     *printf("\n");*/
                     return &bufPtr[4]; //returno a partir de blockNo
-		else{
-	   	   printf("crc mal %d %d\n", crcval, SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2]))); 
-		}
+                }
+                else{
+                    printf("crc mal %d %d\n", crcval, SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2])));
+                    printf("crc mal %02X %02X\n", crcval, SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2])));
+                    for (i=0;i<=(frameLen+1);++i){
+                       printf("%02X ",readBuf[i]);
+                    }
+                    printf("\n");
+                    msleep(5000);
+ 
+                }
             }else{
-		doLog(1,"bufptr != received frame \n"); fflush(stdout);
+                doLog(1,"bufptr != received frame \n"); fflush(stdout);
                 logFrame( 12, bufPtr, frameLen, 1 );
                 logFrame( 13, rcvdFrameEnc, 4, 1 );
             }
         } else
-		doLog(1,"no encotnro el dle etx \n"); fflush(stdout);
+            doLog(1,"no encotnro el dle etx \n"); fflush(stdout);
         
     }
     
@@ -337,14 +357,6 @@ char rdmInit( char portNumber )
     printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RDMINIT \n");
     if (rdmCommOpen( portNumber )){
         printf("<<<<<<<<<<<>>>>>>>>>>>>><<<<<<<<<rdminit comm abuerti ok \n");
-       /*   while (1){  
-            rdmWrite( enqCmd, 4 );
-            buf = rdmRead( 1000 );
-            if ( buf != NULL ) {
-                rdmWrite(ackCmd,2);
-                doLog(0,"sending ack \n"); fflush(stdout); 
-            }
-          }*/
         return 1;
     }else   
         printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Error al abrir el com solicitado xxxx\n");

@@ -71,6 +71,10 @@
 - (void) stopValidationMode;
 
 /**/
+- (void) getMaintenanceInfLog;
+
+
+/**/
 - (BOOL) hasActiveTimeDelays;
 
 /**

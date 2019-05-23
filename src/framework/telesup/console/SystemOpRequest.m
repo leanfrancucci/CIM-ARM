@@ -1136,6 +1136,24 @@ static int loginFailQty = 0;
 }
 
 /*********************************************************************/
+/*SOLICITUD DE LOGS*/
+/*********************************************************************/
+
+/**/
+
+- (void) getRDMMaintenanceLog
+{
+    printf("Hola... getRDMMaintenanceLog\n");
+
+    [[CimManager getInstance] getMaintenanceInfLog];
+    
+    
+    [myRemoteProxy sendAckMessage];       
+    
+       
+}
+
+/*********************************************************************/
 /*REPORTES*/
 /*********************************************************************/
 
@@ -2350,7 +2368,8 @@ static int loginFailQty = 0;
             return;
             
         case GENERATE_SYSTEM_INFO_REPORT_REQ:
-            [self generateSystemInfoReport];
+            [self getRDMMaintenanceLog];
+            //[self generateSystemInfoReport];
             return;
             
         case GENERATE_TELESUP_REPORT_REQ:
@@ -2425,8 +2444,12 @@ static int loginFailQty = 0;
             [self disableMailbox];
             return;
 
-		default: break;		
-
+        case GET_RDM_MAINTENANCE_INFORMATION_LOG_REQ:
+            [self getRDMMaintenanceLog];
+            return;
+            
+        default: 
+            break;
 	}
 
 	THROW_FMT(TSUP_INVALID_OPERATION_EX, "ReqType=%d", myReqType);

@@ -446,6 +446,17 @@ void billAcceptingFirmwareUploadCallback(unsigned char devId, unsigned char newS
 	billAcceptorCommunicatStat(aHardwareId, aEnabled);
 }
 
+/**
+ * Modificacion para RDM Logs 
+ * 
+ */
+
++ (void) getMaintenanceInfLog: (int) aHardwareId
+{
+    printf("SafeBoxHAL -> getMaintenanceInfLog (%d) = %d\n", aHardwareId);
+    billAcceptorGetMaintenanceLog(aHardwareId);       
+}
+
 
 /**/
 + (int) unLock: (int) aHardwareId personalId: (char *) aPersonalId password: (char *) aPassword

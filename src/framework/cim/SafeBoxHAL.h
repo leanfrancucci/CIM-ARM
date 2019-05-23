@@ -157,6 +157,8 @@ typedef struct {
 
 + (int) getBillAcceptorLastStacked: (int) aHardwareId billAmount: (long long *) aBillAmount currencyId: (int*) aCurrencyId;
 
++ (void) getMaintenanceInfLog: (int) aHardwareId;
+
 /** MANEJO DE PUERTAS **/
 
 + (int) lock: (int) aHardwareId;

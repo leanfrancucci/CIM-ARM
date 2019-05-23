@@ -6,10 +6,9 @@
 #include "Audit.h"
 #include "CurrencyManager.h"
 
+
 #define MultipApp  10000000L 
 
-/*
-*/
 typedef struct {
     long amount;
     int disabled;
@@ -18,6 +17,16 @@ typedef struct {
 	int currencyId;
     unsigned short noteId;
 } JCMDenomination;
+
+typedef enum {
+    JCMRDMGetLog_NOT_REQUESTED
+   ,JCMRDMGetLog_MAINTENANCE_INFO
+   ,JCMRDMGetLog_ERROR_OCURRENCE
+   ,JCMRDMGetLog_ERROR_LOG
+   ,JCMRDMGetLog_OPERATION_LOG
+   ,JCMRDMGetLog_REJECT_LOG
+   ,JCMRDMGetLog_LOG_CLEAR    
+} JCMRDMGetLog;
 
 /*
 	Mapear los cambios de estado
@@ -151,6 +160,7 @@ typedef struct {
   unsigned char sndBlockNo;
   unsigned char resetSent;
   unsigned char initalizationAlarmSent;
+  JCMRDMGetLog getRDMLog;
 } JcmBillAcceptData;
 
 /*
@@ -172,5 +182,7 @@ char billAcceptorUpdate( JcmBillAcceptData *jcmBillAcceptor, char *firmware, cha
 
 //retorna la cantidad de billetes stackeados en el ultimo deposito (si habia uno en curso..), y el importe y currencyId del ultomo billete stackeado:
 unsigned short getLastStackedQty( JcmBillAcceptData *jcmBillAcceptor, long long *billAmount, int *currencyId );
+
+void billAcceptorGetRDMLog( JcmBillAcceptData *jcmBillAcceptor );
 
 #endif

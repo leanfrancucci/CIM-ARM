@@ -8,6 +8,7 @@
 #include "system/util/endian.h"
 #include "id0003Mapping.h"
 
+
 #define FIRM_UPD_DATA_SIZE		246
 
 
@@ -702,7 +703,8 @@ void billAcceptorRun( JcmBillAcceptData *jcmBillAcceptor )
 				pollMei( jcmBillAcceptor );
 				break;
 			case RDM100:
-				pollRDM( jcmBillAcceptor );
+                //printf("poll \n");
+                pollRDM( jcmBillAcceptor );
 				break;
 		}
 
@@ -711,11 +713,22 @@ void billAcceptorRun( JcmBillAcceptData *jcmBillAcceptor )
 		   billAcceptorSetStatus( jcmBillAcceptor, jcmBillAcceptor->pendingStatus );
 		   jcmBillAcceptor->pendingStatus = 0;
 		}
+		if ( jcmBillAcceptor->getRDMLog != JCMRDMGetLog_NOT_REQUESTED ){
+            billAcceptorGetRDMLog(jcmBillAcceptor);
+        }
 	} /*else    {
      //   printf("jcmBillAcceptormgr noCommState en el billAcceptorRun val> %d\n", jcmBillAcceptor->devId);
     }*/
 	
 }
+
+void billAcceptorGetRDMLog( JcmBillAcceptData *jcmBillAcceptor )
+{
+    printf("protocol %d\n",jcmBillAcceptor->protocol);
+    
+    requestJCMRDMLog( jcmBillAcceptor ); 
+}
+
 
 void billAcceptorSetStatus( JcmBillAcceptData *jcmBillAcceptor, char newStatus )
 {

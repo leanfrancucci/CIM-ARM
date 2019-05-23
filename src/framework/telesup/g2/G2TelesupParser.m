@@ -337,7 +337,9 @@ MapRequestMsg 	mapReqMsg[] =
     ,{"ChangeCommercialState", 	CHANGE_COMMERCIAL_STATE_REQ,     NO_REQ_OP,	0}    
 
     ,{"EnableMailbox", 	    ENABLE_MAILBOX_REQ,     NO_REQ_OP,	0}    
-    ,{"DisableMailbox", 	DISABLE_MAILBOX_REQ,    NO_REQ_OP,	0}    
+    ,{"DisableMailbox", 	DISABLE_MAILBOX_REQ,    NO_REQ_OP,	0}
+    
+    ,{"GetRDMMaintenanceLog", 	GET_RDM_MAINTENANCE_INFORMATION_LOG_REQ,    NO_REQ_OP,	0}
    
 };
 

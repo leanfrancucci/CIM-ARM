@@ -74,10 +74,6 @@ StateMachine * newStateMachine(State *initialState, void *context)
 /**/
 void gotoState(StateMachine *sm, State *newState)
 {
-/*  if (sm == NULL)
-        printf("gotoState sm isNULL");
-  if (newState == NULL)
-        printf("gotoState newState isNULL");*/
   sm->lastState = sm->currentState;
   sm->currentState = newState;
   if (newState && newState->entry)
