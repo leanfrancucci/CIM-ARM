@@ -234,14 +234,8 @@ unsigned char * rdmReadFrame( int timeout )
     
  //	qty = com_read( osHandleR, bufPtr, 300,  300 );
     qty = com_read( osHandleR, bufPtr, 550,  timeout );
-    /*
-	printf("rdmReadFrame RDM QTY READ %d\n", qty); fflush(stdout);
-    for ( i = 0 ; i < qty; ++i){
-        printf("%02x ",readBuf[i]);        
-    }
-    printf("\n");
-    */
-	logFrame( 0, readBuf, qty, 0 );
+
+    logFrame( 0, readBuf, qty, 0 );
 
     	if ( qty >= 2 ){
            //si arranca con un eot, lo ignoro 
@@ -252,8 +246,6 @@ unsigned char * rdmReadFrame( int timeout )
         if ( !memcmp(bufPtr, enqCmd, 2) ){
             return bufPtr;
         }
-            
-        
         //Calculo la longitud de la trama buscando el DLE ETX
         frameLen = 0;
         bufPtrAux = bufPtr;
@@ -276,7 +268,6 @@ unsigned char * rdmReadFrame( int timeout )
                     if ( (*bufPtrRef == 0x10) && (*(bufPtrRef+1) == 0x10) && ((*(bufPtrRef+2) == 0x03) || (*(bufPtrRef+2) == 0x17)) ) {
                         ++bufPtrRef;
                         *bufPtrRef = *(bufPtrRef+1); 
-                        ++frameLen;
                         --qty;
                     }
                 }
@@ -288,48 +279,24 @@ unsigned char * rdmReadFrame( int timeout )
                 bufPtrRef++;
                 *bufPtrRef = *(bufPtrRef+1);
                 bufPtrRef++;
-                //qty--;
                 // printf("ENCONTRE UNA TRAMA CON DOBLE 0X10, SUPRIMIENDO!\n");
             }
             qty--;
             bufPtrAux++;
             frameLen++;
         }
-        
-        frameLenAux = frameLen - i;
-        
-        printf("qty = %d, frameLen = %d, bufPtr[frameLen] = %02x, *(bufPtrAux+1) = %02x\n", qty, frameLen, readBuf[frameLen], *(bufPtrAux+1) );
         //encontro el DLE ETX:  
         if ( qty > 0 && frameLen > 8 ){
             if ( !memcmp(bufPtr, rcvdFrameEnc, 4 )){
                 bufPtr[frameLen]=*(bufPtrAux+1);
                // bufPtr[frameLen]= 0x03;
-
-                printf("CECVAL from: \n");
-                for (i=2;i<=(frameLen-1);++i){
-                    printf("%02X ",*(bufPtr+i));
-                }
-                    printf("\n");
-                
                 crcval = makeCRC( bufPtr+2, frameLen - 1);
-                printf("bufPtr: %02x\nframeLen : %d\n",*bufPtr, frameLen);
                 if ( crcval == SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2]))){
                     bufPtr[frameLen]=0x10;
-                    /*for (i=0;i<=(frameLen+1);++i){
-                     *   printf("%02X ",readBuf[i]);
-                     *}
-                     *printf("\n");*/
                     return &bufPtr[4]; //returno a partir de blockNo
                 }
                 else{
                     printf("crc mal %d %d\n", crcval, SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2])));
-                    printf("crc mal %02X %02X\n", crcval, SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2])));
-                    for (i=0;i<=(frameLen+1);++i){
-                       printf("%02X ",readBuf[i]);
-                    }
-                    printf("\n");
-                    msleep(5000);
- 
                 }
             }else{
                 doLog(1,"bufptr != received frame \n"); fflush(stdout);

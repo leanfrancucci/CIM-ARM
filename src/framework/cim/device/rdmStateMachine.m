@@ -13,7 +13,7 @@
 #define RDM_REQ_ERROR_LOG               0x73
 #define RDM_REQ_OPERATION_LOG           0x74
 
-#define RDM_OPERATION_LOG_TYPE_1        0X30
+#define RDM_OPERATION_LOG_TYPE_1        0x30
 #define RDM_OPERATION_LOG_TYPE_2        0x31
 
 //ActualState
@@ -591,6 +591,8 @@ void notifyBillsAccepted(StateMachine *sm)
     
 }
 
+static unsigned char maintenanceLogStr[100];
+
 void processMaintenanceInformationLog(StateMachine *sm)
 {
     
@@ -606,22 +608,18 @@ void processMaintenanceInformationLog(StateMachine *sm)
         memcpy(acceptedNotes, jcmBillAcceptor->dataEvPtr+11, 4);
         memcpy(storedNotes,   jcmBillAcceptor->dataEvPtr+15, 4);
         memcpy(rejectedNotes, jcmBillAcceptor->dataEvPtr+19, 4);
+
+        printf( maintenanceLogStr, "BILLETES ACEPTADOS: %d,BILLETES ALMACENADOS: %d,BILLETES RECHAZADOS: %d\n", SHORT_TO_L_ENDIAN(*(unsigned short *)(acceptedNotes)), SHORT_TO_L_ENDIAN(*(unsigned short *)(storedNotes)), SHORT_TO_L_ENDIAN(*(unsigned short *)(rejectedNotes)) );
         
-        // saveMaintenanceLogLineToFile( jcmBillAcceptor->dataEvPtr+11, 4 );        
+        sprintf( maintenanceLogStr, "BILLETES ACEPTADOS: %d,BILLETES ALMACENADOS: %d,BILLETES RECHAZADOS: %d\n", SHORT_TO_L_ENDIAN(*(unsigned short *)(acceptedNotes)), SHORT_TO_L_ENDIAN(*(unsigned short *)(storedNotes)), SHORT_TO_L_ENDIAN(*(unsigned short *)(rejectedNotes)) );
         
-        printf (" billetes aceptados: %02x %02x %02x %02x\n", acceptedNotes[0], acceptedNotes[1], acceptedNotes[2],acceptedNotes[3]);
-
-        printf (" billetes almacenados: %02x %02x %02x %02x\n", storedNotes[0], storedNotes[1], storedNotes[2],storedNotes[3]);
-
-        printf (" billetes rechazados: %02x %02x %02x %02x\n", rejectedNotes[0], rejectedNotes[1], rejectedNotes[2],rejectedNotes[3]);
-
-        printf (" billetes aceptados: %d\n billetes almacenados: %d\n billetes rechazados: %d\n", 
-                SHORT_TO_L_ENDIAN(*(unsigned short *)(acceptedNotes)), SHORT_TO_L_ENDIAN(*(unsigned short *)(storedNotes)), SHORT_TO_L_ENDIAN(*(unsigned short *)(rejectedNotes)));
-
+        saveMaintenanceLogToFile( maintenanceLogStr );        
+        
     } else
-        printf("RDM %d Error Detected \n", jcmBillAcceptor->devId ); 
- 
+        printf("RDM %d Error Detected \n", jcmBillAcceptor->devId );  
 }
+
+static unsigned char errorLogStr[40];
 
 void processRDMErrorLog(StateMachine *sm)
 {   
@@ -653,6 +651,10 @@ void processRDMErrorLog(StateMachine *sm)
     bufferPtr = jcmBillAcceptor->dataEvPtr+11;
  
     BOOL sendACK = FALSE;
+    
+    sprintf ( errorLogStr, "DATE,HOUR,CODE ERROR\n" );
+    
+    saveErrorLogToFile( errorLogStr, TRUE );
    
     do {
          if ( jcmBillAcceptor->dataEvPtr != NULL ) {
@@ -684,7 +686,12 @@ void processRDMErrorLog(StateMachine *sm)
                 memcpy( &dataLogEntry, bufferPtr, 9 );
                  
                 printf (" %d/%02d/%02d %02d:%02d:%02d Code error: %02x %02x\n", 
-                SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.year)), dataLogEntry.month, dataLogEntry.day, dataLogEntry.hh, dataLogEntry.mm, dataLogEntry.ss, dataLogEntry.codeError[0], dataLogEntry.codeError[1] );              
+                SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.year)), dataLogEntry.month, dataLogEntry.day, dataLogEntry.hh, dataLogEntry.mm, dataLogEntry.ss, dataLogEntry.codeError[0], dataLogEntry.codeError[1] );
+
+                sprintf ( errorLogStr, "%d/%02d/%02d,%02d:%02d:%02d,%02X %02X\n", 
+                SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.year)), dataLogEntry.month, dataLogEntry.day, dataLogEntry.hh, dataLogEntry.mm, dataLogEntry.ss, dataLogEntry.codeError[0], dataLogEntry.codeError[1] );
+                
+                saveErrorLogToFile( errorLogStr , FALSE );
                 
                 bufferPtr+=9;
                
@@ -1001,10 +1008,11 @@ void requestJCMRDMLog(JcmBillAcceptData *jcmBillAcceptor)
     int dataLen;
     
     char qtyLogs5000[] = { 0x01 , 0x00 , 0x88 , 0x13 }; // From 1 to 5000 log request (little endian).
-    char qtyLogs6000[] = { 0x01 , 0x00 , 0x70 , 0x17 }; // From 1 to 6000 log request (little endian).
+    char qtyLogs6000[] = { 0x70 , 0x17 }; // 6000 log request (little endian).
     char qtyLogs1000[] = { 0xE8 , 0x03 }; 
     char qtyLogs100[] =  { 0x64 , 0x00 }; 
     char qtyLogs2000[] = { 0xD0 , 0x07 }; 
+    char qtyLogs3000[] = { 0xB8 , 0x0B }; 
 
     jcmBillAcceptor->sndBlockNo = getNextBlockNo(jcmBillAcceptor->sndBlockNo);
     
@@ -1027,7 +1035,7 @@ void requestJCMRDMLog(JcmBillAcceptData *jcmBillAcceptor)
         
         case JCMRDMGetLog_OPERATION_LOG:
             rawData[1] = RDM_REQ_OPERATION_LOG;
-            memcpy(rawData+2, qtyLogs2000, 2);
+            memcpy(rawData+2, qtyLogs3000, 2);
             dataLen = 4;
             break;
     }

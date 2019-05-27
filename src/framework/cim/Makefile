@@ -62,7 +62,8 @@ OBJECTS= \
 	BoxModel.o \
 	AESencript.o \
 	SupportThread.o \
-	dynamicPin.o 
+	dynamicPin.o \
+	rdmLogs.o 
 
 #	CimStateExtraction.o \
 #OBJECTS+= TestCim.o
