@@ -4,7 +4,6 @@
 #include "rdmLogs.h"
 
 #define RDM_MAINTENANCE_LOG_FILE    "RDM-MaintenanceLog.csv"
-#define RDM_ERROR_LOG_FILE          "RDM-ErrorLog.csv"
 
 static FILE *fp;
 static char dateTime[100];
@@ -35,23 +34,19 @@ void saveMaintenanceLogToFile( unsigned char *msg )
     fclose(fp);
 }
 
-static char errorLogFileName[20];
+static char logFileName[30];
 
-void saveErrorLogToFile(unsigned char* msg, BOOL createFile)
+void saveLogToFile(unsigned char* msg, BOOL createFile, unsigned char *fileName)
 {
-    
     if ( createFile ){
-        strcat( errorLogFileName, getDate() );
-        strcat( errorLogFileName, RDM_ERROR_LOG_FILE );
-        fp = fopen( errorLogFileName, "w+" );        
-    }
-        
-    fp = openCreateFile( errorLogFileName ); 
-    
-    //fp = fopen( RDM_MAINTENANCE_LOG_FILE, "w+" );
-    
+        strcat( logFileName, getDate() );
+        strcat( logFileName, fileName );
+        fp = fopen( logFileName, "w+" );        
+    }else
+        fp = openCreateFile( logFileName ); 
+     
     if ( fp == NULL ){
-        printf( "Error al abrir el archivo %s \n", errorLogFileName );
+        printf( "Error al abrir el archivo %s \n", logFileName );
         return;
     }
  

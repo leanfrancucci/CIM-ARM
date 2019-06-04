@@ -10,8 +10,11 @@
 #define RDM_DEPOSIT_COUNT_RESULT_CMD    0x42
 #define RDM_REQ_CURRENCY_TABLE_CMD      0x51
 #define RDM_REQ_MAINTENANCE_INF_LOG     0x70
+#define RDM_REQ_NUMBER_ERROR_OCCURENCE  0x71
+#define RDM_REQ_LOG_INFORMATION         0x72
 #define RDM_REQ_ERROR_LOG               0x73
 #define RDM_REQ_OPERATION_LOG           0x74
+#define RDM_REQ_REJECT_LOG              0x75
 
 #define RDM_OPERATION_LOG_TYPE_1        0x30
 #define RDM_OPERATION_LOG_TYPE_2        0x31
@@ -620,7 +623,7 @@ void processMaintenanceInformationLog(StateMachine *sm)
 }
 
 static unsigned char errorLogStr[40];
-
+/*
 void processRDMErrorLog(StateMachine *sm)
 {   
     JcmBillAcceptData *jcmBillAcceptor; 
@@ -639,12 +642,12 @@ void processRDMErrorLog(StateMachine *sm)
         unsigned char codeError[2];
     } dataLogEntry;        
     
-    /*
-     * BLK (1 byte) -> jcmBillAcceptor->dataEvPtr 
-     * CMD (1 byte)
-     * SST1 ... STT7 (7 bytes)
-     * RESULT (2 bytes)
-     * */
+    //
+    // BLK (1 byte) -> jcmBillAcceptor->dataEvPtr 
+    // CMD (1 byte)
+    // SST1 ... STT7 (7 bytes)
+    // RESULT (2 bytes)
+    //
     
     printf("ENTRY processRDMErrorLog\n");
 
@@ -715,11 +718,432 @@ void processRDMErrorLog(StateMachine *sm)
         rdmWriteCtrlSignal(ackCmd,2);
         waitForEot(jcmBillAcceptor);
     }
-    
    
     printf(">>>>> SALGO processRDMErrorLog \n\n");
 
 }
+*/
+/*
+void processRDMErrorOccurrenceLog(StateMachine *sm)
+{
+    JcmBillAcceptData *jcmBillAcceptor; 
+    jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
+    
+    unsigned short result = 0, i;
+    unsigned char *bufferPtr;
+    
+    struct dataLog {
+        unsigned char codeError[2];
+        unsigned char frecuency[2];
+    } dataLogEntry;        
+
+
+    printf("ENTRY processRDMErrorOccurrenceLog\n");
+    
+    sprintf ( errorLogStr, "CODE ERROR,FRECUENCY\n" );
+    
+    saveErrorLogToFile( errorLogStr, TRUE );
+
+    bufferPtr = jcmBillAcceptor->dataEvPtr+11;
+     
+    BOOL sendACK = FALSE;
+   
+    do {
+         if ( jcmBillAcceptor->dataEvPtr != NULL ) {
+          
+            result = SHORT_TO_L_ENDIAN(*((unsigned short*)(jcmBillAcceptor->dataEvPtr+9)));
+                
+            if ( result == 0 ) {
+                
+                if ( (*bufferPtr == 0x10) && (*(bufferPtr+1) == 0x17)  ) {  // 0x10 0x17 ETB
+                        if (sendACK)
+                            rdmWriteCtrlSignal(ackCmd,2);
+                        else 
+                            sendACK = TRUE;
+                        do {
+                          jcmBillAcceptor->dataEvPtr = rdmReadFrame( 300 );
+                            if ( jcmBillAcceptor->dataEvPtr != NULL){
+                                if ( *(jcmBillAcceptor->dataEvPtr) == 0x10 && *(jcmBillAcceptor->dataEvPtr+1) == 0x05) {
+                                    rdmWriteCtrlSignal(ackCmd,2);
+                                    continue;
+                                }                                
+                                doProcessStatusRdm(jcmBillAcceptor, jcmBillAcceptor->dataEvPtr+2);                            
+                                bufferPtr = jcmBillAcceptor->dataEvPtr+11;
+                            }
+                            else {
+                                printf("10 17 jcmBillAcceptor->dataEvPtr NULL\n");
+                                rdmWriteCtrlSignal(nakCmd,2);
+                                jcmBillAcceptor->commErrQty++;
+                            }
+                        } while ( jcmBillAcceptor->dataEvPtr == NULL && jcmBillAcceptor->commErrQty++ < 3 );
+                        continue;
+                }
+                
+                memcpy( &dataLogEntry, bufferPtr, 4 );
+                
+                printf("%02X %02X,%d\n", dataLogEntry.codeError[0], dataLogEntry.codeError[1], (*(unsigned short *)(dataLogEntry.frecuency)) );
+                
+                sprintf( errorLogStr, "%02X %02X,%d\n", dataLogEntry.codeError[0], dataLogEntry.codeError[1], (*(unsigned short *)(dataLogEntry.frecuency)) );
+
+                saveErrorLogToFile( errorLogStr , FALSE );
+            
+                bufferPtr+=sizeof( dataLogEntry );           
+               
+            } else {
+                // result != 0                 
+            }
+        } else {
+            rdmWriteCtrlSignal(nakCmd,2);
+            printf("readframe retorna NULLLLL\n");
+            jcmBillAcceptor->commErrQty++;                
+        }
+        if ((jcmBillAcceptor->dataEvPtr == NULL) && ( jcmBillAcceptor->commErrQty >= 3 ))
+            break;   
+
+    } while ( !((*bufferPtr == 0x10) && (*(bufferPtr+1) == 0x03)) ); // 0x10 0x03 EOT
+     
+    if ( jcmBillAcceptor->commErrQty > 3 ) {        
+        jcmBillAcceptor->errorCause = ID003_COMM_ERROR;
+        executeStateMachine(jcmBillAcceptor->billValidStateMachine, ID003_COMM_ERROR);        
+    } else {
+        rdmWriteCtrlSignal(ackCmd,2);
+        waitForEot(jcmBillAcceptor);
+    }
+   
+    printf(">>>>> SALGO processRDMErrorOccurrenceLog \n\n");
+    
+}
+*/
+
+unsigned char *rdmErrorLogCallback(unsigned char *bufferPtr)
+{
+    struct dataLog {
+        unsigned char year[2];
+        unsigned char month;
+        unsigned char day;
+        unsigned char hh;
+        unsigned char mm;
+        unsigned char ss;
+        unsigned char codeError[2];
+    } dataLogEntry;    
+    
+    BOOL createNewFile = FALSE;
+     
+    memcpy( &dataLogEntry, bufferPtr, sizeof( dataLogEntry ) );
+
+    bufferPtr+=sizeof( dataLogEntry );
+    
+    printf (" %d/%02d/%02d %02d:%02d:%02d Code error: %02x %02x\n", SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.year)), dataLogEntry.month, dataLogEntry.day, dataLogEntry.hh, dataLogEntry.mm, dataLogEntry.ss, dataLogEntry.codeError[0], dataLogEntry.codeError[1] );
+    
+    sprintf ( errorLogStr, "%d/%02d/%02d,%02d:%02d:%02d,%02X %02X\n", SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.year)), dataLogEntry.month, dataLogEntry.day, dataLogEntry.hh, dataLogEntry.mm, dataLogEntry.ss, dataLogEntry.codeError[0], dataLogEntry.codeError[1] );
+    
+    saveLogToFile( errorLogStr , createNewFile, errorLogFileName );
+     
+    return bufferPtr;
+    
+}
+
+void processRDMErrorLog(StateMachine *sm)
+{
+    unsigned char*(*pf)(unsigned char*);
+    
+    pf = rdmErrorLogCallback;
+    
+    BOOL createNewFile = TRUE;
+  
+    sprintf ( errorLogStr, "DATE,HOUR,CODE ERROR\n" );
+   
+    saveLogToFile( errorLogStr, createNewFile, errorLogFileName );
+    
+    processLogFrame(sm, pf);   
+    
+}
+
+unsigned char *rdmErrorOccurenceLogCallback(unsigned char *bufferPtr)
+{
+    struct dataLog {
+        unsigned char codeError[2];
+        unsigned char frecuency[2];
+    } dataLogEntry;
+    
+    BOOL createNewFile = FALSE;
+     
+    memcpy( &dataLogEntry, bufferPtr, sizeof( dataLogEntry ) );
+
+    bufferPtr+=sizeof( dataLogEntry );
+
+    printf("%02X %02X,%d\n", dataLogEntry.codeError[0], dataLogEntry.codeError[1], (*(unsigned short *)(dataLogEntry.frecuency)) );
+                
+    sprintf( errorLogStr, "%02X %02X,%d\n", dataLogEntry.codeError[0], dataLogEntry.codeError[1], (*(unsigned short *)(dataLogEntry.frecuency)) );
+
+    saveLogToFile( errorLogStr , createNewFile, errorOccurenceLogFileName );
+     
+    return bufferPtr;
+
+}
+
+void processRDMErrorOccurrenceLog(StateMachine *sm)
+{
+    unsigned char*(*pf)(unsigned char*);
+    
+    pf = rdmErrorOccurenceLogCallback;
+    
+    BOOL createNewFile = TRUE;
+  
+    sprintf ( errorLogStr, "CODE ERROR,FRECUENCY\n" );
+    
+    saveLogToFile( errorLogStr, createNewFile, errorOccurenceLogFileName );
+    
+    processLogFrame(sm, pf);   
+    
+}
+
+
+unsigned char *rdmRejectLogCallback(unsigned char *bufferPtr)
+{
+    struct dataLog {
+        unsigned char year[2];
+        unsigned char month;
+        unsigned char day;
+        unsigned char hh;
+        unsigned char mm;
+        unsigned char ss;
+        unsigned char noteId[2];
+        unsigned char determination;
+        unsigned char rejectCode;
+        unsigned char errorCode[2];
+    } dataLogEntry;        
+    
+    BOOL createNewFile = FALSE;
+    
+    memcpy( &dataLogEntry, bufferPtr, sizeof( dataLogEntry ) );
+
+    printf ("%d/%02d/%02d %02d:%02d:%02d Note ID: %02X %02X determination: %d Code Error: %02X %02X\n", SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.year)), dataLogEntry.month, dataLogEntry.day, dataLogEntry.hh, dataLogEntry.mm, dataLogEntry.ss, dataLogEntry.noteId[0], dataLogEntry.noteId[1], dataLogEntry.determination, dataLogEntry.errorCode[0], dataLogEntry.errorCode[1] );
+    
+    sprintf ( errorLogStr, "%d/%02d/%02d,%02d:%02d:%02d,%02X %02X,%d,%02X %02X\n", SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.year)), dataLogEntry.month, dataLogEntry.day, dataLogEntry.hh, dataLogEntry.mm, dataLogEntry.ss, dataLogEntry.noteId[0], dataLogEntry.noteId[1], dataLogEntry.determination, dataLogEntry.errorCode[0], dataLogEntry.errorCode[1] );
+
+    saveLogToFile( errorLogStr , createNewFile, rejectLogFileName );
+            
+    bufferPtr+=sizeof( dataLogEntry );           
+    
+    return bufferPtr;
+    
+}
+
+void processRDMRejectLog(StateMachine *sm)
+{
+    unsigned char*(*pf)(unsigned char*);
+    
+    pf = rdmRejectLogCallback;
+    
+    BOOL createNewFile = TRUE;
+  
+    sprintf ( errorLogStr, "DATE,HOUR,NOTE ID,DETERMINATION,REJECT CODE,ERROR CODE\n" );
+    
+    saveLogToFile( errorLogStr, createNewFile, rejectLogFileName );
+    
+    processLogFrame(sm, pf);   
+}
+
+unsigned char *rdmInformationLogCallback(unsigned char *bufferPtr)
+{
+    struct dataLog {
+        unsigned char year[2];
+        unsigned char month;
+        unsigned char day;
+        unsigned char hh;
+        unsigned char mm;
+        unsigned char ss;
+        unsigned char noteId[2];
+        unsigned char determination;
+        unsigned char rejectCode;
+        unsigned char errorCode[2];
+        unsigned char ocr1[12];
+        unsigned char ocr2[12];
+    } dataLogEntry;        
+    
+    BOOL createNewFile = FALSE;
+    
+    memcpy( &dataLogEntry, bufferPtr, sizeof( dataLogEntry ) );
+
+    bufferPtr+=sizeof( dataLogEntry );           
+
+    printf ("%d/%02d/%02d %02d:%02d:%02d Note ID: %02X %02X determination: %d Code Error: %02X %02X\n", SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.year)), dataLogEntry.month, dataLogEntry.day, dataLogEntry.hh, dataLogEntry.mm, dataLogEntry.ss, dataLogEntry.noteId[0], dataLogEntry.noteId[1], dataLogEntry.determination, dataLogEntry.errorCode[0], dataLogEntry.errorCode[1] );
+    
+    sprintf ( errorLogStr, "%d/%02d/%02d,%02d:%02d:%02d,%02X %02X,%d,%02X %02X\n", SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.year)), dataLogEntry.month, dataLogEntry.day, dataLogEntry.hh, dataLogEntry.mm, dataLogEntry.ss, dataLogEntry.noteId[0], dataLogEntry.noteId[1], dataLogEntry.determination, dataLogEntry.errorCode[0], dataLogEntry.errorCode[1] );
+
+    saveLogToFile( errorLogStr , createNewFile, informationLogFileName );
+    
+    return bufferPtr;
+    
+}
+
+void processRDMInformationLog(StateMachine *sm)
+{    
+    unsigned char*(*pf)(unsigned char*);
+    
+    pf = rdmInformationLogCallback;
+    
+    BOOL createNewFile = TRUE;
+  
+    sprintf ( errorLogStr, "DATE,HOUR,NOTE ID,DETERMINATION,REJECT CODE,ERROR CODE,OCR1,OCR2\n" );
+    
+    saveLogToFile( errorLogStr, createNewFile, informationLogFileName );
+    
+    processLogFrame(sm, pf);   
+}
+
+unsigned char *rdmOperationLogCallback(unsigned char *bufferPtr)
+{
+    union stOperationLog {
+        
+        struct LogType1 {
+            unsigned char type;
+            unsigned char code;
+            unsigned char year[2];
+            unsigned char month;
+            unsigned char day;
+            unsigned char hh;
+            unsigned char mm;
+            unsigned char ss;
+            unsigned char dummy;
+            unsigned char dataSize[2];
+            unsigned char block;
+            unsigned char mode1;
+            unsigned char mode2;
+            unsigned char data[4];        
+        } dataLogType1;
+        
+        struct LogType2 {
+            unsigned char type;
+            unsigned char data[18];
+        } dataLogType2;
+        
+    } dataLogEntry;
+    
+    unsigned short i;
+    
+    BOOL createNewFile = FALSE;
+    
+    memcpy( &dataLogEntry, bufferPtr, sizeof( dataLogEntry ) );
+
+    bufferPtr+=sizeof( dataLogEntry );           
+    
+    switch ( dataLogEntry.dataLogType1.type ){
+        
+        case RDM_OPERATION_LOG_TYPE_1:
+            printf (" %d/%02d/%02d %02d:%02d:%02d Code: %02x Size: %d Blocks: %d\n",                SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.dataLogType1.year)), dataLogEntry.dataLogType1.month, dataLogEntry.dataLogType1.day, dataLogEntry.dataLogType1.hh, dataLogEntry.dataLogType1.mm, dataLogEntry.dataLogType1.ss, dataLogEntry.dataLogType1.code, SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.dataLogType1.dataSize)), dataLogEntry.dataLogType1.block );   
+            break;
+                        
+        case RDM_OPERATION_LOG_TYPE_2:
+            for ( i=0; i<18 ; ++i ){
+                printf("%02X ",dataLogEntry.dataLogType2.data[i]);
+            }
+            printf("\n");
+            break;
+    }
+    
+    return bufferPtr;
+
+}
+
+void processRDMOperationLog(StateMachine *sm)
+{
+    unsigned char*(*pf)(unsigned char*);
+    
+    pf = rdmOperationLogCallback;
+    
+    BOOL createNewFile = TRUE;
+  
+    sprintf ( errorLogStr, "\n" );
+    
+    saveLogToFile( errorLogStr, createNewFile, operationLogFileName );
+    
+    processLogFrame(sm, pf);   
+    
+}
+
+void processLogFrame( StateMachine *sm, unsigned char*(*pf)(unsigned char *Ptr) )
+{
+    JcmBillAcceptData *jcmBillAcceptor; 
+    jcmBillAcceptor = (JcmBillAcceptData *)sm->context;
+    
+    unsigned short result = 0;
+    
+    unsigned char *bufferPtr;
+
+    printf("ENTRO A processLogFrame >>>>>>>>>>>>>>>>>>>>>\n");
+
+    bufferPtr = jcmBillAcceptor->dataEvPtr+11;
+     
+    BOOL sendACK = FALSE;
+   
+    do {
+         if ( jcmBillAcceptor->dataEvPtr != NULL ) {
+          
+            result = SHORT_TO_L_ENDIAN(*((unsigned short*)(jcmBillAcceptor->dataEvPtr+9)));
+                
+            if ( result == 0 ) {
+                
+                if ( (*bufferPtr == 0x10) && (*(bufferPtr+1) == 0x17)  ) {  // 0x10 0x17 ETB
+                        if (sendACK)
+                            rdmWriteCtrlSignal(ackCmd,2);
+                        else 
+                            sendACK = TRUE;
+                        do {
+                          jcmBillAcceptor->dataEvPtr = rdmReadFrame2( 300 );
+                            if ( jcmBillAcceptor->dataEvPtr != NULL){
+                                if ( *(jcmBillAcceptor->dataEvPtr) == 0x10 && *(jcmBillAcceptor->dataEvPtr+1) == 0x05) {
+                                    rdmWriteCtrlSignal(ackCmd,2);
+                                    continue;
+                                }                                
+                                doProcessStatusRdm(jcmBillAcceptor, jcmBillAcceptor->dataEvPtr+2);                            
+                                bufferPtr = jcmBillAcceptor->dataEvPtr+11;
+                            }
+                            else {
+                                printf("10 17 jcmBillAcceptor->dataEvPtr NULL\n");
+                                rdmWriteCtrlSignal(nakCmd,2);                                
+                                jcmBillAcceptor->commErrQty++;
+                            }
+                        } while ( jcmBillAcceptor->dataEvPtr == NULL && jcmBillAcceptor->commErrQty++ < 4 );
+                        continue;
+                }
+                
+                bufferPtr = pf(bufferPtr);
+                                
+            } else {
+                // result != 0                 
+            }
+        } else {
+            rdmWriteCtrlSignal(nakCmd,2);
+            printf("readframe retorna NULLLLL\n");
+            jcmBillAcceptor->commErrQty++;                
+        }
+        if ((jcmBillAcceptor->dataEvPtr == NULL) && ( jcmBillAcceptor->commErrQty >= 3 ))
+            break;   
+        
+
+    } while ( !((*bufferPtr == 0x10) && (*(bufferPtr+1) == 0x03)) ); // 0x10 0x03 EOT
+     
+    if ( jcmBillAcceptor->commErrQty > 3 ) {        
+        jcmBillAcceptor->errorCause = ID003_COMM_ERROR;
+        executeStateMachine(jcmBillAcceptor->billValidStateMachine, ID003_COMM_ERROR);        
+    } else {
+        rdmWriteCtrlSignal(ackCmd,2);
+        waitForEot(jcmBillAcceptor);
+    }
+   
+    printf(">>>>> SALGO processLogFrame \n\n");
+    
+}
+
+
+
+
+
+
+
+/*
 
 void processRDMOperationLog(StateMachine *sm)
 {   
@@ -774,11 +1198,7 @@ void processRDMOperationLog(StateMachine *sm)
                         else 
                             sendACK = TRUE;
                         do {
-                            /*if ( !memcmp(rdmReadCtrlSignal(1000),enqCmd,2) ){
-                                rdmWriteCtrlSignal(ackCmd,2);
-                                continue;                                
-                            }*/                            
-                            jcmBillAcceptor->dataEvPtr = rdmReadFrame( 300 );
+                           jcmBillAcceptor->dataEvPtr = rdmReadFrame( 300 );
                             if ( jcmBillAcceptor->dataEvPtr != NULL){
                                 if ( *(jcmBillAcceptor->dataEvPtr) == 0x10 && *(jcmBillAcceptor->dataEvPtr+1) == 0x05) {
                                     rdmWriteCtrlSignal(ackCmd,2);
@@ -810,11 +1230,7 @@ void processRDMOperationLog(StateMachine *sm)
                         printf("\n");
                         break;
                 }
-                /* if (operationLogEntry.dataLogType1.type == RDM_OPERATION_LOG_TYPE_1)
-                    printf (" %d/%02d/%02d %02d:%02d:%02d Code: %02x Size: %02x\n", 
-                SHORT_TO_L_ENDIAN(*(unsigned short *)(operationLogEntry.dataLogType1.year)), operationLogEntry.dataLogType1.month, operationLogEntry.dataLogType1.day, operationLogEntry.dataLogType1.hh, operationLogEntry.dataLogType1.mm, operationLogEntry.dataLogType1.ss, operationLogEntry.dataLogType1.code, SHORT_TO_L_ENDIAN(*(unsigned short *)(operationLogEntry.dataLogType1.dataSize)) );              
-                */
-                
+                 
                 bufferPtr+=sizeof(operationLogEntry);           
                 
                
@@ -842,7 +1258,7 @@ void processRDMOperationLog(StateMachine *sm)
     printf(">>>>> SALGO processRDMOperationLog \n\n");
 
 }
-
+*/
 
 ////// Estados de la maquina de estados //////////////////////////////////
 
@@ -907,8 +1323,11 @@ static Transition rdmDisabledStateTransitions[] =
 {
 	 { RDM_DEPOSIT_COUNT_RESULT_CMD, NULL, notifyBillsAccepted, &rdmDisabledState }
 	,{ RDM_REQ_MAINTENANCE_INF_LOG, NULL, processMaintenanceInformationLog, &rdmDisabledState } 
+	,{ RDM_REQ_NUMBER_ERROR_OCCURENCE, NULL, processRDMErrorOccurrenceLog, &rdmDisabledState }
+	,{ RDM_REQ_LOG_INFORMATION, NULL, processRDMInformationLog, &rdmDisabledState }
 	,{ RDM_REQ_ERROR_LOG, NULL, processRDMErrorLog, &rdmDisabledState }
 	,{ RDM_REQ_OPERATION_LOG, NULL, processRDMOperationLog, &rdmDisabledState }
+	,{ RDM_REQ_REJECT_LOG, NULL, processRDMRejectLog, &rdmDisabledState }
 	,{ SM_ANY, isRDMStatusBusy, NULL, &rdmDisabledState }
 	,{ SM_ANY, errorDetectedRdm, NULL, &rdmErrorState }
 	,{ SM_ANY, isOnPowerUpStatusRdm, sendResetRdm, &rdmInitializingState }
@@ -1009,8 +1428,9 @@ void requestJCMRDMLog(JcmBillAcceptData *jcmBillAcceptor)
     
     char qtyLogs5000[] = { 0x01 , 0x00 , 0x88 , 0x13 }; // From 1 to 5000 log request (little endian).
     char qtyLogs6000[] = { 0x70 , 0x17 }; // 6000 log request (little endian).
-    char qtyLogs1000[] = { 0xE8 , 0x03 }; 
-    char qtyLogs100[] =  { 0x64 , 0x00 }; 
+    char qtyLogs1000[] = { 0x01 , 0x00 , 0xE8 , 0x03 }; 
+    char qtyLogs500[]  = { 0x01 , 0x00 , 0xF4 , 0x01 }; 
+    char qtyLogs100[]  = { 0x64 , 0x00 }; 
     char qtyLogs2000[] = { 0xD0 , 0x07 }; 
     char qtyLogs3000[] = { 0xB8 , 0x0B }; 
 
@@ -1027,17 +1447,35 @@ void requestJCMRDMLog(JcmBillAcceptData *jcmBillAcceptor)
             dataLen = 2;
             break;
             
+        case JCMRDMGetLog_ERROR_OCURRENCE:
+            rawData[1] = RDM_REQ_NUMBER_ERROR_OCCURENCE;
+            dataLen = 2;
+            break;
+            
         case JCMRDMGetLog_ERROR_LOG:
             rawData[1] = RDM_REQ_ERROR_LOG;
             memcpy(rawData+2, qtyLogs5000, 4);
             dataLen = 6;
             break;
+            
+        case JCMRDMGetLog_LOG_INFORMATION:
+            rawData[1] = RDM_REQ_LOG_INFORMATION;
+            memcpy(rawData+2, qtyLogs5000, 4);
+            dataLen = 6;            
+            break;
         
         case JCMRDMGetLog_OPERATION_LOG:
             rawData[1] = RDM_REQ_OPERATION_LOG;
-            memcpy(rawData+2, qtyLogs3000, 2);
+            memcpy(rawData+2, qtyLogs6000, 2);
             dataLen = 4;
             break;
+            
+        case JCMRDMGetLog_REJECT_LOG:
+            rawData[1] = RDM_REQ_REJECT_LOG;
+            memcpy(rawData+2, qtyLogs1000, 4);
+            dataLen = 6;
+            break;
+
     }
 
     printf("rawData\n BLK: %02x\n CMD: %02x\t\n jcmBillAcceptor->status: %d \n",rawData[0], rawData[1], jcmBillAcceptor->status );

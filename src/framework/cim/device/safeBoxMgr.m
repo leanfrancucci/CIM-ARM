@@ -1142,9 +1142,15 @@ void billAcceptorGetMaintenanceLog( char devId )
     
 //    mySafeBox.jcmBillAcceptors[devId]->getRDMLog = JCMRDMGetLog_MAINTENANCE_INFO;
     
-    mySafeBox.jcmBillAcceptors[devId]->getRDMLog = JCMRDMGetLog_ERROR_LOG;
-    
+//    mySafeBox.jcmBillAcceptors[devId]->getRDMLog = JCMRDMGetLog_ERROR_OCURRENCE;      
+  
 //    mySafeBox.jcmBillAcceptors[devId]->getRDMLog = JCMRDMGetLog_OPERATION_LOG;
+    
+//    mySafeBox.jcmBillAcceptors[devId]->getRDMLog = JCMRDMGetLog_ERROR_LOG; // 73H
+
+    mySafeBox.jcmBillAcceptors[devId]->getRDMLog = JCMRDMGetLog_LOG_INFORMATION;
+    
+//    mySafeBox.jcmBillAcceptors[devId]->getRDMLog = JCMRDMGetLog_REJECT_LOG;
     
  
     // billAcceptorGetRDMMaintenanceLog( mySafeBox.jcmBillAcceptors[devId] );

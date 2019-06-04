@@ -16,6 +16,11 @@
 #include "system/util/all.h"
 #include "system/dev/all.h"
 #include "Configuration.h"
+
+#define DLE 0x10
+#define ETX 0x03
+#define ETB 0x17
+
 static int 	osHandleR;
 
 static unsigned char writeBuf[570];
@@ -220,6 +225,7 @@ unsigned char * rdmReadCtrlSignal( int timeout )
 	[1], descarta la marca de inicio de trama.
 	En caso contrario ( datos leidos == 0, inicio de trama no encontrado, checksum invalido )retorna NULL. 
 */
+
 unsigned char * rdmReadFrame( int timeout )
 {
     int qty = 0 , len, i;
@@ -236,8 +242,8 @@ unsigned char * rdmReadFrame( int timeout )
     qty = com_read( osHandleR, bufPtr, 550,  timeout );
 
     logFrame( 0, readBuf, qty, 0 );
-
-    	if ( qty >= 2 ){
+    
+       	if ( qty >= 2 ){
            //si arranca con un eot, lo ignoro 
 		if ( !memcmp(bufPtr, eotCmd, 2 )){
                 bufPtr += 2;
@@ -259,7 +265,7 @@ unsigned char * rdmReadFrame( int timeout )
                     ++bufPtrAux;
                     *(bufPtrAux) = *(bufPtrAux+1);
                     ++frameLen;
-                    --qty;
+                 //   --qty;
                 }
                 bufPtrRef = bufPtrAux;
                 while ( !( (*bufPtrRef == 0x10) && ((*(bufPtrRef+1) == 0x03) || (*(bufPtrRef+1) == 0x17) ) ) ) {
@@ -268,7 +274,7 @@ unsigned char * rdmReadFrame( int timeout )
                     if ( (*bufPtrRef == 0x10) && (*(bufPtrRef+1) == 0x10) && ((*(bufPtrRef+2) == 0x03) || (*(bufPtrRef+2) == 0x17)) ) {
                         ++bufPtrRef;
                         *bufPtrRef = *(bufPtrRef+1); 
-                        --qty;
+                  //      --qty;
                     }
                 }
                 *bufPtrRef = *(bufPtrRef+1);
@@ -281,12 +287,13 @@ unsigned char * rdmReadFrame( int timeout )
                 bufPtrRef++;
                 // printf("ENCONTRE UNA TRAMA CON DOBLE 0X10, SUPRIMIENDO!\n");
             }
-            qty--;
+           // qty--;
             bufPtrAux++;
             frameLen++;
         }
         //encontro el DLE ETX:  
-        if ( qty > 0 && frameLen > 8 ){
+        //if ( qty > 0 && frameLen > 8 ){
+        if ( frameLen > 8 ){    
             if ( !memcmp(bufPtr, rcvdFrameEnc, 4 )){
                 bufPtr[frameLen]=*(bufPtrAux+1);
                // bufPtr[frameLen]= 0x03;
@@ -297,7 +304,112 @@ unsigned char * rdmReadFrame( int timeout )
                 }
                 else{
                     printf("crc mal %d %d\n", crcval, SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2])));
+                    printf("crc mal %02X %02X\n", crcval, SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2])));
+                    
+                    msleep(3000);
+                    
+                    for (i = 0; i < frameLen + 2 ; i++){
+                        printf("%02X ",bufPtr[i]);
+                    }
+                    printf("\n");
+                    
+                    msleep(5000);
                 }
+            }else{
+                doLog(1,"bufptr != received frame \n"); fflush(stdout);
+                logFrame( 12, bufPtr, frameLen, 1 );
+                logFrame( 13, rcvdFrameEnc, 4, 1 );
+            }
+        } else
+            doLog(1,"no encotnro el dle etx \n"); fflush(stdout);
+        
+    }
+    
+	msleep(10);
+	com_flush( osHandleR );
+
+    return NULL;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+void processDLEDLEinFrame(unsigned char *ptr)
+{
+    unsigned char *bufPtr = ptr;
+    unsigned char *bufPtrAux = bufPtr;
+    unsigned short i;
+    
+    while ( !( (*bufPtrAux == DLE) && ((*(bufPtrAux+1) == ETX) || (*(bufPtrAux+1) == ETB) ) ) ) {
+        if ((*bufPtrAux == DLE) && (*(bufPtrAux+1) == DLE)){
+            if ( (*(bufPtrAux+2) == ETX) || (*(bufPtrAux+2) == ETB) ){  // Found DLE DLE ETX or DLE DLE ETB
+                *(bufPtr)   = *(bufPtrAux+1);
+                *(bufPtr+1) = *(bufPtrAux+2);
+                bufPtr+=2;
+                bufPtrAux+=3;                
+            } else {                                                    // Found DLE DLE 
+                *(bufPtr) = *(bufPtrAux+1);
+                bufPtr++;
+                bufPtrAux+=2;                
+            }            
+        } else {
+            *(bufPtr) = *(bufPtrAux);
+            bufPtr++;
+            bufPtrAux++;
+        }        
+    }
+    for ( i = 0 ; i < 4 ; i++, bufPtr++, bufPtrAux++ ) {
+        *bufPtr = *bufPtrAux;        
+    }    
+}
+
+unsigned char * rdmReadFrame2( int timeout )
+{
+    int qty = 0 , len, i;
+    unsigned char *bufPtr = readBuf;
+    unsigned char *strFrame;
+    unsigned char *bufPtrAux = readBuf;
+    unsigned char *bufPtrRef;
+    unsigned short crcval;
+    unsigned short frameLen;
+    
+    memset(readBuf,0,sizeof(readBuf));
+    
+    qty = com_read( osHandleR, bufPtr, 550,  timeout );
+
+    logFrame( 0, readBuf, qty, 0 );
+    
+       	if ( qty >= 2 ){
+           //si arranca con un eot, lo ignoro 
+		if ( !memcmp(bufPtr, eotCmd, 2 )){
+                bufPtr += 2;
+                qty -= 2;
+        	}
+        if ( !memcmp(bufPtr, enqCmd, 2) ){
+            return bufPtr;
+        }
+        //Calculo la longitud de la trama buscando el DLE ETX
+        frameLen = 0;
+        bufPtrAux = bufPtr;
+        while (qty > 0 && !((*bufPtrAux == DLE) && ((*(bufPtrAux+1) == ETX) || (*(bufPtrAux+1) == ETB)) ) ) {
+            qty--;
+            bufPtrAux++;
+            frameLen++;
+        }
+        //encontro el DLE ETX:  
+        if ( qty > 0 && frameLen > 8 ){
+        // if ( frameLen > 8 ){    
+            if ( !memcmp(bufPtr, rcvdFrameEnc, 4 )){
+                bufPtr[frameLen]=*(bufPtrAux+1);
+                crcval = makeCRC( bufPtr+2, frameLen - 1);
+                if ( crcval == SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2]))){
+                    bufPtr[frameLen] = DLE;
+                    processDLEDLEinFrame(readBuf);
+                    return &bufPtr[4]; //returno a partir de blockNo
+                }
+                else{
+                    printf("crc mal %d %d\n", crcval, SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2])));
+                    printf("crc mal %02X %02X\n", crcval, SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2])));
+                 }
             }else{
                 doLog(1,"bufptr != received frame \n"); fflush(stdout);
                 logFrame( 12, bufPtr, frameLen, 1 );
@@ -316,6 +428,7 @@ unsigned char * rdmReadFrame( int timeout )
 
 
 
+////////////////////////////////////////////////////////////////////////////////////////
 char rdmInit( char portNumber )
 {
     unsigned char * buf;
