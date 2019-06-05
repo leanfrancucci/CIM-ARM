@@ -1166,33 +1166,37 @@ static CIM_MANAGER singleInstance = NULL;
 {
 	int i;
 
+    printf("1\n");
 	if (myCurrentState != myCimStateIdle) {
 		strcpy(aMsg, getResourceStringDef(RESID_CANNOT_CHANGE_STATE_DROP_IN_PROGRESS, "DEPOSITO EN PROGRESO."));
 		return FALSE;
 	}
-
+    printf("2\n");
 	if ([[TelesupScheduler getInstance] inTelesup]) {
 		strcpy(aMsg, getResourceStringDef(RESID_CANNOT_CHANGE_STATE_TELESUP_IN_PROGRESS, "SUPERVISION EN PROGRESO."));
 		return FALSE;
 	}
-
+    printf("3\n");
 	if ([[Acceptor getInstance] isTelesupRunning]) {
 		strcpy(aMsg, getResourceStringDef(RESID_CANNOT_CHANGE_STATE_TELESUP_IN_PROGRESS, "SUPERVISION EN PROGRESO."));
 		return FALSE;
 	}
-
+    printf("4\n");
 	for (i = 0; i < [myExtractionWorkflowList size]; ++i) {
+        printf("entra\n");
 		if ([[myExtractionWorkflowList at: i] getCurrentState] != OpenDoorStateType_IDLE) {
+            printf("entra2\n");
 			strcpy(aMsg, getResourceStringDef(RESID_CANNOT_CHANGE_STATE_DOOR_OPEN, "PUERTA ABIERTA."));
+            printf("entra3\n");
 			return FALSE;
 		}
 	}
-
+    printf("5\n");
 	if ([myExtendedDrops size] > 0) {
 		strcpy(aMsg, getResourceStringDef(RESID_CANNOT_CHANGE_STATE_EXTENDED_DROP_IN_PROGRESS, "DEPOSITO EXTEND. EN PROGRESO."));
 		return FALSE;
 	}
-
+    printf("6\n");
 	return TRUE;
 }
 

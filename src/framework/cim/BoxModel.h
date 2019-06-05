@@ -34,6 +34,7 @@ typedef enum {
 	ValidatorModel_CC_CS_Stacker,
 	ValidatorModel_CC_CCB_BAG,
 	ValidatorModel_MEI_S66_Stacker
+	ValidatorModel_RDM
 } ValidatorModel;
 
 /**

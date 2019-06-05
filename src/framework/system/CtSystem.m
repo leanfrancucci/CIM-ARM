@@ -1358,7 +1358,7 @@ static CT_SYSTEM singleInstance = NULL;
 		while ([[TelesupScheduler getInstance] inTelesup]) msleep(10);
 	
 	}
-
+/*
 	[JExceptionForm showProcessForm: getResourceStringDef(RESID_SHUTING_DOWN_SYSTEM, "Shutting down system...")];
 
 	// Si el COM esta tomado lo desconecto
@@ -1400,7 +1400,7 @@ static CT_SYSTEM singleInstance = NULL;
 
 	//doLog(0,"OK! Bye.\n");
 
-
+*/
 
 }
 

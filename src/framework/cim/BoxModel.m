@@ -449,11 +449,16 @@
 
 			model = -1;
 
-			if ( ([acceptorSett getAcceptorId] == 1) && (myVal1Model != -1) )
+			if ( ([acceptorSett getAcceptorId] == 1) && (myVal1Model != -1) ) {
+                printf("el id es 1 model = %d\n", myVal1Model);
 				model = myVal1Model;
+            }
 
-			if ( ([acceptorSett getAcceptorId] == 2) && (myVal2Model != -1) )
-				model = myVal2Model;
+			if ( ([acceptorSett getAcceptorId] == 2) && (myVal2Model != -1) ) {
+                printf("el id es 2 model = %d\n", myVal2Model);
+                model = myVal2Model;
+            }
+			
 
 			switch (model) {
 		
@@ -477,6 +482,9 @@
 					break;
 				case ValidatorModel_MEI_S66_Stacker:
 						[self setAcceptorModel: acceptorSett brand: BrandType_MEI model: "S66 BULK|H|" parity: 1 stopBits: 0 baudRate: 5 protocol: ProtocolType_EBDS dataBits: 7];
+                    break;
+                case ValidatorModel_RDM:
+                        [self setAcceptorModel: acceptorSett brand: BrandType_RDM model: "RDM" parity: 1 stopBits: 8 baudRate: 7 protocol: ProtocolType_RDM100 dataBits: 1];
 					break;
 			}
 		}

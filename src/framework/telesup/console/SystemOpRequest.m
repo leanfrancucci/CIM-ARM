@@ -1503,17 +1503,18 @@ static int loginFailQty = 0;
     
     [myRemoteProxy newResponseMessage];
 
+    
     if (verfifyBoxModelChange == FALSE) { 
-        
+    
         cim = [[CimManager getInstance] getCim];
         box = [cim getBoxById: 1];
-        
+    
         if (box == NULL) exit;
         
         boxModelId = [box getModel];                                                        
         val1ModelId = [box getValModel: 1];
         val2ModelId = [box getValModel: 2]; 
-        
+    
     } 
     
     [myRemoteProxy addParamAsInteger: "ModelId" value: boxModelId];
@@ -1547,7 +1548,7 @@ static int loginFailQty = 0;
     id boxModel = [BoxModel new];
     
     if ([myPackage isValidParam: "ModelId"]) 
-        modelId = [myPackage getParamAsInteger: "ModeId"];
+        modelId = [myPackage getParamAsInteger: "ModelId"];
     
     if ([myPackage isValidParam: "Val1ModelId"]) 
         val1ModelId = [myPackage getParamAsInteger: "Val1ModelId"];
@@ -1565,6 +1566,7 @@ static int loginFailQty = 0;
         [boxModel free];
     END_TRY
     
+    [myRemoteProxy sendAckMessage];
         
 }
 
@@ -1685,6 +1687,12 @@ static int loginFailQty = 0;
     [myRemoteProxy addParamAsString: "Description" value: "MEI_S66_Stacker"];
     [self endEntity];
     
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ValId" value: 7];
+    [myRemoteProxy addParamAsString: "Description" value: "RDM"];
+    [self endEntity];
+    
+    
     [myRemoteProxy sendMessage];    
 	
 }
@@ -1716,13 +1724,15 @@ static int loginFailQty = 0;
     int excode;
     char exceptionDescription[100];
     id commercialStateMgr = [CommercialStateMgr getInstance];
+    char msg[35];
     
+
    	commercialState = [CommercialState new];
 	[commercialState setCommState: [[[CommercialStateMgr getInstance] getCurrentCommercialState] getCommState]];
     [commercialState setNextCommState: SYSTEM_PRODUCTION_PIMS];
     
     TRY 
-        if (![commercialStateMgr canChangeState: [commercialState getNextCommState] msg: ""]) 
+        if (![commercialStateMgr canChangeState: [commercialState getNextCommState] msg: msg]) 
             THROW(RESID_CANNOT_CHANGE_STATE_VERIFY_SYSTEM);
 
         // comienza el cambio de estado
@@ -1731,15 +1741,13 @@ static int loginFailQty = 0;
         if (!telesup) 
             THROW(TSUP_PIMS_SUPERVISION_NOT_DEFINED);
         
-
         telesupScheduler = [TelesupScheduler getInstance];
 
         if ([telesupScheduler inTelesup]) 
             THROW(RESID_TELESUP_IN_PROGRESS);
-        
+
         [[CommercialStateMgr getInstance] setPendingCommercialStateChange: commercialState];
         [telesupScheduler setCommunicationIntention: CommunicationIntention_CHANGE_STATE_REQUEST];
-
         // auditoria intento de supervision por pims
         [Audit auditEventCurrentUser: Event_PIMS_STATE_CHANGE_INTENTION additional: "" station: 0 logRemoteSystem: FALSE]; 			
 
@@ -1749,7 +1757,7 @@ static int loginFailQty = 0;
 
         ex_printfmt();
         excode = ex_get_code();
-
+.30
     
         TRY
                 [[MessageHandler getInstance] processMessage: exceptionDescription messageNumber: excode];

@@ -190,8 +190,9 @@
 	if (strstr(acceptorModel, "FRONTLOAD MW|V|")) return ValidatorModel_CC_CS_Stacker;
 	if (strstr(acceptorModel, "CCB|BAG|")) return ValidatorModel_CC_CCB_BAG;
 	if (strstr(acceptorModel, "S66 BULK|H|")) return ValidatorModel_MEI_S66_Stacker;
-
-	// por las dudas que no haya entrado en ningun if
+    if (strstr(acceptorModel, "RDM")) return ValidatorModel_RDM;
+	
+    // por las dudas que no haya entrado en ningun if
 	return -1;
 
 }
@@ -205,6 +206,9 @@
 	//box = [[[CimManager getInstance] getCim] getBoxById: 1];
 	//if (!box) return PhisicalModel_Box2ED2V1M;
 	strcpy(boxModel, trim([self getBoxModel]));
+    
+    printf("boxModel = %s\n", boxModel);
+    
 	if (strlen(boxModel) == 0) return -1;
 	
 	// busco el modelo de caja
