@@ -1757,7 +1757,6 @@ static int loginFailQty = 0;
 
         ex_printfmt();
         excode = ex_get_code();
-.30
     
         TRY
                 [[MessageHandler getInstance] processMessage: exceptionDescription messageNumber: excode];
