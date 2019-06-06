@@ -1508,6 +1508,41 @@ static int loginFailQty = 0;
     
 }
 
+- (void) getBoxModel
+{
+    id cim;
+    id box;
+    id boxModel;
+    int boxModelId = -1;
+    int val1ModelId = -1;
+    int val2ModelId = -1;
+    
+    BOOL verfifyBoxModelChange = [[[CimManager getInstance] getCim] verifyBoxModelChange];
+    
+    [myRemoteProxy newResponseMessage];
+
+    
+    if (verfifyBoxModelChange == FALSE) { 
+    
+        cim = [[CimManager getInstance] getCim];
+        box = [cim getBoxById: 1];
+    
+        if (box == NULL) exit;
+        
+        boxModelId = [box getModel];                                                        
+        val1ModelId = [box getValModel: 1];
+        val2ModelId = [box getValModel: 2]; 
+    
+    } 
+    
+    [myRemoteProxy addParamAsInteger: "ModelId" value: boxModelId];
+    [myRemoteProxy addParamAsInteger: "Val1ModelId" value: val1ModelId];
+    [myRemoteProxy addParamAsInteger: "Val2ModelId" value: val2ModelId];
+    
+    [myRemoteProxy sendMessage];
+    
+}
+
 /**/
 - (void) hasMovements
 {
@@ -1531,7 +1566,7 @@ static int loginFailQty = 0;
     id boxModel = [BoxModel new];
     
     if ([myPackage isValidParam: "ModelId"]) 
-        modelId = [myPackage getParamAsInteger: "ModeId"];
+        modelId = [myPackage getParamAsInteger: "ModelId"];
     
     if ([myPackage isValidParam: "Val1ModelId"]) 
         val1ModelId = [myPackage getParamAsInteger: "Val1ModelId"];
@@ -1549,6 +1584,7 @@ static int loginFailQty = 0;
         [boxModel free];
     END_TRY
     
+    [myRemoteProxy sendAckMessage];
         
 }
 
@@ -1669,6 +1705,12 @@ static int loginFailQty = 0;
     [myRemoteProxy addParamAsString: "Description" value: "MEI_S66_Stacker"];
     [self endEntity];
     
+    [self beginEntity];
+    [myRemoteProxy addParamAsInteger: "ValId" value: 7];
+    [myRemoteProxy addParamAsString: "Description" value: "RDM"];
+    [self endEntity];
+    
+    
     [myRemoteProxy sendMessage];    
 	
 }
@@ -1700,13 +1742,15 @@ static int loginFailQty = 0;
     int excode;
     char exceptionDescription[100];
     id commercialStateMgr = [CommercialStateMgr getInstance];
+    char msg[35];
     
+
    	commercialState = [CommercialState new];
 	[commercialState setCommState: [[[CommercialStateMgr getInstance] getCurrentCommercialState] getCommState]];
     [commercialState setNextCommState: SYSTEM_PRODUCTION_PIMS];
     
     TRY 
-        if (![commercialStateMgr canChangeState: [commercialState getNextCommState] msg: ""]) 
+        if (![commercialStateMgr canChangeState: [commercialState getNextCommState] msg: msg]) 
             THROW(RESID_CANNOT_CHANGE_STATE_VERIFY_SYSTEM);
 
         // comienza el cambio de estado
@@ -1715,15 +1759,13 @@ static int loginFailQty = 0;
         if (!telesup) 
             THROW(TSUP_PIMS_SUPERVISION_NOT_DEFINED);
         
-
         telesupScheduler = [TelesupScheduler getInstance];
 
         if ([telesupScheduler inTelesup]) 
             THROW(RESID_TELESUP_IN_PROGRESS);
-        
+
         [[CommercialStateMgr getInstance] setPendingCommercialStateChange: commercialState];
         [telesupScheduler setCommunicationIntention: CommunicationIntention_CHANGE_STATE_REQUEST];
-
         // auditoria intento de supervision por pims
         [Audit auditEventCurrentUser: Event_PIMS_STATE_CHANGE_INTENTION additional: "" station: 0 logRemoteSystem: FALSE]; 			
 
@@ -1733,7 +1775,6 @@ static int loginFailQty = 0;
 
         ex_printfmt();
         excode = ex_get_code();
-
     
         TRY
                 [[MessageHandler getInstance] processMessage: exceptionDescription messageNumber: excode];
@@ -2408,8 +2449,8 @@ static int loginFailQty = 0;
             [self isValidationModeAvailable];
             return;            
             
-        case HAS_MODEL_SET_REQ:
-            [self hasModelSet];
+        case GET_BOX_MODEL_REQ:
+            [self getBoxModel];
             return;
             
         case SET_BOX_MODEL_REQ:

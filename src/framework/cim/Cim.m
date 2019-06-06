@@ -1183,8 +1183,17 @@
 								if (strlen(valBrandStr) == 0)
 									strcat(valBrandStr,"-CDM");
 								else strcat(val2BrandStr,"-CDM");
-						break;
-				}
+
+                                break;
+					case BrandType_RDM:
+								if (strlen(valBrandStr) == 0)
+									strcat(valBrandStr,"-RDM");
+								else strcat(val2BrandStr,"-RDM");
+
+                                break;
+
+                    
+                }
 
 				// concateno modelo
 				tokenizer = [[StringTokenizer new] initTokenizer: [[myAcceptorSettings at: i] getAcceptorModel] delimiter: "|"];
@@ -1293,6 +1302,9 @@ DOORS
 /**/
 - (BOOL) verifyBoxModelChange
 {
+    
+    printf("modelo de caja = %d\n", strlen(trim([[self getBoxById: 1] getBoxModel])));
+    
 	// verifico si el model ya fue seleccionado en las tablas locales del equipo
 	if ( (strlen(trim([[self getBoxById: 1] getBoxModel])) == 0) && (![self hasMovements]) ) {
 		return TRUE;

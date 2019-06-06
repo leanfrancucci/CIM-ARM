@@ -83,6 +83,7 @@ typedef enum {
 	BrandType_FUJITSU,
 	BrandType_FIREKING,
 	BrandType_MONEY_CONTROLS,
+    BrandType_RDM
   BrandType_CDM
 } BrandType;
 

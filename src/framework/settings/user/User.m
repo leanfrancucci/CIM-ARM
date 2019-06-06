@@ -173,6 +173,7 @@
 /**/
 - (void) setLoggedIn: (BOOL) aValue
 {
+    printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> user setLoggedIn = %d  value = %d \n", myUserId, aValue);
 	myLoggedIn = aValue;
 }
 

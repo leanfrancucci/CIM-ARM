@@ -34,6 +34,7 @@ typedef enum {
 	ValidatorModel_CC_CS_Stacker,
 	ValidatorModel_CC_CCB_BAG,
 	ValidatorModel_MEI_S66_Stacker
+	ValidatorModel_RDM
 } ValidatorModel;
 
 /**
@@ -47,12 +48,14 @@ typedef enum {
 
 /**/
 - (void) setPhisicalModel: (PhisicalModel) aValue;
+- (PhisicalModel) getPhisicalModel;
 
 /**/
 - (void) setVal1Model: (ValidatorModel) aValue;
-
+- (ValidatorModel) getVal1Model;
 /**/
 - (void) setVal2Model: (ValidatorModel) aValue;
+- (ValidatorModel) getVal2Model;
 
 /**/
 - (void) save;

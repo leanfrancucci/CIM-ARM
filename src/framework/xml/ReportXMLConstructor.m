@@ -3081,10 +3081,13 @@ printf("17\n");
 							case BrandType_MEI:
 									scew_element_set_contents(element, getResourceStringDef(RESID_Acceptor_MEI, "MEI"));
 								break;
-
 							case BrandType_CDM:
 									scew_element_set_contents(element, "CDM");
 								break;
+							case BrandType_RDM:
+									scew_element_set_contents(element, getResourceStringDef(RESID_UNDEFINED, "RDM"));
+								break;
+                                
 						}
 
         		// Version        		

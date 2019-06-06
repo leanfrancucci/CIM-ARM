@@ -334,7 +334,7 @@ static id singleInstance = NULL;
 		// Reboot system
 	//	doLog(0,"reinicia el sistema\n");
 		[[CtSystem getInstance] shutdownSystem];
-		system("reboot");
+		//system("reboot");
 
 		return;
 	}
@@ -410,8 +410,8 @@ static id singleInstance = NULL;
 {
 	int currentState = [myCurrentCommercialState getCommState];
 
-//	doLog(0,"Verifica si es posible realizar el cambio de estado de acuerdo al estado del sistema\n");
-//	doLog(0,"currentState = %d nextState = %d\n",  currentState, aNewState);
+	printf("Verifica si es posible realizar el cambio de estado de acuerdo al estado del sistema\n");
+	printf("currentState = %d nextState = %d\n",  currentState, aNewState);
 
 	// Bloqueado -> Prueba PIMS
 	// Bloqueado -> Produccion PIMS
@@ -424,26 +424,24 @@ static id singleInstance = NULL;
 	}
 */
 	if ( ((currentState == SYSTEM_TEST_PIMS) && ((aNewState == SYSTEM_PRODUCTION_PIMS) ||
-																								(aNewState == SYSTEM_FACTORY_BLOCKED) ||  
-																								(aNewState == SYSTEM_TEST_STAND_ALONE))) ||	
+        (aNewState == SYSTEM_FACTORY_BLOCKED) ||  (aNewState == SYSTEM_TEST_STAND_ALONE))) ||	
+        ((currentState == SYSTEM_PRODUCTION_PIMS) && ((aNewState == SYSTEM_FACTORY_BLOCKED) ||
+		(aNewState == SYSTEM_PRODUCTION_STAND_ALONE))) ||
+        ((currentState == SYSTEM_TEST_STAND_ALONE) && ((aNewState == SYSTEM_PRODUCTION_STAND_ALONE) || 
+        (aNewState == SYSTEM_FACTORY_BLOCKED) ||
+        (aNewState == SYSTEM_PRODUCTION_PIMS) ||  
+        (aNewState == SYSTEM_TEST_PIMS))) ||
+        ((currentState == SYSTEM_PRODUCTION_STAND_ALONE) && ((aNewState == SYSTEM_FACTORY_BLOCKED) ||
+        (aNewState == SYSTEM_PRODUCTION_PIMS))) ) {
 
-			((currentState == SYSTEM_PRODUCTION_PIMS) && ((aNewState == SYSTEM_FACTORY_BLOCKED) ||
-																										 (aNewState == SYSTEM_PRODUCTION_STAND_ALONE))) ||
- 
-		  ((currentState == SYSTEM_TEST_STAND_ALONE) && ((aNewState == SYSTEM_PRODUCTION_STAND_ALONE) || 
-																											(aNewState == SYSTEM_FACTORY_BLOCKED) ||
-																											(aNewState == SYSTEM_PRODUCTION_PIMS) ||  
-																											(aNewState == SYSTEM_TEST_PIMS))) ||
-
-			((currentState == SYSTEM_PRODUCTION_STAND_ALONE) && ((aNewState == SYSTEM_FACTORY_BLOCKED) ||
-																														(aNewState == SYSTEM_PRODUCTION_PIMS))) )
-
+        printf("entra a la comparacion\n");
 		if (![[CimManager getInstance] isSystemIdleForChangeState: aMsg]) {
-		//	doLog(0,"canChangeState -> NO\n");
+			printf("canChangeState -> NO\n");
 			return FALSE;
 		}
+    }
 
-	//doLog(0,"canChangeState -> SI\n");
+	printf("canChangeState -> SI\n");
 	return TRUE;
 
 }
