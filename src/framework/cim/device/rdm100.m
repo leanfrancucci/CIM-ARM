@@ -16,7 +16,6 @@
 #include "system/util/all.h"
 #include "system/dev/all.h"
 #include "Configuration.h"
-static int 	osHandleR;
 
 static unsigned char writeBuf[570];
 static unsigned char readBuf[570];
@@ -29,7 +28,7 @@ static unsigned char readCtrlSignalsBuff[4];
 	Abre el puerto pasado por parametro, inicializando la comunicacion con la placa.
 	Retorna 1 si la apertura de puerto fue exitosa y 0 en caso contrario
 */
-char rdmCommOpen( char portNumber )
+int rdmCommOpen( char portNumber )
 {
 	ComPortConfig config;
 	
@@ -40,20 +39,16 @@ char rdmCommOpen( char portNumber )
     config.dataBits = 8;
     config.stopBits = 1;
     strcpy(config.ttyStr, [[Configuration getDefaultInstance] getParamAsString: "TTY_VALIDATORS" default: "/dev/ttyUSB"]);
-    osHandleR = com_open(portNumber, &config);
+    return com_open(portNumber, &config);
 
-  	if ( osHandleR != -1 ) 
-  	   return 1;
-
-    return 0;
 }
 
 /*
 	Cierre del puerto
 */
-void rdmCommClose( void )
+void rdmCommClose( int aHandle )
 {
-  	com_close( osHandleR );
+  	com_close( aHandle );
 }
 
 
@@ -190,7 +185,7 @@ void rdmWriteFrame(unsigned char *data, int dataLen)
 
 */
 
-void rdmWriteFrame(unsigned char *data, int dataLen)
+void rdmWriteFrame(int aHandle, unsigned char hardwareId, unsigned char *data, int dataLen)
 {
         int i, j, len;
         unsigned short crcval;
@@ -210,9 +205,9 @@ void rdmWriteFrame(unsigned char *data, int dataLen)
         memcpy(&writeBuf[dataLen + 4], etxCmd, 2);
        *((unsigned short*) &writeBuf[dataLen + 6]) = SHORT_TO_L_ENDIAN(crcval);
         
-        com_write( osHandleR, writeBuf, dataLen + 8 );
+        com_write( aHandle, writeBuf, dataLen + 8 );
 
-        logFrame( 0, writeBuf, dataLen + 8, 1 );        
+        logFrame( hardwareId, writeBuf, dataLen + 8, 1 );        
 
 }
 
@@ -220,22 +215,22 @@ void rdmWriteFrame(unsigned char *data, int dataLen)
 	Realiza el entramado de los datos pasados por parametro y envia los datos por el puerto
 	que se haya inicializado..
 */
-void rdmWriteCtrlSignal( unsigned char * data, int dataLen )
+void rdmWriteCtrlSignal( int aHandle, unsigned char hardwareId, unsigned char * data, int dataLen )
 {
     memcpy(writeBuf, data, dataLen);
-   	com_write( osHandleR, writeBuf, dataLen );
+   	com_write( aHandle, writeBuf, dataLen );
 
-	logFrame( 0, writeBuf, dataLen, 1 );
+	logFrame( hardwareId, writeBuf, dataLen, 1 );
 }
 
-unsigned char * rdmReadCtrlSignal( int timeout )
+unsigned char * rdmReadCtrlSignal( int aHandle, unsigned char hardwareId, int timeout )
 {
     int qty, len;
     unsigned char *bufPtr = readCtrlSignalsBuff;
 
-	qty = com_read( osHandleR, bufPtr, 2,  300 );
+	qty = com_read( aHandle, bufPtr, 2,  300 );
 //	doLog(0,"RDM QTY READ %d\n", qty); fflush(stdout);
-	logFrame( 0, readCtrlSignalsBuff, qty, 0 );
+	logFrame( hardwareId, readCtrlSignalsBuff, qty, 0 );
 
     if ( qty >= 2 ){
         return bufPtr;
@@ -249,7 +244,7 @@ unsigned char * rdmReadCtrlSignal( int timeout )
 	[1], descarta la marca de inicio de trama.
 	En caso contrario ( datos leidos == 0, inicio de trama no encontrado, checksum invalido )retorna NULL. 
 */
-unsigned char * rdmReadFrame( int timeout )
+unsigned char * rdmReadFrame( int aHandle, unsigned char hardwareId, int timeout )
 {
     int qty, len;
     unsigned char *bufPtr = readBuf;
@@ -259,9 +254,9 @@ unsigned char * rdmReadFrame( int timeout )
     unsigned short crcval;
     unsigned short frameLen;
 
-	qty = com_read( osHandleR, bufPtr, 300,  300 );
+	qty = com_read( aHandle, bufPtr, 300,  300 );
 //	printf("RDM QTY READ %d\n", qty); fflush(stdout);
-	logFrame( 0, readBuf, qty, 0 );
+	logFrame( hardwareId, readBuf, qty, 0 );
 
     	if ( qty >= 2 ){
            //si arranca con un eot, lo ignoro 
@@ -322,33 +317,25 @@ unsigned char * rdmReadFrame( int timeout )
     }
     
 	msleep(10);
-	com_flush( osHandleR );
+	com_flush( aHandle );
 
     return NULL;
 }
 
 
 
-char rdmInit( char portNumber )
+int rdmInit( char portNumber )
 {
-    unsigned char * buf;
+    unsigned char * buf; 
+    int aHandle;
     
     openConfigFile();
     printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>RDMINIT \n");
-    if (rdmCommOpen( portNumber )){
+    if ((aHandle = rdmCommOpen( portNumber )) != -1 )
         printf("<<<<<<<<<<<>>>>>>>>>>>>><<<<<<<<<rdminit comm abuerti ok \n");
-       /*   while (1){  
-            rdmWrite( enqCmd, 4 );
-            buf = rdmRead( 1000 );
-            if ( buf != NULL ) {
-                rdmWrite(ackCmd,2);
-                doLog(0,"sending ack \n"); fflush(stdout); 
-            }
-          }*/
-        return 1;
-    }else   
+    else   
         printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Error al abrir el com solicitado xxxx\n");
-    return 0;
+    return aHandle;
 }
 
 

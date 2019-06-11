@@ -151,6 +151,8 @@ typedef struct {
   unsigned char sndBlockNo;
   unsigned char resetSent;
   unsigned char initalizationAlarmSent;
+  unsigned char statusWaitingDepositInfo;
+  int communicationHandle;
 } JcmBillAcceptData;
 
 /*
