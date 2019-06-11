@@ -333,7 +333,7 @@ unsigned char * rdmReadFrame( int timeout )
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
-void processDLEDLEinFrame(unsigned char *ptr)
+void replaceDLEDLEbyDLEinFrame(unsigned char *ptr)
 {
     unsigned char *bufPtr = ptr;
     unsigned char *bufPtrAux = bufPtr;
@@ -403,7 +403,7 @@ unsigned char * rdmReadFrame2( int timeout )
                 crcval = makeCRC( bufPtr+2, frameLen - 1);
                 if ( crcval == SHORT_TO_L_ENDIAN(*((unsigned short*) &bufPtr[frameLen + 2]))){
                     bufPtr[frameLen] = DLE;
-                    processDLEDLEinFrame(readBuf);
+                    replaceDLEDLEbyDLEinFrame(readBuf);
                     return &bufPtr[4]; //returno a partir de blockNo
                 }
                 else{
