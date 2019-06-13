@@ -1033,15 +1033,21 @@ unsigned char *rdmOperationLogCallback(unsigned char *bufferPtr)
         
         case RDM_OPERATION_LOG_TYPE_1:
             printf (" %d/%02d/%02d %02d:%02d:%02d Code: %02x Size: %d Blocks: %d\n",                SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.dataLogType1.year)), dataLogEntry.dataLogType1.month, dataLogEntry.dataLogType1.day, dataLogEntry.dataLogType1.hh, dataLogEntry.dataLogType1.mm, dataLogEntry.dataLogType1.ss, dataLogEntry.dataLogType1.code, SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.dataLogType1.dataSize)), dataLogEntry.dataLogType1.block );   
+            
+            sprintf( errorLogStr , " %d/%02d/%02d %02d:%02d:%02d Code: %02x Size: %d Blocks: %d\n Data: %02X %02X %02X %02X",                SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.dataLogType1.year)), dataLogEntry.dataLogType1.month, dataLogEntry.dataLogType1.day, dataLogEntry.dataLogType1.hh, dataLogEntry.dataLogType1.mm, dataLogEntry.dataLogType1.ss, dataLogEntry.dataLogType1.code, SHORT_TO_L_ENDIAN(*(unsigned short *)(dataLogEntry.dataLogType1.dataSize)), dataLogEntry.dataLogType1.block, dataLogEntry.dataLogType1.data[0], dataLogEntry.dataLogType1.data[1], dataLogEntry.dataLogType1.data[2], dataLogEntry.dataLogType1.data[3] );
             break;
                         
         case RDM_OPERATION_LOG_TYPE_2:
             for ( i=0; i<18 ; ++i ){
                 printf("%02X ",dataLogEntry.dataLogType2.data[i]);
+                sprintf ( errorLogStr , dataLogEntry.dataLogType2.data[i]);
             }
-            printf("\n");
             break;
     }
+    
+    sprintf( errorLogStr , "\n");
+    
+    saveLogToFile( errorLogStr , createNewFile, operationLogFileName ); 
     
     return bufferPtr;
 
